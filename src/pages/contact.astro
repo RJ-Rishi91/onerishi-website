@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact — Say Hello"
+  description="Start an exchange with Rushal S. for advisory consulting, speaking engagements, media collaborations, or general inquiries."
+>
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    
+    <!-- Header -->
+    <header class="max-w-[820px] mb-12 lg:mb-16">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-[#C1592B]"></span>
+        <span class="font-sans text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-widest">
+          Inquiries &amp; Dispatches
+        </span>
+      </div>
+      <h1 class="font-serif text-[42px] lg:text-[56px] leading-[1.12] text-[#1B1B18] tracking-tight mb-4 font-normal">
+        Say Hello<span class="text-[#C1592B] font-serif">.</span>
+      </h1>
+      <p class="font-sans text-[18px] text-[#1B1B18]/75 leading-relaxed max-w-[680px]">
+        Whether you have an ambitious marketing challenge, an event in need of operational leadership, or an idea to build together — my inbox is genuinely open.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      
+      <!-- Left Info Column (5 cols) -->
+      <div class="lg:col-span-5 flex flex-col space-y-8">
+        
+        <!-- Direct Correspondence Card -->
+        <div class="bg-white p-6 sm:p-8 rounded-xl border border-[#E6E1D8] shadow-sm space-y-6">
+          <div>
+            <span class="font-sans text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block mb-2">
+              Direct Correspondence
+            </span>
+            <div class="flex items-center justify-between gap-2 py-1">
+              <a
+                href="mailto:contact@onerishi.in"
+                class="font-serif text-xl sm:text-2xl text-[#1B1B18] hover:text-[#C1592B] transition-colors tracking-tight break-all font-normal"
+              >
+                contact@onerishi.in
+              </a>
+              <button
+                type="button"
+                id="copy-email-btn"
+                class="shrink-0 p-2 rounded-lg text-[#1F3A3D] hover:text-[#C1592B] hover:bg-[#F7F4EF] transition-colors"
+                aria-label="Copy email address"
+              >
+                <span class="material-symbols-outlined text-[20px]" id="copy-icon">content_copy</span>
+              </button>
+            </div>
+            <p class="font-sans text-xs text-[#C1592B] opacity-0 transition-opacity duration-200 mt-1" id="copy-feedback">
+              Copied to clipboard
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-b border-[#1B1B18]/10 py-4 space-y-3">
+            <span class="font-sans text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block">
+              Station &amp; Cadence
+            </span>
+            <div class="flex items-start gap-2 text-[#1B1B18]">
+              <span class="material-symbols-outlined text-[18px] text-[#C1592B] shrink-0 mt-0.5">location_on</span>
+              <p class="font-sans text-sm text-[#1B1B18] font-medium">
+                Based in India <span class="text-[#1B1B18]/30 font-normal">•</span> Open to select advisory &amp; collaborative roles
+              </p>
+            </div>
+            <div class="flex items-center gap-2 text-[#1F3A3D]">
+              <span class="material-symbols-outlined text-[18px] shrink-0">schedule</span>
+              <p class="font-sans text-sm text-[#1B1B18]/70">
+                I typically read and reply within 24–48 hours.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-1">
+            <span class="font-sans text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block mb-3">
+              Elsewhere on the Deliberate Web
+            </span>
+            <div class="flex flex-wrap gap-2 font-sans">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#F7F4EF] border border-[#1B1B18]/10 text-[#1F3A3D] hover:text-[#C1592B] hover:border-[#C1592B]/30 transition-all text-xs font-medium"
+              >
+                <span class="material-symbols-outlined text-[16px]">terminal</span>
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#F7F4EF] border border-[#1B1B18]/10 text-[#1F3A3D] hover:text-[#C1592B] hover:border-[#C1592B]/30 transition-all text-xs font-medium"
+              >
+                <span class="material-symbols-outlined text-[16px]">work</span>
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#F7F4EF] border border-[#1B1B18]/10 text-[#1F3A3D] hover:text-[#C1592B] hover:border-[#C1592B]/30 transition-all text-xs font-medium"
+              >
+                <span class="material-symbols-outlined text-[16px]">play_circle</span>
+                <span>YouTube</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Literary Compact Card -->
+        <div class="p-6 rounded-xl bg-white border border-[#E6E1D8] flex items-start gap-4 shadow-sm">
+          <div class="w-10 h-10 rounded-full bg-[#1F3A3D] text-white flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[20px]">auto_stories</span>
+          </div>
+          <div class="space-y-1 font-sans">
+            <h4 class="text-sm font-semibold text-[#1F3A3D]">The Literary Compact</h4>
+            <p class="text-xs text-[#1B1B18]/75 leading-relaxed">
+              No robotic CRM funnels, auto-responders, or sponsored pitches. Every missive goes straight to my personal terminal.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Form Column (7 cols) -->
+      <div class="lg:col-span-7">
+        <ContactForm />
+      </div>
+
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  const copyBtn = document.getElementById('copy-email-btn');
+  const feedback = document.getElementById('copy-feedback');
+  const copyIcon = document.getElementById('copy-icon');
+
+  if (copyBtn && feedback && copyIcon) {
+    copyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText('contact@onerishi.in').then(() => {
+        feedback.classList.remove('opacity-0');
+        copyIcon.textContent = 'check';
+        setTimeout(() => {
+          feedback.classList.add('opacity-0');
+          copyIcon.textContent = 'content_copy';
+        }, 2000);
+      });
+    });
+  }
+</script>

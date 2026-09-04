@@ -1,0 +1,459 @@
+<!DOCTYPE html><html lang="en" style="width: 1280px; height: 3187px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EF;
+  --ink: #1B1B18;
+  --accent: #C1592B;
+  --accent-2: #1F3A3D;
+}
+@layer base{
+  html,body{
+    margin:0;
+    padding:0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+  body{overscroll-behavior:none;}
+  main>:first-child{margin-top:0!important;}
+  main>:last-child{margin-bottom:0!important;}
+}
+::-webkit-scrollbar{display:none;}
+.font-serif-heading {
+  font-family: 'Fraunces', serif;
+  font-optical-sizing: auto;
+}
+.font-sans-ui {
+  font-family: 'Inter', sans-serif;
+}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config={
+  theme:{
+    extend:{
+      colors:{
+        bg: "var(--bg)",
+        ink: "var(--ink)",
+        accent: "var(--accent)",
+        "accent-2": "var(--accent-2)",
+      },
+      fontFamily:{
+        serif: ["Fraunces", "serif"],
+        sans: ["Inter", "sans-serif"],
+      },
+      spacing:{
+        "space-2xs":"0.25rem",
+        "space-xs":"0.5rem",
+        "space-sm":"0.75rem",
+        "space-md":"1rem",
+        "space-lg":"1.5rem",
+        "space-xl":"2rem",
+        "space-2xl":"3rem",
+        "space-3xl":"4.5rem",
+        "space-4xl":"6rem",
+        "gutter-mobile":"1rem",
+        "gutter-desktop":"2rem",
+        "max-width-container":"1200px",
+        "max-width-editorial":"720px"
+      },
+      borderRadius:{
+        DEFAULT:"0.125rem",
+        sm:"0.125rem",
+        lg:"0.25rem",
+        xl:"0.5rem",
+        full:"0.75rem"
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-[var(--bg)] font-sans text-[var(--ink)] antialiased">
+<header class="fixed top-0 w-full z-50 bg-[var(--bg)]/90 backdrop-blur-md border-b border-[var(--ink)]/10">
+<div class="h-20 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<div class="flex items-center shrink-0">
+<a class="font-serif text-[28px] text-[var(--ink)] tracking-tight flex items-baseline hover:opacity-90 transition-opacity" data-path="home" href="#">
+<span>OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)] ml-0.5"></span>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-space-lg">
+<a aria-current="page" class="transition-colors text-[var(--accent)] font-medium underline decoration-[var(--accent)] underline-offset-8 text-[13px] tracking-wide" data-path="home" href="#">Home</a>
+<a class="font-sans text-[13px] tracking-wide text-[var(--ink)]/70 hover:text-[var(--ink)] transition-colors" data-path="work" href="#">Work</a>
+<a class="font-sans text-[13px] tracking-wide text-[var(--ink)]/70 hover:text-[var(--ink)] transition-colors" data-path="writing" href="#">Writing</a>
+<a class="font-sans text-[13px] tracking-wide text-[var(--ink)]/70 hover:text-[var(--ink)] transition-colors" data-path="about" href="#">About</a>
+<a class="font-sans text-[13px] tracking-wide text-[var(--ink)]/70 hover:text-[var(--ink)] transition-colors" data-path="labs" href="#">Labs</a>
+</nav>
+<div class="flex items-center gap-space-md">
+<a class="inline-flex items-center justify-center bg-[var(--accent)] text-white font-sans text-[13px] font-medium px-space-md py-space-xs rounded-xl hover:opacity-90 transition-opacity shadow-[0_2px_8px_rgba(193,89,43,0.25)] active:translate-y-px" data-path="contact" href="#">Say Hello</a>
+<div class="w-8 h-8 rounded-full bg-[var(--accent)] flex items-center justify-center shrink-0 text-white">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-20 bg-[var(--bg)] min-h-screen">
+<div class="flex flex-col w-full">
+<!-- Top Ambient Atmosphere & Grid Canvas -->
+<div class="relative w-full overflow-hidden">
+<!-- Subtle architectural guidelines background -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.035] bg-[radial-gradient(#1B1B18_1px,transparent_1px)] [background-size:24px_24px]"></div>
+<!-- Section 1: Hero Section (Editorial Layout) -->
+<section class="relative max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-xl lg:pt-space-3xl pb-space-2xl">
+<!-- Running Monograph Header / Index Tag -->
+<div class="flex items-center justify-between gap-space-md mb-space-xl opacity-90 transition-opacity duration-700">
+<div class="flex items-center gap-space-xs">
+<span class="font-sans text-[11px] font-semibold tracking-[0.16em] uppercase text-[var(--accent)]">Folio Edition № 04</span>
+<span class="w-8 h-[1px] bg-[var(--ink)]/20 inline-block"></span>
+<span class="font-sans text-[11px] text-[var(--accent-2)] tracking-widest uppercase">2024 / 2025</span>
+</div>
+<div class="hidden sm:flex items-center gap-space-2xs text-[var(--ink)]/70 font-sans text-[11px] tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span>
+<span>Available for selective engagements</span>
+</div>
+</div>
+<!-- Main Asymmetric Hero Stage -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
+<!-- Left Column: Editorial Headline & Actions (7 cols) -->
+<div class="lg:col-span-7 flex flex-col items-start space-y-space-lg">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-sm border border-[var(--accent-2)]/30 text-[var(--accent-2)] font-sans text-[11px] font-medium tracking-wide">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span>Rushal S. • Creative Technologist &amp; Strategist</span>
+</div>
+<h1 class="font-serif text-[42px] sm:text-[52px] lg:text-[56px] text-[var(--ink)] tracking-tight leading-[1.12] text-balance font-normal">
+              I build, market and execute — bringing <span class="italic font-serif text-[var(--accent)] font-normal">technology</span>, <span class="italic font-serif text-[var(--accent-2)] font-normal">creativity</span> and communication together to turn ideas into real-world projects.
+            </h1>
+<p class="font-sans text-[17px] text-[var(--ink)]/80 max-w-[580px] leading-relaxed">
+              Demand Generation Specialist, community builder, and independent maker based in India. Focused on high-leverage digital systems, high-agency teams, and literate product distribution.
+            </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="group relative inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-[var(--accent)] text-white font-sans text-[13px] font-medium rounded-lg shadow-sm hover:opacity-90 transition-all duration-300 transform active:translate-y-[1px]" data-path="work" href="#work">
+<span>See my work</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-transparent text-[var(--ink)] font-sans text-[13px] font-medium rounded-lg border border-[var(--ink)]/20 hover:border-[var(--ink)] hover:bg-white/40 transition-all duration-300" data-path="writing" href="#writing">
+<span class="material-symbols-outlined text-[16px] text-[var(--accent-2)]">menu_book</span>
+<span>Read essays</span>
+</a>
+</div>
+<!-- Micro Metas -->
+<div class="pt-space-md flex items-center gap-space-lg text-[var(--ink)]/70 font-sans text-[11px] tracking-wide border-t border-[var(--ink)]/10 w-full max-w-[520px]">
+<span class="flex items-center gap-1.5"><span class="text-[var(--accent)] font-medium">♦</span> Jaipur • Udaipur • Remote</span>
+<span class="flex items-center gap-1.5"><span class="text-[var(--accent-2)] font-medium">♦</span> Python, React &amp; GTM Strategy</span>
+</div>
+</div>
+<!-- Right Column: Tactile Framed Real Photo Container (5 cols) -->
+<div class="lg:col-span-5 relative flex flex-col items-center">
+<div class="w-full max-w-[420px] bg-white/60 p-space-sm pb-space-lg rounded-lg border border-[var(--ink)]/15 shadow-[0_12px_32px_-8px_rgba(27,27,24,0.08)] hover:shadow-[0_16px_40px_-6px_rgba(193,89,43,0.15)] transition-all duration-500 hover:-translate-y-1 group">
+<!-- Architectural Image Inset -->
+<div class="relative w-full aspect-[4/5] bg-[var(--bg)] overflow-hidden rounded-sm border border-[var(--ink)]/15 flex flex-col items-center justify-center p-space-md text-center">
+<img class="absolute inset-0 w-full h-full object-cover object-center filter sepia-[0.08] contrast-[1.03] group-hover:scale-[1.02] transition-transform duration-700 ease-out" data-alt="Editorial candid medium close-up portrait of Rushal S., a thoughtful Indian man and creative technologist in his 20s, bathed in soft golden hour sunlight streaming through a clean modern studio window. Warm earth tones, subtle terracotta and sage green reflections, wearing relaxed minimalist studio apparel. Crisp lens focus with natural film grain, intellectual, approachable, authentic magazine editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBkjpXieH5WpxrP0q1J0NSyfyWnrZmv1pej02_fQTBxEUNPDf9cIsDeQrVnCU3z8hMYEEw-LjQ6i1ZKEhllCEsAiXHvGIRfPdE7RbQXhtMbbmGUlSWBGqYbUMylYjRQLokSpvIIbNwPL8QAozenGvQ44_c5Yl6zbZg08QnaBd0CdGNCZdlNWtfBocF8KoniTnuQKteZEZLqz6dLSJPnrgzRpkoRGkcv72yzf5MnoiTBA9j63eAO5fl">
+<div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/70 via-[var(--ink)]/10 to-transparent opacity-60"></div>
+<!-- Archival badge -->
+<div class="absolute top-space-xs left-space-xs z-10 px-space-xs py-1 rounded-sm bg-[var(--bg)] text-[var(--ink)] font-sans text-[11px] tracking-wider uppercase border border-[var(--ink)]/15">
+                  Archival Port.
+                </div>
+<!-- Label Overlaid at base -->
+<div class="absolute bottom-space-sm left-space-sm right-space-sm z-10 text-left bg-[var(--bg)]/95 backdrop-blur-md p-space-xs px-space-sm rounded-sm border border-[var(--ink)]/15">
+<p class="font-sans text-[11px] text-[var(--accent)] uppercase tracking-widest font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+                    Verified Profile
+                  </p>
+<p class="font-sans text-[13px] text-[var(--ink)] font-medium leading-tight mt-0.5">
+                    [Photo of Rushal S. — Real photo placeholder]
+                  </p>
+</div>
+</div>
+<!-- Monograph Marginalia under photo -->
+<div class="mt-space-md px-space-xs flex items-center justify-between text-[var(--ink)]/70 font-sans text-[11px]">
+<span class="tracking-tight italic font-serif text-[20px] text-[var(--ink)]">Rushal S.</span>
+<span class="uppercase tracking-widest text-[var(--ink)]/50">FIG. 01 — 2024</span>
+</div>
+</div>
+<!-- Decorative Offset Card Corner Marker -->
+<div class="hidden lg:block absolute -bottom-6 -right-6 w-24 h-24 border-r border-b border-[var(--accent)]/30 pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Section 2: Manifesto Paragraph (Intimate Print-Broadsheet Style) -->
+<section class="relative w-full border-y border-[var(--ink)]/15 py-space-3xl bg-[var(--bg)]">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="max-w-editorial mx-auto">
+<!-- Small Centered Eyebrow -->
+<div class="flex items-center justify-center gap-space-xs mb-space-lg text-[var(--accent)] font-sans text-[11px] tracking-[0.2em] uppercase font-semibold">
+<span class="h-[1px] w-6 bg-[var(--accent)]"></span>
+<span>The Operating Philosophy</span>
+<span class="h-[1px] w-6 bg-[var(--accent)]"></span>
+</div>
+<!-- Manifesto Typography using Fraunces -->
+<blockquote class="font-serif text-[28px] sm:text-[34px] lg:text-[38px] text-[var(--ink)] text-center leading-[1.32] tracking-tight relative font-normal">
+<span class="absolute -left-6 -top-4 font-serif text-[var(--accent)]/20 select-none text-[52px]">“</span>
+              I’ve never believed in choosing between the analytical rigor of technology and the emotional resonance of storytelling. The most impactful projects happen where code, market understanding, and genuine community meet. That intersection is where I build.
+              <span class="inline-block font-serif text-[var(--accent)]/20 -ml-1 select-none text-[52px]">”</span>
+</blockquote>
+<!-- Signature / Rubric -->
+<div class="mt-space-xl flex flex-col sm:flex-row items-center justify-center gap-space-sm text-[var(--ink)]/70 font-sans text-[12px]">
+<span class="font-semibold text-[var(--ink)] tracking-wider uppercase">Foundational Doctrine</span>
+<span class="hidden sm:inline text-[var(--ink)]/30">•</span>
+<span class="italic text-[var(--accent-2)] font-sans">Rushal S. on deliberate craftsmanship</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Credibility Strip (4 Distinct Minimal Inline Markers) -->
+<section class="w-full border-b border-[var(--ink)]/15 bg-[var(--bg)] py-space-xl">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md lg:gap-space-lg">
+<!-- Marker 1 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg hover:bg-white/40 transition-colors duration-200">
+<div class="w-10 h-10 rounded-sm border border-[var(--accent-2)]/30 text-[var(--accent-2)] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+<div class="space-y-0.5 min-w-0">
+<span class="font-sans text-[11px] text-[var(--accent)] uppercase tracking-wider block font-semibold">Event Manager</span>
+<h4 class="font-sans text-[15px] text-[var(--ink)] font-medium leading-snug">Google DevFest Udaipur 2024</h4>
+<p class="font-sans text-[13px] text-[var(--ink)]/70">Spearheaded logistics &amp; community assembly</p>
+</div>
+</div>
+<!-- Marker 2 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg hover:bg-white/40 transition-colors duration-200">
+<div class="w-10 h-10 rounded-sm border border-[var(--accent)]/40 text-[var(--accent)] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">newspaper</span>
+</div>
+<div class="space-y-0.5 min-w-0">
+<span class="font-sans text-[11px] text-[var(--accent)] uppercase tracking-wider block font-semibold">Founder &amp; Lead</span>
+<h4 class="font-sans text-[15px] text-[var(--ink)] font-medium leading-snug">Gazette Collective</h4>
+<p class="font-sans text-[13px] text-[var(--ink)]/70">Independent media &amp; grassroots collective</p>
+</div>
+</div>
+<!-- Marker 3 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg hover:bg-white/40 transition-colors duration-200">
+<div class="w-10 h-10 rounded-sm border border-[var(--accent-2)]/30 text-[var(--accent-2)] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+</div>
+<div class="space-y-0.5 min-w-0">
+<span class="font-sans text-[11px] text-[var(--accent)] uppercase tracking-wider block font-semibold">Distribution Scale</span>
+<h4 class="font-sans text-[15px] text-[var(--ink)] font-medium leading-snug">94K+ Subscribers</h4>
+<p class="font-sans text-[13px] text-[var(--ink)]/70">Organic audience building &amp; retention</p>
+</div>
+</div>
+<!-- Marker 4 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg hover:bg-white/40 transition-colors duration-200">
+<div class="w-10 h-10 rounded-sm border border-[var(--ink)]/20 text-[var(--ink)] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</div>
+<div class="space-y-0.5 min-w-0">
+<span class="font-sans text-[11px] text-[var(--accent)] uppercase tracking-wider block font-semibold">Technical Stack</span>
+<h4 class="font-sans text-[15px] text-[var(--ink)] font-medium leading-snug">Python, React, Git</h4>
+<p class="font-sans text-[13px] text-[var(--ink)]/70">Engineered tooling &amp; interactive web apps</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Latest Writing (Warm Editorial Cards) -->
+<section class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-3xl" id="writing">
+<!-- Section Header with Fraunces & Action link -->
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-space-sm mb-space-2xl border-b border-[var(--ink)]/15 pb-space-sm">
+<div>
+<span class="font-sans text-[11px] tracking-[0.16em] uppercase text-[var(--accent-2)] font-semibold block mb-1">Field Dispatches &amp; Notes</span>
+<h2 class="font-serif text-[34px] sm:text-[40px] text-[var(--ink)] tracking-tight font-normal">Latest Writing</h2>
+</div>
+<a class="inline-flex items-center gap-1 font-sans text-[13px] text-[var(--accent)] hover:opacity-80 font-medium group transition-opacity" data-path="writing" href="#">
+<span>Read all writing</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">east</span>
+</a>
+</div>
+<!-- 3 Post Preview Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg items-stretch">
+<!-- Post 1 -->
+<article class="flex flex-col h-full bg-white/70 rounded-sm border border-[var(--ink)]/15 p-space-lg transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_12px_28px_-6px_rgba(27,27,24,0.08)] group cursor-pointer">
+<div class="relative w-full aspect-[16/10] bg-[var(--bg)] rounded-sm overflow-hidden mb-space-md border border-[var(--ink)]/10 flex items-center justify-center p-space-sm">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" data-alt="Abstract minimalist editorial composition featuring stacked vintage typography sheets, copper wire schematics, and clean lines of code on warm fibrous cream paper. Warm terracotta accents and soft studio lighting evoking thoughtful software engineering and literate growth marketing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP3LGqlPwSaTP9BSKlDdmc9cOnxYOfEAaBEQfRjnMpqkLFOftS7SVCdnd_swbAj3TcHfNkbex31QSSJM8LsWtp8Wmbq0zsCh-BpnO9eRtTrM1xHiTkRvIBKOFBdJ2HGDBdzA5eU_IvJKO3Bax_XPbtBxZrg9UXsfGZ1vV6BGXz4Dh79VDjrPMhvY6CKQ4ctfjwIExS8L0we63KPqmrJNzINi6IAzYTerh3ORo2AhvMltN_dyN02MeI">
+<div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 via-[var(--ink)]/20 to-transparent"></div>
+<div class="absolute bottom-space-xs left-space-xs right-space-xs flex justify-between items-end text-white">
+<span class="font-sans text-[11px] uppercase tracking-widest text-white bg-[var(--ink)]/70 px-2 py-0.5 rounded-sm backdrop-blur-sm">Engineering &amp; GTM</span>
+<span class="font-sans text-[11px] opacity-80">№ 081</span>
+</div>
+</div>
+<!-- Metadata Tag Strip -->
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="px-space-xs py-0.5 rounded-sm border border-[var(--accent-2)]/30 text-[var(--accent-2)] font-sans text-[11px] uppercase tracking-wider font-semibold">
+                Marketing × Tech
+              </span>
+<span class="text-[var(--ink)]/30 text-[10px]">•</span>
+<span class="font-sans text-[12px] text-[var(--ink)]/70">7 min read</span>
+</div>
+<!-- Headline in Fraunces -->
+<h3 class="font-serif text-[22px] text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-200 leading-snug mb-space-xs font-normal">
+              Why Engineering Empathy Makes You a Better Growth Marketer
+            </h3>
+<!-- Excerpt -->
+<p class="font-sans text-[14px] text-[var(--ink)]/75 leading-relaxed line-clamp-3 mb-space-lg flex-1">
+              Technical literacy isn’t just about writing SQL queries or inspecting CSS. When growth teams grasp architecture bottlenecks, they construct campaigns rooted in actual product capability rather than ephemeral hype cycles.
+            </p>
+<!-- Footer Stamp -->
+<div class="pt-space-sm border-t border-[var(--ink)]/10 flex items-center justify-between text-[var(--ink)]/70 font-sans text-[12px]">
+<span>October 24, 2024</span>
+<span class="inline-flex items-center text-[var(--accent)] font-medium group-hover:underline">
+                Read Essay →
+              </span>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="flex flex-col h-full bg-white/70 rounded-sm border border-[var(--ink)]/15 p-space-lg transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_12px_28px_-6px_rgba(27,27,24,0.08)] group cursor-pointer">
+<div class="relative w-full aspect-[16/10] bg-[var(--bg)] rounded-sm overflow-hidden mb-space-md border border-[var(--ink)]/10 flex items-center justify-center p-space-sm">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" data-alt="Editorial visual essay showing printing press movable lead typesets, folded independent broadsheet newspapers, and young people gathered around a rustic wooden table discussing community print stories. Warm ambient studio light, sepia and sage tint, artisanal craftsmanship feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4EIFqeU_MTSL8ikNWf8QRkCowQocZ3h378oWymxonnmiZWOfVqCU2f4vVmrxtNCToy6oYyDfocjBu6LAMiXxiK0ttCx99E6J2p3Ouway0SyIM_AkN9CnwZOstUaskMbRw6mxqSpwNM40P7G6gNhFQ0f5b14AHC_1axg7mt8AS3pjGCvQ3KW3eiPFZ11H5qHwxo0vmaO0CJRflDx-ygDdJXRwKIzajUWFoelkZgPxnl4IyQkH5tdKh">
+<div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 via-[var(--ink)]/20 to-transparent"></div>
+<div class="absolute bottom-space-xs left-space-xs right-space-xs flex justify-between items-end text-white">
+<span class="font-sans text-[11px] uppercase tracking-widest text-white bg-[var(--ink)]/70 px-2 py-0.5 rounded-sm backdrop-blur-sm">Grassroots Media</span>
+<span class="font-sans text-[11px] opacity-80">№ 082</span>
+</div>
+</div>
+<!-- Metadata Tag Strip -->
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="px-space-xs py-0.5 rounded-sm border border-[var(--accent-2)]/30 text-[var(--accent-2)] font-sans text-[11px] uppercase tracking-wider font-semibold">
+                Building on the Internet
+              </span>
+<span class="text-[var(--ink)]/30 text-[10px]">•</span>
+<span class="font-sans text-[12px] text-[var(--ink)]/70">5 min read</span>
+</div>
+<!-- Headline in Fraunces -->
+<h3 class="font-serif text-[22px] text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-200 leading-snug mb-space-xs font-normal">
+              What Building Gazette Collective Taught Me About Community Journalism
+            </h3>
+<!-- Excerpt -->
+<p class="font-sans text-[14px] text-[var(--ink)]/75 leading-relaxed line-clamp-3 mb-space-lg flex-1">
+              In an era of hyper-centralized programmatic platforms, grassroots local reporting gives young writers true agency. Notes on cultivating trust, distributed editorial rooms, and sustaining high-morale independent collectives.
+            </p>
+<!-- Footer Stamp -->
+<div class="pt-space-sm border-t border-[var(--ink)]/10 flex items-center justify-between text-[var(--ink)]/70 font-sans text-[12px]">
+<span>November 12, 2024</span>
+<span class="inline-flex items-center text-[var(--accent)] font-medium group-hover:underline">
+                Read Essay →
+              </span>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="flex flex-col h-full bg-white/70 rounded-sm border border-[var(--ink)]/15 p-space-lg transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_12px_28px_-6px_rgba(27,27,24,0.08)] group cursor-pointer">
+<div class="relative w-full aspect-[16/10] bg-[var(--bg)] rounded-sm overflow-hidden mb-space-md border border-[var(--ink)]/10 flex items-center justify-center p-space-sm">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90" data-alt="Editorial close-up still life of an audio recording microphone, an open notebook with plotted organic growth curves and fountain pen notations, next to a ceramic cup on an aged wooden desk. Warm daylight, rich cinematic shadows, warm terracotta and paper white palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE3kA-DeKd-YDv95QvSQ8Lvu46TCR5N5zn4XxzPWeKr0QG0FHxOjXSZqOHATqA1xf78xOPX_sA0zZhRBr847WB6lHp_KMgkgi94_2rz-ZAXwbp8-hB6P3UmRcCUYabHawH77y1yLzYgycqoiy0L8U6qyfQEEU9Jc7Wba9EupQxzXvJXaAvuplbyUAGeDTTFEyL0WhNae81JmXWLfdE7PSFpgIBuBXYhctyveoRjsYAXRiX32uW4y2I">
+<div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 via-[var(--ink)]/20 to-transparent"></div>
+<div class="absolute bottom-space-xs left-space-xs right-space-xs flex justify-between items-end text-white">
+<span class="font-sans text-[11px] uppercase tracking-widest text-white bg-[var(--ink)]/70 px-2 py-0.5 rounded-sm backdrop-blur-sm">Audience Playbooks</span>
+<span class="font-sans text-[11px] opacity-80">№ 083</span>
+</div>
+</div>
+<!-- Metadata Tag Strip -->
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="px-space-xs py-0.5 rounded-sm border border-[var(--accent-2)]/30 text-[var(--accent-2)] font-sans text-[11px] uppercase tracking-wider font-semibold">
+                Marketing Experiments
+              </span>
+<span class="text-[var(--ink)]/30 text-[10px]">•</span>
+<span class="font-sans text-[12px] text-[var(--ink)]/70">9 min read</span>
+</div>
+<!-- Headline in Fraunces -->
+<h3 class="font-serif text-[22px] text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-200 leading-snug mb-space-xs font-normal">
+              Distribution Before Destination: Lessons from Organic Audience Building
+            </h3>
+<!-- Excerpt -->
+<p class="font-sans text-[14px] text-[var(--ink)]/75 leading-relaxed line-clamp-3 mb-space-lg flex-1">
+              Scaling a digital channel to nearly 100,000 members without venture capital or paid acquisition budgets requires one uncompromising element: an obsession with resonance over reach.
+            </p>
+<!-- Footer Stamp -->
+<div class="pt-space-sm border-t border-[var(--ink)]/10 flex items-center justify-between text-[var(--ink)]/70 font-sans text-[12px]">
+<span>December 04, 2024</span>
+<span class="inline-flex items-center text-[var(--accent)] font-medium group-hover:underline">
+                Read Essay →
+              </span>
+</div>
+</article>
+</div>
+</section>
+<!-- Section 5: Deliberate Colophon & Connection Callout -->
+<section class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pb-space-3xl">
+<div class="relative rounded-sm bg-white/60 p-space-xl lg:p-space-2xl border border-[var(--ink)]/15 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-space-xl">
+<div class="space-y-space-xs max-w-[620px]">
+<span class="font-sans text-[11px] uppercase tracking-widest text-[var(--accent)] font-semibold">Dialogue &amp; Ventures</span>
+<h3 class="font-serif text-[28px] text-[var(--ink)] leading-tight font-normal">
+              Have an ambitious narrative or technical challenge?
+            </h3>
+<p class="font-sans text-[15px] text-[var(--ink)]/80">
+              I partner with forward-thinking founders, creators, and engineering teams looking for thoughtful GTM strategy and precise execution.
+            </p>
+</div>
+<div class="shrink-0 flex items-center gap-space-md">
+<a class="inline-flex items-center justify-center px-space-lg py-space-sm bg-[var(--accent)] text-white font-sans text-[13px] font-medium rounded-lg shadow-sm hover:opacity-90 transition-opacity" data-path="contact" href="#">
+              Start a Conversation
+            </a>
+<a class="inline-flex items-center justify-center px-space-md py-space-sm bg-transparent text-[var(--ink)] font-sans text-[13px] font-medium rounded-lg border border-[var(--ink)]/20 hover:border-[var(--ink)] transition-colors" data-path="about" href="#">
+              More About Rushal
+            </a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="w-full bg-[var(--bg)] border-t border-[var(--ink)]/15 mt-space-4xl">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl mb-space-3xl">
+<div class="md:col-span-5 flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center">
+<span class="font-serif text-[28px] text-[var(--ink)] tracking-tight">OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent)] ml-0.5"></span>
+</div>
+<p class="font-sans text-[14px] text-[var(--ink)]/70 max-w-[360px]">
+            Rushal S. — Marketing × Technology × Creativity. Shaping literate, high-agency digital narratives and experimental tooling.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<a class="font-sans text-[12px] text-[var(--accent-2)] hover:text-[var(--accent)] transition-colors flex items-center gap-space-2xs" href="https://github.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>GitHub</span>
+</a>
+<span class="text-[var(--ink)]/20 text-[12px]">•</span>
+<a class="font-sans text-[12px] text-[var(--accent-2)] hover:text-[var(--accent)] transition-colors flex items-center gap-space-2xs" href="https://linkedin.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span>LinkedIn</span>
+</a>
+<span class="text-[var(--ink)]/20 text-[12px]">•</span>
+<a class="font-sans text-[12px] text-[var(--accent-2)] hover:text-[var(--accent)] transition-colors flex items-center gap-space-2xs" href="https://youtube.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span>YouTube</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-3 space-y-space-sm">
+<span class="font-sans text-[11px] text-[var(--ink)]/60 uppercase tracking-wider block font-medium">Navigation</span>
+<ul class="space-y-space-xs font-sans text-[14px]">
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="home" href="#">Home</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="work" href="#">Work</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="writing" href="#">Writing</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="about" href="#">About</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="labs" href="#">Labs</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-space-sm">
+<span class="font-sans text-[11px] text-[var(--ink)]/60 uppercase tracking-wider block font-medium">Explore &amp; Connect</span>
+<ul class="space-y-space-xs font-sans text-[14px]">
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="philosophy" href="#">Philosophy</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="impact" href="#">Impact</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="collaborate" href="#">Collaborate</a></li>
+<li role="none"><a class="text-[var(--ink)] hover:text-[var(--accent)] transition-colors" data-path="contact" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-space-lg border-t border-[var(--ink)]/10 flex flex-col md:flex-row items-center justify-between gap-space-sm font-sans text-[13px] text-[var(--ink)]/70">
+<p>© 2024 Rushal S. All rights reserved.</p>
+<p class="text-center md:text-right">OneRishi • onerishi.in • Crafting the deliberate web</p>
+</div>
+</div>
+</footer>
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tag from '../../components/Tag.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('writing');
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const featuredPost = sortedPosts.find((p) => p.data.featured) || sortedPosts[0];
+const standardPosts = sortedPosts.filter((p) => p.slug !== featuredPost?.slug);
+
+const categories = [
+  'All Essays',
+  'Marketing Experiments',
+  'Marketing × Tech',
+  'Building on the Internet',
+  'Projects & Behind-the-Scenes',
+  'Career & Learning',
+];
+---
+
+<BaseLayout
+  title="Writing — Field Dispatches & Essays"
+  description="Real experiments, field notes, and frameworks from marketing, technology, and building on the internet — no generic listicles."
+>
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    
+    <!-- Header Section -->
+    <header class="mb-12">
+      <div class="flex items-center gap-2 text-[#1F3A3D] mb-2">
+        <span class="font-sans text-[11px] uppercase tracking-widest text-[#1F3A3D] font-semibold">
+          Archive • Volume IV
+        </span>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C1592B] inline-block"></span>
+        <span class="font-sans text-[11px] text-[#1B1B18]/60 font-medium">Dispatches by Rushal S.</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
+        <div class="lg:col-span-6">
+          <h1 class="font-serif text-[42px] sm:text-[52px] text-[#1B1B18] tracking-tight leading-none font-normal">
+            Writing
+          </h1>
+        </div>
+        <div class="lg:col-span-6">
+          <p class="font-sans text-[17px] text-[#1B1B18]/80 leading-relaxed max-w-[580px]">
+            Real experiments, field notes, and frameworks from marketing, technology, and building on the internet — no generic listicles.
+          </p>
+        </div>
+      </div>
+      <div class="w-full h-px bg-[#1B1B18]/15 mt-8"></div>
+    </header>
+
+    <!-- Interactive Category Filter Row -->
+    <section aria-label="Essay Categories" class="mb-12">
+      <div class="flex items-center justify-between gap-4 mb-3 flex-wrap">
+        <span class="font-sans text-[11px] font-semibold uppercase tracking-widest text-[#1B1B18]/60">
+          Thematic Taxonomy
+        </span>
+        <span class="font-sans text-[11px] text-[#1F3A3D] flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">auto_stories</span>
+          <span>{allPosts.length} Essays Available</span>
+        </span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2" id="filter-group">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-category={cat}
+            class={`category-pill px-4 py-1.5 rounded font-sans text-[13px] font-medium transition-all duration-150 border ${
+              idx === 0
+                ? 'bg-[#C1592B] text-white border-[#C1592B] shadow-sm'
+                : 'bg-white text-[#1B1B18] border-[#E6E1D8] hover:border-[#C1592B] hover:text-[#C1592B]'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Post (Split Monograph Card) -->
+    {featuredPost && (
+      <section class="mb-16 post-item" data-post-category={featuredPost.data.category} id="featured-post-section">
+        <article class="group relative bg-white rounded-lg p-6 lg:p-10 shadow-editorial hover:shadow-editorial-hover border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-300 ease-out hover:-translate-y-1">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-6 relative overflow-hidden rounded bg-[#F0EDE8] aspect-[16/10] border border-[#1B1B18]/10">
+              {featuredPost.data.coverImage && (
+                <img
+                  src={featuredPost.data.coverImage}
+                  alt={featuredPost.data.coverImageAlt || featuredPost.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
+              <div class="absolute top-3 left-3">
+                <Tag variant="terracotta">Featured Monograph</Tag>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6 flex flex-col justify-between h-full space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center flex-wrap gap-2">
+                  <Tag variant="teal">{featuredPost.data.category}</Tag>
+                  <span class="text-[#1B1B18]/30 text-[10px]">•</span>
+                  <span class="font-sans text-[12px] text-[#1B1B18]/70 font-medium">{featuredPost.data.date}</span>
+                  <span class="text-[#1B1B18]/30 text-[10px]">•</span>
+                  <span class="font-sans text-[12px] text-[#1F3A3D] font-medium">{featuredPost.data.readTime}</span>
+                </div>
+
+                <h2 class="font-serif text-[28px] sm:text-[34px] text-[#1B1B18] group-hover:text-[#C1592B] transition-colors leading-tight font-normal">
+                  <a href={`/writing/${featuredPost.slug}`}>
+                    {featuredPost.data.title}
+                  </a>
+                </h2>
+
+                <p class="font-sans text-[15px] text-[#1B1B18]/80 leading-relaxed">
+                  {featuredPost.data.description}
+                </p>
+              </div>
+
+              <div class="pt-4 flex items-center justify-between border-t border-[#1B1B18]/10">
+                <a
+                  href={`/writing/${featuredPost.slug}`}
+                  class="inline-flex items-center gap-1 font-sans text-[13px] text-[#C1592B] font-semibold group-hover:underline"
+                >
+                  <span>Read Field Study</span>
+                  <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+                <span class="font-mono text-[11px] text-[#1B1B18]/60 uppercase tracking-widest">
+                  {featuredPost.data.volume}
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      </section>
+    )}
+
+    <!-- Standard Posts Grid -->
+    <section aria-label="Recent Essays">
+      <div class="flex items-baseline justify-between mb-8 pb-3 border-b border-[#1B1B18]/15">
+        <h3 class="font-serif text-[24px] text-[#1B1B18] font-normal">All Dispatches</h3>
+        <span class="font-sans text-[11px] text-[#1B1B18]/60 uppercase tracking-wider font-semibold">Indexed By Date</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="essays-grid">
+        {standardPosts.map((post) => (
+          <div class="post-item flex flex-col" data-post-category={post.data.category}>
+            <article class="flex flex-col h-full bg-white rounded-lg p-6 shadow-sm hover:shadow-editorial-hover border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-200 ease-out hover:-translate-y-1 group">
+              
+              {post.data.coverImage && (
+                <div class="aspect-[16/10] w-full rounded overflow-hidden bg-[#F0EDE8] mb-4 border border-[#1B1B18]/10">
+                  <img
+                    src={post.data.coverImage}
+                    alt={post.data.coverImageAlt || post.data.title}
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              )}
+
+              <div class="space-y-2 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <Tag variant="teal">{post.data.category}</Tag>
+                    <span class="text-[#1B1B18]/30 text-[10px]">•</span>
+                    <span class="font-sans text-[11px] text-[#1F3A3D] font-medium">{post.data.readTime}</span>
+                  </div>
+
+                  <h4 class="font-serif text-[20px] text-[#1B1B18] group-hover:text-[#C1592B] transition-colors leading-snug font-normal mb-2">
+                    <a href={`/writing/${post.slug}`}>
+                      {post.data.title}
+                    </a>
+                  </h4>
+
+                  <p class="font-sans text-[13px] text-[#1B1B18]/75 line-clamp-3 leading-relaxed">
+                    {post.data.description}
+                  </p>
+                </div>
+
+                <div class="pt-4 mt-4 border-t border-[#1B1B18]/10 flex items-center justify-between text-[#1B1B18]/60 font-sans text-xs">
+                  <span>{post.data.date}</span>
+                  <a href={`/writing/${post.slug}`} class="text-[#C1592B] font-medium flex items-center gap-0.5 group-hover:underline">
+                    <span>Read</span>
+                    <span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
+                  </a>
+                </div>
+              </div>
+
+            </article>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.category-pill');
+  const postItems = document.querySelectorAll<HTMLElement>('.post-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedCat = btn.getAttribute('data-category');
+
+      // Update button visual states
+      buttons.forEach((b) => {
+        b.classList.remove('bg-[#C1592B]', 'text-white', 'border-[#C1592B]', 'shadow-sm');
+        b.classList.add('bg-white', 'text-[#1B1B18]', 'border-[#E6E1D8]');
+      });
+      btn.classList.add('bg-[#C1592B]', 'text-white', 'border-[#C1592B]', 'shadow-sm');
+      btn.classList.remove('bg-white', 'text-[#1B1B18]', 'border-[#E6E1D8]');
+
+      // Filter post items with subtle fade
+      postItems.forEach((item) => {
+        const itemCat = item.getAttribute('data-post-category');
+        if (selectedCat === 'All Essays' || itemCat === selectedCat) {
+          item.style.display = 'flex';
+          item.style.opacity = '1';
+        } else {
+          item.style.display = 'none';
+          item.style.opacity = '0';
+        }
+      });
+    });
+  });
+</script>

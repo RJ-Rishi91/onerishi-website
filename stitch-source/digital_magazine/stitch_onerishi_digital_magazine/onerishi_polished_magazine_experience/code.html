@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OneRishi | Precision Technical Editorial</title>
+<!-- Google Fonts: Newsreader for Serif, Inter for Sans, Space Grotesk for Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-tint": "#00658b",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-fixed": "#001e2c",
+                        "primary": "#006184",
+                        "outline-variant": "#bfc8cf",
+                        "secondary-container": "#e2dfde",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-fixed": "#ffdcbc",
+                        "primary-fixed": "#c4e7ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#004c69",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary": "#5f5e5e",
+                        "on-surface": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "on-background": "#1c1b1b",
+                        "inverse-primary": "#7cd0ff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474746",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "outline": "#6f787f",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary": "#834d00",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#f5faff",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "on-secondary-container": "#636262",
+                        "tertiary-container": "#a36410",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#ebe7e7",
+                        "primary-container": "#007ba7",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0edec",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "on-surface-variant": "#3f484e",
+                        "on-tertiary-container": "#fff8f4",
+                        "error": "#ba1a1a",
+                        "background": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { 
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .mono { font-family: 'Space Grotesk', monospace; }
+        
+        /* Magazine Scroll Snap */
+        .magazine-container {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none; /* Firefox */
+        }
+        .magazine-container::-webkit-scrollbar { display: none; }
+        .magazine-section {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Typography Animations */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .shutter-label {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        .shutter-label.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* Parallax Hero */
+        .parallax-bg {
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        /* Scroll Progress */
+        #scroll-tracker {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 200px;
+            width: 1px;
+            background: rgba(0, 97, 132, 0.1);
+            z-index: 100;
+        }
+        #scroll-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #006184;
+            height: 0%;
+            transition: height 0.3s ease-out;
+        }
+        #scroll-count {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #5f5e5e;
+        }
+
+        .text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+
+        /* Custom Navigation Hover */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed overflow-hidden">
+<!-- Scroll Progress Indicator -->
+<div class="hidden md:block" id="scroll-tracker">
+<div id="scroll-fill"></div>
+<span class="mono uppercase tracking-widest" id="scroll-count">00</span>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-[60] bg-surface/80 backdrop-blur-md border-b border-outline-variant/10 flex justify-between items-center w-full px-6 md:px-12 py-5 max-w-full">
+<div class="flex items-center gap-12">
+<span class="font-serif italic text-2xl tracking-tight text-on-surface">OneRishi</span>
+<div class="hidden md:flex gap-8">
+<a class="nav-link text-primary font-bold font-label text-[10px] uppercase tracking-widest transition-colors duration-300" href="#">Home</a>
+<a class="nav-link text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">About</a>
+<a class="nav-link text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#projects">Projects</a>
+<a class="nav-link text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Blogs</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface/70 hover:text-on-surface transition-colors active:opacity-70">menu</button>
+</div>
+</nav>
+<div class="magazine-container" id="scroll-root">
+<!-- Hero Section -->
+<section class="magazine-section flex items-end overflow-hidden">
+<div class="absolute inset-0 overflow-hidden">
+<img alt="Rushal Suthar Banner" class="parallax-bg absolute inset-0 w-full h-[120vh] object-cover object-center scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXJpOq7hbgLQL_pKADApih2eazqx88mVfboS0JM06RtGlhNUadY5JS9AYYvhONng9YGN7kZDWZ0e8S6hhPN1uvw3Rpb0jqDZr4eYlIOpwALqiLV0dDmXSMxJRA53S3pZT_B-eoAQXpYsNZKe90pPyrexB8cWTKRdVyUQSSDMNevWhY-t2eR9SlIaczDjqYdM_GVBLrPUaJNeGx0rXrwMfgHXH9LrcZolFc0HYofrxhLgT4xOLan1fF_gBpWMzwufLgCqVrlNPuNy8F"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/40 via-transparent to-transparent"></div>
+<div class="relative z-10 p-8 md:p-20 max-w-6xl w-full">
+<p class="mono text-[10px] uppercase tracking-[0.4em] text-surface-container-highest mb-6 flex items-center gap-3 shutter-label active">
+<span class="w-8 h-px bg-primary/60"></span> Volume 01 // National Award Recipient
+            </p>
+<h1 class="text-surface text-5xl md:text-8xl font-extralight leading-[0.9] tracking-tighter mb-8 text-glow reveal-text active">
+                Rushal Suthar: <br/>
+<span class="italic">Engineering a <br/>Soulful Future.</span>
+</h1>
+<div class="flex flex-col md:flex-row md:items-center gap-8 reveal-text active" style="transition-delay: 200ms;">
+<p class="text-surface-variant font-body text-lg md:text-xl max-w-xl border-l border-primary/50 pl-8 py-1 leading-relaxed">
+                    National Veer Gatha Winner felicitated by the Ministry of Defence. A study in precision and artistic intent.
+                </p>
+<div class="flex gap-4">
+<a class="mono text-[10px] uppercase tracking-widest bg-primary text-on-primary px-8 py-4 hover:bg-primary-container transition-all" href="#projects">Explore Works</a>
+</div>
+</div>
+</div>
+<!-- Technical Data Ticker -->
+<div class="absolute right-0 bottom-0 bg-surface-container-highest/10 backdrop-blur-xl px-8 py-4 border-l border-t border-outline-variant/10 hidden lg:block">
+<p class="mono text-[9px] text-surface-bright/80 flex gap-10">
+<span class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> COORD: 24.5854° N, 73.7125° E</span>
+<span class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> MT: 01_EDITORIAL_ARCHIVE</span>
+<span class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> WPC: 1,402</span>
+</p>
+</div>
+</section>
+<!-- Projects Header & Pillars -->
+<section class="magazine-section py-32 bg-surface" id="projects">
+<div class="px-8 md:px-20 max-w-[1600px] mx-auto h-full flex flex-col justify-center">
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-10 mb-16">
+<div>
+<span class="mono text-[10px] uppercase text-primary tracking-widest mb-2 block shutter-label">Portfolio</span>
+<h2 class="text-6xl font-headline italic leading-none reveal-text">Projects</h2>
+</div>
+<p class="mono text-[10px] uppercase text-secondary tracking-[0.2em] shutter-label">Active Endeavors 2024</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch flex-1 max-h-[700px]">
+<!-- Pillar 1 -->
+<div class="bg-on-surface text-surface p-12 flex flex-col justify-between group border border-outline-variant/10 hover:border-primary/40 transition-colors duration-500 reveal-text">
+<div>
+<span class="mono text-[10px] text-primary-fixed uppercase tracking-widest mb-10 block">Project 01 / Infrastructure</span>
+<h2 class="text-4xl mb-6 font-headline">Studio Ravya</h2>
+<div class="space-y-6 font-body text-surface-variant/70 text-sm">
+<p class="flex items-center gap-4 group-hover:text-surface transition-colors"><span class="w-1.5 h-1.5 bg-primary"></span> Accessible Udaipur Initiative</p>
+<p class="flex items-center gap-4 group-hover:text-surface transition-colors"><span class="w-1.5 h-1.5 bg-primary"></span> Junior Journalist Foundation</p>
+</div>
+</div>
+<div class="mt-12 overflow-hidden relative">
+<img alt="Architecture" class="w-full grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 h-48 object-cover scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAiDS6lSNvYQJmpZndplZ6S5g0098bqvF06X95m2qqjlf7pRhV7VOuV_ZFpHwcEBKkLMomXrul53BiG8G0KkDk7eBa3MGHS5xOBYfV2Bi6zMBtL9rQdPwsaz1_m63KQ62YJdIEq6IWOj2Vudg62pH6ueK2Gf-1ONlej8FvjpkVT_mldZoodaMGVrpiO3ucvPO46VJBUgdo4qEqfsikkfnZzaM_yN-U2EP9FC4ynCrY5KMg0geoTrCxssbZBZpFoGquSZKwt9-XhsWG"/>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="lg:col-span-1 bg-surface-container-low p-12 flex flex-col border border-outline-variant/20 relative overflow-hidden reveal-text" style="transition-delay: 150ms;">
+<div class="relative z-10">
+<span class="mono text-[10px] text-primary uppercase tracking-widest mb-10 block">Project 02 / Media Ecosystem</span>
+<h2 class="text-5xl text-on-surface mb-8 font-headline leading-tight">Global Galactic Media</h2>
+<p class="font-body text-secondary text-sm max-w-md mb-12 leading-relaxed">The growth engine propelling modern narratives through vibrant digital marketing and hyper-local engagement.</p>
+<button class="mono text-[10px] px-10 py-5 bg-primary text-on-primary hover:bg-primary-container transition-all uppercase tracking-widest">Read Manifesto</button>
+</div>
+<div class="absolute bottom-0 right-0 w-full h-1/2 opacity-10 pointer-events-none translate-y-10">
+<img alt="Technology" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCitkxhITG6vEigug96Pqe_eOt3kusH3iU6zWYf8bBJWnz5_QFJePrfK5KR4INPWKgty0gouYg_qmGYNIYJgTd0PO45ngZ5jGUGgYfwLhXuLEnzfohGNCvw6hkUbCIIM6H72624NPNTmvHBd-ZoRbIH-9Psr2MxBYO2dO2G3xxV0DSxWxZpFDyczeZDyQ774bjyeC_DWm1PLvcmq_WtXld1DCDS_nZUHdnLhKRhNR3SCcn65SJZK5U7LhSDFjjF9-LJqwy03ntO1-mB"/>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface border border-outline-variant/20 p-12 flex flex-col justify-center text-center hover:bg-surface-container-lowest transition-colors duration-500 reveal-text" style="transition-delay: 300ms;">
+<span class="mono text-[10px] text-secondary uppercase tracking-widest mb-10 block">Project 03 / The Self</span>
+<h2 class="text-4xl italic mb-8 font-headline">Khayal-Rishi-Ka</h2>
+<p class="font-headline italic text-xl text-on-surface-variant mb-6">"The Sanctuary of Thought"</p>
+<div class="w-16 h-px bg-primary mx-auto mb-6"></div>
+<p class="font-body text-secondary text-xs leading-relaxed max-w-[280px] mx-auto italic">
+                        A minimalist exploration of poetic elegance and soft textures. A retreat for the mind in an age of noise.
+                    </p>
+<div class="mt-8">
+<img alt="Light" class="w-32 h-44 object-cover mx-auto shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALxYwFZCKsrPZlpy5kUx8-gg4claaIXkoIyrrpkZYO8Hk4qPfv7a5tSe6UaHeGhxa8aoEmSu0PhDH1pSkvnjwYAfMQ8SMBiUQmt1YP6o00IdJrSP84uS5Qqspc5hWkMpG695mktJIZCbGlnrSP8WxHvteBaw1BZ0mb5VXQxH94CtmKs5n6bV4pmYU75R2RpgXL1e2i6h0xWQFupwuTduUinG7ENP9oreMDoKMmmcKPjdLIA9Akcnrow7zer-WPQ8FSUClRo0DcxqqX"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Aristotle Quote -->
+<section class="magazine-section py-48 px-8 bg-surface-container-lowest flex items-center justify-center">
+<div class="max-w-5xl mx-auto text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-16 shutter-label">format_quote</span>
+<blockquote class="text-4xl md:text-7xl font-headline text-on-surface leading-[1.1] tracking-tight reveal-text">
+                “An educated mind is able to entertain a thought critically, without <span class="italic text-primary">accepting it.</span>”
+            </blockquote>
+<div class="mt-16 flex items-center justify-center gap-4 reveal-text" style="transition-delay: 400ms;">
+<span class="w-12 h-px bg-outline-variant"></span>
+<p class="mono text-[10px] uppercase tracking-[0.3em] text-secondary">Aristotle</p>
+<span class="w-12 h-px bg-outline-variant"></span>
+</div>
+</div>
+</section>
+<!-- The Editorial Grid -->
+<section class="magazine-section py-32 bg-surface-container-low">
+<div class="max-w-[1600px] mx-auto px-8 md:px-20">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-20 border-b border-outline-variant/10 pb-10 gap-4">
+<h2 class="text-6xl font-headline italic leading-none reveal-text">The Editorial Grid</h2>
+<p class="mono text-[10px] uppercase text-secondary tracking-widest shutter-label">Chronicles 2024–2026 // Technical Archive</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-24">
+<div class="md:col-span-8 group reveal-text">
+<div class="overflow-hidden mb-10 relative aspect-[16/9]">
+<img alt="Entrepreneurs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] parallax-bg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN066t64QxT24kRInlW-mYv7HkF12z-A6K18F-9B67Y38S9678N0Y_V_P36S_8F7W_6B7T5R4E3W2Q1P0O9I8U7Y6T5R4E3W2Q1P0O9I8U7Y6T5R4E3W2Q1P0O9I8U7Y6T5R4E3W2Q1P0O"/>
+<div class="absolute inset-0 bg-on-surface/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="flex justify-between items-start">
+<h3 class="text-4xl font-headline italic max-w-2xl leading-tight group-hover:text-primary transition-colors">Why India Needs Young Entrepreneurs and Builders Instead of Job Seekers</h3>
+<p class="mono text-[9px] text-secondary mt-3 whitespace-nowrap tracking-widest border border-outline-variant px-3 py-1">ESSAY 01</p>
+</div>
+</div>
+<div class="md:col-span-4 mt-12 md:mt-32 reveal-text" style="transition-delay: 200ms;">
+<div class="overflow-hidden mb-10 border border-outline-variant/20 aspect-[3/4]">
+<img alt="Education" class="w-full h-full object-cover hover:brightness-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAI8u9t0y8r7e6w5q4p3o2n1m0l9k8j7h6g5f4d3s2a1q0w9e8r7t6y5u4i3o2p1l0k9j8h7g6f5d4s3a2q1w0"/>
+</div>
+<h3 class="text-2xl font-headline italic leading-snug">Problems in the Indian Education System and How Students Can Think Independently</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer & Contact -->
+<section class="magazine-section py-32 bg-surface flex flex-col justify-center">
+<div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 px-8 md:px-20 w-full mb-32">
+<div class="border-t border-outline-variant pt-12 reveal-text">
+<h4 class="text-4xl font-headline italic mb-8">Stay Synchronized</h4>
+<p class="text-secondary mb-10 max-w-sm leading-relaxed shutter-label">Periodic updates on technical infrastructure, editorial shifts, and the pursuit of engineering excellence.</p>
+<form class="flex border-b border-on-surface pb-4">
+<input class="bg-transparent border-none focus:ring-0 mono text-[10px] flex-1 uppercase tracking-widest" placeholder="EMAIL ADDRESS" type="email"/>
+<button class="material-symbols-outlined text-primary hover:translate-x-2 transition-transform" type="submit">arrow_forward</button>
+</form>
+</div>
+<div class="border-t border-outline-variant pt-12 reveal-text" style="transition-delay: 200ms;">
+<h4 class="text-4xl font-headline italic mb-8">The Studio</h4>
+<div class="space-y-4">
+<p class="mono text-[10px] text-secondary uppercase tracking-widest">Inquiries: editorial@onerishi.tech</p>
+<p class="mono text-[10px] text-secondary uppercase tracking-widest">Location: Udaipur, Rajasthan, India</p>
+<div class="flex gap-6 mt-12">
+<a class="nav-link text-on-surface hover:text-primary transition-colors mono text-[10px] uppercase tracking-widest" href="#">LinkedIn</a>
+<a class="nav-link text-on-surface hover:text-primary transition-colors mono text-[10px] uppercase tracking-widest" href="#">Twitter</a>
+<a class="nav-link text-on-surface hover:text-primary transition-colors mono text-[10px] uppercase tracking-widest" href="#">Instagram</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="w-full py-16 px-8 md:px-20 flex flex-col md:flex-row justify-between items-start md:items-end bg-surface-container-low border-t border-outline-variant/10">
+<div class="flex flex-col gap-10 w-full md:w-auto mb-16 md:mb-0">
+<span class="text-4xl font-serif italic text-on-surface">OneRishi</span>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<a class="nav-link text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Journal</a>
+<a class="nav-link text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Contact</a>
+<a class="nav-link text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Archive</a>
+</div>
+</div>
+<div class="text-left md:text-right">
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary mb-2">Designed for the Discerning Mind.</p>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-outline">© 2024 OneRishi. Precision Technical Editorial.</p>
+</div>
+</footer>
+</section>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const scrollRoot = document.getElementById('scroll-root');
+        const sections = document.querySelectorAll('.magazine-section');
+        const scrollFill = document.getElementById('scroll-fill');
+        const scrollCount = document.getElementById('scroll-count');
+        const reveals = document.querySelectorAll('.reveal-text, .shutter-label');
+        const parallaxes = document.querySelectorAll('.parallax-bg');
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionReveals = entry.target.querySelectorAll('.reveal-text, .shutter-label');
+                    sectionReveals.forEach(el => el.classList.add('active'));
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Scroll Handling: Parallax & Progress
+        scrollRoot.addEventListener('scroll', () => {
+            const scrollPos = scrollRoot.scrollTop;
+            const scrollHeight = scrollRoot.scrollHeight - scrollRoot.clientHeight;
+            const progress = (scrollPos / scrollHeight) * 100;
+
+            // Update Progress Bar
+            scrollFill.style.height = `${progress}%`;
+            
+            // Update Page Count (01 to 05)
+            const currentSectionIndex = Math.round(scrollPos / scrollRoot.clientHeight);
+            scrollCount.innerText = `0${currentSectionIndex + 1}`;
+
+            // Image Parallax Effect
+            parallaxes.forEach(img => {
+                const speed = 0.15;
+                const offset = (scrollPos % scrollRoot.clientHeight) * speed;
+                img.style.transform = `translateY(${offset}px) scale(1.1)`;
+            });
+        });
+    });
+</script>
+</body></html>

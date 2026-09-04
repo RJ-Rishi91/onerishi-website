@@ -1,0 +1,182 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
+import Tag from '../../components/Tag.astro';
+
+export async function getStaticPaths() {
+  const workEntries = await getCollection('work');
+  return workEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Work`}
+  description={entry.data.description}
+  ogImage={entry.data.heroImage}
+>
+  <ReadingProgress />
+
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    
+    <!-- Top Utility & Breadcrumb -->
+    <div class="flex items-center justify-between pb-6 border-b border-[#1B1B18]/10 mb-8">
+      <a
+        href="/work"
+        class="inline-flex items-center gap-1.5 text-[13px] font-medium tracking-wide text-[#1F3A3D] hover:text-[#C1592B] transition-colors group"
+      >
+        <span class="material-symbols-outlined text-[18px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+        <span>Back to Work</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-widest font-mono">
+          {entry.data.caseNumber}
+        </span>
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#1B1B18]/30"></span>
+        <span class="text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider">
+          {entry.data.timeframe}
+        </span>
+      </div>
+    </div>
+
+    <!-- Editorial Header -->
+    <header class="mb-10">
+      <div class="space-y-4 max-w-[960px]">
+        <div class="inline-flex items-center gap-2">
+          <Tag variant="teal">{entry.data.categoryTag}</Tag>
+        </div>
+        <h1 class="font-serif text-[36px] sm:text-[46px] lg:text-[54px] leading-[1.14] text-[#1B1B18] tracking-tight font-normal text-balance">
+          {entry.data.title}
+        </h1>
+        <p class="font-sans text-[17px] text-[#1B1B18]/80 leading-relaxed max-w-[720px]">
+          {entry.data.description}
+        </p>
+      </div>
+
+      <!-- Meta Strip Matrix -->
+      <div class="mt-8 pt-4 pb-4 px-6 bg-white border border-[#E6E1D8] rounded-lg shadow-sm grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="space-y-1">
+          <span class="text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block">Timeframe</span>
+          <p class="text-[15px] text-[#1B1B18] font-medium">{entry.data.timeframe}</p>
+        </div>
+        <div class="space-y-1">
+          <span class="text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block">Role</span>
+          <p class="text-[15px] text-[#1B1B18] font-medium">{entry.data.role}</p>
+        </div>
+        <div class="space-y-1">
+          <span class="text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block">Location</span>
+          <p class="text-[15px] text-[#1B1B18] font-medium">{entry.data.location}</p>
+        </div>
+        <div class="space-y-1">
+          <span class="text-[11px] font-semibold text-[#1B1B18]/60 uppercase tracking-wider block">Scale &amp; Reach</span>
+          <p class="text-[15px] text-[#1B1B18] font-medium">{entry.data.scale}</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Editorial Hero Image Block -->
+    {entry.data.heroImage && (
+      <figure class="mb-14 rounded-xl overflow-hidden shadow-editorial bg-white border border-[#E6E1D8]">
+        <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-[#F0EDE8]">
+          <img
+            src={entry.data.heroImage}
+            alt={entry.data.heroImageAlt || entry.data.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        {entry.data.heroCaption && (
+          <figcaption class="p-3.5 bg-white border-t border-[#E6E1D8] flex items-center justify-between text-xs text-[#1B1B18]/70 font-sans">
+            <span class="italic">{entry.data.heroCaption}</span>
+            <span class="font-mono text-[11px] uppercase tracking-wider text-[#1F3A3D]">Archive Verification</span>
+          </figcaption>
+        )}
+      </figure>
+    )}
+
+    <!-- Structured Narrative Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- Sticky Sidebar (3 cols) -->
+      <aside class="hidden lg:block lg:col-span-3 space-y-6">
+        <div class="sticky top-28 space-y-6">
+          
+          {entry.data.operationalStack && entry.data.operationalStack.length > 0 && (
+            <div class="p-5 bg-white border border-[#E6E1D8] rounded-lg shadow-sm space-y-3">
+              <span class="text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-wider block">
+                Operational Stack
+              </span>
+              <div class="flex flex-wrap gap-1.5">
+                {entry.data.operationalStack.map((item) => (
+                  <span class="px-2.5 py-1 bg-[#F7F4EF] text-[#1B1B18] text-[11px] font-medium font-mono border border-[#1B1B18]/10 rounded">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="p-5 bg-[#F0EDE8] border border-[#E6E1D8] rounded-lg text-xs text-[#1B1B18]/80 leading-relaxed">
+            <span class="font-semibold block uppercase text-[10px] tracking-wider text-[#C1592B] mb-1">Authentic Case Record</span>
+            All observations, architectural decisions, and operational metrics are drawn directly from project execution.
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center Reading Body (9 cols, constrained to 720px) -->
+      <article class="lg:col-span-9 max-w-[720px] prose prose-neutral font-sans leading-relaxed text-[#1B1B18]/85 space-y-6">
+        <Content />
+      </article>
+
+    </div>
+
+    <!-- Project Pagination Footer -->
+    <nav aria-label="Case Study Navigation" class="mt-20 pt-8 border-t border-[#1B1B18]/15">
+      <div class="p-6 bg-white border border-[#E6E1D8] rounded-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+        {entry.data.prevSlug && (
+          <a
+            href={`/work/${entry.data.prevSlug}`}
+            class="w-full sm:w-1/2 flex items-start gap-3 group p-3 rounded hover:bg-[#F7F4EF] transition-colors"
+          >
+            <span class="material-symbols-outlined text-[22px] text-[#1F3A3D] group-hover:-translate-x-1 group-hover:text-[#C1592B] transition-all mt-0.5">
+              arrow_back
+            </span>
+            <div class="space-y-0.5">
+              <span class="text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-widest block font-sans">
+                Previous Case
+              </span>
+              <span class="font-serif text-[18px] text-[#1B1B18] group-hover:text-[#C1592B] transition-colors block">
+                {entry.data.prevTitle}
+              </span>
+            </div>
+          </a>
+        )}
+
+        {entry.data.nextSlug && (
+          <a
+            href={`/work/${entry.data.nextSlug}`}
+            class="w-full sm:w-1/2 flex items-start justify-end text-right gap-3 group p-3 rounded hover:bg-[#F7F4EF] transition-colors ml-auto"
+          >
+            <div class="space-y-0.5">
+              <span class="text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-widest block font-sans">
+                Next Case
+              </span>
+              <span class="font-serif text-[18px] text-[#1B1B18] group-hover:text-[#C1592B] transition-colors block">
+                {entry.data.nextTitle}
+              </span>
+            </div>
+            <span class="material-symbols-outlined text-[22px] text-[#1F3A3D] group-hover:translate-x-1 group-hover:text-[#C1592B] transition-all mt-0.5">
+              arrow_forward
+            </span>
+          </a>
+        )}
+      </div>
+    </nav>
+
+  </div>
+</BaseLayout>

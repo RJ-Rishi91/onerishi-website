@@ -1,0 +1,375 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>OneRishi | The Technical Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Space+Grotesk:wght@300..700&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdcbc",
+                        "secondary-container": "#e2dfde",
+                        "tertiary-container": "#a36410",
+                        "on-primary-fixed-variant": "#004c69",
+                        "surface-bright": "#f9f9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "primary": "#006184",
+                        "surface-variant": "#e2e2e2",
+                        "primary-container": "#007ba7",
+                        "surface-dim": "#dadada",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#7cd0ff",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary": "#834d00",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "surface": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-primary-fixed": "#001e2c",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-surface-variant": "#3f484e",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#636262",
+                        "background": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-tint": "#00658b",
+                        "outline": "#6f787f",
+                        "secondary": "#5f5e5e",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#c4e7ff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#f5faff",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-background": "#1a1c1c",
+                        "outline-variant": "#bfc8cf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Space Grotesk"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["Space Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .editorial-headline {
+            font-family: 'Newsreader', serif;
+            letter-spacing: -0.02em;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #006184 0%, #007ba7 100%);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-12 h-20 bg-white/80 dark:bg-stone-950/80 backdrop-blur-xl">
+<div class="font-['Newsreader'] text-3xl font-light tracking-tighter text-stone-900 dark:text-stone-50">OneRishi</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-cyan-700 dark:text-cyan-500 border-b-2 border-cyan-700 dark:border-cyan-500 pb-1 text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest text-[10px] hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300" href="#">Home</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest text-[10px] hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300" href="#">Ideas</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest text-[10px] hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300" href="#">Projects</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest text-[10px] hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300" href="#">Labs</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest text-[10px] hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300" href="#">Impact</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium uppercase tracking-widest text-[10px] hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300" href="#">Collaborate</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface" data-icon="menu">menu</span>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex flex-col justify-center px-12 pt-20 overflow-hidden bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center z-10">
+<div class="md:col-span-8">
+<span class="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-6 block">Rushal Suthar — Identity &amp; Mission</span>
+<h1 class="editorial-headline text-6xl md:text-8xl leading-[0.95] text-on-surface font-light mb-8 max-w-4xl">
+                    I don’t just build projects. <br>
+<span class="italic font-normal">I build ideas that solve real problems.</span>
+</h1>
+<p class="max-w-xl font-body text-lg text-secondary mb-12">
+                    A technical curator dedicated to youth empowerment, social impact, and the intersection of technology and human storytelling.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-10 py-5 font-body uppercase tracking-widest text-xs font-bold hover:bg-primary-container transition-all">
+                        Explore Ideas
+                    </button>
+<button class="border border-outline-variant/30 text-primary px-10 py-5 font-body uppercase tracking-widest text-xs font-bold hover:bg-surface-container-low transition-all">
+                        View Projects
+                    </button>
+</div>
+</div>
+<div class="md:col-span-4 hidden md:block">
+<div class="aspect-[3/4] bg-surface-container-high relative">
+<img alt="Rushal Suthar Portfolio" class="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700" data-alt="Modern high-fashion editorial portrait of a young visionary in a minimalist architectural setting with sharp natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqb9TqFTMuFhiz_-QG4ZFF8EMf6dIJz06dJx4qXip63ZY4U3V9EvXOC7MiL22S1TNKyjF-v_9BEiQ9QM8fICdiaNF2c2SASdYBtbBX4HAX_jgKRBWWwy24LER70vHfoOS4hIViBrRJfgABA2ZZb43Ge2fMLlmHmduP_ApJoVFN8JPRiEnhlHfAH3ht2Gwzzr4mY9H6DzZQASCN4lOBFWkqGz1OnhYoz7mNU4MtZDfluNPXWnTjaKEjoOc_M2DwgXffe9EjHAkMO-r4">
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-12 flex gap-12 font-mono text-[10px] text-outline">
+<div>LAT: 23.0225° N</div>
+<div>LON: 72.5714° E</div>
+<div>STATUS: ACTIVE_INTENT</div>
+</div>
+</header>
+<!-- Philosophy Section -->
+<section class="py-32 px-12 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+<div class="md:col-span-4">
+<h2 class="editorial-headline text-4xl leading-tight sticky top-32">
+                        The Creative <br>North Star.
+                    </h2>
+</div>
+<div class="md:col-span-8">
+<p class="editorial-headline text-4xl md:text-5xl leading-tight text-on-surface font-light mb-16">
+                        Empowerment isn't a gift; it's a structural necessity. I believe in youth as the primary architects of modern impact.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-body text-secondary leading-relaxed text-lg">
+<p>
+                            We live in an era where the divide between 'idea' and 'execution' is shrinking. My philosophy centers on bridging this gap through technical curation—selecting the right tools to amplify the human voice.
+                        </p>
+<p>
+                            Through storytelling and systemic design, I aim to transform passive observation into active participation. This is more than digital work; it's social infrastructure.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ideas Section (Rishi Writes) -->
+<section class="py-32 px-12 bg-surface-container-lowest">
+<div class="flex justify-between items-end mb-20 border-b border-outline-variant/10 pb-8">
+<div>
+<span class="font-mono text-xs uppercase tracking-widest text-primary">Volume 01</span>
+<h2 class="editorial-headline text-5xl mt-4 italic">Rishi Writes</h2>
+</div>
+<a class="font-mono text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#">Archive [→]</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-outline-variant/10">
+<!-- Article 1 -->
+<div class="bg-surface-container-lowest p-10 hover:bg-surface-container-low transition-colors group">
+<span class="font-mono text-[10px] text-tertiary uppercase mb-6 block">Society / 05.2024</span>
+<h3 class="editorial-headline text-3xl mb-8 group-hover:text-primary transition-colors">The Architecture of Silence: Why Youth Voice Matters.</h3>
+<p class="text-secondary line-clamp-3 mb-8">Exploring the systemic barriers that prevent the next generation from participating in high-level policy discussions and how technology can lower these walls.</p>
+<div class="flex items-center gap-2 font-mono text-[10px] text-outline">
+<span>READ TIME: 8 MIN</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Article 2 -->
+<div class="bg-surface-container-lowest p-10 hover:bg-surface-container-low transition-colors group">
+<span class="font-mono text-[10px] text-tertiary uppercase mb-6 block">Technology / 04.2024</span>
+<h3 class="editorial-headline text-3xl mb-8 group-hover:text-primary transition-colors">Algorithmic Empathy: Can Code Truly Understand Us?</h3>
+<p class="text-secondary line-clamp-3 mb-8">A deep dive into the ethics of AI and the pursuit of digital systems that prioritize human dignity over engagement metrics.</p>
+<div class="flex items-center gap-2 font-mono text-[10px] text-outline">
+<span>READ TIME: 12 MIN</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Article 3 -->
+<div class="bg-surface-container-lowest p-10 hover:bg-surface-container-low transition-colors group">
+<span class="font-mono text-[10px] text-tertiary uppercase mb-6 block">Impact / 03.2024</span>
+<h3 class="editorial-headline text-3xl mb-8 group-hover:text-primary transition-colors">Curating Change: From Awareness to Actionable Data.</h3>
+<p class="text-secondary line-clamp-3 mb-8">How to leverage data visualization to turn complex social problems into understandable and solvable technical challenges.</p>
+<div class="flex items-center gap-2 font-mono text-[10px] text-outline">
+<span>READ TIME: 6 MIN</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section (Rishi Builds) -->
+<section class="py-32 px-12 bg-surface">
+<h2 class="font-mono text-xs uppercase tracking-[0.5em] text-center mb-24 text-outline">Engineering Narrative [Selected Projects]</h2>
+<div class="space-y-40 max-w-7xl mx-auto">
+<!-- Project 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<div class="md:col-span-7">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img alt="Project Canvas" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-1000" data-alt="Abstract macro shot of futuristic blue glowing circuit board elements with soft depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDGfIv5nGWH7yhEbenT-jgaeNEgcLYFsXFMr68SuK8WPx7BQ4EStqajS5E8m9bPTLNu-Th6_y4k19XRPcvacgrZJGjsvjlaVyskR0HUtAxB1nZLR38sCSmHFF_-1z8HonyeGjGFtI_4p0L8D8TmXTJyTNUvLrQJ76cq37adg6jh8_pwu3wDWCbimDSkGScX0EEsjDh1zC0UIz07mB6hGTPI53SQsCCeM8HCHAPSWOSHJddjBhTbJ8viP8yFgmSFwRR1PXfFBeVV3hE">
+</div>
+</div>
+<div class="md:col-span-5 pt-8">
+<span class="font-mono text-[10px] text-primary font-bold">PROJECT_001</span>
+<h3 class="editorial-headline text-5xl mb-12 mt-4">The Civic Ledger</h3>
+<div class="space-y-8">
+<div>
+<span class="font-mono text-[9px] uppercase text-outline block mb-2">Problem</span>
+<p class="text-on-surface font-light">Disjointed communication between local municipalities and young residents leading to apathy.</p>
+</div>
+<div>
+<span class="font-mono text-[9px] uppercase text-outline block mb-2">Approach</span>
+<p class="text-on-surface font-light">Developed an asynchronous feedback loop using low-latency messaging and visual mapping.</p>
+</div>
+<div>
+<span class="font-mono text-[9px] uppercase text-outline block mb-2">Outcome</span>
+<p class="text-on-surface font-light">45% increase in youth participation in town-hall session digital proxies.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<div class="md:col-span-5 order-2 md:order-1 pt-8">
+<span class="font-mono text-[10px] text-primary font-bold">PROJECT_002</span>
+<h3 class="editorial-headline text-5xl mb-12 mt-4">Impact Blueprint</h3>
+<div class="space-y-8">
+<div>
+<span class="font-mono text-[9px] uppercase text-outline block mb-2">Problem</span>
+<p class="text-on-surface font-light">NGOs struggling to track and visualize qualitative impact metrics for long-term donor engagement.</p>
+</div>
+<div>
+<span class="font-mono text-[9px] uppercase text-outline block mb-2">Approach</span>
+<p class="text-on-surface font-light">A dashboard framework that prioritizes visual hierarchy and narrative storytelling over raw tables.</p>
+</div>
+<div>
+<span class="font-mono text-[9px] uppercase text-outline block mb-2">Outcome</span>
+<p class="text-on-surface font-light">Secured ₹2.5M in additional funding for partner organizations through enhanced reporting.</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 order-1 md:order-2">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img alt="Impact Blueprint" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" data-alt="Clean minimalist data visualization on a screen with light blue and grey tones and architectural shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSE9SSlQmM26aRFQ7GGdrdHrYvw0Lw75WmGp2XXoEbiA1sypFui1vZlpBU0LW5bodV0cQSO76xoRJ_7j0pMdpWVpxBVM5MVqbZOIFxO1FYV0NDUIqE8d8EGwezmhZqe436p9C8oOaoCLeNAw6hYVYUOITJUfmP7Pm6pBWVpqYZLBeGQ3sjHUMI_Kf-UFShYLBdbumnxETCUWxJvXlMHg7R3_zrz23gwwjcj1kGaCmFbLJyTQhFtR0i084wDXui-3dWsrpU6sxAJ8tC">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Labs Section (Tech-Noir) -->
+<section class="py-32 px-12 bg-[#1a1c1c] text-[#f1f1f1]">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20">
+<h2 class="editorial-headline text-5xl italic mb-4">Ideas Zone / Labs</h2>
+<p class="font-mono text-[10px] text-primary tracking-widest uppercase">Raw Thinking. Draft Experiments. System Logs.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="p-8 border border-white/10 hover:border-primary transition-all group">
+<span class="font-mono text-[9px] text-primary mb-4 block">LAB_042</span>
+<h4 class="font-body font-bold text-lg mb-4">Visual Synthesizer</h4>
+<p class="text-xs text-white/50 leading-relaxed">Experimenting with generative art to represent community sentiment in real-time.</p>
+</div>
+<div class="p-8 border border-white/10 hover:border-primary transition-all group">
+<span class="font-mono text-[9px] text-primary mb-4 block">LAB_058</span>
+<h4 class="font-body font-bold text-lg mb-4">The Ethical Stack</h4>
+<p class="text-xs text-white/50 leading-relaxed">A repository of open-source components focused on privacy-first user experiences.</p>
+</div>
+<div class="p-8 border border-white/10 hover:border-primary transition-all group">
+<span class="font-mono text-[9px] text-primary mb-4 block">LAB_061</span>
+<h4 class="font-body font-bold text-lg mb-4">Voice Mosaic</h4>
+<p class="text-xs text-white/50 leading-relaxed">Audio-to-visual processing that creates unique geometric patterns from speech.</p>
+</div>
+<div class="p-8 bg-primary/10 border border-primary/30 flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-all">
+<span class="font-mono text-[10px] tracking-widest uppercase font-bold">Enter Sandbox →</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Section -->
+<section class="py-32 px-12 bg-surface-container-low">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="aspect-square bg-surface-container-high">
+<img alt="Impact Awards" class="w-full h-full object-cover brightness-75 transition-all duration-700" data-alt="Dynamic shot of a prestigious medal or award on a dark background with sharp spotlighting and lens flare" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFAuqmE19S06PJ9A0SWYi0CU1R2axS__kiwW29zYcd0WyxZMUdmI4l37JP3Ur9QM7oDS7N3Nd-Tq5gBJxTyS91TFPT5D8WC2hfjyTa7k7JwKOnr2y-_IsWDsnk68nGGQG6JOfqrtYFAQTIbxqaRpRCJEj60BZ2nfa1CtF-BqHPNaqm8JMPO3edQx3qpEf1zecwWVGznO2l10jmUwtVU8b-U2S2d24qfuk9JOKoNfuzcevPKMUyv_BwOVIbe062jRgSPbAFxZOdxMdC">
+</div>
+<div class="absolute -bottom-10 -right-10 bg-primary p-12 text-on-primary md:block hidden">
+<span class="font-mono text-4xl block font-bold mb-2">01.</span>
+<p class="font-body text-sm font-bold leading-tight">National Veer Gatha Award Recipient</p>
+</div>
+</div>
+<div>
+<h2 class="editorial-headline text-5xl mb-12">Measured Impact.</h2>
+<div class="space-y-12">
+<div class="flex gap-8 border-b border-outline-variant/20 pb-8">
+<span class="font-mono text-xs text-primary font-bold">INITIATIVE_A</span>
+<div>
+<h4 class="font-body font-bold mb-2">Junior Journalist Program</h4>
+<p class="text-secondary text-sm">Empowering 200+ students to report on local issues through a structured technical framework.</p>
+</div>
+</div>
+<div class="flex gap-8 border-b border-outline-variant/20 pb-8">
+<span class="font-mono text-xs text-primary font-bold">INITIATIVE_B</span>
+<div>
+<h4 class="font-body font-bold mb-2">The Social Tech Fellowship</h4>
+<p class="text-secondary text-sm">Mentoring young developers on how to align technical builds with social good objectives.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Collaborate Section -->
+<section class="py-32 px-12 bg-surface-container-lowest">
+<div class="max-w-4xl mx-auto text-center">
+<span class="font-mono text-[10px] uppercase tracking-[0.5em] text-primary mb-8 block">Open for Partnership</span>
+<h2 class="editorial-headline text-6xl mb-16">Let’s build something <br><span class="italic">meaningful</span> together.</h2>
+<form class="text-left space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="relative">
+<label class="font-mono text-[9px] uppercase text-outline block mb-2">Your Identity</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 placeholder:text-outline-variant/50 font-body uppercase text-sm px-0 py-2" placeholder="NAME / ORGANIZATION" type="text">
+</div>
+<div class="relative">
+<label class="font-mono text-[9px] uppercase text-outline block mb-2">Contact Vector</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 placeholder:text-outline-variant/50 font-body uppercase text-sm px-0 py-2" placeholder="EMAIL ADDRESS" type="email">
+</div>
+</div>
+<div class="relative">
+<label class="font-mono text-[9px] uppercase text-outline block mb-2">The Proposition</label>
+<textarea class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 placeholder:text-outline-variant/50 font-body uppercase text-sm px-0 py-2" placeholder="DESCRIBE THE PROBLEM WE ARE SOLVING" rows="4"></textarea>
+</div>
+<div class="flex justify-center">
+<button class="bg-primary text-on-primary px-16 py-6 font-body uppercase tracking-widest text-xs font-bold hover:bg-primary-container transition-all">
+                        Initiate Connection
+                    </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full px-12 py-16 flex flex-col items-center gap-8 border-t border-stone-200/20 dark:border-stone-800/20 bg-stone-50 dark:bg-stone-900">
+<div class="font-['Newsreader'] italic text-xl text-stone-800 dark:text-stone-200">OneRishi</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-stone-500 dark:text-stone-400 font-mono text-[11px] hover:text-cyan-600 dark:hover:text-cyan-400 underline underline-offset-4" href="#">Philosophy</a>
+<a class="text-stone-500 dark:text-stone-400 font-mono text-[11px] hover:text-cyan-600 dark:hover:text-cyan-400 underline underline-offset-4" href="#">Contact</a>
+<a class="text-stone-500 dark:text-stone-400 font-mono text-[11px] hover:text-cyan-600 dark:hover:text-cyan-400 underline underline-offset-4" href="#">Instagram</a>
+<a class="text-stone-500 dark:text-stone-400 font-mono text-[11px] hover:text-cyan-600 dark:hover:text-cyan-400 underline underline-offset-4" href="#">LinkedIn</a>
+<a class="text-stone-500 dark:text-stone-400 font-mono text-[11px] hover:text-cyan-600 dark:hover:text-cyan-400 underline underline-offset-4" href="#">Privacy</a>
+</div>
+<p class="font-mono text-[10px] text-outline mt-8 uppercase tracking-widest">© 2024 OneRishi. The Technical Curator.</p>
+</footer>
+</body></html>

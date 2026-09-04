@@ -1,0 +1,610 @@
+<!DOCTYPE html><html lang="en" style="width: 1280px; height: 5152px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EF;
+  --ink: #1B1B18;
+  --accent: #C1592B;
+  --accent-2: #1F3A3D;
+}
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+h1, h2, h3, h4, .font-display, .font-serif-heading {
+  font-family: 'Fraunces', serif !important;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bg: '#F7F4EF',
+        ink: '#1B1B18',
+        accent: '#C1592B',
+        'accent-2': '#1F3A3D',
+      },
+      fontFamily: {
+        fraunces: ['Fraunces', 'serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+      spacing: {
+        'space-2xs': '0.25rem',
+        'space-xs': '0.5rem',
+        'space-sm': '0.75rem',
+        'space-md': '1rem',
+        'space-lg': '1.5rem',
+        'space-xl': '2rem',
+        'space-2xl': '3rem',
+        'space-3xl': '4.5rem',
+        'space-4xl': '6rem',
+        'gutter-mobile': '1rem',
+        'gutter-desktop': '2rem',
+        'max-width-container': '1200px',
+        'max-width-editorial': '720px',
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-[#F7F4EF] font-['Inter',sans-serif] text-[#1B1B18] antialiased">
+<header class="fixed top-0 w-full z-50 bg-[#F7F4EF]/95 backdrop-blur-md border-b border-[#1B1B18]/15">
+<div class="h-20 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<div class="flex items-center shrink-0">
+<a class="font-fraunces text-2xl md:text-[28px] text-[#1B1B18] tracking-tight flex items-baseline hover:opacity-90 transition-opacity" data-path="home" href="#">
+<span>OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C1592B] ml-0.5"></span>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-space-lg">
+<a class="font-inter text-[13px] tracking-wide text-[#1B1B18]/70 hover:text-[#1B1B18] transition-colors" data-path="home" href="#">Home</a>
+<a class="font-inter text-[13px] tracking-wide text-[#1B1B18]/70 hover:text-[#1B1B18] transition-colors" data-path="work" href="#">Work</a>
+<a class="font-inter text-[13px] tracking-wide text-[#1B1B18]/70 hover:text-[#1B1B18] transition-colors" data-path="writing" href="#">Writing</a>
+<a aria-current="page" class="font-inter text-[13px] tracking-wide text-[#C1592B] font-semibold underline decoration-[#C1592B] underline-offset-8 transition-colors" data-path="about" href="#">About</a>
+<a class="font-inter text-[13px] tracking-wide text-[#1B1B18]/70 hover:text-[#1B1B18] transition-colors" data-path="labs" href="#">Labs</a>
+</nav>
+<div class="flex items-center gap-space-md">
+<a class="inline-flex items-center justify-center bg-[#C1592B] text-[#F7F4EF] font-inter text-[13px] font-semibold px-space-md py-space-xs rounded hover:opacity-90 transition-opacity active:translate-y-px" data-path="contact" href="#">Say Hello</a>
+<div class="w-8 h-8 rounded-full bg-[#C1592B] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[#F7F4EF] text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-20 bg-[#F7F4EF] min-h-screen">
+<div class="flex flex-col w-full">
+<!-- Top Subtle Context Ribbon -->
+<section class="max-w-[1200px] mx-auto w-full px-gutter-mobile lg:px-gutter-desktop pt-space-xl pb-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-sm border-b border-[#1B1B18]/15">
+<div class="flex items-center gap-space-xs">
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider text-[#F7F4EF] bg-[#1F3A3D] px-2 py-0.5 rounded">Dossier / Vol. 04</span>
+<span class="text-[#1B1B18]/40 text-[11px]">•</span>
+<span class="font-inter text-[13px] text-[#1B1B18]/80">Rushal S.</span>
+</div>
+<div class="flex items-center gap-space-md text-[#1B1B18]/80 font-inter text-[12px] tracking-wide">
+<span>Udaipur × Hybrid</span>
+<span>Marketing • Code • Community</span>
+</div>
+</div>
+</section>
+<!-- Hero Editorial Frame: Asymmetric Headroom -->
+<section class="max-w-[1200px] mx-auto w-full px-gutter-mobile lg:px-gutter-desktop pt-space-lg pb-space-3xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Column Left: Typographic Anchor -->
+<div class="lg:col-span-7 flex flex-col justify-between space-y-space-xl">
+<div class="space-y-space-md">
+<div class="inline-flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-[#C1592B]"></span>
+<span class="font-inter text-[12px] uppercase tracking-wider text-[#C1592B] font-bold">Self-Portrait &amp; Mandate</span>
+</div>
+<h1 class="font-fraunces text-5xl md:text-[56px] text-[#1B1B18] tracking-tight leading-[1.05]">
+          About
+        </h1>
+<p class="font-fraunces text-2xl md:text-[28px] text-[#1B1B18] text-balance font-normal pt-space-xs leading-snug">
+          Bridging the gap between engineering rigor and creative communication.
+        </p>
+</div>
+<!-- Margin Callout / Pull Quote Box -->
+<div class="bg-[#1B1B18]/5 p-space-lg rounded border-l-4 border-[#C1592B] space-y-space-xs max-w-[580px]">
+<span class="font-inter text-[11px] uppercase tracking-widest text-[#1F3A3D] font-bold block">Core Thesis</span>
+<p class="font-fraunces text-[18px] text-[#1B1B18] italic leading-relaxed">
+          “Most modern silos force a false truce: either you build the system or you craft its voice. I operate on the premise that high-conviction products require one unified nervous system.”
+        </p>
+</div>
+<!-- Key Vital Stats (Clean, No-Border Data Bars) -->
+<div class="grid grid-cols-3 gap-space-md pt-space-xs max-w-[580px]">
+<div class="bg-[#F7F4EF] p-space-md rounded border border-[#1B1B18]/15">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#1B1B18]/70 block">Primary Role</span>
+<span class="font-fraunces text-[22px] text-[#1B1B18] block mt-0.5">Demand Gen</span>
+<span class="font-inter text-[13px] text-[#1F3A3D] font-medium">Scale &amp; Precision</span>
+</div>
+<div class="bg-[#F7F4EF] p-space-md rounded border border-[#1B1B18]/15">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#1B1B18]/70 block">Initiative</span>
+<span class="font-fraunces text-[22px] text-[#1B1B18] block mt-0.5">Gazette</span>
+<span class="font-inter text-[13px] text-[#1F3A3D] font-medium">Founder &amp; Editor</span>
+</div>
+<div class="bg-[#F7F4EF] p-space-md rounded border border-[#1B1B18]/15">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#1B1B18]/70 block">Ecosystem</span>
+<span class="font-fraunces text-[22px] text-[#1B1B18] block mt-0.5">DevFest ’24</span>
+<span class="font-inter text-[13px] text-[#1F3A3D] font-medium">Operations Lead</span>
+</div>
+</div>
+</div>
+<!-- Column Right: The Physical Editorial Frame for Real Photo -->
+<div class="lg:col-span-5 flex flex-col space-y-space-sm">
+<div class="relative bg-[#F7F4EF] p-space-md rounded border border-[#1B1B18] group transition-all duration-300">
+<!-- Explicit Physical Labeling for the Human Subject -->
+<div class="flex items-center justify-between pb-space-xs border-b border-[#1B1B18]/15 mb-space-sm text-[11px] font-inter text-[#1B1B18] tracking-wider">
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px] text-[#C1592B]">verified_user</span>
+            VERIFIED PHOTOGRAPH
+          </span>
+<span class="font-mono text-[#1F3A3D] uppercase">ARCHIVE #2024-RS</span>
+</div>
+<!-- The Image Frame -->
+<div class="relative aspect-[4/5] w-full overflow-hidden rounded bg-[#1B1B18]/10 border border-[#1B1B18]/20">
+<img class="w-full h-full object-cover grayscale-[15%] contrast-[1.03] transition-transform duration-700 ease-out group-hover:scale-[1.01]" data-alt="Editorial candid portrait photograph of Rushal S., an Indian multidisciplinary practitioner in his late twenties, seated in a warm architectural studio in Udaipur with soft directional morning light casting warm shadows. Subtle terracotta and slate teal palette tones in his linen shirt, natural film grain texture, calm, thoughtful, direct gaze at camera, genuine analog photography quality without hyper-processed artifacts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSTi46cvhfDmPp654K0w01kHqoFbtAtYs7R3O4W6dQCdiVtwA2nvNRvt3qzPFNCTydUReIWomM04_KWny3d67iZqG8KWPNShtZ-Q0xTikkyMYkHzGL4kjEv5kpfjYOnUI7SxhpJQ-FIoijoApFXa2PntGq2mVPH-TZK-4Lr29JF9MxjbI9qMyZL1ddK0td9vmLSUTWltb6F9SZawc_UV6fVQ1ONvBeZz3NZPZV6TRP2Xvk8b2yMNtJ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#1B1B18]/40 via-transparent to-transparent pointer-events-none"></div>
+<!-- Badge pinned in photo frame -->
+<div class="absolute bottom-3 left-3 bg-[#F7F4EF] px-2.5 py-1 rounded border border-[#1B1B18]/20">
+<p class="font-inter text-[11px] text-[#1B1B18] font-semibold">Rushal S. — onerishi.in</p>
+</div>
+</div>
+<!-- Editorial Cutline / Caption -->
+<div class="pt-space-sm space-y-1">
+<p class="font-inter text-[11px] text-[#C1592B] uppercase tracking-widest font-bold">
+            [Photo of Rushal S. — Real photo placeholder, not AI generated]
+          </p>
+<p class="font-inter text-[13px] text-[#1B1B18]/80 leading-relaxed">
+            Working at the juncture of code repos, editorial printing layouts, and high-velocity digital marketing frameworks. Captured during field operations.
+          </p>
+</div>
+</div>
+<!-- Marginalia Meta Card -->
+<div class="flex items-center justify-between px-space-md py-space-xs bg-[#1B1B18]/5 rounded border border-[#1B1B18]/10 text-[#1B1B18]/80 font-inter text-[12px]">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#1F3A3D]">terminal</span>
+<span>Stack: Python • React • Ghost</span>
+</span>
+<span class="font-mono text-[#1F3A3D]">24.5854° N, 73.7125° E</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Opening Narrative: Deep Personal Essay Column -->
+<section class="w-full bg-[#1B1B18]/5 py-space-3xl border-y border-[#1B1B18]/15">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Left Spine Column: Section Title & Progress Line -->
+<div class="lg:col-span-4 space-y-space-md lg:sticky lg:top-28 self-start">
+<div class="space-y-space-xs">
+<span class="font-inter text-[11px] uppercase tracking-widest text-[#C1592B] font-bold">01 / Trajectory</span>
+<h2 class="font-fraunces text-3xl md:text-[40px] text-[#1B1B18] leading-tight font-normal">
+            Rejecting the Single Silo
+          </h2>
+</div>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+          A deliberate refusal to choose between technical depth, literary tone, and commercial leverage.
+        </p>
+<div class="h-0.5 w-16 bg-[#C1592B]"></div>
+</div>
+<!-- Right Content: The Editorial Prose (Editorial Measure 720px) -->
+<div class="lg:col-span-8 max-w-max-width-editorial space-y-space-lg text-[#1B1B18]">
+<p class="font-inter text-[17px] text-[#1B1B18] leading-[1.75]">
+          I began with code, spent formative years deep inside marketing analytics engines, and kept returning to the mechanical beauty of typography and long-form narrative. For a long time, traditional career roadmaps advise you to shave off your odd edges: become exclusively a demand strategist, or retreat completely into software engineering, or stick cleanly to publishing.
+        </p>
+<p class="font-inter text-[17px] text-[#1B1B18] leading-[1.75]">
+          That advice never accounted for how modern systems actually breathe. The most compelling digital growth campaigns are not spun up by generic ad-buyers; they are built by people who understand API endpoints, database latency, and how structural metadata dictates user discovery. Similarly, the cleanest code is hollow if no one discovers it or if its narrative fails to move humans to act.
+        </p>
+<p class="font-inter text-[17px] text-[#1B1B18] leading-[1.75]">
+          Today, I operate across that exact triad: <span class="font-semibold text-[#C1592B]">Marketing × Technology × Creativity</span>. Whether deploying a multi-channel SEO architecture that compound organically over quarters, directing 1,200 developers in an auditorium, or fine-tuning interactive web tools late at night, the core obsession remains constant: intentionality, high agency, and relentless taste.
+        </p>
+<!-- Interactive Accordion Details for Academic / Foundational Notes -->
+<div class="pt-space-md border-t border-[#1B1B18]/15">
+<details class="group py-space-xs cursor-pointer">
+<summary class="flex items-center justify-between font-inter text-[13px] text-[#1F3A3D] font-semibold list-none">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+                View background roots &amp; timeline transitions
+              </span>
+<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-space-sm pl-space-md space-y-space-xs text-[14px] text-[#1B1B18]/80 font-inter">
+<p>• <strong>2019–2021:</strong> Algorithmic analytics, programmatic content engines, and experimental Python automation scripts.</p>
+<p>• <strong>2021–2023:</strong> Full-funnel demand generation, product-led growth systems, and editorial mastheads.</p>
+<p>• <strong>2024–Present:</strong> Independent engineering labs, community infrastructure, and technical marketing advisory.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- "What I Do" — Current Craft as Demand Generation Specialist -->
+<section class="max-w-[1200px] mx-auto w-full px-gutter-mobile lg:px-gutter-desktop py-space-3xl">
+<div class="space-y-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg border-b border-[#1B1B18]/15">
+<div class="space-y-space-xs max-w-[640px]">
+<span class="font-inter text-[11px] uppercase tracking-widest text-[#C1592B] font-bold">02 / Primary Discipline</span>
+<h2 class="font-fraunces text-3xl md:text-[40px] text-[#1B1B18] font-normal leading-tight">
+          What I Do: Demand Generation &amp; Systemic Growth
+        </h2>
+<p class="font-inter text-[16px] text-[#1B1B18]/80 leading-relaxed">
+          Transforming complex products into sustainable organic momentum through disciplined engineering frameworks.
+        </p>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="px-space-sm py-1 bg-[#1F3A3D] text-[#F7F4EF] rounded font-inter text-[11px] font-semibold uppercase tracking-wider">B2B • SaaS • Developer Tools</span>
+</div>
+</div>
+<!-- 6-Element Technical Capability Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Pillar 1 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border border-[#1B1B18]/20 transition-all duration-200 hover:-translate-y-1 hover:border-[#1B1B18]">
+<div class="w-10 h-10 rounded bg-[#C1592B]/10 text-[#C1592B] flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[22px]">account_tree</span>
+</div>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18] mb-space-xs">SEO Architecture</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed mb-space-md">
+          Building programmatic taxonomies, indexation health protocols, and semantic topic clusters that defend search ground long after campaigns finish.
+        </p>
+<div class="flex flex-wrap gap-1">
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Schema Systems</span>
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Core Web Vitals</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border border-[#1B1B18]/20 transition-all duration-200 hover:-translate-y-1 hover:border-[#1B1B18]">
+<div class="w-10 h-10 rounded bg-[#1F3A3D]/10 text-[#1F3A3D] flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[22px]">insights</span>
+</div>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18] mb-space-xs">Digital Growth Campaigns</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed mb-space-md">
+          Multi-layered conversion funnels that combine quantitative channel experiments with clear emotional tension and value propositions.
+        </p>
+<div class="flex flex-wrap gap-1">
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">CAC Optimization</span>
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Attribution</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border border-[#1B1B18]/20 transition-all duration-200 hover:-translate-y-1 hover:border-[#1B1B18]">
+<div class="w-10 h-10 rounded bg-[#1F3A3D]/10 text-[#1F3A3D] flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[22px]">auto_stories</span>
+</div>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18] mb-space-xs">Performance Storytelling</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed mb-space-md">
+          High-taste copywriting that respects the buyer’s intelligence. Zero keyword-stuffed sludge; pure clarity, narrative poise, and analytical proof.
+        </p>
+<div class="flex flex-wrap gap-1">
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Whitepapers</span>
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Case Narratives</span>
+</div>
+</div>
+<!-- Pillar 4 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border border-[#1B1B18]/20 transition-all duration-200 hover:-translate-y-1 hover:border-[#1B1B18]">
+<div class="w-10 h-10 rounded bg-[#C1592B]/10 text-[#C1592B] flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[22px]">database</span>
+</div>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18] mb-space-xs">Data-Informed Content</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed mb-space-md">
+          Editorial pipelines calibrated against behavioral telemetry. Building content assets derived from proprietary benchmarks and industry datasets.
+        </p>
+<div class="flex flex-wrap gap-1">
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Benchmarking</span>
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Pipelines</span>
+</div>
+</div>
+<!-- Pillar 5 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border border-[#1B1B18]/20 transition-all duration-200 hover:-translate-y-1 hover:border-[#1B1B18]">
+<div class="w-10 h-10 rounded bg-[#1F3A3D]/10 text-[#1F3A3D] flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[22px]">code_blocks</span>
+</div>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18] mb-space-xs">Web Development</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed mb-space-md">
+          Developing responsive, accessible, zero-dependency interfaces using modern stacks. Fast loading times, clean semantic markup, and precise interactions.
+        </p>
+<div class="flex flex-wrap gap-1">
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">React • Next</span>
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Tailwind CSS</span>
+</div>
+</div>
+<!-- Pillar 6 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border border-[#1B1B18]/20 transition-all duration-200 hover:-translate-y-1 hover:border-[#1B1B18]">
+<div class="w-10 h-10 rounded bg-[#C1592B]/10 text-[#C1592B] flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[22px]">rocket_launch</span>
+</div>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18] mb-space-xs">Go-To-Market Strategy</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed mb-space-md">
+          Positioning statements, ICP definition, and launch sequences that orchestrate developers, buyers, and advocates into a cohesive movement.
+        </p>
+<div class="flex flex-wrap gap-1">
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Positioning</span>
+<span class="text-[11px] font-inter font-medium uppercase px-2 py-0.5 bg-[#1B1B18]/5 text-[#1F3A3D] border border-[#1B1B18]/10 rounded">Launches</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- "What I Build Outside That" — Non-silo ventures -->
+<section class="w-full bg-[#1B1B18]/5 py-space-3xl border-t border-[#1B1B18]/15">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop space-y-space-2xl">
+<div class="space-y-space-xs max-w-[720px]">
+<span class="font-inter text-[11px] uppercase tracking-widest text-[#C1592B] font-bold">03 / Independent Ventures</span>
+<h2 class="font-fraunces text-3xl md:text-[40px] text-[#1B1B18] font-normal">
+        What I Build Outside That
+      </h2>
+<p class="font-inter text-[16px] text-[#1B1B18]/80 leading-relaxed">
+        Curiosity is not bounded by office hours. These are the self-initiated systems, collectives, and community engines I build and steer.
+      </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-xl">
+<!-- Venture 1: DevFest Udaipur 2024 -->
+<article class="bg-[#F7F4EF] rounded p-space-xl flex flex-col justify-between border border-[#1B1B18]/20 relative group hover:border-[#1B1B18] transition-all duration-200">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-inter text-[11px] text-[#F7F4EF] bg-[#1F3A3D] font-bold tracking-wider uppercase px-2 py-0.5 rounded">Community Operations</span>
+<span class="font-fraunces text-[14px] text-[#1B1B18]/80">2024</span>
+</div>
+<div class="h-44 w-full rounded overflow-hidden relative border border-[#1B1B18]/15">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Modern technical conference hall in India filled with hundreds of engaged developers, warm stage lighting illuminating speakers with deep indigo and amber accents, high production quality, natural camera angle showing stage screens and audience excitement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqd4y3H3-VtwGkTfDIKE_cSHk4eJn-7KC4uek2Ea5_JDXPSuB9-c2o48480OfInh_9fqCHyPaaaYHNdM6JiMrA8Xix09grNZG4rtRnfZZTBPU1Rme8dHal91rhmx1va5GHTldL8yznt3B_xTz0U7LJAideeT3GoXcXroUIsKBnv40Ngu_i0gw7nAQL_mUBbrmQp2-F8RO7i_ciJh6LCuoL1iC4xVUqOzxk9WUsY3-DUdsuyrnZl6vB">
+<div class="absolute inset-0 bg-gradient-to-t from-[#1B1B18]/70 to-transparent"></div>
+<span class="absolute bottom-2 left-2 text-[#F7F4EF] font-inter text-[11px] font-semibold">Google DevFest ’24</span>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-2xl text-[#1B1B18] group-hover:text-[#C1592B] transition-colors">
+              Google DevFest Udaipur
+            </h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+              Led end-to-end community operations, speaker curation, and experiential production for the city’s marquee developer gathering, hosting hundreds of engineers, founders, and students.
+            </p>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#1B1B18]/15 flex items-center justify-between">
+<span class="font-inter text-[12px] text-[#1F3A3D] font-medium">Leadership • Logistical Rigor</span>
+<span class="material-symbols-outlined text-[#C1592B] text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Venture 2: Gazette Collective -->
+<article class="bg-[#F7F4EF] rounded p-space-xl flex flex-col justify-between border border-[#1B1B18]/20 relative group hover:border-[#1B1B18] transition-all duration-200">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-inter text-[11px] text-[#F7F4EF] bg-[#C1592B] font-bold tracking-wider uppercase px-2 py-0.5 rounded">Independent Journalism</span>
+<span class="font-fraunces text-[14px] text-[#1B1B18]/80">Ongoing</span>
+</div>
+<div class="h-44 w-full rounded overflow-hidden relative border border-[#1B1B18]/15">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Editorial printed broadsheet gazette open on a rustic wooden reading desk, alongside ink pen, cup of black coffee, morning light streaming across textured paper, elegant serif typography visible on physical newspaper layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8p0m6TQwL047mR8YgvF1REOVzxpMiqeoO56A4m7rZW6W2ImcbBKyZe4CFDOcuNM4yuw-ayu28e77qKSJVFHuMcdQdxbi_j2YiW4nfSCiV8Br27R5nSfV5p-KRX9gMSbYlHovPwsDgUlIX092UEf-g7Oj1d55-dgI6vtuaObTWK7npjtKw6ZamQbov0Z-z05DDVxrBv1J37RepJUg4qe3bG3wU0hU6uB-_8aoZRAz_sH1HRNutFg5R">
+<div class="absolute inset-0 bg-gradient-to-t from-[#1B1B18]/70 to-transparent"></div>
+<span class="absolute bottom-2 left-2 text-[#F7F4EF] font-inter text-[11px] font-semibold">The Gazette Collective</span>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-2xl text-[#1B1B18] group-hover:text-[#C1592B] transition-colors">
+              Gazette Collective
+            </h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+              Founding editor and director of a decentralized community journalism network. Dedicated to civic observation, local histories, and deep long-form essays uncorrupted by algorithm clickbait.
+            </p>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#1B1B18]/15 flex items-center justify-between">
+<span class="font-inter text-[12px] text-[#1F3A3D] font-medium">Publishing • Public Interest</span>
+<span class="material-symbols-outlined text-[#C1592B] text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Venture 3: Digital Tooling & OSS -->
+<article class="bg-[#F7F4EF] rounded p-space-xl flex flex-col justify-between border border-[#1B1B18]/20 relative group hover:border-[#1B1B18] transition-all duration-200">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-inter text-[11px] text-[#F7F4EF] bg-[#1F3A3D] font-bold tracking-wider uppercase px-2 py-0.5 rounded">Software Lab</span>
+<span class="font-fraunces text-[14px] text-[#1B1B18]/80">Active</span>
+</div>
+<div class="h-44 w-full rounded overflow-hidden relative bg-[#1B1B18] flex items-center justify-center p-space-md border border-[#1B1B18]">
+<!-- Monospaced Code Graphic -->
+<div class="w-full font-mono text-[12px] text-[#F7F4EF] leading-5 overflow-hidden select-none">
+<span class="text-[#F7F4EF]/50"># Lab Experiment :: onerishi/tooling</span><br>
+<span class="text-[#C1592B]">from</span> dataclasses <span class="text-[#C1592B]">import</span> dataclass<br>
+<span class="text-[#F7F4EF]/80">@dataclass</span><br>
+<span class="text-[#F7F4EF]">class</span> Engine: agency = <span class="text-[#C1592B]">True</span><br>
+<span class="text-[#F7F4EF]/50">&gt;&gt; compiling artisan web modules...</span>
+</div>
+<span class="absolute bottom-2 left-2 text-[#F7F4EF] font-inter text-[11px] font-semibold">Labs &amp; Open Source</span>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-2xl text-[#1B1B18] group-hover:text-[#C1592B] transition-colors">
+              Independent Digital Tooling
+            </h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+              Building focused open-source utilities in Python, React, and Vanilla Web components. Creating small, purposeful digital instruments that solve immediate operational frictions.
+            </p>
+</div>
+</div>
+<div class="pt-space-md mt-space-md border-t border-[#1B1B18]/15 flex items-center justify-between">
+<span class="font-inter text-[12px] text-[#1F3A3D] font-medium">Python • React • Micro-Apps</span>
+<span class="material-symbols-outlined text-[#C1592B] text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- "How I Work" (Approach & Values) -->
+<section class="max-w-[1200px] mx-auto w-full px-gutter-mobile lg:px-gutter-desktop py-space-3xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<div class="lg:col-span-4 space-y-space-sm">
+<span class="font-inter text-[11px] uppercase tracking-widest text-[#C1592B] font-bold">04 / Operating Credo</span>
+<h2 class="font-fraunces text-3xl md:text-[40px] text-[#1B1B18] leading-tight font-normal">
+        How I Work
+      </h2>
+<p class="font-inter text-[16px] text-[#1B1B18]/80 leading-relaxed">
+        Four tenets that govern my collaboration, code architecture, and editorial judgment.
+      </p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Principle 1 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border-t-2 border-[#C1592B] border-x border-b border-[#1B1B18]/15 space-y-space-xs">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#C1592B] font-semibold block">Principle 01</span>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18]">High Agency by Default</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+          I don’t wait for perfect briefs or frictionless conditions. When faced with ambiguous project scopes, I draft the baseline prototype, frame the decision parameters, and push execution forward.
+        </p>
+</div>
+<!-- Principle 2 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border-t-2 border-[#1F3A3D] border-x border-b border-[#1B1B18]/15 space-y-space-xs">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#1F3A3D] font-semibold block">Principle 02</span>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18]">Deliberate Craftsmanship</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+          The small details dictate the soul of an enterprise. From the kerning of a subhead to the cache headers on a server, deliberate attention prevents technical and cultural debt from compounding.
+        </p>
+</div>
+<!-- Principle 3 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border-t-2 border-[#1F3A3D] border-x border-b border-[#1B1B18]/15 space-y-space-xs">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#1F3A3D] font-semibold block">Principle 03</span>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18]">Zero Fluff</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+          I reject vanity metrics, opaque marketing jargon, and empty posturing. Every strategy document or codebase must survive hard contact with practical reality and clear commercial attribution.
+        </p>
+</div>
+<!-- Principle 4 -->
+<div class="bg-[#F7F4EF] p-space-lg rounded border-t-2 border-[#1B1B18] border-x border-b border-[#1B1B18]/15 space-y-space-xs">
+<span class="font-inter text-[11px] uppercase tracking-wider text-[#1B1B18] font-semibold block">Principle 04</span>
+<h3 class="font-fraunces text-[22px] text-[#1B1B18]">Building in Public Accountability</h3>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 leading-relaxed">
+          Work with visible fingerprints. Documenting hypotheses, admitting false turns, and sharing working methodology openly establishes trust far faster than polished retrospective decks.
+        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Closing CTA / Dispatch Terminal Section -->
+<section class="w-full bg-[#1B1B18]/5 py-space-3xl border-t border-[#1B1B18]/15">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="bg-[#F7F4EF] p-space-xl lg:p-space-2xl rounded border border-[#1B1B18] flex flex-col md:flex-row items-start md:items-center justify-between gap-space-xl">
+<div class="space-y-space-xs max-w-[620px]">
+<span class="font-inter text-[11px] uppercase tracking-widest text-[#C1592B] font-bold">Inquiries &amp; Synergies</span>
+<h2 class="font-fraunces text-2xl md:text-[32px] text-[#1B1B18] font-normal leading-snug">
+          Let’s Build Deliberate Systems Together
+        </h2>
+<p class="font-inter text-[16px] text-[#1B1B18]/80 leading-relaxed">
+          Whether you need strategic demand generation leadership, technical marketing advisory, or are seeking a co-conspirator on community ventures, my door is open.
+        </p>
+<div class="pt-space-xs flex flex-wrap gap-x-space-lg gap-y-space-xs text-[14px] font-inter">
+<a class="text-[#C1592B] hover:underline underline-offset-4 flex items-center gap-1 font-semibold" data-path="work" href="#">
+            Explore my projects →
+          </a>
+<a class="text-[#1F3A3D] hover:underline underline-offset-4 flex items-center gap-1 font-semibold" data-path="philosophy" href="#">
+            Read my operating philosophy →
+          </a>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm w-full md:w-auto shrink-0">
+<a class="inline-flex items-center justify-center bg-[#C1592B] text-[#F7F4EF] font-inter text-[13px] font-semibold px-space-lg py-space-sm rounded hover:opacity-90 transition-opacity text-center" data-path="contact" href="#">
+<span class="material-symbols-outlined text-[18px] mr-2">send</span>
+          Collaborate with Me
+        </a>
+<a class="inline-flex items-center justify-center bg-transparent border border-[#1B1B18] text-[#1B1B18] font-inter text-[13px] font-semibold px-space-md py-space-sm rounded hover:bg-[#1B1B18] hover:text-[#F7F4EF] transition-colors text-center" href="mailto:contact@onerishi.in">
+          Direct Dispatch
+        </a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-3');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('section, article').forEach(el => {
+      el.classList.add('transition-all', 'duration-500', 'ease-out');
+    });
+  });
+</script>
+</main>
+<footer class="w-full bg-[#1B1B18]/5 border-t border-[#1B1B18]/15 mt-space-4xl">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl mb-space-3xl">
+<div class="md:col-span-5 flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center">
+<span class="font-fraunces text-2xl text-[#1B1B18] tracking-tight">OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C1592B] ml-0.5"></span>
+</div>
+<p class="font-inter text-[14px] text-[#1B1B18]/80 max-w-[360px] leading-relaxed">
+            Rushal S. — Marketing × Technology × Creativity. Shaping literate, high-agency digital narratives and experimental tooling.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<a class="font-inter text-[12px] font-semibold text-[#1F3A3D] hover:text-[#C1592B] transition-colors flex items-center gap-space-2xs" href="https://github.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>GitHub</span>
+</a>
+<span class="text-[#1B1B18]/30 text-[12px]">•</span>
+<a class="font-inter text-[12px] font-semibold text-[#1F3A3D] hover:text-[#C1592B] transition-colors flex items-center gap-space-2xs" href="https://linkedin.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span>LinkedIn</span>
+</a>
+<span class="text-[#1B1B18]/30 text-[12px]">•</span>
+<a class="font-inter text-[12px] font-semibold text-[#1F3A3D] hover:text-[#C1592B] transition-colors flex items-center gap-space-2xs" href="https://youtube.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span>YouTube</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-3 space-y-space-sm">
+<span class="font-inter text-[11px] text-[#1B1B18]/70 font-semibold uppercase tracking-wider block">Navigation</span>
+<ul class="space-y-space-xs">
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="home" href="#">Home</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="work" href="#">Work</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="writing" href="#">Writing</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="about" href="#">About</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="labs" href="#">Labs</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-space-sm">
+<span class="font-inter text-[11px] text-[#1B1B18]/70 font-semibold uppercase tracking-wider block">Explore &amp; Connect</span>
+<ul class="space-y-space-xs">
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="philosophy" href="#">Philosophy</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="impact" href="#">Impact</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="collaborate" href="#">Collaborate</a></li>
+<li role="none"><a class="font-inter text-[14px] text-[#1B1B18] hover:text-[#C1592B] transition-colors" data-path="contact" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-space-lg border-t border-[#1B1B18]/15 flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<p class="font-inter text-[13px] text-[#1B1B18]/80">© 2024 Rushal S. All rights reserved.</p>
+<p class="font-inter text-[13px] text-[#1B1B18]/80 text-center md:text-right">OneRishi • onerishi.in • Crafting the deliberate web</p>
+</div>
+</div>
+</footer>
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

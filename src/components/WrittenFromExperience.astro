@@ -1,0 +1,28 @@
+---
+interface Props {
+  title?: string;
+  note?: string;
+}
+
+const {
+  title = 'Written from Experience',
+  note = 'Synthesized from direct technical execution, real campaign performance, and firsthand project stewardship.',
+} = Astro.props;
+---
+
+<aside class="my-8 p-6 rounded-lg bg-[#1F3A3D]/[0.06] border border-[#1F3A3D]/15 relative overflow-hidden">
+  <div class="flex items-start gap-4 relative z-10">
+    <div class="p-2 rounded bg-[#1F3A3D] text-white shrink-0">
+      <span class="material-symbols-outlined text-[20px]">hub</span>
+    </div>
+    <div class="space-y-1.5">
+      <div class="font-sans text-[11px] font-semibold tracking-wider uppercase text-[#1F3A3D]">
+        Written from Experience
+      </div>
+      <h4 class="font-serif text-xl text-[#1B1B18] font-normal">{title}</h4>
+      <p class="font-sans text-[13px] text-[#1B1B18]/80 leading-relaxed">
+        {note}
+      </p>
+    </div>
+  </div>
+</aside>

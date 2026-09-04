@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0edec",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-container": "#fff8f4",
+                        "surface-tint": "#00658b",
+                        "on-surface": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#007ba7",
+                        "tertiary": "#834d00",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-primary-fixed-variant": "#004c69",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-container": "#f5faff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#c4e7ff",
+                        "secondary-fixed": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary": "#5f5e5e",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary": "#006184",
+                        "on-surface-variant": "#3f484e",
+                        "background": "#fcf9f8",
+                        "tertiary-container": "#a36410",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-secondary-container": "#636262",
+                        "on-primary-fixed": "#001e2c",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ebe7e7",
+                        "outline-variant": "#bfc8cf",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdcbc",
+                        "secondary-container": "#e2dfde",
+                        "inverse-primary": "#7cd0ff",
+                        "surface-dim": "#dcd9d9",
+                        "outline": "#6f787f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bfc8cf; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<!-- SideNavBar Integration -->
+<aside class="fixed h-screen w-72 left-0 top-0 bg-surface-container-low border-r border-outline-variant/20 flex flex-col p-6 space-y-8 z-50">
+<div class="space-y-1">
+<div class="flex items-center space-x-3 mb-8">
+<div class="w-10 h-10 bg-on-surface flex items-center justify-center">
+<span class="text-surface font-headline font-bold text-xl">O</span>
+</div>
+<div>
+<h1 class="font-headline text-2xl font-bold tracking-tighter text-on-surface uppercase">ONERISHI</h1>
+<p class="font-label text-[10px] uppercase tracking-widest text-secondary">TECHNICAL CURATOR</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label text-xs tracking-widest uppercase hover:bg-primary-container transition-colors duration-200">
+                NEW EDITION
+            </button>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="group flex items-center px-4 py-3 space-x-4 text-secondary opacity-80 hover:opacity-100 hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label uppercase text-xs tracking-widest">Dashboard</span>
+</a>
+<!-- Editions -->
+<a class="group flex items-center px-4 py-3 space-x-4 text-secondary opacity-80 hover:opacity-100 hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label uppercase text-xs tracking-widest">Editions</span>
+</a>
+<!-- Projects (ACTIVE) -->
+<a class="group flex items-center px-4 py-3 space-x-4 text-primary font-bold border-l-2 border-primary bg-surface-container-high/50 active:scale-95 transition-all duration-100" href="#">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-label uppercase text-xs tracking-widest">Projects</span>
+</a>
+<!-- Labs -->
+<a class="group flex items-center px-4 py-3 space-x-4 text-secondary opacity-80 hover:opacity-100 hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">science</span>
+<span class="font-label uppercase text-xs tracking-widest">Labs</span>
+</a>
+<!-- Analytics -->
+<a class="group flex items-center px-4 py-3 space-x-4 text-secondary opacity-80 hover:opacity-100 hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label uppercase text-xs tracking-widest">Analytics</span>
+</a>
+<!-- Settings -->
+<a class="group flex items-center px-4 py-3 space-x-4 text-secondary opacity-80 hover:opacity-100 hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label uppercase text-xs tracking-widest">Settings</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center space-x-3">
+<div class="w-8 h-8 bg-surface-container-highest border border-outline-variant/20 overflow-hidden">
+<img alt="Editorial Curator Profile" class="w-full h-full object-cover grayscale" data-alt="A close-up architectural portrait of a creative professional with a sharp, thoughtful expression. The lighting is dramatic and cinematic, utilizing high-contrast shadows typical of a noir aesthetic. The background is a minimalist, white-walled studio space that complements the stark white and charcoal palette of the UI. The overall mood is sophisticated, technical, and highly curated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQSf90KPjvYYmTBvXhyzddbIzWHzl-sucNIGCmh6H-VpT0dQI5xrAxWAQbtsF2Dtm-loLoaOOOlUepEpnltKEYtUeKi-euid3pa1M63zj9Sle77B7f3EGzPYxezOTx1d5mFUzRFhJGiNOKpVJrMy0VrD6BDX67rAqOrsiJFS3lDy0A-Vbo2gt8LE1fgS4WoKJkkLFgD1XC1RkBLqnRr0sHm_6-OTkUwsE98PywxlLkZBHiZvRhMyiY-Tv8VGlBpMHq0TZP2s1CdQjg"/>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase font-bold text-on-surface">Curator Alpha</p>
+<p class="font-label text-[8px] uppercase text-secondary">ID: 001-OR</p>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Integration -->
+<header class="fixed top-0 w-full h-20 bg-surface border-b border-outline-variant/20 flex items-center justify-between px-12 ml-72 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<span class="material-symbols-outlined text-outline mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-label text-xs uppercase tracking-widest w-full text-on-surface placeholder:text-outline/50" placeholder="QUERY SYSTEM..." type="text"/>
+</div>
+<div class="flex items-center space-x-8">
+<div class="flex items-center space-x-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">contrast</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant/30"></div>
+<span class="font-headline text-xl font-medium tracking-tighter text-on-surface uppercase">ONERISHI PORTAL</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 pt-20 p-12 min-h-screen">
+<!-- Header Section -->
+<section class="mb-16">
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-8">
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-2">Technical Matrix / Overview</p>
+<h2 class="font-headline text-5xl italic tracking-tight text-on-surface">Active Projects</h2>
+</div>
+<div class="flex space-x-12">
+<div class="text-right">
+<p class="font-label text-[10px] uppercase tracking-widest text-secondary">Active Threads</p>
+<p class="font-label text-xl font-bold">03</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[10px] uppercase tracking-widest text-secondary">Global Progress</p>
+<p class="font-label text-xl font-bold">78%</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Grid (Asymmetric Layout) -->
+<div class="grid grid-cols-12 gap-8 mb-24">
+<!-- Project: Studio Ravya -->
+<div class="col-span-12 lg:col-span-8 group relative bg-surface-container-lowest border border-outline-variant/10 p-0 overflow-hidden flex flex-col md:flex-row h-[400px]">
+<div class="w-full md:w-1/2 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An ultra-modern minimalist interior design featuring clean lines, natural textures, and a monochrome palette. The scene is illuminated by soft, diffused daylight pouring through large industrial windows, highlighting the architectural precision of the furniture and layout. The mood is tranquil yet highly professional, reflecting the Udaipur Blue and Stark White color palette of the design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAmLa3QOezTDqOkrbox08VA_N_4_JUEwSRP_3QsChR-FvVhoyc-gQLN99tJc1X9s1FS2XWHiwjMyalV-OZf7OOEEuJfSlX8AWo0bqlrT_25tODRvX-OH_Ti-Zx40H_17Gt5N1Qa_QMYdNz2krdYbyMhMALP7e3RMVc--fWcHAcv8DX8qbNMsRcxN9-nZgTZbJfzyw1Ys-wnMKTjptsFBBmRrepqPM8KwO7XhP45KKHTiuE7AyFwGelaRbB16-XD3LrhMpabs96PLWS"/>
+</div>
+<div class="w-full md:w-1/2 p-10 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="font-label text-[10px] bg-primary text-on-primary px-2 py-1 tracking-widest">PRIORITY 01</span>
+<span class="font-label text-[10px] text-secondary">REF: RAV-2024</span>
+</div>
+<h3 class="font-headline text-3xl font-bold mb-2">Studio Ravya</h3>
+<p class="font-body text-sm text-secondary leading-relaxed mb-6">Architectural rebranding and digital ecosystem curation for heritage-driven design studios.</p>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-[10px] font-label uppercase tracking-widest mb-1">
+<span>Milestones</span>
+<span>92%</span>
+</div>
+<div class="w-full h-[2px] bg-surface-container-high">
+<div class="h-full bg-primary" style="width: 92%"></div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 border border-surface bg-surface-container-highest"></div>
+<div class="w-6 h-6 border border-surface bg-surface-container-highest"></div>
+<div class="w-6 h-6 border border-surface bg-surface-container-highest"></div>
+</div>
+<span class="font-label text-[10px] uppercase text-secondary">08 COLLABORATORS</span>
+</div>
+</div>
+</div>
+<button class="w-full border border-outline-variant/30 py-3 font-label text-[10px] uppercase tracking-widest hover:bg-on-surface hover:text-surface transition-all">PROJECT SPECS</button>
+</div>
+</div>
+<!-- Project: Global Galactic Media -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-low p-10 flex flex-col justify-between h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<p class="font-label text-[10px] uppercase tracking-widest text-secondary">Media Infrastructure</p>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">public</span>
+</div>
+<h3 class="font-headline text-3xl font-bold mb-4">Global Galactic Media</h3>
+<div class="space-y-6 mt-8">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-label text-[10px] uppercase text-secondary">Status</span>
+<span class="font-label text-[10px] uppercase font-bold text-primary italic">Live / Syncing</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-label text-[10px] uppercase text-secondary">Efficiency</span>
+<span class="font-label text-[10px] uppercase font-bold">104.2ms</span>
+</div>
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-label text-[10px] uppercase text-secondary">Uptime</span>
+<span class="font-label text-[10px] uppercase font-bold">99.9%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-4 flex items-center justify-between">
+<span class="font-label text-[10px] uppercase font-bold">Active Stream</span>
+<div class="flex space-x-1">
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-1 h-2 bg-primary/40"></div>
+<div class="w-1 h-4 bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Project: Khayal-Rishi-Ka -->
+<div class="col-span-12 lg:col-span-6 bg-surface-container-highest border border-outline-variant/10 p-10 flex flex-col justify-between group">
+<div>
+<div class="flex items-center space-x-2 mb-6">
+<div class="w-2 h-2 bg-error"></div>
+<span class="font-label text-[10px] uppercase tracking-widest text-error">Action Required</span>
+</div>
+<h3 class="font-headline text-3xl font-bold mb-4">Khayal-Rishi-Ka</h3>
+<p class="font-body text-sm text-on-surface-variant max-w-md leading-relaxed">Philosophical metadata mapping for the legacy archives. Integration of neural-literary nodes into the central curator core.</p>
+</div>
+<div class="mt-12 grid grid-cols-2 gap-4">
+<div class="bg-surface p-6 border border-outline-variant/20">
+<p class="font-label text-[10px] uppercase text-secondary mb-1">Curation Phase</p>
+<p class="font-headline text-xl italic font-bold">Manuscript</p>
+</div>
+<div class="bg-surface p-6 border border-outline-variant/20">
+<p class="font-label text-[10px] uppercase text-secondary mb-1">Completion</p>
+<p class="font-headline text-xl italic font-bold">45%</p>
+</div>
+</div>
+</div>
+<!-- Add New Project Section -->
+<div class="col-span-12 lg:col-span-6 border-2 border-dashed border-outline-variant/30 p-10 flex flex-col items-center justify-center text-center hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-16 h-16 border border-outline-variant/40 flex items-center justify-center mb-6 group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">add</span>
+</div>
+<h4 class="font-label text-xs uppercase tracking-[0.2em] font-bold mb-2">Initialize New Node</h4>
+<p class="font-body text-xs text-secondary max-w-xs">Deploy new project parameters and technical specifications into the portal database.</p>
+</div>
+</div>
+<!-- The Self / Personal Brand Tracking (Editorial Style) -->
+<section class="mt-32">
+<div class="grid grid-cols-12 gap-12 items-start">
+<div class="col-span-12 md:col-span-5 relative">
+<div class="absolute -top-10 -left-10 z-0">
+<span class="font-display text-[160px] leading-none text-surface-container-high select-none">IDENTITY</span>
+</div>
+<div class="relative z-10 aspect-[3/4] overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="A highly conceptual, artistic black and white photograph depicting a sharp architectural detail of a modern gallery space. The focus is on the interplay of deep shadows and stark highlights against a textured concrete wall. The composition is off-center and avant-garde, evoking the 'Digital Curator' persona. The mood is dark, technical, and high-fashion editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4VJMMahvjA9Xmql-jQlvi2Kvl-6DHPGWqb9SUSbMF427HLuId_zbOF0SfKW9IVNmJGq9Tcww7NhCYtxI15zfVUBQU8geMYfzUfHqnp-_cMfn14WWOdtm_AaGOBHyZfB_XMvnKkG8hDvaIzBQ1R2DxTlsR1Rtma8XoGLi0frBTH6zzYQ08G2aeaMDpSsD7TJXKrbTmNcHU7CElak-IsLop3aoDLx0a7YFHXqCZ5Ub-aaFj_7Zqw-Ym_R0dm4AJR99OKY3x4BtH5NM8"/>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7 pt-12">
+<p class="font-label text-[10px] uppercase tracking-widest text-primary mb-4 font-bold">Module: THE SELF / PERSONAL BRAND</p>
+<h2 class="font-headline text-6xl tracking-tighter mb-10">Curating the <br/><span class="italic">Singularity</span></h2>
+<div class="grid grid-cols-2 gap-12">
+<div class="space-y-6">
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-secondary border-b border-outline-variant/30 pb-2 mb-4">Voice Consistency</h4>
+<div class="flex items-end space-x-2">
+<span class="font-headline text-4xl font-bold">98</span>
+<span class="font-label text-xs text-secondary mb-1">/ 100</span>
+</div>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-secondary border-b border-outline-variant/30 pb-2 mb-4">Global Reach</h4>
+<div class="flex items-end space-x-2">
+<span class="font-headline text-4xl font-bold">12.4k</span>
+<span class="font-label text-xs text-secondary mb-1">ENGAGED</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-secondary border-b border-outline-variant/30 pb-2 mb-4">Aesthetic Drift</h4>
+<div class="flex items-end space-x-2 text-primary">
+<span class="font-headline text-4xl font-bold">0.02</span>
+<span class="font-label text-xs mb-1">VAR</span>
+</div>
+</div>
+<div>
+<h4 class="font-label text-[10px] uppercase tracking-widest text-secondary border-b border-outline-variant/30 pb-2 mb-4">Market Authority</h4>
+<div class="flex items-end space-x-2">
+<span class="font-headline text-4xl font-bold">ALPHA</span>
+<span class="font-label text-xs text-secondary mb-1">TIER</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 bg-surface-container-lowest border border-outline-variant/10 p-8">
+<p class="font-body text-sm italic text-secondary mb-6 leading-relaxed">
+                            "The personal brand is not a mask, but a structural integrity report. Maintain the Udaipur Blue core at all costs."
+                        </p>
+<div class="flex items-center justify-between">
+<div class="flex space-x-4">
+<span class="material-symbols-outlined text-xs">adjust</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Calibration: OPTIMAL</span>
+</div>
+<button class="font-label text-[10px] uppercase tracking-widest text-primary font-bold hover:underline">RUN DIAGNOSTIC</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Data Ticker Footer -->
+<footer class="mt-40 border-t border-outline-variant/20 pt-12 pb-24">
+<div class="bg-surface-container-high py-3 px-6 flex items-center justify-between overflow-hidden">
+<div class="flex items-center space-x-12 animate-pulse">
+<span class="font-label text-[10px] uppercase tracking-widest whitespace-nowrap">SYSTEM LATENCY: 2ms</span>
+<span class="font-label text-[10px] uppercase tracking-widest whitespace-nowrap">SERVER: US-EAST-EDITORIAL-01</span>
+<span class="font-label text-[10px] uppercase tracking-widest whitespace-nowrap">UPTIME: 342:12:05</span>
+<span class="font-label text-[10px] uppercase tracking-widest whitespace-nowrap">ENCRYPTION: AES-256-CURATOR</span>
+<span class="font-label text-[10px] uppercase tracking-widest whitespace-nowrap">ACTIVE NODES: 2,491</span>
+</div>
+<div class="flex items-center space-x-4">
+<span class="font-label text-[10px] uppercase tracking-widest font-bold">UTC: 12:44:02</span>
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<p class="font-label text-[8px] uppercase tracking-[0.3em] text-secondary">© 2024 ONERISHI TECHNICAL ARCHIVES / ALL RIGHTS RESERVED</p>
+<div class="flex space-x-8">
+<a class="font-label text-[8px] uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors" href="#">Manifesto</a>
+<a class="font-label text-[8px] uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Protocal</a>
+<a class="font-label text-[8px] uppercase tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors" href="#">Neural Sync</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB - Restricted to Dashboard/Projects Only -->
+<button class="fixed bottom-12 right-12 w-16 h-16 bg-on-surface text-surface flex items-center justify-center hover:bg-primary transition-all duration-300 z-50">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

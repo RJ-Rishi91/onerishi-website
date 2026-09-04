@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OneRishi | Precision Technical Editorial</title>
+<!-- Google Fonts: Newsreader for Serif, Inter for Sans, Space Grotesk for Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@300;400;600&amp;family=Space+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#bfc8cf",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-surface": "#1c1b1b",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "surface-container-low": "#f6f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#004c69",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#006184",
+                        "tertiary": "#834d00",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "secondary": "#5f5e5e",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#636262",
+                        "on-surface-variant": "#3f484e",
+                        "secondary-container": "#e2dfde",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-secondary-fixed-variant": "#474746",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "on-primary-fixed": "#001e2c",
+                        "on-error-container": "#93000a",
+                        "outline": "#6f787f",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#ffdcbc",
+                        "on-primary-container": "#f5faff",
+                        "primary-container": "#007ba7",
+                        "on-background": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "surface-container": "#f0edec",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#a36410",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ebe7e7",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#7cd0ff",
+                        "surface-tint": "#00658b",
+                        "surface": "#fcf9f8",
+                        "primary-fixed": "#c4e7ff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "monospace"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .mono { font-family: 'Space Grotesk', monospace; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .text-glow { text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/20 flex justify-between items-center w-full px-6 md:px-12 py-5 max-w-full">
+<div class="flex items-center gap-12">
+<span class="font-serif italic text-2xl tracking-tight text-on-surface">OneRishi</span>
+<div class="hidden md:flex gap-8">
+<a class="text-primary font-bold font-label text-[10px] uppercase tracking-widest hover:text-primary-container transition-colors duration-300" href="#">Home</a>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">About</a>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#projects-section">Projects</a>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Blogs</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface transition-opacity active:opacity-70">menu</button>
+</div>
+</nav>
+<main class="pt-[72px]">
+<!-- Hero Section -->
+<section class="relative h-[90vh] md:h-[95vh] w-full overflow-hidden flex items-end">
+<img alt="Rushal Suthar Banner" class="absolute inset-0 w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS61utrjjJ4IP6B4oDtWeJn0skY4O_8LLr3wK0Q9UzzevBSot-FBWfjdIMubEpQw9wiRTK13_RTeAEQ19rUth3CEMVeVvaPXQgGNd-KCOlchgz9HZznjvaFeEc3T7-H1tEFKoceCe0wqFv6G-mNZABt86a1BYfKK3naKOHmhu1QUXA_yP3AY3nGQldtnCmjUIfjcGV-ezm6m8UiPWKdkpu4iaI30rHXbX9Eg142uVHNQXdyFasxA-CN-v3TuVtgf2pAK257XwH1Lh4"/>
+<!-- Precise Legibility Shading -->
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-on-surface/40 via-transparent to-transparent"></div>
+<div class="relative z-10 p-8 md:p-20 max-w-6xl w-full">
+<p class="mono text-[10px] uppercase tracking-[0.4em] text-surface-container-highest mb-6 flex items-center gap-3">
+<span class="w-8 h-px bg-primary/60"></span> Volume 01 // National Award Recipient
+                </p>
+<h1 class="text-surface text-5xl md:text-8xl font-extralight leading-[0.9] tracking-tighter mb-8 text-glow">
+                    Rushal Suthar: <br/>
+<span class="italic">Engineering a <br/>Soulful Future.</span>
+</h1>
+<div class="flex flex-col md:flex-row md:items-center gap-8">
+<p class="text-surface-variant font-body text-lg md:text-xl max-w-xl border-l-2 border-primary pl-8 py-1 leading-relaxed">
+                        National Veer Gatha Winner felicitated by the Ministry of Defence. A study in precision and artistic intent.
+                    </p>
+<div class="flex gap-4">
+<a class="mono text-[10px] uppercase tracking-widest bg-primary text-on-primary px-8 py-4 hover:bg-primary-container transition-all" href="#projects-section">Explore Works</a>
+</div>
+</div>
+</div>
+<!-- Technical Data Ticker -->
+<div class="absolute right-0 bottom-0 bg-surface-container-highest/10 backdrop-blur-xl px-8 py-4 border-l border-t border-outline-variant/20 hidden lg:block">
+<p class="mono text-[9px] text-surface-bright/80 flex gap-10">
+<span class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> COORD: 24.5854° N, 73.7125° E</span>
+<span class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> MT: 01_EDITORIAL_ARCHIVE</span>
+<span class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> WPC: 1,402</span>
+</p>
+</div>
+</section>
+<!-- Projects Header -->
+<section class="pt-32 pb-8 px-8 md:px-20 max-w-[1600px] mx-auto" id="projects-section">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-10">
+<div>
+<span class="mono text-[10px] uppercase text-primary tracking-widest mb-2 block">Portfolio</span>
+<h2 class="text-6xl font-headline italic leading-none">Projects</h2>
+</div>
+<p class="mono text-[10px] uppercase text-secondary tracking-[0.2em]">Active Endeavors 2024</p>
+</div>
+</section>
+<!-- The Three Pillars -->
+<section class="px-8 md:px-20 max-w-[1600px] mx-auto pb-32">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+<!-- Pillar 1 -->
+<div class="bg-on-surface text-surface p-12 flex flex-col justify-between group min-h-[650px] border border-outline-variant/10 hover:border-primary/40 transition-colors duration-500">
+<div>
+<span class="mono text-[10px] text-primary-fixed uppercase tracking-widest mb-10 block">Project 01 / Infrastructure</span>
+<h2 class="text-5xl mb-6 font-headline">Studio Ravya</h2>
+<p class="mono text-[10px] text-secondary-fixed-dim mb-10 tracking-[0.2em]">THE ENGINEERING STUDIO</p>
+<div class="space-y-6 font-body text-surface-variant/70 text-sm">
+<p class="flex items-center gap-4 group-hover:text-surface transition-colors"><span class="w-1.5 h-1.5 bg-primary"></span> Accessible Udaipur Initiative</p>
+<p class="flex items-center gap-4 group-hover:text-surface transition-colors"><span class="w-1.5 h-1.5 bg-primary"></span> Junior Journalist Foundation</p>
+</div>
+</div>
+<div class="mt-12 overflow-hidden relative">
+<img alt="Architecture" class="w-full grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 h-72 object-cover scale-110 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBjGF2HdwP9XSNMR99Ek_GAfUBXiWIp6MF-GlibRwkuZDM-5yKXsWRd1PKIOlBdLGxn1eMyOpUhy5AmUqnBIkzjjD9FHF5HucBqnfvspj-8Ioj6ESoRhMWsGi4RY-0Sa_VPLAo0x4sKAntZ781hZ6bjjUT6Pu18Ud9yRJnprEIZ0pAHmEaJDztZTJhiGsgpIQmSz29PuVfPPYj5IZWcw185JYmqECzzkG4RdBoU0TbwCGUDkdhax0HUi6UJ26VgYMwf2jQNLHsh4wZ"/>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="lg:col-span-1 bg-surface-container-low p-12 flex flex-col border border-outline-variant/20 relative overflow-hidden">
+<div class="relative z-10">
+<span class="mono text-[10px] text-primary uppercase tracking-widest mb-10 block">Project 02 / Media Ecosystem</span>
+<h2 class="text-6xl text-on-surface mb-8 font-headline leading-tight">Global Galactic Media</h2>
+<p class="font-body text-secondary text-lg max-w-md mb-12 leading-relaxed">The growth engine propelling modern narratives through vibrant digital marketing and hyper-local engagement.</p>
+<button class="mono text-[10px] px-10 py-5 bg-primary text-on-primary hover:bg-primary-container transition-all uppercase tracking-widest">Read Manifesto</button>
+</div>
+<div class="absolute bottom-0 right-0 w-full h-1/2 opacity-10 pointer-events-none translate-y-10">
+<img alt="Technology" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaxmfx51tdUsEVxMr6O1eJVYHKZOLl_lvPmvZdV8eW_KIgHNlvdDb39C6R7wEwci3lupmVD0WWgi25ngoJq4DWyMJSOKwFbFfqEfq-MFbUp7MLPzAsPxUa0ALbaWvVIxPmjK404Ocvt05KH_9-iVUPEDuak8X895L_4XJoeN_3f1bZnI2ddm5vpaZD4d7q_Njjfuq8l_bZ3aF1YurqcLbB80Rms4fHrlpmQUgQE3XF2JgFHqYeQu-VzXO1WlrwaQ5asZyd_Sf6eVkW"/>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface border border-outline-variant/20 p-12 flex flex-col justify-center text-center hover:bg-surface-container-lowest transition-colors duration-500">
+<span class="mono text-[10px] text-secondary uppercase tracking-widest mb-10 block">Project 03 / The Self</span>
+<h2 class="text-5xl italic mb-8 font-headline">Khayal-Rishi-Ka</h2>
+<p class="font-headline italic text-2xl text-on-surface-variant mb-10">"The Sanctuary of Thought"</p>
+<div class="w-16 h-px bg-primary mx-auto mb-10"></div>
+<p class="font-body text-secondary text-sm leading-relaxed max-w-[280px] mx-auto italic">
+                        A minimalist exploration of poetic elegance and soft textures. A retreat for the mind in an age of noise.
+                    </p>
+<div class="mt-16">
+<img alt="Light" class="w-40 h-56 object-cover mx-auto shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALxYwFZCKsrPZlpy5kUx8-gg4claaIXkoIyrrpkZYO8Hk4qPfv7a5tSe6UaHeGhxa8aoEmSu0PhDH1pSkvnjwYAfMQ8SMBiUQmt1YP6o00IdJrSP84uS5Qqspc5hWkMpG695mktJIZCbGlnrSP8WxHvteBaw1BZ0mb5VXQxH94CtmKs5n6bV4pmYU75R2RpgXL1e2i6h0xWQFupwuTduUinG7ENP9oreMDoKMmmcKPjdLIA9Akcnrow7zer-WPQ8FSUClRo0DcxqqX"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Aristotle Quote -->
+<section class="py-48 px-8 bg-surface-container-lowest">
+<div class="max-w-5xl mx-auto text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-16">format_quote</span>
+<blockquote class="text-4xl md:text-7xl font-headline text-on-surface leading-[1.1] tracking-tight">
+                    “An educated mind is able to entertain a thought critically, without <span class="italic text-primary">accepting it.</span>”
+                </blockquote>
+<div class="mt-16 flex items-center justify-center gap-4">
+<span class="w-12 h-px bg-outline-variant"></span>
+<p class="mono text-[10px] uppercase tracking-[0.3em] text-secondary">Aristotle</p>
+<span class="w-12 h-px bg-outline-variant"></span>
+</div>
+</div>
+</section>
+<!-- The Editorial Grid -->
+<section class="py-32 bg-surface-container-low px-8 md:px-20">
+<div class="max-w-[1600px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-20 border-b border-outline-variant/30 pb-10 gap-4">
+<h2 class="text-6xl font-headline italic leading-none">The Editorial Grid</h2>
+<p class="mono text-[10px] uppercase text-secondary tracking-widest">Chronicles 2024–2026 // Technical Archive</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-24">
+<!-- Article 1: Builders vs Job Seekers -->
+<div class="md:col-span-8 group">
+<div class="overflow-hidden mb-10 relative">
+<img alt="Entrepreneurs" class="w-full h-[600px] object-cover group-hover:scale-105 transition-transform duration-[1.5s]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbL-Ythd1ExhVTmR5JasHv64nqre_vdcsBnc4U_rBLtCBzEvls3ZmxlDHzjMtf1FU0-2VsZe8nU1JkkKO-YHK0PkIkH1S9y134xBlq6kQG1f3o3MtwlsByC6r9oe0FqA59_YEnRxDx5PlcnshuzoY0-n_yk28Kol5MI1zzkKcA21j3qzuCjkif0has3TKPcz6oxKWKPGY-5Pskw32_DHKGMZj4xULlEt9WZeZ3SFxCoxJzkZFZlYRqbI7vKo0aIGfmNKDb2wnoUqpi"/>
+<div class="absolute inset-0 bg-on-surface/10 group-hover:bg-transparent transition-colors"></div>
+</div>
+<div class="flex justify-between items-start">
+<p class="mono text-[10px] uppercase tracking-widest text-primary mb-4">Technical Guide // 2024</p><h3 class="text-4xl font-headline italic max-w-2xl leading-tight group-hover:text-primary transition-colors">Why India Needs Young Entrepreneurs and Builders Instead of Job Seekers</h3>
+<p class="mono text-[9px] text-secondary mt-3 whitespace-nowrap tracking-widest border border-outline-variant px-3 py-1">ESSAY 01</p>
+</div>
+<p class="text-on-surface-variant text-base mt-6 max-w-2xl leading-relaxed font-body">A critical analysis on the shift from a service-based mindset to a creation-led economy in the subcontinent. Examining the infrastructure of innovation.</p>
+</div>
+<!-- Article 2: Education System -->
+<div class="md:col-span-4 mt-12 md:mt-32">
+<div class="overflow-hidden mb-10 border border-outline-variant/20">
+<img alt="Education" class="w-full h-[450px] object-cover hover:brightness-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcCWuWAu3Jw1vjAeRv-to53JYGIAnJUGnkHziQ6YT-3f6f5c5HKil7vsQDcZAjdNtdUuBawKFkSPY06KGNngRW3go3SI_9K4sv09b90f_zCYbeDfreiwEnqs1E1xH9ZyTgJRONLecpqEtAxJ6bgirU1VLmkaI7Ea6kg7ofE3z05HJ6jSAWPz7V3gMdOc1pe8picp6IFDcHzlcvIWKR2w4EBD3DZEighRN8ItQN_-RPssa-I7dzrvFNTamvrN64M84pDr8oHQoQ_KEQ"/>
+</div>
+<div class="flex justify-between items-start">
+<p class="mono text-[10px] uppercase tracking-widest text-primary mb-4">Pedagogical Review // 2024</p><h3 class="text-2xl font-headline italic leading-snug">Problems in the Indian Education System and How Students Can Think Independently</h3>
+<p class="mono text-[9px] text-secondary mt-2 tracking-widest">ESSAY 02</p>
+</div>
+<p class="text-secondary text-sm mt-6 leading-relaxed">Breaking the cycle of rote learning through self-directed inquiry and critical observation. A call for pedagogical reform.</p>
+</div>
+<!-- Article 3: Beginner Guide -->
+<div class="md:col-span-4">
+<div class="p-12 border border-outline-variant/40 h-full flex flex-col justify-between bg-surface group hover:bg-on-surface hover:text-surface transition-all duration-700">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-10 group-hover:text-primary-fixed transition-colors">architecture</span>
+<h3 class="text-4xl font-headline mb-8 leading-tight">How to Start Building Projects as a Student in India</h3>
+</div>
+<div>
+<p class="font-body text-sm leading-relaxed mb-10 text-on-surface-variant group-hover:text-surface-variant transition-colors">
+                                    A beginner's blueprint for navigating technical hurdles and local resources to bring ideas to life.
+                                </p>
+<span class="mono text-[10px] uppercase tracking-[0.2em] text-primary group-hover:text-primary-fixed transition-colors">Technical Guide // 2024</span>
+</div>
+</div>
+</div>
+<!-- Article 4: Personal Branding -->
+<div class="md:col-span-8">
+<div class="overflow-hidden mb-10 bg-on-surface">
+<img alt="Personal Branding" class="w-full h-[450px] object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASa3Vu2YJxCLELsPJ1CVhrQgXDfX4DHa0Mqpf_ItiPDOKcGpOf7ZscDwNBjV1HmDRubTDG2ErW1S--uuVhwQ033I0zQa4qVmTaIBPTQf8nmUdCV8WYbpTq27cEH1FZe92rmZ5XLRrectJe4RmPcaSPFDItRS-twFp7_rQszfqzoWk_0DKJc0baKv8PLX9g7kdUGIS-FO9oK42nBf5zm59Y_rhsjo8Zst8OFYVRQy9h7E70AodpIQEU3EmmGhnwoUS2IfVVniZh14S8"/>
+</div>
+<div class="flex justify-between items-start">
+<p class="mono text-[10px] uppercase tracking-widest text-primary mb-4">Digital Strategy // 2024</p><h3 class="text-3xl font-headline italic leading-tight">Personal Branding for Students: Why It Matters in 2026</h3>
+<p class="mono text-[9px] text-secondary mt-3 tracking-widest">ESSAY 03</p>
+</div>
+<p class="text-on-surface-variant text-base mt-4 max-w-lg leading-relaxed">Why your digital footprint is the new resume in the age of decentralized work and algorithmic authority.</p>
+</div>
+<!-- Article 5: Breaking Average -->
+<div class="md:col-span-12 bg-on-surface p-12 md:p-20 flex flex-col md:flex-row items-center gap-16 border border-primary/20">
+<div class="flex-1 order-2 md:order-1">
+<span class="mono text-[10px] text-primary-fixed uppercase tracking-[0.4em] mb-6 block">Philosophical Inquiry</span>
+<h3 class="text-5xl md:text-6xl font-headline italic text-surface leading-[1.1] mb-8">Why Most Students Stay Average and How to Break Out of It</h3>
+<p class="text-surface-variant text-lg leading-relaxed max-w-xl mb-10">Identifying the psychological barriers and societal comfort zones that stifle true excellence in the competitive modern landscape.</p>
+<a class="inline-block mono text-[10px] text-primary-fixed border-b border-primary-fixed pb-2 hover:text-surface transition-colors tracking-widest" href="#">READ FULL ESSAY</a>
+</div>
+<div class="w-full md:w-2/5 order-1 md:order-2">
+<img alt="Ambition" class="w-full aspect-[4/5] object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-[2s]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_c_07aTn5PM-XOIL3Ldu7y4a4ogC5TxRDk_ViDFGQgYtTPI9lwJL2ZMWUSbu66mywDs4CgBBQcCGF70n_RXgbNsERvnrn3QIWk4NDlVBCh0Gw0pF5sDjUs8_NOPHiXofo97NSOwAV_bq_gaqWNcIXzx7aqiFairjea1cGE9ZFqgpFBA4ohaYjW2ZNrvEiZemqhP6QFqP3wP5vKUIZo8EOqN26Qx-lW1ViBG9a1LbuVo02tWo7wd-C4GV4oYjiT_rMwoJ8xyeHTmE4"/>
+</div>
+</div><div class="md:col-span-12 mt-24 border-t border-outline-variant/30 pt-16"><div class="max-w-3xl"><span class="mono text-[10px] uppercase text-primary tracking-widest mb-6 block">Curator's Note</span><h4 class="text-3xl font-headline italic mb-6">The Intentionality of Design</h4><p class="text-secondary leading-relaxed font-body">This archive is more than a collection of work; it is a manifesto on the intersection of engineering precision and humanistic intent. Every project listed here represents a step toward a future where technology serves the soul, not just the machine. We invite you to explore these chronicles with a critical eye and an open mind.</p></div></div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Contact Split -->
+<section class="py-32 px-8 md:px-20 bg-surface">
+<div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+<div class="border-t border-outline-variant pt-12">
+<h4 class="text-4xl font-headline italic mb-8">Stay Synchronized</h4>
+<p class="text-secondary mb-10 max-w-sm leading-relaxed">Periodic updates on technical infrastructure, editorial shifts, and the pursuit of engineering excellence.</p>
+<form class="flex border-b border-on-surface pb-4">
+<input class="bg-transparent border-none focus:ring-0 mono text-[10px] flex-1 uppercase tracking-widest" placeholder="EMAIL ADDRESS" type="email"/>
+<button class="material-symbols-outlined text-primary hover:translate-x-2 transition-transform" type="submit">arrow_forward</button>
+</form>
+</div>
+<div class="border-t border-outline-variant pt-12">
+<h4 class="text-4xl font-headline italic mb-8">The Studio</h4>
+<div class="space-y-4">
+<p class="mono text-[10px] text-secondary uppercase tracking-widest">Inquiries: editorial@onerishi.tech</p>
+<p class="mono text-[10px] text-secondary uppercase tracking-widest">Location: Udaipur, Rajasthan, India</p>
+<div class="flex gap-6 mt-12">
+<a class="text-on-surface hover:text-primary transition-colors mono text-[10px] uppercase tracking-widest" href="#">LinkedIn</a>
+<a class="text-on-surface hover:text-primary transition-colors mono text-[10px] uppercase tracking-widest" href="#">Twitter</a>
+<a class="text-on-surface hover:text-primary transition-colors mono text-[10px] uppercase tracking-widest" href="#">Instagram</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 md:px-20 flex flex-col md:flex-row justify-between items-start md:items-end bg-surface-container-low border-t border-outline-variant/20">
+<div class="flex flex-col gap-10 w-full md:w-auto mb-16 md:mb-0">
+<span class="text-4xl font-serif italic text-on-surface">OneRishi</span>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Journal</a>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Contact</a>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Archive</a>
+<a class="text-secondary font-label text-[10px] uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="text-left md:text-right">
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary mb-2">
+                Designed for the Discerning Mind.
+            </p>
+<p class="font-label text-[10px] uppercase tracking-[0.2em] text-outline">
+                © 2024 OneRishi. Precision Technical Editorial.
+            </p>
+</div>
+</footer>
+</body></html>

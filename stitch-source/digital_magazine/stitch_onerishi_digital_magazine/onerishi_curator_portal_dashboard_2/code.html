@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0edec",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-container": "#fff8f4",
+                        "surface-tint": "#00658b",
+                        "on-surface": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#007ba7",
+                        "tertiary": "#834d00",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-primary-fixed-variant": "#004c69",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-container": "#f5faff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#c4e7ff",
+                        "secondary-fixed": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary": "#5f5e5e",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary": "#006184",
+                        "on-surface-variant": "#3f484e",
+                        "background": "#fcf9f8",
+                        "tertiary-container": "#a36410",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-secondary-container": "#636262",
+                        "on-primary-fixed": "#001e2c",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ebe7e7",
+                        "outline-variant": "#bfc8cf",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdcbc",
+                        "secondary-container": "#e2dfde",
+                        "inverse-primary": "#7cd0ff",
+                        "surface-dim": "#dcd9d9",
+                        "outline": "#6f787f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant/20 flex flex-col p-6 space-y-8 z-50">
+<div class="space-y-1">
+<h1 class="font-headline text-2xl font-bold tracking-tighter text-on-surface dark:text-on-background">ONERISHI</h1>
+<p class="font-label uppercase text-[10px] tracking-widest text-secondary">TECHNICAL CURATOR</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label text-xs tracking-widest hover:bg-primary-container transition-colors duration-150 active:scale-95">
+            NEW EDITION
+        </button>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center space-x-3 p-3 text-primary dark:text-primary-fixed-dim font-bold border-l-2 border-primary bg-surface-container-high/50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label uppercase text-xs tracking-widest">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label uppercase text-xs tracking-widest">Editions</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+<span class="font-label uppercase text-xs tracking-widest">Projects</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="font-label uppercase text-xs tracking-widest">Labs</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label uppercase text-xs tracking-widest">Analytics</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label uppercase text-xs tracking-widest">Settings</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/10 flex items-center space-x-3">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+<img alt="Editorial Curator Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a technical curator in a minimalist architectural setting. The lighting is crisp and cool, highlighting the clean lines of the environment and the subject's sharp, modern attire. The aesthetic is high-end editorial, with a monochromatic color scheme of whites and greys, reflecting a sophisticated tech-noir atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBizQ6MMScs8iiNeMY2AeGjP1jEwOcTURwSghV1TPNfSO4_9dZROdh00SWALq0uxd_w14WHlOeCnGTb54jJq8v8FyjeVsaqGWZjaxUyHC4J0co4yfnC2NLp67kPiUpBeeAsH53W_Cr2QUAh7WNlHEpjpKhObOH9NSelKQPs0FV__oiuQlrNQbKN4LOuTrThvXTQAD_8qR8YfxNoO3uTWDA599GnuPyrn7ilk0MSNYwt7qfgsohUbac2r-uNHJlFtEE7UeHu5-q2wM_q"/>
+</div>
+<div>
+<p class="font-label text-[10px] text-on-surface font-bold uppercase tracking-tighter leading-none">Rishi V.</p>
+<p class="font-label text-[8px] text-secondary uppercase tracking-widest">Curator Level III</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-72 min-h-screen">
+<!-- TopAppBar -->
+<header class="h-20 bg-surface dark:bg-background border-b border-outline-variant/20 flex items-center justify-between px-12 sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
+<div class="flex items-center space-x-8">
+<span class="font-headline text-xl font-medium tracking-tighter text-on-surface dark:text-on-background">ONERISHI PORTAL</span>
+<div class="relative w-64 group">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary opacity-50" data-icon="search">search</span>
+<input class="w-full pl-8 py-1 bg-transparent border-b border-outline-variant/20 focus:border-primary transition-all duration-300 outline-none font-label text-[10px] tracking-widest text-on-surface" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="contrast">contrast</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<section class="p-12 max-w-7xl mx-auto space-y-16">
+<!-- Hero Header -->
+<div class="space-y-2 border-l border-primary pl-8">
+<p class="font-label text-xs text-primary uppercase tracking-[0.3em]">System Overview // v4.0.2</p>
+<h2 class="font-headline text-5xl md:text-6xl font-light italic text-on-surface tracking-tight leading-tight">Curator's Overview</h2>
+</div>
+<!-- Metrics Bar (Data Ticker Style) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-outline-variant/20 border border-outline-variant/20">
+<div class="bg-surface p-6 flex flex-col space-y-2">
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest">Total Impressions</span>
+<span class="font-label text-2xl font-bold text-on-surface tracking-tighter">142.8K</span>
+<span class="font-label text-[10px] text-primary uppercase">+12.4% FROM PREV</span>
+</div>
+<div class="bg-surface p-6 flex flex-col space-y-2">
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest">Avg Reading Time</span>
+<span class="font-label text-2xl font-bold text-on-surface tracking-tighter">04:42</span>
+<span class="font-label text-[10px] text-secondary uppercase opacity-60">TARGET: 05:00</span>
+</div>
+<div class="bg-surface p-6 flex flex-col space-y-2">
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest">Active Projects</span>
+<span class="font-label text-2xl font-bold text-on-surface tracking-tighter">09</span>
+<span class="font-label text-[10px] text-primary uppercase">02 DEPLOYING</span>
+</div>
+<div class="bg-surface p-6 flex flex-col space-y-2">
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest">Engagement Rate</span>
+<span class="font-label text-2xl font-bold text-on-surface tracking-tighter">8.42%</span>
+<span class="font-label text-[10px] text-primary uppercase">+0.8% PEAKED</span>
+</div>
+</div>
+<!-- Bento Layout Content Area -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Recent Editions (Editorial List) -->
+<div class="col-span-12 lg:col-span-7 space-y-8">
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<h3 class="font-headline text-2xl italic tracking-tight">Recent Editions</h3>
+<a class="font-label text-[10px] uppercase tracking-widest text-primary border-b border-primary/20 hover:border-primary transition-all" href="#">View Archive</a>
+</div>
+<div class="space-y-6">
+<!-- Article 1 -->
+<div class="group relative flex items-start justify-between p-6 bg-surface-container-low hover:bg-surface-container-high transition-colors duration-300">
+<div class="space-y-3">
+<div class="flex items-center space-x-3">
+<span class="bg-primary/10 text-primary px-2 py-0.5 font-label text-[8px] tracking-widest uppercase">Draft</span>
+<span class="font-label text-[9px] text-secondary uppercase tracking-widest">Updated 2h ago</span>
+</div>
+<h4 class="font-headline text-xl font-medium group-hover:text-primary transition-colors">Why India Needs Young Entrepreneurs</h4>
+<p class="font-body text-sm text-secondary leading-relaxed max-w-md">An analysis of the socio-economic impact of Gen Z's shift towards startup culture in the subcontinent...</p>
+</div>
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="edit_note">edit_note</button>
+</div>
+<!-- Article 2 -->
+<div class="group relative flex items-start justify-between p-6 bg-surface-container-low hover:bg-surface-container-high transition-colors duration-300">
+<div class="space-y-3">
+<div class="flex items-center space-x-3">
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 font-label text-[8px] tracking-widest uppercase">In Review</span>
+<span class="font-label text-[9px] text-secondary uppercase tracking-widest">Updated 1d ago</span>
+</div>
+<h4 class="font-headline text-xl font-medium group-hover:text-primary transition-colors">Problems in the Indian Education System</h4>
+<p class="font-body text-sm text-secondary leading-relaxed max-w-md">Deconstructing the legacy of rote learning and the urgent necessity for modern technical integration...</p>
+</div>
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="visibility">visibility</button>
+</div>
+<!-- Article 3 -->
+<div class="group relative flex items-start justify-between p-6 border border-outline-variant/10 hover:border-outline-variant/40 transition-colors duration-300">
+<div class="space-y-3">
+<div class="flex items-center space-x-3">
+<span class="bg-primary/10 text-primary px-2 py-0.5 font-label text-[8px] tracking-widest uppercase">Scheduled</span>
+<span class="font-label text-[9px] text-secondary uppercase tracking-widest">Publishing Oct 24</span>
+</div>
+<h4 class="font-headline text-xl font-medium group-hover:text-primary transition-colors">The Digital Curators Manifesto</h4>
+<p class="font-body text-sm text-secondary leading-relaxed max-w-md">Defining the new role of the editor in an era of automated content generation and AI saturation...</p>
+</div>
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="calendar_month">calendar_month</button>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Widgets -->
+<div class="col-span-12 lg:col-span-5 space-y-8">
+<!-- Project Pulse -->
+<div class="bg-on-surface text-surface p-8 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="font-label uppercase text-xs tracking-widest">Project Pulse</h3>
+<span class="material-symbols-outlined text-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-label text-[10px] tracking-widest uppercase text-secondary-fixed-dim">
+<span>Studio Ravya</span>
+<span>84%</span>
+</div>
+<div class="h-0.5 w-full bg-white/10 overflow-hidden">
+<div class="h-full bg-primary w-[84%]"></div>
+</div>
+<p class="font-label text-[8px] text-secondary-fixed-dim/60 italic">UI REFINEMENT IN PROGRESS</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label text-[10px] tracking-widest uppercase text-secondary-fixed-dim">
+<span>Global Galactic Media</span>
+<span>32%</span>
+</div>
+<div class="h-0.5 w-full bg-white/10 overflow-hidden">
+<div class="h-full bg-primary w-[32%]"></div>
+</div>
+<p class="font-label text-[8px] text-secondary-fixed-dim/60 italic">BACKEND INFRASTRUCTURE MIGRATION</p>
+</div>
+</div>
+</div>
+<!-- Labs Widget -->
+<div class="border border-outline-variant/30 p-8 space-y-6">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="science">science</span>
+<h3 class="font-headline text-xl tracking-tight">Labs &amp; Experiments</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center group cursor-pointer">
+<div class="w-12 h-12 bg-surface-container flex-shrink-0 flex items-center justify-center font-label text-xs">EX-1</div>
+<div class="ml-4 border-l border-outline-variant/20 pl-4 py-1">
+<h5 class="font-label text-[10px] font-bold uppercase tracking-widest group-hover:text-primary transition-colors">Neural Syntax Parser</h5>
+<p class="text-[9px] text-secondary uppercase tracking-tighter">Drafting Phase // Concept</p>
+</div>
+</div>
+<div class="flex items-center group cursor-pointer">
+<div class="w-12 h-12 bg-surface-container flex-shrink-0 flex items-center justify-center font-label text-xs">EX-2</div>
+<div class="ml-4 border-l border-outline-variant/20 pl-4 py-1">
+<h5 class="font-label text-[10px] font-bold uppercase tracking-widest group-hover:text-primary transition-colors">Curated Audio Engine</h5>
+<p class="text-[9px] text-secondary uppercase tracking-tighter">Active Testing // Beta</p>
+</div>
+</div>
+<div class="flex items-center group cursor-pointer">
+<div class="w-12 h-12 bg-surface-container flex-shrink-0 flex items-center justify-center font-label text-xs">EX-3</div>
+<div class="ml-4 border-l border-outline-variant/20 pl-4 py-1">
+<h5 class="font-label text-[10px] font-bold uppercase tracking-widest group-hover:text-primary transition-colors">Ethos Tokenization</h5>
+<p class="text-[9px] text-secondary uppercase tracking-tighter">Research Phase // Internal</p>
+</div>
+</div>
+</div>
+<button class="w-full border border-primary/20 py-3 font-label text-[9px] uppercase tracking-[0.2em] text-primary hover:bg-primary/5 transition-colors">
+                            ENTER LAB ENVIRONMENT
+                        </button>
+</div>
+</div>
+</div>
+<!-- Footer Ticker -->
+<footer class="mt-20 border-t border-outline-variant/20 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex items-center space-x-6 font-label text-[9px] text-secondary uppercase tracking-widest">
+<span>LAT: 28.6139° N</span>
+<span>LONG: 77.2090° E</span>
+<span class="text-primary">ENCRYPTION: AES-256</span>
+</div>
+<div class="font-label text-[9px] text-secondary uppercase tracking-widest">
+                        © 2024 ONERISHI TECHNICAL CURATION UNIT
+                    </div>
+</div>
+</footer>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CredibilityStrip from '../components/CredibilityStrip.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('writing');
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title="OneRishi — Marketing × Technology × Creativity"
+  description="I build, market and execute — bringing technology, creativity and communication together to turn ideas into real-world projects."
+>
+  <div class="relative w-full overflow-hidden">
+    
+    <!-- Subtle Architectural Background Grid -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.035] bg-[radial-gradient(#1B1B18_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+    <!-- Section 1: Hero Section (Editorial Layout) -->
+    <section class="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 lg:pt-14 pb-16">
+      
+      <!-- Monograph Index Tag -->
+      <div class="flex items-center justify-between gap-4 mb-8">
+        <div class="flex items-center gap-2">
+          <span class="font-sans text-[11px] font-semibold tracking-[0.16em] uppercase text-[#C1592B]">
+            Folio Edition № 04
+          </span>
+          <span class="w-8 h-[1px] bg-[#1B1B18]/20 inline-block"></span>
+          <span class="font-sans text-[11px] text-[#1F3A3D] tracking-widest uppercase">
+            2024 / 2025
+          </span>
+        </div>
+        <div class="hidden sm:flex items-center gap-1.5 text-[#1B1B18]/70 font-sans text-[11px] tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C1592B]"></span>
+          <span>Available for selective engagements</span>
+        </div>
+      </div>
+
+      <!-- Main Asymmetric Hero Stage -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Column: Editorial Headline & Actions (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col items-start space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-[#1F3A3D]/30 text-[#1F3A3D] font-sans text-[11px] font-medium tracking-wide">
+            <span class="material-symbols-outlined text-[14px]">terminal</span>
+            <span>Rushal S. • Marketing × Technology × Creativity</span>
+          </div>
+
+          <h1 class="font-serif text-[40px] sm:text-[50px] lg:text-[56px] text-[#1B1B18] tracking-tight leading-[1.12] text-balance font-normal">
+            I build, market and execute — bringing <span class="italic font-serif text-[#C1592B]">technology</span>, <span class="italic font-serif text-[#1F3A3D]">creativity</span> and communication together to turn ideas into real-world projects.
+          </h1>
+
+          <p class="font-sans text-[17px] text-[#1B1B18]/80 max-w-[580px] leading-relaxed">
+            Demand Generation Specialist, community builder, and independent maker based in India. Focused on high-leverage digital systems, high-agency teams, and literate product distribution.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a
+              href="/work"
+              class="group inline-flex items-center gap-2 px-6 py-2.5 bg-[#C1592B] text-white font-sans text-[13px] font-medium rounded-lg shadow-sm hover:opacity-90 transition-all duration-200 active:translate-y-px"
+            >
+              <span>See my work</span>
+              <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            </a>
+            <a
+              href="/writing"
+              class="inline-flex items-center gap-2 px-6 py-2.5 bg-transparent text-[#1B1B18] font-sans text-[13px] font-medium rounded-lg border border-[#1B1B18]/20 hover:border-[#1B1B18] hover:bg-white/40 transition-all duration-200"
+            >
+              <span class="material-symbols-outlined text-[16px] text-[#1F3A3D]">menu_book</span>
+              <span>Read essays</span>
+            </a>
+          </div>
+
+          <!-- Micro Metas -->
+          <div class="pt-4 flex flex-wrap items-center gap-6 text-[#1B1B18]/70 font-sans text-[11px] tracking-wide border-t border-[#1B1B18]/10 w-full max-w-[520px]">
+            <span class="flex items-center gap-1.5">
+              <span class="text-[#C1592B] font-medium">♦</span> Jaipur • Udaipur • Remote
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="text-[#1F3A3D] font-medium">♦</span> Python, React &amp; GTM Strategy
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Column: Tactile Framed Portrait Container (5 cols) -->
+        <div class="lg:col-span-5 relative flex flex-col items-center">
+          <div class="w-full max-w-[420px] bg-white/70 p-3 pb-6 rounded-lg border border-[#1B1B18]/15 shadow-editorial hover:shadow-editorial-hover transition-all duration-500 hover:-translate-y-1">
+            
+            <div class="relative w-full aspect-[4/5] bg-[#F7F4EF] overflow-hidden rounded-sm border border-[#1B1B18]/15 flex flex-col items-center justify-center p-4 text-center">
+              <img
+                src="/assets/images/rushal-portrait.jpg"
+                alt="Portrait placeholder for Rushal S. — Marketing × Technology × Creativity"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+
+            <!-- Monograph Marginalia under photo -->
+            <div class="mt-4 px-1 flex items-center justify-between text-[#1B1B18]/70 font-sans text-[11px]">
+              <span class="tracking-tight italic font-serif text-[20px] text-[#1B1B18]">Rushal S.</span>
+              <span class="uppercase tracking-widest text-[#1B1B18]/50">FIG. 01 — 2024</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Manifesto Paragraph (Print-Broadsheet Style) -->
+    <section class="relative w-full border-y border-[#1B1B18]/15 py-16 bg-[#F7F4EF]">
+      <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[720px] mx-auto text-center">
+          <div class="flex items-center justify-center gap-2 mb-6 text-[#C1592B] font-sans text-[11px] tracking-[0.2em] uppercase font-semibold">
+            <span class="h-[1px] w-6 bg-[#C1592B]"></span>
+            <span>The Operating Philosophy</span>
+            <span class="h-[1px] w-6 bg-[#C1592B]"></span>
+          </div>
+          
+          <blockquote class="font-serif text-[26px] sm:text-[32px] lg:text-[36px] text-[#1B1B18] leading-[1.35] tracking-tight relative font-normal">
+            “I’ve never believed in choosing between the analytical rigor of technology and the emotional resonance of storytelling. The most impactful projects happen where code, market understanding, and genuine community meet. That intersection is where I build.”
+          </blockquote>
+
+          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 text-[#1B1B18]/70 font-sans text-[12px]">
+            <span class="font-semibold text-[#1B1B18] tracking-wider uppercase">Foundational Doctrine</span>
+            <span class="hidden sm:inline text-[#1B1B18]/30">•</span>
+            <span class="italic text-[#1F3A3D]">Rushal S. on deliberate craftsmanship</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Credibility Strip (4 Distinct Markers) -->
+    <CredibilityStrip />
+
+    <!-- Section 4: Latest Writing (Warm Editorial Cards) -->
+    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20" id="writing">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-12 border-b border-[#1B1B18]/15 pb-4">
+        <div>
+          <span class="font-sans text-[11px] tracking-[0.16em] uppercase text-[#1F3A3D] font-semibold block mb-1">
+            Field Dispatches &amp; Notes
+          </span>
+          <h2 class="font-serif text-[34px] sm:text-[40px] text-[#1B1B18] tracking-tight font-normal">
+            Latest Writing
+          </h2>
+        </div>
+        <a
+          href="/writing"
+          class="inline-flex items-center gap-1 font-sans text-[13px] text-[#C1592B] hover:opacity-80 font-medium group transition-opacity"
+        >
+          <span>Read all writing</span>
+          <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">east</span>
+        </a>
+      </div>
+
+      <!-- 3 Post Preview Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        {latestPosts.map((post) => (
+          <PostCard
+            slug={post.slug}
+            title={post.data.title}
+            description={post.data.description}
+            category={post.data.category}
+            date={post.data.date}
+            readTime={post.data.readTime}
+            coverImage={post.data.coverImage}
+            coverImageAlt={post.data.coverImageAlt}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 5: Deliberate Colophon & Connection Callout -->
+    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="relative rounded-lg bg-white/70 p-8 lg:p-12 border border-[#1B1B18]/15 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-2 max-w-[620px]">
+          <span class="font-sans text-[11px] uppercase tracking-widest text-[#C1592B] font-semibold">
+            Dialogue &amp; Ventures
+          </span>
+          <h3 class="font-serif text-[28px] text-[#1B1B18] leading-tight font-normal">
+            Have an ambitious narrative or technical challenge?
+          </h3>
+          <p class="font-sans text-[15px] text-[#1B1B18]/80 leading-relaxed">
+            I partner with forward-thinking founders, creators, and engineering teams looking for thoughtful GTM strategy and precise execution.
+          </p>
+        </div>
+        <div class="shrink-0 flex flex-wrap items-center gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-6 py-2.5 bg-[#C1592B] text-white font-sans text-[13px] font-medium rounded-lg shadow-sm hover:opacity-90 transition-opacity"
+          >
+            Start a Conversation
+          </a>
+          <a
+            href="/about"
+            class="inline-flex items-center justify-center px-6 py-2.5 bg-transparent text-[#1B1B18] font-sans text-[13px] font-medium rounded-lg border border-[#1B1B18]/20 hover:border-[#1B1B18] transition-colors"
+          >
+            More About Rushal
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

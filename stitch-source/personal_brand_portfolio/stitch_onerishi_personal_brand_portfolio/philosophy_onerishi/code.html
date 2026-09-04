@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+:root {
+  --bg: #F7F4EF;
+  --ink: #1B1B18;
+  --accent: #C1592B;
+  --accent-2: #1F3A3D;
+}
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.font-fraunces {
+  font-family: 'Fraunces', serif;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"bg":"#F7F4EF","ink":"#1B1B18","accent":"#C1592B","accent-2":"#1F3A3D"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-sm":"0.75rem","space-xs":"0.5rem","gutter-mobile":"1rem","space-4xl":"6rem","gutter-desktop":"2rem","space-2xs":"0.25rem","space-md":"1rem","max-width-container":"1200px","space-3xl":"4.5rem","space-lg":"1.5rem","max-width-editorial":"720px","space-xl":"2rem","space-2xl":"3rem"},"fontFamily":{"display-xl":["Fraunces","serif"],"headline-sm":["Fraunces","serif"],"headline-md":["Fraunces","serif"],"label-md":["Inter","sans-serif"],"display-xl-mobile":["Fraunces","serif"],"body-lg":["Inter","sans-serif"],"headline-lg":["Fraunces","serif"],"label-sm":["Inter","sans-serif"],"body-sm":["Inter","sans-serif"],"body-md":["Inter","sans-serif"],"headline-lg-mobile":["Fraunces","serif"]},"fontSize":{"display-xl":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.04em","fontWeight":"500"}],"display-xl-mobile":["38px",{"lineHeight":"46px","letterSpacing":"-0.015em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"30px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.08em","fontWeight":"600"}],"body-sm":["14px",{"lineHeight":"22px","letterSpacing":"0.01em","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.01em","fontWeight":"400"}]}}}}</script></head><body class="bg-bg font-inter text-body-md text-ink antialiased"><header class="fixed top-0 w-full z-50 bg-bg border-b border-ink"><div class="h-20 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center shrink-0"><a class="font-fraunces text-headline-md text-ink tracking-tight flex items-baseline hover:opacity-90 transition-opacity" data-path="home" href="#"><span>OneRishi</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span></a></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-accent font-medium underline decoration-accent underline-offset-8"><a class="font-inter font-label-md text-label-md text-ink hover:text-accent transition-colors" data-path="home" href="#">Home</a><a class="font-inter font-label-md text-label-md text-ink hover:text-accent transition-colors" data-path="work" href="#">Work</a><a class="font-inter font-label-md text-label-md text-ink hover:text-accent transition-colors" data-path="writing" href="#">Writing</a><a class="font-inter font-label-md text-label-md text-ink hover:text-accent transition-colors" data-path="about" href="#">About</a><a class="font-inter font-label-md text-label-md text-ink hover:text-accent transition-colors" data-path="labs" href="#">Labs</a></nav><div class="flex items-center gap-space-md"><a class="inline-flex items-center justify-center bg-accent text-bg font-inter font-label-md text-label-md px-space-md py-space-xs rounded-xl hover:opacity-90 transition-opacity active:translate-y-px" data-path="contact" href="#">Say Hello</a><div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-bg text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-bg min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-2xl md:pt-space-3xl pb-space-4xl">
+<!-- Top Editorial Header & Masthead Marginalia -->
+<header class="w-full mb-space-3xl opacity-0 translate-y-6 transition-all duration-700 ease-out" data-reveal="">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg border-b border-ink">
+<div>
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
+<span class="font-inter font-label-sm text-label-sm text-accent-2 tracking-widest uppercase">Monograph • Vol. 04</span>
+</div>
+<h1 class="font-fraunces text-display-xl-mobile md:text-display-xl text-ink tracking-tight">Philosophy</h1>
+<p class="font-fraunces text-headline-sm text-ink italic mt-space-xs">Why I build the way I do.</p>
+</div>
+<div class="flex flex-col items-start md:items-end text-left md:text-right font-inter font-label-md text-label-md text-ink gap-1">
+<span class="text-ink font-semibold">Rushal S.</span>
+<span>onerishi.in / intentional-craft</span>
+<span class="font-inter font-label-sm text-label-sm text-accent-2">Reading time ∼ 6 minutes</span>
+</div>
+</div>
+</header>
+<!-- Asymmetric Editorial Grid (Main narrative + Side annotations) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl">
+<!-- Marginalia / Table of Contents / Sidebar anchor -->
+<aside class="hidden lg:block lg:col-span-3">
+<div class="sticky top-28 space-y-space-xl">
+<div class="space-y-space-xs">
+<span class="font-inter font-label-sm text-label-sm text-accent-2 uppercase tracking-widest block">Sections</span>
+<nav class="flex flex-col space-y-space-sm text-label-md font-inter font-label-md">
+<a class="text-ink hover:text-accent transition-colors flex items-center justify-between group" href="#myth-of-specialization">
+<span>01. The Myth</span>
+<span class="text-accent-2 group-hover:translate-x-1 transition-transform">→</span>
+</a>
+<a class="text-ink hover:text-accent transition-colors flex items-center justify-between group" href="#execution-over-theory">
+<span>02. Tangible Execution</span>
+<span class="text-accent-2 group-hover:translate-x-1 transition-transform">→</span>
+</a>
+<a class="text-ink hover:text-accent transition-colors flex items-center justify-between group" href="#youth-perspective">
+<span>03. Youth-Led Velocity</span>
+<span class="text-accent-2 group-hover:translate-x-1 transition-transform">→</span>
+</a>
+<a class="text-ink hover:text-accent transition-colors flex items-center justify-between group" href="#core-tenets">
+<span>04. Operating Tenets</span>
+<span class="text-accent-2 group-hover:translate-x-1 transition-transform">→</span>
+</a>
+</nav>
+</div>
+<!-- Marginalia Note Box -->
+<div class="p-space-md border border-ink bg-bg rounded-lg space-y-space-xs">
+<span class="font-inter font-label-sm text-label-sm text-accent uppercase tracking-wider block">Field Note</span>
+<p class="font-inter font-body-sm text-body-sm text-ink leading-relaxed">
+              True craft thrives when the builder refuses to partition their brain between distribution and delivery.
+            </p>
+</div>
+<!-- Decorative Typography Marker -->
+<div class="pt-space-md font-fraunces text-headline-sm text-ink opacity-40">
+            § Intentionality
+          </div>
+</div>
+</aside>
+<!-- Main Narrative Column -->
+<article class="lg:col-span-9 max-w-editorial space-y-space-3xl font-inter">
+<!-- Opening Proem / Drop-cap section -->
+<section class="opacity-0 translate-y-6 transition-all duration-700 ease-out" data-reveal="">
+<p class="font-inter font-body-lg text-body-lg text-ink leading-relaxed first-letter:font-fraunces first-letter:text-5xl first-letter:text-accent first-letter:float-left first-letter:mr-3 first-letter:mt-1">
+            Over the past decade, the software landscape engineered a comforting lie: that greatness is forged through hyperspecialized abstraction. Product managers write tickets about things they have never deployed; growth marketers buy ad clicks for systems they do not comprehend; designers sketch utopian canvases devoid of database realities.
+          </p>
+<p class="font-inter font-body-md text-body-md text-ink mt-space-md leading-relaxed">
+            I reject this segregation of labor. When you break the direct conduit between the machine's pulse, the narrative's soul, and the end-user's sensory experience, you produce sterile, forgettable software. OneRishi exists as a living workshop to prove that high-agency generalism is not an artifact of the past—it is the ultimate modern leverage.
+          </p>
+</section>
+<!-- Chapter 1: The Myth of Specialization -->
+<section class="scroll-mt-28 space-y-space-md opacity-0 translate-y-6 transition-all duration-700 ease-out" data-reveal="" id="myth-of-specialization">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-fraunces text-headline-sm text-accent">I.</span>
+<h2 class="font-fraunces text-headline-md text-ink">The Myth of Specialization</h2>
+</div>
+<div class="space-y-space-md font-inter font-body-md text-body-md text-ink leading-relaxed">
+<p>
+              Corporate software development loves assembly lines because assembly lines make people interchangeable. But transformative consumer artifacts—from the printing press to the personal computer—have always emerged from practitioners who traversed the whole stack of human curiosity.
+            </p>
+<p class="text-ink">
+              When an engineer deeply understands storytelling, their APIs don't just return payloads; they support real human journeys. When an editorial writer writes production TypeScript, their prose drops marketing jargon and speaks with crystalline precision. By inhabiting both technical architecture and editorial marketing, the feedback loop collapses from quarters into hours.
+            </p>
+</div>
+<!-- Inset Monograph Visual / Graphic Metric -->
+<div class="my-space-lg p-space-lg border border-ink bg-bg rounded-lg flex flex-col md:flex-row items-center gap-space-lg">
+<div class="w-full md:w-1/2 space-y-space-xs font-inter">
+<span class="font-inter font-label-sm text-label-sm text-accent-2 uppercase tracking-widest">Silo Tax vs Agency</span>
+<h4 class="font-fraunces text-headline-sm text-ink">Compressing the Loop</h4>
+<p class="font-inter font-body-sm text-body-sm text-ink">
+                Direct synthesis removes translation friction. No handoff decks, no lossy spec translations, no compromised intent.
+              </p>
+</div>
+<div class="w-full md:w-1/2 flex items-center justify-center p-space-sm border border-ink bg-bg rounded">
+<svg class="w-full h-auto text-accent" fill="none" viewbox="0 0 280 120">
+<!-- Linear Siloed Curve -->
+<path d="M20 95 C 70 95, 80 80, 130 80 C 180 80, 190 65, 260 65" stroke="#1B1B18" stroke-dasharray="4 4" stroke-opacity="0.35" stroke-width="2"></path>
+<!-- Unified Direct Curve -->
+<path d="M20 95 C 80 90, 140 30, 260 20" stroke="#C1592B" stroke-width="3"></path>
+<circle cx="20" cy="95" fill="#C1592B" r="4"></circle>
+<circle cx="260" cy="20" fill="#C1592B" r="4"></circle>
+<text fill="#1B1B18" font-family="Inter" font-size="9" x="25" y="110">Initiation</text>
+<text fill="#C1592B" font-family="Inter" font-size="9" font-weight="600" x="205" y="15">Synthesized Impact</text>
+<text fill="#1F3A3D" font-family="Inter" font-size="8" x="180" y="80">Segmented Silos</text>
+</svg>
+</div>
+</div>
+</section>
+<!-- Chapter 2: Execution Over Theory -->
+<section class="scroll-mt-28 space-y-space-md opacity-0 translate-y-6 transition-all duration-700 ease-out" data-reveal="" id="execution-over-theory">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-fraunces text-headline-sm text-accent">II.</span>
+<h2 class="font-fraunces text-headline-md text-ink">Execution Over Theory</h2>
+</div>
+<div class="space-y-space-md font-inter font-body-md text-body-md text-ink leading-relaxed">
+<p>
+              Strategy slides feel productive because they create the illusion of forward momentum without exposing the author to the terror of the blank editor or a failed production deploy. You cannot fail in a 40-page deck; you can only look thoughtful.
+            </p>
+<p class="text-ink">
+              I place my trust entirely in artifacts that breathe in production. Working code, published essays, real users hitting actual endpoints, physical reactions to written sentences. If an idea cannot be forged into a prototype within forty-eight hours, its theoretical elegance is suspect.
+            </p>
+<blockquote class="p-space-md pl-space-lg border-l-2 border-accent bg-bg rounded-lg font-fraunces text-headline-sm text-ink italic">
+              “The compiler does not care about your brand frameworks. It compiles, or it refuses. The user is similarly honest.”
+            </blockquote>
+</div>
+</section>
+<!-- Visual Intermission: Photographed Atmosphere -->
+<div class="w-full my-space-xl overflow-hidden rounded-lg border border-ink">
+<img class="w-full h-80 object-cover filter contrast-[1.03] transition-transform duration-700 hover:scale-[1.01]" data-alt="A warm, tactile close-up photograph of an open linen-bound journal resting next to an artisan mechanical keyboard and an analog fountain pen on a sunlit walnut desk. High dynamic range, soft directional morning light casting long gentle shadows, earth-toned terracotta and cream hues, conveying deep intellectual focus and deliberate artisanal craft." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfFFwRqQhdOPNVJsPFQ52bY98lgwuKT7-ERT7iSr9jvwBHyamuxok8Yr1cPxGO6J8dwq6b92fmnDg_hsp6lWJAC5CHHsLhNbKWkKFlLovDWM7oYL_FLYELBISm7Zw7bYt8zzVPzH3Lpm3zdSnZBt6O9KdyGQSbL1lG91wmO7Kp49LMW05S3dKNIPF0THaMpozrEDn6BmnnIhdSsJhKpz7xeW80yzTDiYiDifgyCEHgSs217Wlqpk9A"/>
+<div class="p-space-xs text-right bg-bg border-t border-ink font-inter">
+<span class="font-inter font-label-sm text-label-sm text-ink italic">Reflective workspace • Bengaluru × New Delhi</span>
+</div>
+</div>
+<!-- Chapter 3: The Value of Youth-Led Perspective -->
+<section class="scroll-mt-28 space-y-space-md opacity-0 translate-y-6 transition-all duration-700 ease-out" data-reveal="" id="youth-perspective">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-fraunces text-headline-sm text-accent">III.</span>
+<h2 class="font-fraunces text-headline-md text-ink">The Value of Youth-Led Perspective</h2>
+</div>
+<div class="space-y-space-md font-inter font-body-md text-body-md text-ink leading-relaxed">
+<p>
+              Incumbents constantly confuse pedigree with capability. They mistake institutional inertia for prudence. But the most vital currents in digital culture have never come from boardrooms reviewing quarterly retrospectives—they come from young builders building in public out of obsession, free from legacy debts.
+            </p>
+<p class="text-ink">
+              When you lack twenty years of “how things are done,” you retain the priceless luxury of asking obvious questions: <em>Why must software look like enterprise spreadsheets? Why are digital tools stripped of literary cadence? Why shouldn't a developer own their entire distribution pipeline?</em> That grassroots energy is the only force capable of keeping digital tools genuinely human.
+            </p>
+</div>
+</section>
+</article>
+</div>
+<!-- Monumental Pull Quote Section -->
+<section class="w-full my-space-3xl py-space-3xl px-space-md md:px-space-xl border border-ink bg-bg rounded-xl text-center relative overflow-hidden opacity-0 translate-y-6 transition-all duration-700 ease-out" data-reveal="">
+<div class="absolute -top-12 -left-8 text-ink select-none font-fraunces text-[140px] leading-none opacity-10">“</div>
+<div class="max-w-[860px] mx-auto relative z-10 space-y-space-lg">
+<span class="font-inter font-label-sm text-label-sm text-accent uppercase tracking-widest block">Axiom</span>
+<blockquote class="font-fraunces text-headline-lg-mobile md:text-headline-lg text-ink italic leading-snug">
+          “A great technical architecture with zero audience is a ghost town; a loud marketing campaign for an empty shell is a con. The only sustainable path is building both with equal conviction.”
+        </blockquote>
+<div class="flex items-center justify-center gap-space-xs text-ink font-inter font-label-md text-label-md">
+<span class="w-8 h-px bg-ink"></span>
+<span>Rushal S.</span>
+<span class="w-8 h-px bg-ink"></span>
+</div>
+</div>
+</section>
+<!-- Section 4: What I Believe (Core Tenets) -->
+<section class="max-w-[960px] mx-auto my-space-3xl opacity-0 translate-y-6 transition-all duration-700 ease-out font-inter" data-reveal="" id="core-tenets">
+<div class="text-center md:text-left mb-space-2xl">
+<span class="font-inter font-label-sm text-label-sm text-accent-2 uppercase tracking-widest block mb-space-xs">Core Tenets</span>
+<h2 class="font-fraunces text-headline-lg-mobile md:text-headline-lg text-ink">What I Believe</h2>
+<p class="font-inter font-body-md text-body-md text-ink mt-space-xs">Non-negotiable parameters for engineering systems, narratives, and community.</p>
+</div>
+<!-- Principles List (Editorial Vertical Rhythm, NOT generic boxes) -->
+<div class="space-y-space-2xl">
+<!-- Principle 01 -->
+<div class="group flex flex-col md:flex-row gap-space-md md:gap-space-xl items-start pb-space-xl border-b border-ink transition-colors">
+<span class="font-fraunces text-headline-lg text-accent shrink-0">01</span>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-headline-md text-ink group-hover:text-accent transition-colors">
+              Code is a medium of expression, not just a delivery mechanism.
+            </h3>
+<p class="font-inter font-body-md text-body-md text-ink leading-relaxed">
+              Software syntax carries aesthetic weight. Clean abstractions, thoughtful error boundaries, and elegant data models reflect the exact same intellectual discipline as precise sentence construction. It matters how it is shaped beneath the glass.
+            </p>
+</div>
+</div>
+<!-- Principle 02 -->
+<div class="group flex flex-col md:flex-row gap-space-md md:gap-space-xl items-start pb-space-xl border-b border-ink transition-colors">
+<span class="font-fraunces text-headline-lg text-accent shrink-0">02</span>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-headline-md text-ink group-hover:text-accent transition-colors">
+              Audience is earned through consistent utility and honesty, never trickery.
+            </h3>
+<p class="font-inter font-body-md text-body-md text-ink leading-relaxed">
+              Growth hacks, dark UX patterns, and manufactured urgency yield hollow metrics that vanish the moment an algorithm shifts. Durable patronage comes from delivering uncompromised value, writing lucid prose, and treating the reader's attention with sacred reverence.
+            </p>
+</div>
+</div>
+<!-- Principle 03 -->
+<div class="group flex flex-col md:flex-row gap-space-md md:gap-space-xl items-start pb-space-xl border-b border-ink transition-colors">
+<span class="font-fraunces text-headline-lg text-accent shrink-0">03</span>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-headline-md text-ink group-hover:text-accent transition-colors">
+              Small teams with shared vocabulary outpace siloed departments every time.
+            </h3>
+<p class="font-inter font-body-md text-body-md text-ink leading-relaxed">
+              When two or three builders share deep fluency in user experience, systems programming, and editorial framing, the coordination overhead drops to zero. A nimble squad operates at the speed of thought, out-shipping bloated bureaucracies tenfold.
+            </p>
+</div>
+</div>
+<!-- Principle 04 -->
+<div class="group flex flex-col md:flex-row gap-space-md md:gap-space-xl items-start pb-space-xl transition-colors">
+<span class="font-fraunces text-headline-lg text-accent shrink-0">04</span>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-headline-md text-ink group-hover:text-accent transition-colors">
+              Real-world feedback trumps theoretical perfection.
+            </h3>
+<p class="font-inter font-body-md text-body-md text-ink leading-relaxed">
+              Do not spend months polishing abstractions in the dark. Ship the deliberate v0.1 into the wild. Let reality bend the product. Ten true conversations with an active practitioner will correct more assumptions than a dozen design sprints.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Closing Callout & Editorial Navigation -->
+<section class="max-w-editorial mx-auto pt-space-2xl text-center space-y-space-lg opacity-0 translate-y-6 transition-all duration-700 ease-out font-inter" data-reveal="">
+<div class="inline-flex items-center justify-center p-3 rounded-full border border-ink bg-bg text-accent mb-space-2xs">
+<span class="material-symbols-outlined text-[24px]">auto_stories</span>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-fraunces text-headline-md text-ink">Curious how these ideas translate into practice?</h3>
+<p class="font-inter font-body-md text-body-md text-ink">
+          Philosophy without tangible output is mere posture. Examine the work and the journey behind it.
+        </p>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center gap-space-xs bg-accent text-bg font-inter font-label-md text-label-md px-space-lg py-space-sm rounded hover:opacity-90 transition-opacity" data-path="work" href="#">
+<span>Explore the Work</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-xs border border-ink bg-bg text-ink font-inter font-label-md text-label-md px-space-lg py-space-sm rounded hover:bg-ink hover:text-bg transition-colors" data-path="about" href="#">
+<span>Read more in About</span>
+<span class="material-symbols-outlined text-[16px]">person</span>
+</a>
+</div>
+</section>
+</div>
+<!-- Inline Scroll Observer Script for Editorial Motion -->
+<script>
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-6');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      document.querySelectorAll('[data-reveal]').forEach(el => {
+        observer.observe(el);
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-bg border-t border-ink mt-space-4xl font-inter"><div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl mb-space-3xl"><div class="md:col-span-5 flex flex-col justify-between space-y-space-md"><div class="space-y-space-xs"><div class="flex items-center"><span class="font-fraunces text-headline-md text-ink tracking-tight">OneRishi</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span></div><p class="font-inter font-body-sm text-body-sm text-ink max-w-[360px]">Rushal S. — Marketing × Technology × Creativity. Shaping literate, high-agency digital narratives and experimental tooling.</p></div><div class="flex items-center gap-space-sm pt-space-xs"><a class="font-inter font-label-sm text-label-sm text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://github.com" rel="noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px]">terminal</span><span>GitHub</span></a><span class="text-ink text-[12px]">•</span><a class="font-inter font-label-sm text-label-sm text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://linkedin.com" rel="noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px]">work</span><span>LinkedIn</span></a><span class="text-ink text-[12px]">•</span><a class="font-inter font-label-sm text-label-sm text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://youtube.com" rel="noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px]">play_circle</span><span>YouTube</span></a></div></div><div class="md:col-span-3 space-y-space-sm"><span class="font-inter font-label-sm text-label-sm text-accent-2 uppercase tracking-wider block">Navigation</span><ul class="space-y-space-xs"><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="home" href="#">Home</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="work" href="#">Work</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="writing" href="#">Writing</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="about" href="#">About</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="labs" href="#">Labs</a></li></ul></div><div class="md:col-span-4 space-y-space-sm"><span class="font-inter font-label-sm text-label-sm text-accent-2 uppercase tracking-wider block">Explore &amp; Connect</span><ul class="space-y-space-xs"><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="philosophy" href="#">Philosophy</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="impact" href="#">Impact</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="collaborate" href="#">Collaborate</a></li><li role="none"><a class="font-inter font-body-sm text-body-sm text-ink hover:text-accent transition-colors" data-path="contact" href="#">Contact</a></li></ul></div></div><div class="pt-space-lg border-t border-ink flex flex-col md:flex-row items-center justify-between gap-space-sm"><p class="font-inter font-body-sm text-body-sm text-ink">© 2024 Rushal S. All rights reserved.</p><p class="font-inter font-body-sm text-body-sm text-ink text-center md:text-right">OneRishi • onerishi.in • Crafting the deliberate web</p></div></div></footer></body></html>

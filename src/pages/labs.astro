@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Labs — Work in Progress & R&D Notebook"
+  description="Drafts, experiments, and active prototypes from Rushal S. — not everything here is finished."
+>
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    
+    <!-- Page Header -->
+    <header class="mb-14 pb-8 border-b border-[#1B1B18]/15 max-w-[720px]">
+      <div class="flex items-center gap-2 mb-2 text-[#1F3A3D]">
+        <span class="material-symbols-outlined text-[18px]">science</span>
+        <span class="font-sans text-[11px] font-semibold uppercase tracking-widest text-[#1F3A3D]">
+          Research • R&amp;D Notebook • Series 04
+        </span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pb-2">
+        <h1 class="font-serif text-[42px] sm:text-[52px] text-[#1B1B18] tracking-tight font-normal">
+          Labs
+        </h1>
+        <span class="font-mono text-[11px] text-[#1B1B18]/60 tracking-wider uppercase font-semibold">
+          Vol. 2024 — Indev
+        </span>
+      </div>
+
+      <p class="font-sans text-[17px] text-[#1B1B18]/80 pt-1 leading-relaxed">
+        Drafts, experiments, and things I’m currently building — not everything here is finished.
+      </p>
+
+      <div class="pt-4 flex items-center gap-4 text-xs font-sans text-[#1B1B18]/70">
+        <div class="flex items-center gap-1.5 text-[#1F3A3D]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#1F3A3D]"></span>
+          <span>Unpublished internal build notes</span>
+        </div>
+        <span class="text-[#1B1B18]/20">•</span>
+        <div class="flex items-center gap-1.5 text-[#1F3A3D]">
+          <span>2 active entries</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Labs Entries List -->
+    <section class="max-w-[720px] space-y-10 mb-16">
+      
+      <!-- Lab Entry 01 -->
+      <article class="group relative bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-200 ease-out hover:-translate-y-0.5">
+        <div class="flex flex-col gap-4">
+          
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded bg-[#1F3A3D]/10 text-[#1F3A3D] font-sans text-[11px] uppercase tracking-wider font-semibold">
+              In Progress
+            </span>
+            <div class="flex items-center gap-1.5 text-[#1B1B18]/60 font-sans text-xs">
+              <span class="material-symbols-outlined text-[15px] text-[#1F3A3D]">update</span>
+              <span>Ongoing · 2024 / 2025</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h2 class="font-serif text-[24px] sm:text-[28px] text-[#1B1B18] tracking-tight group-hover:text-[#C1592B] transition-colors font-normal">
+              Gazette Collective Digital Publishing Engine
+            </h2>
+            <p class="font-sans text-[14px] text-[#1B1B18]/75 leading-relaxed">
+              Custom publishing tools and digital editorial workflows built to support decentralized regional journalism, community broadsheet distribution, and youth newsroom archival without commercial algorithmic dependencies.
+            </p>
+          </div>
+
+          <!-- Fixed Stack & pkg metadata row (wrapping correctly on all screens) -->
+          <div class="bg-[#F7F4EF] p-4 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-[#1B1B18]/10">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-[#1B1B18]/80">
+              <span class="font-sans text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-wider font-mono mr-1">Stack:</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">Python</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">React</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">Ghost Webhooks</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">Git</span>
+            </div>
+            <div class="text-left sm:text-right shrink-0">
+              <span class="font-mono text-[11px] text-[#1B1B18]/60">pkg: editorial-core</span>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-between font-sans text-xs text-[#1B1B18]/70 border-t border-[#1B1B18]/10">
+            <span class="font-mono">LAB-084</span>
+            <span class="italic text-[#1F3A3D]">Internal newsroom deployment</span>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Lab Entry 02 -->
+      <article class="group relative bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-200 ease-out hover:-translate-y-0.5">
+        <div class="flex flex-col gap-4">
+          
+          <div class="flex items-center justify-between gap-3 flex-wrap">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded bg-[#C1592B]/15 text-[#C1592B] font-sans text-[11px] uppercase tracking-wider font-semibold">
+              Draft
+            </span>
+            <div class="flex items-center gap-1.5 text-[#1B1B18]/60 font-sans text-xs">
+              <span class="material-symbols-outlined text-[15px] text-[#1F3A3D]">calendar_today</span>
+              <span>2024</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h2 class="font-serif text-[24px] sm:text-[28px] text-[#1B1B18] tracking-tight group-hover:text-[#C1592B] transition-colors font-normal">
+              DevFest Operations Runbooks &amp; Event Infrastructure
+            </h2>
+            <p class="font-sans text-[14px] text-[#1B1B18]/75 leading-relaxed">
+              Modular coordination playbooks, stage-continuity scripts, and open logistical frameworks developed for large-scale multi-track developer conferences in Tier-2 ecosystems.
+            </p>
+          </div>
+
+          <!-- Fixed Stack & pkg metadata row (wrapping correctly on all screens) -->
+          <div class="bg-[#F7F4EF] p-4 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-[#1B1B18]/10">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-[#1B1B18]/80">
+              <span class="font-sans text-[11px] font-semibold text-[#1F3A3D] uppercase tracking-wider font-mono mr-1">Stack:</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">Linear</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">Notion Systems</span>
+              <span class="px-2 py-0.5 bg-white border border-[#1B1B18]/10 rounded">Runbook Schemas</span>
+            </div>
+            <div class="text-left sm:text-right shrink-0">
+              <span class="font-mono text-[11px] text-[#1B1B18]/60">spec: ops-v2.1</span>
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-between font-sans text-xs text-[#1B1B18]/70 border-t border-[#1B1B18]/10">
+            <span class="font-mono">LAB-081</span>
+            <span class="italic text-[#1F3A3D]">Staged post-mortem release</span>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Methodology & Disclosures Box -->
+      <div class="bg-[#F0EDE8] p-6 rounded-lg border border-[#E6E1D8] shadow-sm">
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-[#1F3A3D] text-[20px] shrink-0 mt-0.5">info</span>
+          <div class="space-y-1 font-sans">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-[#1F3A3D] block">
+              Methodology • Disclosures
+            </span>
+            <p class="text-xs text-[#1B1B18]/80 leading-relaxed">
+              Labs entries represent active tinkering and unverified hypotheses. Some will graduate to documented Work case studies; others will remain archived experiments. Code samples and prototype documentation are supplied without warranties of production readiness.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</BaseLayout>

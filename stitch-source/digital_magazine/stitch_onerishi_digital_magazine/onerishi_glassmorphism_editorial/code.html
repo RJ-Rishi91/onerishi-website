@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ONERISHI | Digital Curations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#f5faff",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-primary-fixed-variant": "#004c69",
+                    "surface-container-highest": "#e9e1dd",
+                    "primary-container": "#007ba7",
+                    "error": "#ba1a1a",
+                    "tertiary": "#834d00",
+                    "on-secondary-container": "#636564",
+                    "secondary-container": "#e2e2e2",
+                    "on-primary-fixed": "#001e2c",
+                    "tertiary-container": "#a36410",
+                    "surface-dim": "#e0d8d5",
+                    "on-background": "#1e1b19",
+                    "primary-fixed": "#c4e7ff",
+                    "outline": "#6f787f",
+                    "primary": "#006184",
+                    "on-tertiary-container": "#fff8f4",
+                    "tertiary-fixed-dim": "#ffb86c",
+                    "secondary-fixed-dim": "#c6c7c6",
+                    "background": "#0a0a0a",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-tertiary-fixed": "#2c1600",
+                    "primary-fixed-dim": "#7cd0ff",
+                    "surface-container-high": "#eee7e3",
+                    "on-tertiary-fixed-variant": "#683c00",
+                    "tertiary-fixed": "#ffdcbc",
+                    "secondary": "#5d5f5e",
+                    "outline-variant": "#bfc8cf",
+                    "on-surface": "#f7efeb",
+                    "on-error": "#ffffff",
+                    "surface-container": "#1c1c1c",
+                    "inverse-on-surface": "#1e1b19",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#00658b",
+                    "inverse-surface": "#f7efeb",
+                    "surface-variant": "#3f484e",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#e2e2e2",
+                    "surface-container-low": "#111111",
+                    "on-surface-variant": "#bfc8cf",
+                    "inverse-primary": "#7cd0ff",
+                    "surface-bright": "#222222",
+                    "surface": "#0a0a0a",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#000000"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Hanken Grotesk", "sans-serif"],
+                    "label": ["Hanken Grotesk", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        @layer base {
+            body { @apply font-body bg-background text-on-surface; }
+            .glass-panel {
+                @apply backdrop-blur-xl bg-surface/20 border border-outline-variant/10;
+                box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+            }
+            .glass-panel-heavy {
+                @apply backdrop-blur-2xl bg-surface/40 border border-outline-variant/20;
+            }
+            .technical-label {
+                @apply font-label text-[10px] uppercase tracking-[0.2em] font-bold;
+            }
+        }
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, rgba(0, 97, 132, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(131, 77, 0, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-white">
+<!-- TopNavBar (JSON mapping) -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-surface/80 dark:bg-surface/80 backdrop-blur-2xl border-b border-outline-variant/20 flex justify-between items-center px-12 h-20 w-full">
+<div class="font-headline text-2xl font-black tracking-tighter text-on-surface dark:text-on-surface">
+            ONERISHI
+        </div>
+<div class="hidden md:flex gap-12 items-center">
+<a class="font-label tracking-tighter uppercase text-primary dark:text-primary-fixed-dim border-b border-primary transition-all duration-300" href="#">ARCHIVE</a>
+<a class="font-label tracking-tighter uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all duration-300" href="#">CURATIONS</a>
+<a class="font-label tracking-tighter uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all duration-300" href="#">LAB</a>
+<a class="font-label tracking-tighter uppercase text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all duration-300" href="#">ABOUT</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary text-2xl hover:opacity-70 transition-all duration-300" data-icon="menu">menu</button>
+</div>
+</nav>
+<!-- SideNavBar (JSON mapping) - Right Aligned Fixed -->
+<aside class="fixed right-8 top-1/2 -translate-y-1/2 w-16 bg-surface/10 dark:bg-surface/10 backdrop-blur-xl border border-outline-variant/10 rounded-full flex flex-col items-center py-8 gap-12 shadow-[0_20px_50px_rgba(28,27,27,0.05)] z-40 hidden lg:flex">
+<div class="flex flex-col items-center gap-1 mb-4">
+<span class="technical-label opacity-40 -rotate-90 origin-center whitespace-nowrap mb-6">TECHNICAL_ED</span>
+</div>
+<nav class="flex flex-col gap-8">
+<button class="text-primary bg-primary/10 p-2 rounded-full hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</button>
+<button class="text-on-surface-variant/60 hover:text-primary p-2 transition-colors hover:scale-110">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+</button>
+<button class="text-on-surface-variant/60 hover:text-primary p-2 transition-colors hover:scale-110">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+</button>
+<button class="text-on-surface-variant/60 hover:text-primary p-2 transition-colors hover:scale-110">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+</button>
+</nav>
+</aside>
+<main class="relative mesh-gradient">
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCapxmtPjXYM3TUHxjOMnBcB6qUzJbPJUPM8EeL-wnBxVEXCZNKhrGDQ0B2hjCZoLpdaxFFVQjieaxkJO_igt9468MgRtiaoUZzdCVbx3X3wycEpmNRbhuIpRbnZMiCauO-fM2gmBGJqItj0-_FMFi1WD_2e7dbos2fU5Z5uoS7m8YrVll639HonW4i0aadN4IyW8VkV9WqUyharZvPo_zioHXsXe7XFI9-PrAiwTOmeIVu5K9F2cmcHfofQG1lf9qGVOr_0wO-JEVb')"></div>
+<div class="absolute inset-0 bg-black/40 backdrop-grayscale-[0.2]"></div>
+</div>
+<div class="relative z-10 w-full max-w-6xl px-8">
+<div class="glass-panel-heavy p-12 md:p-24 rounded-3xl max-w-4xl opacity-0 translate-y-8 animate-[fadeInUp_1s_ease-out_forwards]">
+<div class="editorial-tag mb-8 inline-block px-4 py-1.5 bg-primary/10 border border-primary/20 text-primary-fixed-dim font-bold text-xs tracking-widest uppercase">
+                        Digital Volume. 01 — 2024
+                    </div>
+<h1 class="font-headline text-5xl md:text-8xl font-black leading-none mb-8 tracking-tighter text-white">
+                        THE FUTURE <br/>IS <span class="italic font-light">REFRACTED.</span>
+</h1>
+<p class="font-body text-lg md:text-xl text-white/70 max-w-xl mb-12 leading-relaxed">
+                        Curating the nexus of high-technology, Indian entrepreneurial spirit, and the technical metadata of our emerging digital landscape.
+                    </p>
+<div class="flex gap-6">
+<button class="px-8 py-4 bg-primary text-white font-bold tracking-widest uppercase text-xs hover:bg-primary-container transition-all">
+                            Enter Archive
+                        </button>
+<button class="px-8 py-4 glass-panel text-white font-bold tracking-widest uppercase text-xs hover:bg-white/10 transition-all">
+                            About Editorial
+                        </button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+<a class="material-symbols-outlined text-white/50 text-4xl" data-icon="keyboard_double_arrow_down" href="#editorial-grid">keyboard_double_arrow_down</a>
+</div>
+</section>
+<!-- Editorial Grid Section -->
+<section class="relative py-32 px-margin-desktop" id="editorial-grid">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+<div>
+<span class="technical-label text-primary mb-4 block">CURATED_PROJECTS</span>
+<h2 class="font-headline text-4xl md:text-6xl font-bold tracking-tighter">TECHNICAL <br/>MANUSCRIPTS</h2>
+</div>
+<div class="max-w-sm text-right">
+<p class="font-body text-on-surface-variant leading-relaxed">
+                            A deep dive into the educational crisis, the youth-led revolution, and the machines defining our era.
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Article 1: Large Feature -->
+<div class="md:col-span-8 group relative">
+<div class="relative overflow-hidden rounded-3xl aspect-[16/9]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic, high-fidelity photo of a diverse group of young Indian tech entrepreneurs in a modern, glass-walled skyscraper office overlooking a neon-lit Bangalore skyline at dusk. The lighting is moody with cool cyan and deep orange accents, reflecting off glossy surfaces. The aesthetic is sharp, clean, and futuristic, mirroring the high-end editorial magazine style with deep focus and sophisticated color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANXuI2gla030llvuHMtTGa6mJrUoN60IliyosYZvGkRM9lRfxQa7aJruon2JL9e_LAhYx3ed4j6ijYHF-ZWGsGmo7iZPUvlhZcxthGmgRCkN9Zur8Ga76oAyVtIHSdX5_Y6Tz6GhGyIhZ8Eifko9g5yAysDhAdkhGfKOzMxBca5D2r6iGHbz2dYKA_PBLn-HjkUooN0ghd_PO8vVP1FmMl0vKmJr9ypRk2b0-p3dCf5pCudKwscMNtdNV-rlARKM7OLYbfSXZ8nbuw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+</div>
+<div class="absolute -bottom-8 -right-8 md:right-12 glass-panel p-10 max-w-md rounded-2xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-4">
+<span class="technical-label text-primary-fixed-dim">ECONOMY_V.24</span>
+<h3 class="font-headline text-3xl font-bold mt-4 mb-4 leading-tight">Why India Needs Young Entrepreneurs</h3>
+<p class="font-body text-sm text-on-surface-variant mb-6 line-clamp-2">
+                                Analyzing the tectonic shift in the Indian economic landscape as Gen-Z founders redefine value in a digital-first global market.
+                            </p>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest hover:gap-4 transition-all" href="#">
+                                Read Protocol <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Article 2: Vertical Secondary -->
+<div class="md:col-span-4 mt-20 md:mt-0 group relative z-10">
+<div class="relative overflow-hidden rounded-3xl h-[600px]">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLs9rvilmu9v3x0ek46Svsd0NvfFklfKGl66Q1PKgxLT2FmVrklizwO3h20xQaziNWDLinRgrN1ZIgqiI3WhWsR2uUPwwzXHSptqdhVsABA1DXkFj8CKr86BGpYL4YcNcUtOEv8s1-azJoEKvxPB9OYj_GU3fOy99BU0BJrXWGAtRNuh90OjQbMsBL-MSVs-CITxH3N0j0Bo_HPAeSO-9s5dlAUb_oamQRiYB0bFHZMvvzccal5iQsBc-aTR"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+</div>
+<div class="absolute top-12 -left-8 md:-left-12 glass-panel p-8 max-w-[280px] rounded-2xl shadow-2xl transition-transform duration-500 group-hover:translate-x-4">
+<span class="technical-label text-primary-fixed-dim">EDUCATION_PROTOCOL</span>
+<h3 class="font-headline text-2xl font-bold mt-4 mb-4 leading-tight">The Systemic Glitch in Indian Education</h3>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed">
+                                Deconstructing the obsolete frameworks of standardized testing in an era of generative AI and specialized skill-paths.
+                            </p>
+</div>
+</div>
+<!-- Article 3: Tech Focus -->
+<div class="md:col-span-5 mt-12 md:-mt-24 group relative">
+<div class="relative overflow-hidden rounded-3xl aspect-square">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLsy0wWZJwu0D5OVWBfxf6nWBUHjVY_8YdGnpmJCMEIL4d1YTapiX4klrl7TN3vAY6nx3vfiYmUbxEVGMDAkPDPeGXE3mZQl3L8u5Cq_WzfNMWnPQXw8ceS3QjgHMavnsIevS0rlx2mJGc2_ML3qDOSGxYITA1k6_PZI47_pZhdTlfY2wKIKPt5mLkhSzxm3M6TEInsqrwyAdJGV5fqWT0-ZigwEoaK4qXT2xuimst77HEble2yuGOX3yoyU"/>
+</div>
+<div class="glass-panel p-10 rounded-2xl mt-8 transition-all hover:bg-surface/30">
+<div class="flex justify-between items-start mb-6">
+<span class="technical-label text-primary-fixed-dim">MECHANICAL_DESIGN</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Engineering the Aesthetic</h3>
+<p class="font-body text-sm text-on-surface-variant">
+                                A technical breakdown of the cafe racer movement as a form of rebellion against mass-produced digital perfection.
+                            </p>
+</div>
+</div>
+<!-- Article 4: Lab Entry -->
+<div class="md:col-span-7 mt-12 group relative">
+<div class="glass-panel-heavy p-12 rounded-3xl h-full flex flex-col justify-between border-primary/20">
+<div>
+<span class="technical-label text-primary mb-4 block">LAB_REPORT_001</span>
+<h3 class="font-headline text-4xl font-black tracking-tighter leading-tight mb-8">
+                                    SYNTHETIC <br/>COGNITION &amp; <br/>INDIAN LINGUISTICS
+                                </h3>
+<div class="grid grid-cols-2 gap-8 mb-8">
+<div>
+<div class="text-[8px] font-bold text-on-surface-variant uppercase mb-2">Metadata Index</div>
+<div class="font-mono text-xs opacity-60">ID: CUR-099-X</div>
+<div class="font-mono text-xs opacity-60">Status: Research</div>
+</div>
+<div>
+<div class="text-[8px] font-bold text-on-surface-variant uppercase mb-2">Contribution</div>
+<div class="font-mono text-xs opacity-60">Rishi_K (Lead)</div>
+<div class="font-mono text-xs opacity-60">Open_Source</div>
+</div>
+</div>
+</div>
+<button class="w-full py-4 glass-panel border-primary/30 text-primary font-bold text-xs uppercase tracking-widest hover:bg-primary hover:text-white transition-all">
+                                Access Laboratory Data
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Stats Section -->
+<section class="py-24 bg-surface-container-low/50 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #6f787f 1px, transparent 0); background-size: 40px 40px;"></div>
+</div>
+<div class="max-w-7xl mx-auto px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
+<div>
+<div class="font-headline text-5xl font-black text-primary mb-2">12K+</div>
+<div class="technical-label">DATA_POINTS</div>
+</div>
+<div>
+<div class="font-headline text-5xl font-black text-primary mb-2">08</div>
+<div class="technical-label">CURATED_VOLUMES</div>
+</div>
+<div>
+<div class="font-headline text-5xl font-black text-primary mb-2">450+</div>
+<div class="technical-label">LAB_SESSIONS</div>
+</div>
+<div>
+<div class="font-headline text-5xl font-black text-primary mb-2">0.1s</div>
+<div class="technical-label">QUERY_LATENCY</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (JSON mapping) -->
+<footer class="w-full rounded-none bg-surface dark:bg-surface border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-12 py-24 w-full">
+<div class="flex flex-col gap-4 mb-12 md:mb-0">
+<div class="font-headline text-lg font-bold text-on-surface">ONERISHI</div>
+<div class="font-label text-xs tracking-widest uppercase text-secondary dark:text-on-secondary-fixed-variant">
+                © 2024 ONERISHI DIGITAL CURATIONS. ALL RIGHTS RESERVED.
+            </div>
+</div>
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="flex gap-8">
+<a class="font-label text-xs tracking-widest uppercase text-secondary dark:text-on-secondary-fixed-variant hover:text-primary underline decoration-primary/30 transition-opacity duration-200" href="#">PRIVACY_PROTOCOL</a>
+<a class="font-label text-xs tracking-widest uppercase text-secondary dark:text-on-secondary-fixed-variant hover:text-primary underline decoration-primary/30 transition-opacity duration-200" href="#">EDITORIAL_ETHICS</a>
+<a class="font-label text-xs tracking-widest uppercase text-secondary dark:text-on-secondary-fixed-variant hover:text-primary underline decoration-primary/30 transition-opacity duration-200" href="#">SYSTEM_STATUS</a>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-panel').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+    </script>
+<style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(2rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body></html>

@@ -1,0 +1,127 @@
+---
+interface Props {
+  activePath?: string;
+}
+
+const { activePath = '' } = Astro.props;
+
+const navItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Work', href: '/work' },
+  { name: 'Writing', href: '/writing' },
+  { name: 'About', href: '/about' },
+  { name: 'Labs', href: '/labs' },
+];
+
+function isActive(href: string) {
+  if (href === '/') return activePath === '/' || activePath === '';
+  return activePath.startsWith(href);
+}
+---
+
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-[#F7F4EF]/95 backdrop-blur-md border-b border-[#1B1B18]/10 transition-all duration-200">
+  <div class="h-20 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+    <!-- Brand Wordmark -->
+    <div class="flex items-center shrink-0">
+      <a 
+        href="/" 
+        class="font-serif text-[28px] text-[#1B1B18] tracking-tight flex items-baseline hover:opacity-90 transition-opacity"
+        aria-label="OneRishi Home"
+      >
+        <span>OneRishi</span>
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C1592B] ml-0.5"></span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Primary Navigation">
+      {navItems.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <a
+            href={item.href}
+            class={`font-sans text-[13px] tracking-wide transition-colors ${
+              active
+                ? 'text-[#C1592B] font-medium underline decoration-[#C1592B] underline-offset-8'
+                : 'text-[#1B1B18]/70 hover:text-[#1B1B18]'
+            }`}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.name}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center bg-[#C1592B] text-white font-sans text-[13px] font-medium px-4 py-2 rounded-lg hover:opacity-90 transition-opacity shadow-[0_2px_8px_rgba(193,89,43,0.25)] active:translate-y-px"
+      >
+        Say Hello
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-[#1B1B18]/80 hover:text-[#1B1B18] focus:outline-none focus:ring-2 focus:ring-[#C1592B] rounded-lg"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span class="material-symbols-outlined text-[24px]">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div 
+    id="mobile-drawer" 
+    class="md:hidden hidden fixed inset-x-0 top-20 bg-[#F7F4EF] border-b border-[#1B1B18]/15 shadow-xl transition-all duration-300 px-6 py-6"
+  >
+    <nav class="flex flex-col space-y-4" aria-label="Mobile Navigation">
+      {navItems.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <a
+            href={item.href}
+            class={`font-sans text-[15px] py-2 border-b border-[#1B1B18]/10 transition-colors ${
+              active
+                ? 'text-[#C1592B] font-semibold'
+                : 'text-[#1B1B18]/80 hover:text-[#C1592B]'
+            }`}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.name}
+          </a>
+        );
+      })}
+      <div class="pt-2">
+        <a
+          href="/contact"
+          class="w-full inline-flex items-center justify-center bg-[#C1592B] text-white font-sans text-[14px] font-medium py-2.5 rounded-lg"
+        >
+          Say Hello (Contact)
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-drawer');
+
+  if (btn && drawer) {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      drawer.classList.toggle('hidden');
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.textContent = isExpanded ? 'menu' : 'close';
+      }
+    });
+  }
+</script>

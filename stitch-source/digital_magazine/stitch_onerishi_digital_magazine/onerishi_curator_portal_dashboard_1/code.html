@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#bfc8cf",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-surface": "#1c1b1b",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "surface-container-low": "#f6f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#004c69",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#006184",
+                        "tertiary": "#834d00",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "secondary": "#5f5e5e",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#636262",
+                        "on-surface-variant": "#3f484e",
+                        "secondary-container": "#e2dfde",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-secondary-fixed-variant": "#474746",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "on-primary-fixed": "#001e2c",
+                        "on-error-container": "#93000a",
+                        "outline": "#6f787f",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#ffdcbc",
+                        "on-primary-container": "#f5faff",
+                        "primary-container": "#007ba7",
+                        "on-background": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "surface-container": "#f0edec",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#a36410",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ebe7e7",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#7cd0ff",
+                        "surface-tint": "#00658b",
+                        "surface": "#fcf9f8",
+                        "primary-fixed": "#c4e7ff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bfc8cf;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant/30 flex flex-col p-6 space-y-8 z-50">
+<div class="space-y-1">
+<h1 class="font-headline text-3xl font-bold tracking-tighter text-on-surface dark:text-on-background">ONERISHI</h1>
+<p class="font-label uppercase text-[10px] tracking-widest text-secondary font-medium">TECHNICAL CURATOR // ED.24</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label text-xs tracking-widest hover:bg-primary-container transition-all duration-300 active:scale-[0.98] shadow-sm">
+            NEW EDITION
+        </button>
+<nav class="flex-1 space-y-1 overflow-y-auto custom-scrollbar">
+<a class="flex items-center space-x-3 p-3 text-primary dark:text-primary-fixed-dim font-bold border-l-2 border-primary bg-primary/5 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label uppercase text-xs tracking-widest">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-70 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label uppercase text-xs tracking-widest">Editions</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-70 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+<span class="font-label uppercase text-xs tracking-widest">Projects</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-70 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="font-label uppercase text-xs tracking-widest">Labs</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-70 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label uppercase text-xs tracking-widest">Analytics</span>
+</a>
+<a class="flex items-center space-x-3 p-3 text-secondary dark:text-secondary-fixed opacity-70 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label uppercase text-xs tracking-widest">Settings</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center space-x-4">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center border border-outline-variant/30 overflow-hidden rounded-sm">
+<img alt="Editorial Curator Profile" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBizQ6MMScs8iiNeMY2AeGjP1jEwOcTURwSghV1TPNfSO4_9dZROdh00SWALq0uxd_w14WHlOeCnGTb54jJq8v8FyjeVsaqGWZjaxUyHC4J0co4yfnC2NLp67kPiUpBeeAsH53W_Cr2QUAh7WNlHEpjpKhObOH9NSelKQPs0FV__oiuQlrNQbKN4LOuTrThvXTQAD_8qR8YfxNoO3uTWDA599GnuPyrn7ilk0MSNYwt7qfgsohUbac2r-uNHJlFtEE7UeHu5-q2wM_q"/>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface font-bold uppercase tracking-tighter leading-none">Rishi V.</p>
+<p class="font-label text-[9px] text-secondary uppercase tracking-widest mt-1">Curator Level III</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-72 min-h-screen">
+<!-- TopAppBar -->
+<header class="h-20 bg-surface/95 dark:bg-background/95 border-b border-outline-variant/20 flex items-center justify-between px-12 sticky top-0 z-40 backdrop-blur-md">
+<div class="flex items-center space-x-12">
+<span class="font-headline text-xl font-semibold tracking-tighter text-on-surface dark:text-on-background">ONERISHI PORTAL</span>
+<div class="relative w-80 group">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-secondary opacity-40 group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full pl-9 py-2 bg-transparent border-b border-outline-variant/20 focus:border-primary transition-all duration-300 outline-none font-label text-[11px] tracking-widest text-on-surface placeholder-secondary/50 uppercase" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="contrast">contrast</span>
+</button>
+<button class="flex items-center space-x-2 pl-2 pr-4 py-1.5 bg-surface-container border border-outline-variant/10 rounded-full hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-secondary" data-icon="account_circle">account_circle</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest">Account</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<section class="p-12 max-w-[1440px] mx-auto space-y-16">
+<!-- Hero Header -->
+<div class="space-y-4 max-w-3xl">
+<div class="flex items-center space-x-3">
+<div class="h-px w-12 bg-primary"></div>
+<p class="font-label text-xs text-primary uppercase tracking-[0.4em] font-medium">System Overview // v4.0.2</p>
+</div>
+<h2 class="font-headline text-6xl md:text-7xl font-light italic text-on-surface tracking-tight leading-tight">Curator's Overview</h2>
+</div>
+<!-- Metrics Bar (Data Ticker Style) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-outline-variant/10 border border-outline-variant/20 rounded-sm overflow-hidden shadow-sm">
+<div class="bg-surface p-8 flex flex-col space-y-4 border-r border-outline-variant/5">
+<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] font-bold">Total Impressions</span>
+<div class="space-y-1">
+<span class="font-label text-4xl font-bold text-on-surface tracking-tighter">142.8K</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label text-[10px] text-primary uppercase font-bold tracking-widest">+12.4%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface p-8 flex flex-col space-y-4 border-r border-outline-variant/5">
+<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] font-bold">Avg Reading Time</span>
+<div class="space-y-1">
+<span class="font-label text-4xl font-bold text-on-surface tracking-tighter">04:42</span>
+<p class="font-label text-[10px] text-secondary uppercase tracking-widest opacity-60">TARGET: 05:00 MIN</p>
+</div>
+</div>
+<div class="bg-surface p-8 flex flex-col space-y-4 border-r border-outline-variant/5">
+<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] font-bold">Active Projects</span>
+<div class="space-y-1">
+<span class="font-label text-4xl font-bold text-on-surface tracking-tighter">09</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
+<span class="font-label text-[10px] text-primary uppercase font-bold tracking-widest">02 DEPLOYING</span>
+</div>
+</div>
+</div>
+<div class="bg-surface p-8 flex flex-col space-y-4">
+<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] font-bold">Engagement Rate</span>
+<div class="space-y-1">
+<span class="font-label text-4xl font-bold text-on-surface tracking-tighter">8.42%</span>
+<span class="font-label text-[10px] text-primary uppercase font-bold tracking-widest">+0.8% PEAKED</span>
+</div>
+</div>
+</div>
+<!-- Bento Layout Content Area -->
+<div class="grid grid-cols-12 gap-10">
+<!-- Recent Editions (Editorial List) -->
+<div class="col-span-12 lg:col-span-8 space-y-10">
+<div class="flex items-end justify-between border-b border-outline-variant/20 pb-6">
+<div class="space-y-1">
+<h3 class="font-headline text-3xl italic tracking-tight">Recent Editions</h3>
+<p class="font-label text-[10px] text-secondary uppercase tracking-[0.2em]">Latest Curated Technical Narrative</p>
+</div>
+<a class="font-label text-[10px] uppercase tracking-[0.3em] text-primary border-b border-primary/30 hover:border-primary transition-all pb-0.5 font-bold" href="#">View Archive</a>
+</div>
+<div class="space-y-6">
+<!-- Article 1 -->
+<div class="group relative flex items-start justify-between p-8 bg-surface-container-low/40 hover:bg-surface-container-high transition-all duration-500 border border-transparent hover:border-outline-variant/10">
+<div class="space-y-5 flex-1 pr-12">
+<div class="flex items-center space-x-4">
+<span class="bg-primary text-on-primary px-3 py-1 font-label text-[9px] tracking-widest uppercase font-bold">Draft</span>
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest font-medium border-l border-outline-variant/30 pl-4">Updated 2h ago</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-headline text-2xl font-medium group-hover:text-primary transition-colors duration-300">Why India Needs Young Entrepreneurs</h4>
+<p class="font-body text-base text-secondary leading-relaxed max-w-2xl">An analysis of the socio-economic impact of Gen Z's shift towards startup culture in the subcontinent, exploring how hyper-local innovation is reshaping global markets.</p>
+</div>
+</div>
+<div class="flex flex-col items-end space-y-4">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/20 text-outline group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
+<span class="material-symbols-outlined text-lg" data-icon="edit_note">edit_note</span>
+</button>
+<span class="font-label text-[9px] text-secondary/40 uppercase tracking-widest">ID: ED-902</span>
+</div>
+</div>
+<!-- Article 2 -->
+<div class="group relative flex items-start justify-between p-8 bg-surface-container-low/40 hover:bg-surface-container-high transition-all duration-500 border border-transparent hover:border-outline-variant/10">
+<div class="space-y-5 flex-1 pr-12">
+<div class="flex items-center space-x-4">
+<span class="bg-secondary text-on-secondary px-3 py-1 font-label text-[9px] tracking-widest uppercase font-bold">In Review</span>
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest font-medium border-l border-outline-variant/30 pl-4">Updated 1d ago</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-headline text-2xl font-medium group-hover:text-primary transition-colors duration-300">Problems in the Indian Education System</h4>
+<p class="font-body text-base text-secondary leading-relaxed max-w-2xl">Deconstructing the legacy of rote learning and the urgent necessity for modern technical integration in primary schooling frameworks.</p>
+</div>
+</div>
+<div class="flex flex-col items-end space-y-4">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/20 text-outline group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<span class="font-label text-[9px] text-secondary/40 uppercase tracking-widest">ID: ED-844</span>
+</div>
+</div>
+<!-- Article 3 -->
+<div class="group relative flex items-start justify-between p-8 border border-outline-variant/10 hover:border-outline-variant/40 hover:bg-surface-container-low/20 transition-all duration-500">
+<div class="space-y-5 flex-1 pr-12">
+<div class="flex items-center space-x-4">
+<span class="bg-primary/10 text-primary border border-primary/20 px-3 py-1 font-label text-[9px] tracking-widest uppercase font-bold">Scheduled</span>
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest font-medium border-l border-outline-variant/30 pl-4">Publishing Oct 24</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-headline text-2xl font-medium group-hover:text-primary transition-colors duration-300">The Digital Curators Manifesto</h4>
+<p class="font-body text-base text-secondary leading-relaxed max-w-2xl">Defining the new role of the editor in an era of automated content generation and AI saturation. A call for human-centric technical narrative.</p>
+</div>
+</div>
+<div class="flex flex-col items-end space-y-4">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/20 text-outline group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_month">calendar_month</span>
+</button>
+<span class="font-label text-[9px] text-secondary/40 uppercase tracking-widest">ID: ED-MANIFESTO</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Widgets -->
+<div class="col-span-12 lg:col-span-4 space-y-10">
+<!-- Project Pulse -->
+<div class="bg-on-surface text-surface p-10 space-y-8 relative overflow-hidden">
+<div class="absolute -right-10 -top-10 opacity-5">
+<span class="material-symbols-outlined text-[160px]" data-icon="bolt">bolt</span>
+</div>
+<div class="flex items-center justify-between border-b border-surface/10 pb-4">
+<h3 class="font-label uppercase text-xs tracking-[0.3em] font-bold">Project Pulse</h3>
+<span class="material-symbols-outlined text-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="space-y-8">
+<div class="space-y-3">
+<div class="flex justify-between items-end font-label tracking-widest uppercase text-secondary-fixed-dim">
+<span class="text-[10px] font-bold">Studio Ravya</span>
+<span class="text-sm font-bold text-primary">84%</span>
+</div>
+<div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84%] transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(0,123,167,0.5)]"></div>
+</div>
+<p class="font-label text-[9px] text-secondary-fixed-dim/50 italic uppercase tracking-wider">UI REFINEMENT IN PROGRESS</p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end font-label tracking-widest uppercase text-secondary-fixed-dim">
+<span class="text-[10px] font-bold">Global Galactic Media</span>
+<span class="text-sm font-bold text-primary">32%</span>
+</div>
+<div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[32%] transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(0,123,167,0.5)]"></div>
+</div>
+<p class="font-label text-[9px] text-secondary-fixed-dim/50 italic uppercase tracking-wider">BACKEND INFRASTRUCTURE MIGRATION</p>
+</div>
+</div>
+</div>
+<!-- Labs Widget -->
+<div class="bg-surface border border-outline-variant/30 p-10 space-y-8 shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="science">science</span>
+<h3 class="font-headline text-2xl tracking-tight italic">Labs</h3>
+</div>
+<span class="font-label text-[10px] text-secondary uppercase tracking-widest">v2.4 BETA</span>
+</div>
+<div class="space-y-2">
+<div class="group flex items-center p-4 hover:bg-surface-container transition-all cursor-pointer border border-transparent hover:border-outline-variant/20">
+<div class="w-14 h-14 bg-surface-container flex-shrink-0 flex items-center justify-center font-label text-xs font-bold text-secondary border border-outline-variant/10 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">EX-1</div>
+<div class="ml-5 space-y-1">
+<h5 class="font-label text-xs font-bold uppercase tracking-widest group-hover:text-primary transition-colors">Neural Syntax Parser</h5>
+<p class="text-[9px] text-secondary uppercase tracking-widest opacity-60 font-medium">Drafting Phase // Experimental</p>
+</div>
+</div>
+<div class="group flex items-center p-4 hover:bg-surface-container transition-all cursor-pointer border border-transparent hover:border-outline-variant/20">
+<div class="w-14 h-14 bg-surface-container flex-shrink-0 flex items-center justify-center font-label text-xs font-bold text-secondary border border-outline-variant/10 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">EX-2</div>
+<div class="ml-5 space-y-1">
+<h5 class="font-label text-xs font-bold uppercase tracking-widest group-hover:text-primary transition-colors">Curated Audio Engine</h5>
+<p class="text-[9px] text-primary uppercase tracking-widest font-bold">Active Testing // Beta // Live</p>
+</div>
+</div>
+<div class="group flex items-center p-4 hover:bg-surface-container transition-all cursor-pointer border border-transparent hover:border-outline-variant/20">
+<div class="w-14 h-14 bg-surface-container flex-shrink-0 flex items-center justify-center font-label text-xs font-bold text-secondary border border-outline-variant/10 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">EX-3</div>
+<div class="ml-5 space-y-1">
+<h5 class="font-label text-xs font-bold uppercase tracking-widest group-hover:text-primary transition-colors">Ethos Tokenization</h5>
+<p class="text-[9px] text-secondary uppercase tracking-widest opacity-60 font-medium">Research Phase // Internal</p>
+</div>
+</div>
+</div>
+<button class="w-full border border-primary/20 bg-primary/5 py-4 font-label text-[10px] font-bold uppercase tracking-[0.3em] text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 flex items-center justify-center space-x-2">
+<span>ENTER LAB ENVIRONMENT</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_right_alt">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Ticker -->
+<footer class="mt-20 border-t border-outline-variant/20 pt-10 pb-12">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="flex flex-wrap items-center gap-x-8 gap-y-4 font-label text-[10px] text-secondary uppercase tracking-[0.2em] font-medium">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+<span>LAT: 28.6139° N</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+<span>LONG: 77.2090° E</span>
+</div>
+<div class="flex items-center space-x-2 px-4 py-1 bg-surface-container border border-outline-variant/10">
+<span class="text-primary font-bold">ENCRYPTION: AES-256</span>
+</div>
+</div>
+<div class="font-label text-[10px] text-secondary/60 uppercase tracking-widest font-medium italic">
+                        © 2024 ONERISHI TECHNICAL CURATION UNIT // EST.2019
+                    </div>
+</div>
+</footer>
+</section>
+</main>
+</body></html>

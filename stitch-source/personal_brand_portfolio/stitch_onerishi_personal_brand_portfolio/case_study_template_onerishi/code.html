@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="en" style="width: 1280px; height: 6497px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg: #F7F4EF;
+      --ink: #1B1B18;
+      --accent: #C1592B;
+      --accent-2: #1F3A3D;
+    }
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg);
+        color: var(--ink);
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            bg: "var(--bg)",
+            ink: "var(--ink)",
+            accent: "var(--accent)",
+            "accent-2": "var(--accent-2)",
+          },
+          fontFamily: {
+            serif: ["Fraunces", "Georgia", "serif"],
+            sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+            headline: ["Fraunces", "Georgia", "serif"],
+            body: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "9999px"
+          },
+          spacing: {
+            "gutter-mobile": "1rem",
+            "gutter-desktop": "2rem",
+            "space-2xs": "0.25rem",
+            "space-xs": "0.5rem",
+            "space-sm": "0.75rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-2xl": "3rem",
+            "space-3xl": "4.5rem",
+            "space-4xl": "6rem",
+            "max-width-editorial": "720px",
+            "max-width-container": "1200px"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-bg font-sans text-[16px] leading-[26px] text-ink antialiased">
+<!-- Global Header -->
+<header class="fixed top-0 w-full z-50 bg-[#F7F4EF]/90 backdrop-blur-md border-b border-[#1B1B18]/10">
+<div class="h-20 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<div class="flex items-center shrink-0">
+<a class="font-headline text-[28px] leading-[36px] tracking-tight flex items-baseline hover:opacity-90 transition-opacity text-ink" data-path="home" href="#">
+<span>OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-space-lg">
+<a class="text-[13px] leading-[18px] tracking-[0.04em] font-medium text-ink/70 hover:text-ink transition-colors" data-path="home" href="#">Home</a>
+<a aria-current="page" class="transition-colors text-accent font-medium underline decoration-accent underline-offset-8 text-[13px] leading-[18px] tracking-[0.04em]" data-path="work" href="#">Work</a>
+<a class="text-[13px] leading-[18px] tracking-[0.04em] font-medium text-ink/70 hover:text-ink transition-colors" data-path="writing" href="#">Writing</a>
+<a class="text-[13px] leading-[18px] tracking-[0.04em] font-medium text-ink/70 hover:text-ink transition-colors" data-path="about" href="#">About</a>
+<a class="text-[13px] leading-[18px] tracking-[0.04em] font-medium text-ink/70 hover:text-ink transition-colors" data-path="labs" href="#">Labs</a>
+</nav>
+<div class="flex items-center gap-space-md">
+<a class="inline-flex items-center justify-center bg-accent text-[#F7F4EF] text-[13px] font-medium tracking-[0.04em] px-space-md py-space-xs rounded-xl hover:opacity-95 transition-all shadow-[0_2px_8px_rgba(193,89,43,0.2)] active:translate-y-px" data-path="contact" href="#">Say Hello</a>
+<div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[#F7F4EF] text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-20 bg-bg min-h-screen">
+<div class="flex flex-col w-full">
+<!-- Reading Progress Bar -->
+<div class="fixed top-20 left-0 h-[2px] bg-accent z-40 w-0 transition-all duration-150 ease-out" id="read-indicator"></div>
+<!-- Breadcrumb & Top Utility -->
+<div class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-lg pb-space-sm">
+<div class="flex items-center justify-between">
+<a class="inline-flex items-center gap-space-xs text-[13px] font-medium tracking-[0.04em] text-accent-2 hover:text-accent transition-colors group" data-path="work" href="#">
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+<span>Back to Work</span>
+</a>
+<div class="flex items-center gap-space-sm">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-widest">Case Folio No. 04</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-[#1B1B18]/30"></span>
+<span class="text-[11px] font-semibold text-ink/60">Archived 2024</span>
+</div>
+</div>
+</div>
+<!-- Main Editorial Header -->
+<header class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-md pb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end">
+<div class="lg:col-span-9 space-y-space-sm">
+<div class="inline-flex items-center gap-space-xs px-space-xs py-space-2xs bg-[#1F3A3D]/10 rounded text-accent-2 text-[11px] font-semibold tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-2"></span>
+<span>Event Management • Community Leadership • Operations</span>
+</div>
+<h1 class="font-headline text-[38px] md:text-[56px] leading-[44px] md:leading-[62px] text-ink tracking-tight text-balance">
+              Google DevFest Udaipur 2024: Scaling Community Tech Infrastructure
+            </h1>
+</div>
+<!-- Quick Index Indicator -->
+<div class="lg:col-span-3 lg:pl-space-md flex flex-col justify-end space-y-space-2xs">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-wider">Field Note</span>
+<p class="text-[14px] leading-[22px] text-ink/70 italic">
+              An operational post-mortem on high-stakes community orchestration, stage continuity, and human infrastructure.
+            </p>
+</div>
+</div>
+<!-- Meta Strip Matrix -->
+<div class="mt-space-xl pt-space-md pb-space-md px-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="space-y-space-2xs">
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Timeframe</span>
+<p class="text-[16px] leading-[26px] text-ink font-medium">Q3 – Q4 2024</p>
+</div>
+<div class="space-y-space-2xs">
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Role</span>
+<p class="text-[16px] leading-[26px] text-ink font-medium">Event Lead &amp; Operations</p>
+</div>
+<div class="space-y-space-2xs">
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Location</span>
+<p class="text-[16px] leading-[26px] text-ink font-medium">Udaipur, Rajasthan, IN</p>
+</div>
+<div class="space-y-space-2xs">
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Scale &amp; Reach</span>
+<p class="text-[16px] leading-[26px] text-ink font-medium">1,200+ Delegates • 18 Sessions</p>
+</div>
+</div>
+</header>
+<!-- Editorial Hero Image Block -->
+<section class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop mb-space-3xl">
+<div class="relative w-full rounded-xl overflow-hidden shadow-xl bg-[#1B1B18]/5 border border-[#1B1B18]/10">
+<div class="relative h-[340px] sm:h-[460px] md:h-[580px] w-full">
+<img class="w-full h-full object-cover" data-alt="Cinematic documentary-style wide capture of Google DevFest keynote hall. A confident speaker stands illuminated on a sleek wooden minimalist stage under soft amber and teal architectural spotlights. An engaged audience of tech developers sits attentively in graduated tiers, with silhouettes framing the foreground. Subtle warm tones, grain texture, editorial monograph photograph." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1BvqAeb2nz2AjFjfWLBF-lBXTGNquSR0AOpRXfO0lRx-30xGQf4nYvY3IudXoUFSAC4VkORinxJdfNs8BpaL99oyjUYJNJNDiYkFQuCPLDoWmuwyVqv1pr8RD81YV3zDxSbqI0RDQWAtCQcYu1CNgc9ZTJXQOVoY07fFjZn4AsLFFoeD8ybrenADCUB_sAchUHuvfjy9yip5TQLJkMgBnDw-6tOX5joRyMJHtCvLHsT2WnCbCWgcI">
+<div class="absolute inset-0 bg-gradient-to-t from-[#1B1B18]/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-space-md md:p-space-lg flex flex-col md:flex-row items-start md:items-end justify-between gap-space-xs text-[#F7F4EF]">
+<div class="space-y-space-2xs max-w-xl">
+<span class="text-[11px] font-semibold uppercase tracking-widest text-[#F7F4EF]/80">Main Stage Keynote</span>
+<p class="font-headline text-[20px] sm:text-[22px] leading-snug">09:15 AM — Opening the keynote track at the Mohanlal Sukhadia Auditorium.</p>
+</div>
+<span class="text-[11px] tracking-wider text-[#F7F4EF]/70 shrink-0">Photo: Documentation Crew</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Structured Editorial Narrative Layout -->
+<section class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Asymmetrical Left Rail: Sticky Sidebar Navigator & Metadata -->
+<aside class="hidden lg:block lg:col-span-3 space-y-space-xl">
+<div class="sticky top-28 space-y-space-lg">
+<div class="space-y-space-xs">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-widest">Chapters</span>
+<ul class="space-y-space-xs text-[14px] leading-[22px]">
+<li>
+<a class="flex items-center gap-space-xs text-ink hover:text-accent transition-colors py-space-2xs" href="#context">
+<span class="text-[11px] font-semibold text-ink/40">01</span>
+<span>Context &amp; Ambition</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-space-xs text-ink hover:text-accent transition-colors py-space-2xs" href="#approach">
+<span class="text-[11px] font-semibold text-ink/40">02</span>
+<span>Operational Architecture</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-space-xs text-ink hover:text-accent transition-colors py-space-2xs" href="#execution">
+<span class="text-[11px] font-semibold text-ink/40">03</span>
+<span>Execution In Situ</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-space-xs text-ink hover:text-accent transition-colors py-space-2xs" href="#impact">
+<span class="text-[11px] font-semibold text-ink/40">04</span>
+<span>Honest Outcomes</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-space-xs text-ink hover:text-accent transition-colors py-space-2xs" href="#retrospective">
+<span class="text-[11px] font-semibold text-ink/40">05</span>
+<span>Reflections</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Quick Data Card -->
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm space-y-space-sm">
+<div class="flex items-center gap-space-xs text-accent-2">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+<span class="text-[11px] font-semibold uppercase tracking-wider">Infrastructure Metric</span>
+</div>
+<div class="space-y-space-2xs">
+<span class="font-headline text-[32px] leading-tight text-accent font-bold">100%</span>
+<p class="text-[14px] leading-[22px] text-ink/70">Live streaming &amp; multi-track A/V uptime maintained over 9 consecutive hours.</p>
+</div>
+</div>
+<!-- Production Stack -->
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg space-y-space-xs shadow-sm">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-wider block">Operational Stack</span>
+<div class="flex flex-wrap gap-space-2xs pt-space-2xs">
+<span class="px-space-xs py-space-2xs bg-[#F7F4EF] text-ink text-[11px] font-medium border border-[#1B1B18]/10 rounded">Notion Runbooks</span>
+<span class="px-space-xs py-space-2xs bg-[#F7F4EF] text-ink text-[11px] font-medium border border-[#1B1B18]/10 rounded">Linear Sprints</span>
+<span class="px-space-xs py-space-2xs bg-[#F7F4EF] text-ink text-[11px] font-medium border border-[#1B1B18]/10 rounded">Figma Spatial</span>
+<span class="px-space-xs py-space-2xs bg-[#F7F4EF] text-ink text-[11px] font-medium border border-[#1B1B18]/10 rounded">OBS Broadcast</span>
+<span class="px-space-xs py-space-2xs bg-[#F7F4EF] text-ink text-[11px] font-medium border border-[#1B1B18]/10 rounded">Matrix Radios</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center-Right: Editorial Reading Body (max-width-editorial) -->
+<article class="lg:col-span-9 max-w-max-width-editorial space-y-space-3xl">
+<!-- Section 1: Context -->
+<section class="space-y-space-md scroll-mt-28" id="context">
+<div class="flex items-center gap-space-xs text-accent">
+<span class="text-[11px] uppercase tracking-widest font-semibold">01 — Context &amp; Challenge</span>
+</div>
+<h2 class="font-headline text-[30px] md:text-[38px] leading-[38px] md:leading-[46px] text-ink">The fragility of community scale</h2>
+<p class="text-[18px] leading-[30px] text-ink/80">
+                Developer conferences outside tier-one metropolitan hubs often struggle with a fundamental contradiction: an immense, energetic appetite for technical discourse paired with notoriously fragile operational backing. DevFest Udaipur 2024 set out to dismantle this disparity.
+              </p>
+<p class="text-[16px] leading-[26px] text-ink/75">
+                With delegates converging from across northern and western India, the mandate required orchestrating two parallel speaker auditoriums, eight high-throughput workshop sessions, a creator pavilion, and seamless accreditation for over 1,200 attendees. The margin for friction was paper-thin. In community production, poor stage transitions and badge queue bottlenecks quickly erode the intellectual credibility of an entire summit.
+              </p>
+<!-- Editorial Inset Callout -->
+<div class="p-space-lg bg-white border-l-4 border-accent rounded-r-lg shadow-sm my-space-lg">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-accent text-[28px] shrink-0">format_quote</span>
+<blockquote class="font-headline text-[22px] leading-[30px] text-ink italic">
+                    “A gathering of technologists should feel as reliable and intentionally architected as the software systems they build every day.”
+                  </blockquote>
+</div>
+</div>
+</section>
+<!-- Section 2: Approach -->
+<section class="space-y-space-md scroll-mt-28" id="approach">
+<div class="flex items-center gap-space-xs text-accent">
+<span class="text-[11px] uppercase tracking-widest font-semibold">02 — Approach</span>
+</div>
+<h2 class="font-headline text-[30px] md:text-[38px] leading-[38px] md:leading-[46px] text-ink">Treating human logistics like distributed compute</h2>
+<p class="text-[16px] leading-[26px] text-ink/75">
+                Rather than relying on ad-hoc volunteer heroism on show day, we engineered a modular squad delegation model. The event machinery was partitioned into autonomous operational clusters, each with single-threaded owners:
+              </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md my-space-md">
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm hover:border-accent/40 transition-colors">
+<div class="w-8 h-8 rounded bg-accent/15 flex items-center justify-center text-accent mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">podium</span>
+</div>
+<h3 class="font-headline text-[20px] leading-[28px] text-ink mb-space-2xs">Track Continuity Cell</h3>
+<p class="text-[14px] leading-[22px] text-ink/70">Dedicated green-room liaisons, presentation pre-flight verification on isolated hardware, and precise 3-minute stage turnaround buffers.</p>
+</div>
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm hover:border-accent/40 transition-colors">
+<div class="w-8 h-8 rounded bg-accent-2/15 flex items-center justify-center text-accent-2 mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<h3 class="font-headline text-[20px] leading-[28px] text-ink mb-space-2xs">Frictionless Ingress</h3>
+<p class="text-[14px] leading-[22px] text-ink/70">Decentralized QR-check-in lanes divided by registration tier, holding average badge dispensing time to under twelve seconds per human.</p>
+</div>
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm hover:border-accent/40 transition-colors">
+<div class="w-8 h-8 rounded bg-[#1B1B18]/10 flex items-center justify-center text-ink mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">wifi_tethering</span>
+</div>
+<h3 class="font-headline text-[20px] leading-[28px] text-ink mb-space-2xs">Deterministic Network</h3>
+<p class="text-[14px] leading-[22px] text-ink/70">Isolated fiber backhauls reserved strictly for speaker codelabs and streaming encoders, insulating production from attendee density.</p>
+</div>
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm hover:border-accent/40 transition-colors">
+<div class="w-8 h-8 rounded bg-accent/15 flex items-center justify-center text-accent mb-space-xs">
+<span class="material-symbols-outlined text-[18px]">crisis_alert</span>
+</div>
+<h3 class="font-headline text-[20px] leading-[28px] text-ink mb-space-2xs">Fault Recovery Matrix</h3>
+<p class="text-[14px] leading-[22px] text-ink/70">Documented playbooks for AV failovers, power cuts, speaker dropouts, and room-capacity overflow redistribution.</p>
+</div>
+</div>
+<!-- Process SVG Diagram -->
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm space-y-space-xs">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-wider block">Operational Timeline Flow</span>
+<div class="w-full overflow-x-auto py-space-xs">
+<svg class="w-full min-w-[560px] h-28 text-ink" fill="none" viewBox="0 0 560 110" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#1B1B18" stroke-dasharray="4 4" stroke-opacity="0.2" stroke-width="2" x1="40" x2="520" y1="55" y2="55"></line>
+<!-- Stage 1 -->
+<circle cx="60" cy="55" fill="#C1592B" r="14"></circle>
+<text fill="#F7F4EF" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="60" y="60">01</text>
+<text fill="#1B1B18" font-family="Inter" font-size="12" font-weight="500" text-anchor="middle" x="60" y="86">T-30 Days</text>
+<text fill="#1B1B18" fill-opacity="0.6" font-family="Inter" font-size="10" text-anchor="middle" x="60" y="100">Runbook Lock</text>
+<!-- Connecting Line Segment -->
+<line stroke="#C1592B" stroke-width="2" x1="74" x2="196" y1="55" y2="55"></line>
+<!-- Stage 2 -->
+<circle cx="210" cy="55" fill="#C1592B" r="14"></circle>
+<text fill="#F7F4EF" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="210" y="60">02</text>
+<text fill="#1B1B18" font-family="Inter" font-size="12" font-weight="500" text-anchor="middle" x="210" y="86">T-48 Hours</text>
+<text fill="#1B1B18" fill-opacity="0.6" font-family="Inter" font-size="10" text-anchor="middle" x="210" y="100">Tech Dress Dry-Run</text>
+<!-- Connecting Line Segment -->
+<line stroke="#C1592B" stroke-width="2" x1="224" x2="346" y1="55" y2="55"></line>
+<!-- Stage 3 -->
+<circle cx="360" cy="55" fill="#C1592B" r="14"></circle>
+<text fill="#F7F4EF" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="360" y="60">03</text>
+<text fill="#1B1B18" font-family="Inter" font-size="12" font-weight="500" text-anchor="middle" x="360" y="86">Live Summit</text>
+<text fill="#1B1B18" fill-opacity="0.6" font-family="Inter" font-size="10" text-anchor="middle" x="360" y="100">Squad Comms Loop</text>
+<!-- Connecting Line Segment -->
+<line stroke="#C1592B" stroke-width="2" x1="374" x2="486" y1="55" y2="55"></line>
+<!-- Stage 4 -->
+<circle cx="500" cy="55" fill="#1F3A3D" r="14"></circle>
+<text fill="#F7F4EF" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="500" y="60">04</text>
+<text fill="#1B1B18" font-family="Inter" font-size="12" font-weight="500" text-anchor="middle" x="500" y="86">T+24 Hours</text>
+<text fill="#1B1B18" fill-opacity="0.6" font-family="Inter" font-size="10" text-anchor="middle" x="500" y="100">Debrief &amp; Archive</text>
+</svg>
+</div>
+</div>
+</section>
+<!-- Section 3: Execution Highlights -->
+<section class="space-y-space-md scroll-mt-28" id="execution">
+<div class="flex items-center gap-space-xs text-accent">
+<span class="text-[11px] uppercase tracking-widest font-semibold">03 — Execution Highlights</span>
+</div>
+<h2 class="font-headline text-[30px] md:text-[38px] leading-[38px] md:leading-[46px] text-ink">Cadence under heat and noise</h2>
+<p class="text-[16px] leading-[26px] text-ink/75">
+                The live environment requires balancing human hospitality with technical rigor. A volunteer team of 38 university leads and local practitioners operated on two synchronized radio channels: one reserved solely for stage-critical signals and another for attendee facilitation and safety.
+              </p>
+<p class="text-[16px] leading-[26px] text-ink/75">
+                When our afternoon keynote speaker experienced flight diversions, the contingency schedule was triggered seamlessly. Rather than holding the hall hostage to awkward banter, a curated lightning demo track of regional open-source projects took the stage in under four minutes, preserving attendee momentum without missing a beat.
+              </p>
+<!-- Highlight Metric Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg space-y-space-2xs shadow-sm">
+<span class="font-headline text-[44px] leading-none text-accent block font-bold">18</span>
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Technical Sessions</span>
+<p class="text-[14px] leading-[22px] text-ink/70">Cloud, ML, Flutter, and Web Performance tracks executed on time.</p>
+</div>
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg space-y-space-2xs shadow-sm">
+<span class="font-headline text-[44px] leading-none text-accent block font-bold">38</span>
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Volunteer Cohort</span>
+<p class="text-[14px] leading-[22px] text-ink/70">Cross-functional student and professional squads synchronized.</p>
+</div>
+<div class="p-space-md bg-white border border-[#1B1B18]/10 rounded-lg space-y-space-2xs shadow-sm">
+<span class="font-headline text-[44px] leading-none text-accent block font-bold">0s</span>
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Unplanned Dead Air</span>
+<p class="text-[14px] leading-[22px] text-ink/70">Continuous audiovisual stream maintained throughout the event.</p>
+</div>
+</div>
+</section>
+<!-- Section 4: Real-World Impact -->
+<section class="space-y-space-md scroll-mt-28" id="impact">
+<div class="flex items-center gap-space-xs text-accent">
+<span class="text-[11px] uppercase tracking-widest font-semibold">04 — Real-World Impact</span>
+</div>
+<h2 class="font-headline text-[30px] md:text-[38px] leading-[38px] md:leading-[46px] text-ink">Honest, unembellished takeaways</h2>
+<p class="text-[16px] leading-[26px] text-ink/75">
+                In community spaces, success is rarely found in vanity social media metrics. It is grounded in whether engineers leave equipped with new ideas, whether students secure direct mentorship, and whether the production ran with dignity.
+              </p>
+<div class="space-y-space-sm pl-space-md border-l-2 border-accent">
+<div class="space-y-space-2xs">
+<h4 class="font-headline text-[22px] leading-[30px] text-ink">Regional Tech Benchmarking</h4>
+<p class="text-[14px] leading-[22px] text-ink/70">
+                    Demonstrated that high-caliber, multi-stage engineering summits can be produced locally in Tier-2 Indian cities with broadcast-grade standards without outsourcing the core management stack to expensive event agencies.
+                  </p>
+</div>
+<div class="space-y-space-2xs pt-space-xs">
+<h4 class="font-headline text-[22px] leading-[30px] text-ink">Human Leadership Pipeline</h4>
+<p class="text-[14px] leading-[22px] text-ink/70">
+                    Six volunteer squad leads went on to helm subsequent local hackathons and community roundtables, carrying the operational templates and documentation forward.
+                  </p>
+</div>
+</div>
+</section>
+</article>
+</div>
+</section>
+<!-- Editorial Photo Gallery Section -->
+<section class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop mt-space-3xl mb-space-3xl">
+<div class="space-y-space-sm mb-space-lg">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-widest block">Behind The Scenes</span>
+<h2 class="font-headline text-[28px] leading-[36px] text-ink">Documentary Frames from the Floor</h2>
+<p class="text-[14px] leading-[22px] text-ink/70 max-w-xl">
+            A visual record of backstage coordination, hands-on workshop breakout clusters, and team alignment.
+          </p>
+</div>
+<!-- 3-Photo Responsive Mosaic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- Photo 1: Workshop Session -->
+<figure class="md:col-span-7 bg-white border border-[#1B1B18]/10 rounded-lg p-space-xs shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+<div class="relative h-[280px] sm:h-[340px] w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Close documentary shot of a focused hands-on developer workshop room at DevFest Udaipur. Attendees with laptops coding side-by-side, mentor bending over to explain code logic on a screen. Soft daylight through high windows mixed with warm overhead indoor lamps, subtle depth of field, candid natural expression, editorial monograph photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe3CcToJJY03XTYEJ_X_-lXBvJkM_MlLThwN6kJ8hY7ZIIcu1gxa1y6uRU4iqmoc0pb1TrcbB59XLb_SGvDCzcbnGFlQmvC6MekWkcmMJXYYAyTylF7NzUdp0dMfeuwbRxyP9LcCTcbftdblBIoWXhuphO57-B-6BRxBnl6LXWpcCfg3iMGPmuaKCkhcO7Z6xGfq0SMytjyJ6NKLomUs9vUy5oGJnHQHAFIBUzIDkXBP0mmeqkEWtR">
+</div>
+<figcaption class="pt-space-xs pb-space-2xs px-space-2xs flex items-center justify-between text-[14px] text-ink/75">
+<span>Track B: Distributed Cloud Architecture Workshop</span>
+<span class="text-[11px] font-semibold text-accent-2">11:30 AM</span>
+</figcaption>
+</figure>
+<!-- Photo 2: Keynote Stage Angle -->
+<figure class="md:col-span-5 bg-white border border-[#1B1B18]/10 rounded-lg p-space-xs shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+<div class="relative h-[280px] sm:h-[340px] w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Medium shot from side-stage wings looking out past the podium into a dimly lit conference auditorium. The presenter is gesturing comfortably toward a vibrant screen, while in the immediate foreground, an audio mixing console with glowing amber fader lights sits sharp. Intimate, atmospheric behind-the-scenes perspective." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtyuJEKB4TQd4Zkxwx2zxQ0d0pxsAIXXip3INxIy6lpVgivuJm96UgpR7QvgiSrEv5GqHBouOYZD53Uy9MbGKA6WgdHyl5RR4g0knhly70yogSlxmcnOT2Vheks-DCxc4I458pU91wwGUWNQqEZYnT3A3Y8paC1oIJKW5JeEZwHoC__I2AY7Ck2Og3C_Be9TtM6dFURzsMXajt1xTNhQ8lVRFPaZ8vZH05Bl3Mvk4hCGeV7QbOPGbJ">
+</div>
+<figcaption class="pt-space-xs pb-space-2xs px-space-2xs flex items-center justify-between text-[14px] text-ink/75">
+<span>Stage Control &amp; A/V Sightlines</span>
+<span class="text-[11px] font-semibold text-accent-2">02:15 PM</span>
+</figcaption>
+</figure>
+<!-- Photo 3: Volunteer Team Debrief -->
+<figure class="md:col-span-12 bg-white border border-[#1B1B18]/10 rounded-lg p-space-xs shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
+<div class="relative h-[280px] sm:h-[380px] w-full rounded overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" data-alt="Wide documentary group portrait of thirty young volunteers and event organizers gathered on stage at the end of the conference. Warm smiles, tired but triumphant postures, holding clipboards, radio walkie-talkies, and commemorative lanyards under the soft warm theater lighting. Editorial portrait, quiet pride, warm cinematic grain." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgwIwneMQaA6s6glEkjKv4_UypLm9j-nxuhqE87ZqwPb_uZnsBQ7t6a5BMPCYFzKvf6gjuMi3eJbygApsov2ozajXMzw95ePUQg5P6y42RUhpLILzmciiuF7aG8SG3pt0VqkOvxadLO8ksZlbZmIO9M_bNM_2lCEbcbp0H8Ye0A-FwsRR7iTuqAd8h3mq7bVNImH9OyBcMIDoqrEO_CEVbn6xREcbgA4ZPRyiK-K9EbrHNJmrEQDhC">
+</div>
+<figcaption class="pt-space-xs pb-space-2xs px-space-2xs flex items-center justify-between text-[14px] text-ink/75">
+<span>Post-Show Operational Debrief — The Core Volunteer Crew</span>
+<span class="text-[11px] font-semibold text-accent-2">06:45 PM • Main Auditorium</span>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- Key Lessons Monograph Box -->
+<section class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop mb-space-3xl" id="retrospective">
+<div class="bg-white border border-[#1B1B18]/10 rounded-xl p-space-lg md:p-space-xl shadow-sm">
+<div class="max-w-max-width-editorial mx-auto space-y-space-md">
+<div class="flex items-center gap-space-xs text-accent-2">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="text-[11px] uppercase tracking-widest font-semibold">Field Retrospective</span>
+</div>
+<h3 class="font-headline text-[28px] leading-[36px] text-ink">Three Pragmatic Rules for Future Curators</h3>
+<ol class="space-y-space-md pt-space-xs text-[16px] leading-[26px] text-ink/75">
+<li class="flex items-start gap-space-sm">
+<span class="font-headline text-[22px] leading-[30px] text-accent font-bold shrink-0">1.</span>
+<div>
+<strong class="text-ink font-semibold">Over-index on physical staging cues.</strong>
+<p class="text-[14px] leading-[22px] mt-space-2xs text-ink/70">Attendees never remember 5 minutes saved on a speech, but they will instantly perceive when the stage lighting buzzes or when microphones feedback. Protect speaker comfort first.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="font-headline text-[22px] leading-[30px] text-accent font-bold shrink-0">2.</span>
+<div>
+<strong class="text-ink font-semibold">Documentation beats verbal instruction under pressure.</strong>
+<p class="text-[14px] leading-[22px] mt-space-2xs text-ink/70">When 600 people surge toward a cafeteria entrance simultaneously, radio banter breaks down. Printed physical cheat sheets at every station saved critical minutes.</p>
+</div>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="font-headline text-[22px] leading-[30px] text-accent font-bold shrink-0">3.</span>
+<div>
+<strong class="text-ink font-semibold">Value the volunteers' time as strictly as the sponsors'.</strong>
+<p class="text-[14px] leading-[22px] mt-space-2xs text-ink/70">Volunteers who are fed on schedule, rotated out of high-stress doorways every 90 minutes, and briefed clearly perform twice as reliably as burnt-out crews.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<!-- Project Pagination Footer Navigation -->
+<nav aria-label="Project Navigation" class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop mb-space-3xl">
+<div class="p-space-lg bg-white border border-[#1B1B18]/10 rounded-lg shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<!-- Previous Project -->
+<a class="w-full md:w-1/2 flex items-start gap-space-md group p-space-sm rounded-lg hover:bg-[#F7F4EF] transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px] text-accent-2 group-hover:-translate-x-1 group-hover:text-accent transition-all mt-1">cloud_upload</span>
+<div class="space-y-space-2xs">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-widest block">Previous Case</span>
+<span class="font-headline text-[22px] leading-[30px] text-ink group-hover:text-accent transition-colors block">
+                The Literary Kernel: Archival CMS
+              </span>
+<span class="text-[14px] text-ink/65 block">Editorial Architecture • 2023</span>
+</div>
+</a>
+<!-- Divider on desktop -->
+<div class="hidden md:block w-px h-16 bg-[#1B1B18]/10"></div>
+<!-- Next Project -->
+<a class="w-full md:w-1/2 flex items-start justify-end text-right gap-space-md group p-space-sm rounded-lg hover:bg-[#F7F4EF] transition-colors" href="#">
+<div class="space-y-space-2xs">
+<span class="text-[11px] font-semibold text-accent-2 uppercase tracking-widest block">Next Case</span>
+<span class="font-headline text-[22px] leading-[30px] text-ink group-hover:text-accent transition-colors block">
+                Gazette Collective: Brand &amp; Digital Suite
+              </span>
+<span class="text-[14px] text-ink/65 block">Brand Identity • Publishing Platform</span>
+</div>
+<span class="material-symbols-outlined text-[24px] text-accent-2 group-hover:translate-x-1 group-hover:text-accent transition-all mt-1">arrow_forward</span>
+</a>
+</div>
+</nav>
+<!-- Contextual Collaboration Callout CTA -->
+<section class="max-w-[1200px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop pb-space-2xl">
+<div class="bg-accent text-[#F7F4EF] rounded-xl p-space-xl md:p-space-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-xl relative overflow-hidden">
+<div class="space-y-space-xs max-w-xl z-10">
+<span class="text-[11px] font-semibold uppercase tracking-widest text-[#F7F4EF]/80">Need Direction or Execution?</span>
+<h2 class="font-headline text-[30px] md:text-[38px] leading-[38px] md:leading-[46px] text-balance">
+              Have an upcoming event or community initiative that cannot fail?
+            </h2>
+<p class="text-[16px] leading-[26px] text-[#F7F4EF]/90">
+              I advise organizations, conferences, and creator studios on high-agency operations, technical stages, and deliberate digital narratives.
+            </p>
+</div>
+<div class="shrink-0 flex flex-col sm:flex-row items-center gap-space-sm z-10 w-full md:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center bg-[#F7F4EF] text-ink hover:bg-white text-[13px] font-medium tracking-[0.04em] px-space-lg py-space-sm rounded-lg shadow-md hover:shadow-lg transition-all active:translate-y-px" data-path="contact" href="#">
+<span>Let’s Collaborate</span>
+<span class="material-symbols-outlined text-[18px] ml-1.5">arrow_outward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center bg-transparent text-[#F7F4EF] border border-[#F7F4EF]/40 hover:bg-[#F7F4EF]/10 text-[13px] font-medium tracking-[0.04em] px-space-lg py-space-sm rounded-lg transition-colors" data-path="work" href="#">
+<span>Explore All Folios</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Interactive Scroll Indicator Script -->
+<script>
+        (function () {
+          const bar = document.getElementById('read-indicator');
+          if (!bar) return;
+          window.addEventListener('scroll', () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            const current = window.scrollY;
+            const pct = total > 0 ? (current / total) * 100 : 0;
+            bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+          }, { passive: true });
+        })();
+      </script>
+</div>
+</main>
+<!-- Global Footer -->
+<footer class="w-full bg-[#F7F4EF] border-t border-[#1B1B18]/10 mt-space-4xl">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl mb-space-3xl">
+<div class="md:col-span-5 flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center">
+<span class="font-headline text-[28px] leading-[36px] text-ink tracking-tight">OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span>
+</div>
+<p class="text-[14px] leading-[22px] text-ink/70 max-w-[360px]">Rushal S. — Marketing × Technology × Creativity. Shaping literate, high-agency digital narratives and experimental tooling.</p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<a class="text-[11px] font-semibold text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://github.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>GitHub</span>
+</a>
+<span class="text-ink/30 text-[12px]">•</span>
+<a class="text-[11px] font-semibold text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://linkedin.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span>LinkedIn</span>
+</a>
+<span class="text-ink/30 text-[12px]">•</span>
+<a class="text-[11px] font-semibold text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://youtube.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span>YouTube</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-3 space-y-space-sm">
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Navigation</span>
+<ul class="space-y-space-xs">
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="home" href="#">Home</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="work" href="#">Work</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="writing" href="#">Writing</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="about" href="#">About</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="labs" href="#">Labs</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-space-sm">
+<span class="text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Explore &amp; Connect</span>
+<ul class="space-y-space-xs">
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="philosophy" href="#">Philosophy</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="impact" href="#">Impact</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="collaborate" href="#">Collaborate</a></li>
+<li role="none"><a class="text-[14px] text-ink hover:text-accent transition-colors" data-path="contact" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-space-lg border-t border-[#1B1B18]/10 flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<p class="text-[14px] text-ink/60">© 2024 Rushal S. All rights reserved.</p>
+<p class="text-[14px] text-ink/60 text-center md:text-right">OneRishi • onerishi.in • Crafting the deliberate web</p>
+</div>
+</div>
+</footer>
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ONERISHI PORTAL - Editions Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#bfc8cf",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-surface": "#1c1b1b",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "surface-container-low": "#f6f3f2",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#004c69",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "primary": "#006184",
+                        "tertiary": "#834d00",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "secondary": "#5f5e5e",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#636262",
+                        "on-secondary-fixed-variant": "#474746",
+                        "background": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "on-primary-fixed": "#001e2c",
+                        "on-error-container": "#93000a",
+                        "outline": "#6f787f",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#ffdcbc",
+                        "on-primary-container": "#f5faff",
+                        "primary-container": "#007ba7",
+                        "on-background": "#1c1b1b",
+                        "inverse-surface": "#313030",
+                        "surface-container": "#f0edec",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#a36410",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ebe7e7",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#7cd0ff",
+                        "surface-tint": "#00658b",
+                        "surface": "#fcf9f8",
+                        "primary-fixed": "#c4e7ff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #007ba7; }
+        .technical-grid {
+            background-image: radial-gradient(#bfc8cf 0.5px, transparent 0.5px);
+            background-size: 32px 32px;
+        }
+        .editorial-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 97, 132, 0.15);
+        }
+        .action-button:hover .material-symbols-outlined {
+            transform: translateX(2px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed h-screen w-72 left-0 top-0 bg-surface-container-low border-r border-outline-variant/30 flex flex-col p-8 space-y-12 z-50">
+<div class="flex flex-col space-y-2">
+<h1 class="font-headline text-3xl font-bold tracking-tighter text-on-surface">ONERISHI</h1>
+<p class="font-label uppercase text-[10px] tracking-[0.3em] text-primary font-bold">Technical Curator</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center gap-4 px-4 py-3.5 text-secondary hover:text-primary hover:bg-white transition-all duration-200 cursor-pointer group">
+<span class="material-symbols-outlined text-xl opacity-70 group-hover:opacity-100">dashboard</span>
+<span class="font-label uppercase text-[11px] tracking-[0.15em] font-medium">Dashboard</span>
+</div>
+<!-- Active State -->
+<div class="flex items-center gap-4 px-4 py-3.5 text-primary bg-white border-r-4 border-primary shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-xl">auto_stories</span>
+<span class="font-label uppercase text-[11px] tracking-[0.15em] font-bold">Editions</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3.5 text-secondary hover:text-primary hover:bg-white transition-all duration-200 cursor-pointer group">
+<span class="material-symbols-outlined text-xl opacity-70 group-hover:opacity-100">architecture</span>
+<span class="font-label uppercase text-[11px] tracking-[0.15em] font-medium">Projects</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3.5 text-secondary hover:text-primary hover:bg-white transition-all duration-200 cursor-pointer group">
+<span class="material-symbols-outlined text-xl opacity-70 group-hover:opacity-100">science</span>
+<span class="font-label uppercase text-[11px] tracking-[0.15em] font-medium">Labs</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3.5 text-secondary hover:text-primary hover:bg-white transition-all duration-200 cursor-pointer group">
+<span class="material-symbols-outlined text-xl opacity-70 group-hover:opacity-100">monitoring</span>
+<span class="font-label uppercase text-[11px] tracking-[0.15em] font-medium">Analytics</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3.5 text-secondary hover:text-primary hover:bg-white transition-all duration-200 cursor-pointer group">
+<span class="material-symbols-outlined text-xl opacity-70 group-hover:opacity-100">settings</span>
+<span class="font-label uppercase text-[11px] tracking-[0.15em] font-medium">Settings</span>
+</div>
+</nav>
+<button class="w-full bg-primary text-on-primary font-label text-[11px] tracking-[0.2em] py-4 font-bold hover:bg-primary-container transition-all hover:scale-[1.02] active:scale-95 shadow-md">
+        NEW EDITION
+    </button>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-0 h-20 ml-72 bg-white/80 backdrop-blur-md border-b border-outline-variant/30 flex items-center justify-between px-12 z-40">
+<div class="flex items-center gap-8">
+<h2 class="font-headline text-xl font-medium tracking-tight text-on-surface">EDITORIAL CONSOLE</h2>
+<div class="flex items-center bg-surface-container-low px-5 py-2.5 rounded-full border border-outline-variant/20 focus-within:border-primary/50 transition-all duration-300">
+<span class="material-symbols-outlined text-secondary text-lg mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-label text-[10px] tracking-widest uppercase w-80 placeholder:text-outline" placeholder="SCAN ARCHIVE..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">contrast</span>
+</button>
+</div>
+<div class="flex items-center gap-4 pl-6 border-l border-outline-variant/30 cursor-pointer group">
+<div class="text-right">
+<p class="font-label text-[10px] uppercase leading-none text-on-surface font-bold tracking-wider">Admin Curator</p>
+<p class="font-label text-[8px] uppercase leading-none text-primary mt-1.5 tracking-widest">Level 07 Access</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-3xl text-primary">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 mt-20 h-[calc(100vh-5rem)] flex flex-col bg-surface relative">
+<!-- Editorial Data-Ticker -->
+<div class="w-full h-8 bg-surface-container-lowest border-b border-outline-variant/10 flex items-center px-12 justify-between overflow-hidden">
+<div class="flex gap-10">
+<span class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                SYSTEM: <span class="text-on-surface font-bold">OPERATIONAL</span>
+</span>
+<span class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary">LATENCY: <span class="text-on-surface font-bold">14MS</span></span>
+<span class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary">ARCHIVE SIZE: <span class="text-on-surface font-bold">1,204</span></span>
+</div>
+<div class="font-label text-[9px] uppercase tracking-[0.2em] text-outline font-medium italic">
+            TOKYO_NODE // 35.6895° N, 139.6917° E
+        </div>
+</div>
+<div class="flex-1 flex overflow-hidden">
+<!-- Table Section -->
+<section class="flex-1 overflow-y-auto p-12 space-y-10 custom-scrollbar">
+<div class="flex justify-between items-end">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="h-px w-12 bg-primary"></span>
+<span class="font-label text-[11px] uppercase tracking-[0.4em] text-primary font-bold">Curated Inventory</span>
+</div>
+<h3 class="font-display text-6xl italic font-bold text-on-surface tracking-tight">Archived Editions</h3>
+</div>
+<div class="flex items-center gap-6 pb-2">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-outline font-bold">Filter By</span>
+<div class="flex bg-surface-container-low p-1 rounded-sm border border-outline-variant/20">
+<button class="px-5 py-2 bg-white shadow-sm font-label text-[10px] tracking-[0.15em] uppercase font-bold text-primary">All</button>
+<button class="px-5 py-2 font-label text-[10px] tracking-[0.15em] uppercase text-secondary hover:text-primary transition-colors">Essay</button>
+<button class="px-5 py-2 font-label text-[10px] tracking-[0.15em] uppercase text-secondary hover:text-primary transition-colors">Technical</button>
+<button class="px-5 py-2 font-label text-[10px] tracking-[0.15em] uppercase text-secondary hover:text-primary transition-colors">Logic</button>
+</div>
+</div>
+</div>
+<div class="w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b-2 border-on-surface">
+<th class="py-5 font-label text-[10px] uppercase tracking-[0.25em] text-on-surface font-bold">Title &amp; Identifier</th>
+<th class="py-5 font-label text-[10px] uppercase tracking-[0.25em] text-on-surface font-bold">Category</th>
+<th class="py-5 font-label text-[10px] uppercase tracking-[0.25em] text-on-surface font-bold">Health</th>
+<th class="py-5 font-label text-[10px] uppercase tracking-[0.25em] text-on-surface font-bold">Archive Date</th>
+<th class="py-5 font-label text-[10px] uppercase tracking-[0.25em] text-on-surface font-bold text-right">Admin</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm">
+<!-- Row 1: Active -->
+<tr class="group hover:bg-white transition-all cursor-pointer border-b border-outline-variant/10 relative">
+<td class="py-8 pr-4">
+<div class="flex flex-col gap-1.5">
+<span class="font-headline text-xl font-bold group-hover:text-primary transition-colors leading-tight">The Neural Cartographer: Mapping Artificial Intent</span>
+<div class="flex items-center gap-3">
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline px-2 py-0.5 border border-outline-variant/30">UUID: #NC-2024-001</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline">v2.4.0</span>
+</div>
+</div>
+</td>
+<td class="py-8 pr-4">
+<span class="px-4 py-1.5 bg-primary/5 text-primary border border-primary/20 font-label text-[9px] uppercase tracking-[0.2em] font-bold">Essay</span>
+</td>
+<td class="py-8 pr-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-[98%] h-full bg-green-500"></div>
+</div>
+<span class="font-label text-[9px] uppercase font-bold text-green-600">98%</span>
+</div>
+</td>
+<td class="py-8 pr-4 font-label text-[11px] tracking-wider text-secondary">24 OCT 2024</td>
+<td class="py-8 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-white transition-all cursor-pointer border-b border-outline-variant/10">
+<td class="py-8 pr-4">
+<div class="flex flex-col gap-1.5">
+<span class="font-headline text-xl font-bold group-hover:text-primary transition-colors leading-tight">Architecture of the Void: Minimalist Systems</span>
+<div class="flex items-center gap-3">
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline px-2 py-0.5 border border-outline-variant/30">UUID: #AV-2024-042</span>
+</div>
+</div>
+</td>
+<td class="py-8 pr-4">
+<span class="px-4 py-1.5 bg-secondary/5 text-secondary border border-secondary/20 font-label text-[9px] uppercase tracking-[0.2em] font-bold">Method</span>
+</td>
+<td class="py-8 pr-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-[64%] h-full bg-yellow-500"></div>
+</div>
+<span class="font-label text-[9px] uppercase font-bold text-yellow-600">64%</span>
+</div>
+</td>
+<td class="py-8 pr-4 font-label text-[11px] tracking-wider text-secondary">02 NOV 2024</td>
+<td class="py-8 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-white transition-all cursor-pointer border-b border-outline-variant/10">
+<td class="py-8 pr-4">
+<div class="flex flex-col gap-1.5">
+<span class="font-headline text-xl font-bold group-hover:text-primary transition-colors leading-tight">Rust vs. Zig: A Comparative Telemetry</span>
+<div class="flex items-center gap-3">
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline px-2 py-0.5 border border-outline-variant/30">UUID: #RZ-2024-098</span>
+</div>
+</div>
+</td>
+<td class="py-8 pr-4">
+<span class="px-4 py-1.5 bg-primary text-white font-label text-[9px] uppercase tracking-[0.2em] font-bold shadow-sm">Technical</span>
+</td>
+<td class="py-8 pr-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-[91%] h-full bg-green-500"></div>
+</div>
+<span class="font-label text-[9px] uppercase font-bold text-green-600">91%</span>
+</div>
+</td>
+<td class="py-8 pr-4 font-label text-[11px] tracking-wider text-secondary">15 NOV 2024</td>
+<td class="py-8 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">more_horiz</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/20">
+<span class="font-label text-[10px] uppercase text-outline font-medium">Displaying 1-3 of 1,204 results</span>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 hover:bg-white text-secondary"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-10 h-10 flex items-center justify-center border border-primary bg-primary text-white font-label text-[10px] font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 hover:bg-white text-secondary font-label text-[10px]">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 hover:bg-white text-secondary font-label text-[10px]">3</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 hover:bg-white text-secondary"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+</section>
+<!-- Preview Pane (Sidebar Right) -->
+<section class="w-[480px] bg-white border-l border-outline-variant/30 flex flex-col overflow-y-auto custom-scrollbar relative">
+<!-- Header for Preview -->
+<div class="p-8 border-b border-outline-variant/10 bg-surface-container-lowest/50 flex justify-between items-center">
+<span class="font-label text-[11px] uppercase tracking-[0.3em] text-primary font-bold">Contextual Preview</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center text-outline hover:text-primary"><span class="material-symbols-outlined text-xl">open_in_new</span></button>
+<button class="w-8 h-8 flex items-center justify-center text-outline hover:text-primary"><span class="material-symbols-outlined text-xl">close</span></button>
+</div>
+</div>
+<div class="p-10 space-y-12">
+<!-- Cover Image -->
+<div class="space-y-6">
+<div class="aspect-[16/10] bg-surface-container-low relative overflow-hidden group editorial-shadow">
+<img alt="Architectural concrete minimalism" class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0FRPN3T5xhqKPkBTcCCcNknm-6-HRCsG2BBV-c2oLiLVxVjad-RCbPZAv51PnMCXsR3zNDEPYhF6wp9q2hZz_auvz_GHq6asLHxsr1sLzLUJuvW8QYBPLzdVyJ_F1MjNnXsZArCTFUX6ppSr3xFkJkrPNmbdsGepCw7AEbgDrWGzCQLQVKFwqn0_9xD-zikzcLOcLwHJxF5ggGxTgLA7QERTvRhjBtPUFmgAIcTltnsJwRlUG6l9PW9JCuPiLkVPQ6HIBUNHDXC6c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<span class="font-label text-[9px] uppercase tracking-widest text-white/80 border border-white/20 px-3 py-1">Featured Asset: Concrete_Study_01</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="space-y-8">
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-primary/10 text-primary font-label text-[8px] uppercase font-bold tracking-widest">Master Edition</span>
+<span class="text-outline font-label text-[8px]">•</span>
+<span class="text-outline font-label text-[8px] uppercase tracking-widest">Modified 2h ago</span>
+</div>
+<h4 class="font-display text-4xl font-bold leading-[1.1] text-on-surface">The Neural Cartographer</h4>
+<p class="text-secondary text-base leading-relaxed font-body">An exploration into the semiotics of generative models and the displacement of human intent in high-speed digital curation. Examining the boundary where design becomes autonomous.</p>
+</div>
+<!-- Technical Metadata Grid -->
+<div class="grid grid-cols-2 border border-outline-variant/30 divide-x divide-y divide-outline-variant/30 overflow-hidden rounded-sm">
+<div class="p-6 space-y-1">
+<p class="font-label text-[9px] uppercase text-outline tracking-widest font-bold">Word Count</p>
+<p class="font-display text-2xl font-bold text-on-surface">3,240</p>
+</div>
+<div class="p-6 space-y-1">
+<p class="font-label text-[9px] uppercase text-outline tracking-widest font-bold">Reading Time</p>
+<p class="font-display text-2xl font-bold text-on-surface">12 MIN</p>
+</div>
+<div class="p-6 space-y-1">
+<p class="font-label text-[9px] uppercase text-outline tracking-widest font-bold">Search Index</p>
+<div class="flex items-center gap-2">
+<span class="font-display text-2xl font-bold text-green-600">98%</span>
+<span class="material-symbols-outlined text-green-600 text-base">check_circle</span>
+</div>
+</div>
+<div class="p-6 space-y-1">
+<p class="font-label text-[9px] uppercase text-outline tracking-widest font-bold">Lexical Flow</p>
+<p class="font-display text-2xl font-bold text-on-surface">Optimal</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="space-y-4 pt-4">
+<button class="w-full py-5 bg-on-surface text-white font-label text-[11px] uppercase tracking-[0.25em] font-bold hover:bg-primary transition-all flex items-center justify-center gap-3 action-button">
+                            Edit Content Module
+                            <span class="material-symbols-outlined text-base transition-transform">arrow_forward</span>
+</button>
+<div class="grid grid-cols-2 gap-4">
+<button class="py-4 border border-outline-variant/40 text-on-surface-variant font-label text-[10px] uppercase tracking-widest font-bold hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">visibility</span>
+                                Live View
+                            </button>
+<button class="py-4 border border-outline-variant/40 text-on-surface-variant font-label text-[10px] uppercase tracking-widest font-bold hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">share</span>
+                                Publish
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual Technical Overlay (Grid) -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.04] technical-grid z-0"></div>
+</body></html>

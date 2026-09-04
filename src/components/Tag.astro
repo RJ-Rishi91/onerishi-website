@@ -1,0 +1,20 @@
+---
+interface Props {
+  variant?: 'teal' | 'terracotta' | 'neutral';
+  class?: string;
+}
+
+const { variant = 'teal', class: customClass = '' } = Astro.props;
+
+const styles = {
+  teal: 'bg-[#1F3A3D]/10 text-[#1F3A3D] border-[#1F3A3D]/20',
+  terracotta: 'bg-[#C1592B]/10 text-[#C1592B] border-[#C1592B]/25',
+  neutral: 'bg-[#1B1B18]/5 text-[#1B1B18]/75 border-[#1B1B18]/15',
+};
+---
+
+<span
+  class={`inline-flex items-center px-2.5 py-0.5 rounded border text-[11px] font-sans font-semibold tracking-wider uppercase ${styles[variant]} ${customClass}`}
+>
+  <slot />
+</span>

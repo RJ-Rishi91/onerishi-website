@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <rect width="1200" height="750" fill="#F0EDE8"/>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1B1B18" stroke-width="0.75" stroke-opacity="0.05"/>
+  </pattern>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <rect x="40" y="40" width="1120" height="670" fill="none" stroke="#1B1B18" stroke-width="1" stroke-opacity="0.15"/>
+  <rect x="56" y="56" width="1088" height="638" fill="none" stroke="#1B1B18" stroke-width="0.5" stroke-opacity="0.1"/>
+  
+  <rect x="70" y="70" width="220" height="32" rx="4" fill="#1F3A3D" fill-opacity="0.1"/>
+  <text x="82" y="91" font-family="Inter, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="#1F3A3D" text-transform="uppercase">Publishing Archive</text>
+  
+  <text x="600" y="360" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="400" fill="#1B1B18" text-anchor="middle">Gazette Collective</text>
+  <text x="600" y="420" font-family="Inter, sans-serif" font-size="18" font-weight="400" fill="#1B1B18" fill-opacity="0.7" text-anchor="middle">Masthead & Grassroots Broadsheet Edition</text>
+  
+  <line x1="500" y1="460" x2="700" y2="460" stroke="#1F3A3D" stroke-width="2"/>
+  
+  <text x="600" y="650" font-family="Inter, sans-serif" font-size="12" letter-spacing="2" fill="#1B1B18" fill-opacity="0.4" text-anchor="middle" text-transform="uppercase">OneRishi • Editorial Archive • onerishi.in</text>
+</svg>

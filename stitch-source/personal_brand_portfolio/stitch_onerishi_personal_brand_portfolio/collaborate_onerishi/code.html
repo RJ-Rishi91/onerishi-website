@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="en" style="width: 1280px; height: 2679px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EF;
+  --ink: #1B1B18;
+  --accent: #C1592B;
+  --accent-2: #1F3A3D;
+}
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
+.font-serif-display {
+  font-family: 'Fraunces', Georgia, serif;
+}
+.font-sans-body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bg: 'var(--bg)',
+        ink: 'var(--ink)',
+        accent: 'var(--accent)',
+        'accent-2': 'var(--accent-2)',
+      },
+      fontFamily: {
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      spacing: {
+        'gutter-desktop': '2rem',
+        'gutter-mobile': '1rem',
+        'space-2xs': '0.25rem',
+        'space-xs': '0.5rem',
+        'space-sm': '0.75rem',
+        'space-md': '1rem',
+        'space-lg': '1.5rem',
+        'space-xl': '2rem',
+        'space-2xl': '3rem',
+        'space-3xl': '4.5rem',
+        'space-4xl': '6rem',
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-bg font-sans text-ink antialiased">
+<header class="fixed top-0 w-full z-50 bg-[#F7F4EF]/90 backdrop-blur-md border-b border-ink/10">
+<div class="h-20 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<div class="flex items-center shrink-0">
+<a class="font-serif text-[28px] leading-[36px] text-ink tracking-tight flex items-baseline hover:opacity-90 transition-opacity" data-path="home" href="#">
+<span>OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-space-lg">
+<a class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-ink/70 hover:text-ink transition-colors" data-path="home" href="#">Home</a>
+<a class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-ink/70 hover:text-ink transition-colors" data-path="work" href="#">Work</a>
+<a class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-ink/70 hover:text-ink transition-colors" data-path="writing" href="#">Writing</a>
+<a class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-ink/70 hover:text-ink transition-colors" data-path="about" href="#">About</a>
+<a class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-ink/70 hover:text-ink transition-colors" data-path="labs" href="#">Labs</a>
+</nav>
+<div class="flex items-center gap-space-md">
+<a class="inline-flex items-center justify-center bg-accent text-[#ffffff] text-[13px] leading-[18px] font-medium tracking-[0.04em] px-space-md py-space-xs rounded-xl hover:opacity-90 transition-opacity shadow-[0_2px_8px_rgba(193,89,43,0.2)] active:translate-y-px" data-path="contact" href="#">Say Hello</a>
+<div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[#ffffff] text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-20 bg-bg min-h-screen">
+<div class="flex flex-col w-full">
+<!-- Top Subtle Context Banner & Atmosphere -->
+<section class="relative w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-xl md:pt-space-3xl pb-space-lg">
+<!-- Ambient subtle background depth circle -->
+<div class="absolute -top-12 right-12 w-96 h-96 rounded-full bg-gradient-to-br from-accent/5 via-accent-2/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-1/2 left-0 w-64 h-64 rounded-full bg-accent-2/5 blur-2xl pointer-events-none -z-10"></div>
+<!-- Editorial Header Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end">
+<div class="lg:col-span-8 space-y-space-md">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-ink/5 text-accent-2 text-[11px] leading-[16px] font-semibold tracking-wider uppercase">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-accent"></span>
+<span>Open Engagements • Q2–Q3 2024</span>
+</div>
+<h1 class="font-serif text-ink text-[42px] md:text-[56px] leading-[1.1] font-normal tracking-tight">
+            Let’s <span class="italic font-serif text-accent font-normal">Collaborate</span>
+</h1>
+<p class="text-[18px] leading-[30px] tracking-[-0.005em] text-ink/75 max-w-[720px]">
+            I partner with high-conviction founders, media collectives, and community leaders who value analytical rigor and deliberate storytelling. Every engagement is rooted in craft, agency, and compounding impact.
+          </p>
+</div>
+<!-- Marginalia Indicator / Philosophy Stamp -->
+<div class="lg:col-span-4 flex flex-col justify-end lg:items-end pb-space-2xs">
+<div class="p-space-md rounded-lg bg-ink/[0.03] border border-ink/10 shadow-sm max-w-[320px] space-y-space-2xs">
+<div class="flex items-center justify-between text-[11px] leading-[16px] font-semibold text-accent-2 uppercase tracking-wider">
+<span>Core Cadence</span>
+<span class="material-symbols-outlined text-[16px] text-accent">hourglass_top</span>
+</div>
+<p class="text-[14px] leading-[22px] text-ink/75">
+              Max 2 concurrent fractional advisory roles. High-density execution over diluted commitments.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial Section Divider with Visual Measure Indicator -->
+<div class="w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-xs">
+<div class="h-px w-full bg-ink/10 flex items-center justify-between">
+<span class="w-2 h-2 rounded-full bg-accent -ml-1"></span>
+<div class="px-space-sm bg-bg text-[11px] leading-[16px] font-semibold text-ink/60 tracking-widest uppercase">
+          Modalities of Co-Creation
+        </div>
+<span class="w-2 h-2 rounded-full bg-accent-2 -mr-1"></span>
+</div>
+</div>
+<!-- The 3 Modalities Grid -->
+<section class="w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Card 1: Hire Me / Advisory -->
+<div class="group relative flex flex-col justify-between p-space-xl rounded-lg bg-[#ffffff] border border-ink/10 hover:border-accent transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1">
+<!-- Visual Accent Edge Indicator -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-ink/10 group-hover:bg-accent transition-colors duration-300 rounded-t-lg"></div>
+<div class="space-y-space-lg">
+<!-- Card Header & Tag -->
+<div class="space-y-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center px-space-xs py-space-2xs rounded bg-ink/5 text-accent-2 text-[11px] leading-[16px] font-semibold uppercase tracking-widest">
+                  Modality 01
+                </span>
+<span class="material-symbols-outlined text-accent text-[24px]">corporate_fare</span>
+</div>
+<h2 class="font-serif text-[28px] leading-[36px] text-ink font-normal pt-space-2xs">
+                Hire Me
+              </h2>
+<p class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-accent">
+                Freelance &amp; Advisory Consulting
+              </p>
+</div>
+<!-- Narrative Body -->
+<p class="text-[16px] leading-[26px] text-ink/75">
+              Direct collaboration on demand generation infrastructure, technical content architecture, developer marketing engines, and product-led positioning.
+            </p>
+<!-- Rich Visual Mini-Diagram / Sparkline Matrix -->
+<div class="p-space-md rounded bg-ink/[0.03] border border-ink/5 space-y-space-xs">
+<div class="flex justify-between items-center text-[11px] leading-[16px] font-semibold text-ink/65 uppercase tracking-wider">
+<span>Execution Focus</span>
+<span class="text-accent font-semibold">High Agency</span>
+</div>
+<!-- Dynamic Vector Sparkline -->
+<svg class="w-full h-10 text-accent" fill="none" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 32C30 32 45 12 70 18C95 24 110 8 135 15C160 22 175 4 198 4" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<circle class="fill-accent" cx="198" cy="4" r="3"></circle>
+<path d="M2 32L70 18L135 15L198 4V38H2V32Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+<div class="grid grid-cols-2 gap-space-2xs pt-space-2xs text-[11px] leading-[16px] text-ink/70">
+<div>• B2B Product Marketing</div>
+<div>• Demand Arch</div>
+<div>• Technical Narrative</div>
+<div>• Developer Evangelism</div>
+</div>
+</div>
+<!-- Modality Specs -->
+<div class="space-y-space-2xs pt-space-2xs">
+<span class="text-[11px] leading-[16px] font-semibold text-accent-2 uppercase tracking-wider block">Structure</span>
+<p class="text-[14px] leading-[22px] text-ink">
+                High-agency sprint cycles (4–6 weeks) or fractional quarterly advisory with embedded strategic governance.
+              </p>
+</div>
+</div>
+<!-- Action / CTA Link -->
+<div class="pt-space-xl mt-space-md">
+<a class="inline-flex items-center gap-space-xs text-[13px] leading-[18px] font-medium tracking-[0.04em] text-accent hover:opacity-80 group/link transition-all" data-path="contact" href="#">
+<span>Inquire about Consulting</span>
+<span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Media & Community Projects -->
+<div class="group relative flex flex-col justify-between p-space-xl rounded-lg bg-[#ffffff] border border-ink/10 hover:border-accent transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1">
+<!-- Visual Accent Edge Indicator -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-ink/10 group-hover:bg-accent transition-colors duration-300 rounded-t-lg"></div>
+<div class="space-y-space-lg">
+<!-- Card Header & Tag -->
+<div class="space-y-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center px-space-xs py-space-2xs rounded bg-ink/5 text-accent-2 text-[11px] leading-[16px] font-semibold uppercase tracking-widest">
+                  Modality 02
+                </span>
+<span class="material-symbols-outlined text-accent-2 text-[24px]">hub</span>
+</div>
+<h2 class="font-serif text-[28px] leading-[36px] text-ink font-normal pt-space-2xs">
+                Media &amp; Community
+              </h2>
+<p class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-accent-2">
+                Ecosystem Leadership &amp; Creative IP
+              </p>
+</div>
+<!-- Narrative Body -->
+<p class="text-[16px] leading-[26px] text-ink/75">
+              Directing large-scale developer gatherings (e.g. DevFest summits), launching independent publications, or curating thriving civic-technical collectives.
+            </p>
+<!-- Rich Visual Mini-Diagram / Ecosystem Network Ring -->
+<div class="p-space-md rounded bg-ink/[0.03] border border-ink/5 space-y-space-xs">
+<div class="flex justify-between items-center text-[11px] leading-[16px] font-semibold text-ink/65 uppercase tracking-wider">
+<span>Ecosystem Footprint</span>
+<span class="text-accent-2 font-semibold">Decentralized</span>
+</div>
+<!-- Graphic Metric Bar -->
+<div class="space-y-space-2xs py-space-2xs">
+<div class="flex items-center justify-between text-[11px] leading-[16px]">
+<span class="text-ink/70">Conferences &amp; Sprints</span>
+<span class="font-medium text-ink">10,000+ Engaged</span>
+</div>
+<div class="w-full bg-ink/10 h-2 rounded-full overflow-hidden flex">
+<div class="bg-accent-2 h-full" style="width: 65%;"></div>
+<div class="bg-accent h-full" style="width: 25%;"></div>
+<div class="bg-ink/30 h-full" style="width: 10%;"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-2xs pt-space-2xs text-[11px] leading-[16px] text-ink/70">
+<div>• DevFest Direction</div>
+<div>• Editorial steering</div>
+<div>• Creative Co-lab</div>
+<div>• Cohort Design</div>
+</div>
+</div>
+<!-- Modality Specs -->
+<div class="space-y-space-2xs pt-space-2xs">
+<span class="text-[11px] leading-[16px] font-semibold text-accent-2 uppercase tracking-wider block">Structure</span>
+<p class="text-[14px] leading-[22px] text-ink">
+                Co-creation, event directorship, editorial syndication, or public-good ecosystem partnerships.
+              </p>
+</div>
+</div>
+<!-- Action / CTA Link -->
+<div class="pt-space-xl mt-space-md">
+<a class="inline-flex items-center gap-space-xs text-[13px] leading-[18px] font-medium tracking-[0.04em] text-accent-2 hover:text-accent group/link transition-colors" data-path="contact" href="#">
+<span>Discuss an Initiative</span>
+<span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Junior Journalist / Mentorship -->
+<div class="group relative flex flex-col justify-between p-space-xl rounded-lg bg-[#ffffff] border border-ink/10 hover:border-accent transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1">
+<!-- Visual Accent Edge Indicator -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-ink/10 group-hover:bg-accent transition-colors duration-300 rounded-t-lg"></div>
+<div class="space-y-space-lg">
+<!-- Card Header & Tag -->
+<div class="space-y-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center px-space-xs py-space-2xs rounded bg-ink/5 text-accent-2 text-[11px] leading-[16px] font-semibold uppercase tracking-widest">
+                  Modality 03
+                </span>
+<span class="material-symbols-outlined text-ink text-[24px]">school</span>
+</div>
+<h2 class="font-serif text-[28px] leading-[36px] text-ink font-normal pt-space-2xs">
+                Youth Mentorship
+              </h2>
+<p class="text-[13px] leading-[18px] font-medium tracking-[0.04em] text-accent-2">
+                Junior Journalist &amp; Builder Craft
+              </p>
+</div>
+<!-- Narrative Body -->
+<p class="text-[16px] leading-[26px] text-ink/75">
+              Gazette Collective’s youth journalism initiatives, deliberate storytelling workshops, and direct guidance for early-career technologists bridging humanities and code.
+            </p>
+<!-- Rich Visual Mini-Diagram / Office Hour Meter -->
+<div class="p-space-md rounded bg-ink/[0.03] border border-ink/5 space-y-space-xs">
+<div class="flex justify-between items-center text-[11px] leading-[16px] font-semibold text-ink/65 uppercase tracking-wider">
+<span>Pro-Bono Capacity</span>
+<span class="text-accent-2 font-semibold">Pro-Bono / Community</span>
+</div>
+<!-- Visual Progress Dots for Allocation -->
+<div class="flex items-center gap-1.5 py-space-xs">
+<div class="h-2 flex-1 rounded bg-accent-2" title="Active"></div>
+<div class="h-2 flex-1 rounded bg-accent-2" title="Active"></div>
+<div class="h-2 flex-1 rounded bg-accent-2" title="Active"></div>
+<div class="h-2 flex-1 rounded bg-ink/10" title="Open Slot"></div>
+<div class="h-2 flex-1 rounded bg-ink/10" title="Open Slot"></div>
+</div>
+<div class="grid grid-cols-2 gap-space-2xs pt-space-2xs text-[11px] leading-[16px] text-ink/70">
+<div>• Investigative Writing</div>
+<div>• Digital Publishing</div>
+<div>• Portfolio Reviews</div>
+<div>• Career Synthesis</div>
+</div>
+</div>
+<!-- Modality Specs -->
+<div class="space-y-space-2xs pt-space-2xs">
+<span class="text-[11px] leading-[16px] font-semibold text-accent-2 uppercase tracking-wider block">Structure</span>
+<p class="text-[14px] leading-[22px] text-ink">
+                Pro-bono interactive masterclasses, bi-weekly editorial feedback loops, and open monthly office hours.
+              </p>
+</div>
+</div>
+<!-- Action / CTA Link -->
+<div class="pt-space-xl mt-space-md">
+<a class="inline-flex items-center gap-space-xs text-[13px] leading-[18px] font-medium tracking-[0.04em] text-ink hover:text-accent group/link transition-colors" data-path="contact" href="#">
+<span>Explore Mentorship</span>
+<span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial Ethos & Working Principles Panel -->
+<section class="w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-lg">
+<div class="rounded-lg bg-[#ffffff] border border-ink/10 p-space-xl lg:p-space-2xl shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Editorial Column -->
+<div class="lg:col-span-6 space-y-space-md">
+<span class="text-[11px] leading-[16px] uppercase tracking-widest text-accent font-semibold block">
+              Principles of Association
+            </span>
+<h3 class="font-serif text-[32px] lg:text-[40px] leading-[1.2] text-ink font-normal">
+              Deliberate collaboration over opportunistic velocity.
+            </h3>
+<p class="text-[16px] leading-[26px] text-ink/75">
+              The web does not suffer from a shortage of hurried initiatives. It suffers from a lack of care, literary clarity, and architectural integrity. Whether engineering marketing systems or producing independent periodicals, we build for durability.
+            </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-2xs text-[14px] leading-[22px] text-ink">
+<span class="material-symbols-outlined text-accent text-[18px]">verified</span>
+<span>Fixed-Scope Clarity</span>
+</div>
+<div class="flex items-center gap-space-2xs text-[14px] leading-[22px] text-ink">
+<span class="material-symbols-outlined text-accent text-[18px]">menu_book</span>
+<span>Literate Documentation</span>
+</div>
+<div class="flex items-center gap-space-2xs text-[14px] leading-[22px] text-ink">
+<span class="material-symbols-outlined text-accent text-[18px]">handshake</span>
+<span>High-Agency Autonomy</span>
+</div>
+</div>
+</div>
+<!-- Right Visual Showcase / Photo Placement -->
+<div class="lg:col-span-6 relative">
+<div class="relative w-full h-80 rounded-lg overflow-hidden shadow-md border border-ink/10">
+<img class="w-full h-full object-cover" data-alt="A warm, tactile architectural workspace desk bathed in soft natural morning window light. In focus: open notebooks with meticulous fountain pen notes, an analog drafting compass, an open monograph on typography, and a modern clean laptop displaying minimal typography. Atmospheric warmth, earthy terracotta tones, cream paper texture, serene contemplative creative atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFSHHj63WFmlFHU9WM-2bS9Ff0n6movRlUqk4jaoAmjN1AAdyKODqoZMo6H6I9gyzYytWOqKbkYNYBQdfblHt4n2ULoNHw32BKvrJketUrJQOLSu9psd2vjSo_RxcpUqWdWyBy4TRUnFCSwglGodx3RxwBRYW6dZo3aFVzszo-AB7Wm6N1FsEcAqiNR194Be64m68jAGsyY6DZGR1tlT8tpQhHrx0mVCB68I3uySb99Of18R9tyOYj">
+<div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md text-[#ffffff] flex items-center justify-between">
+<div>
+<p class="text-[11px] leading-[16px] uppercase tracking-wider text-[#ffffff]/80">Studio Ethos</p>
+<p class="text-[14px] leading-[22px] font-medium text-[#ffffff]">Crafted across print, software, and community</p>
+</div>
+<span class="material-symbols-outlined text-[20px] text-[#ffffff]/80">ink_pen</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Concluding Note / Direct Action Bar -->
+<section class="w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-xl pb-space-3xl">
+<div class="rounded-lg bg-[#ffffff] border border-ink/10 p-space-xl md:p-space-2xl shadow-sm text-center max-w-[800px] mx-auto space-y-space-md relative overflow-hidden">
+<!-- Decorative geometric subtle corner stamp -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-accent/5 pointer-events-none"></div>
+<div class="w-12 h-12 rounded-full bg-ink/5 border border-ink/10 mx-auto flex items-center justify-center text-accent">
+<span class="material-symbols-outlined text-[24px]">drafts</span>
+</div>
+<h3 class="font-serif text-[28px] leading-[36px] text-ink font-normal">
+          Prefer a direct exchange first?
+        </h3>
+<p class="text-[16px] leading-[26px] text-ink/75 max-w-[560px] mx-auto">
+          Feel free to write unvarnished thoughts to <a class="text-accent font-medium underline underline-offset-4 hover:opacity-80 transition-opacity" href="mailto:contact@onerishi.in">contact@onerishi.in</a> or drop a structured note on the contact page.
+        </p>
+<div class="pt-space-sm flex flex-col sm:flex-row items-center justify-center gap-space-md">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-ink/5 text-ink hover:bg-ink/10 font-medium text-[13px] leading-[18px] px-space-xl py-space-sm rounded-lg transition-colors border border-ink/10 active:translate-y-px" data-path="contact" href="#">
+<span>Go to Contact Form</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-accent text-[#ffffff] hover:opacity-90 font-medium text-[13px] leading-[18px] px-space-xl py-space-sm rounded-lg transition-opacity shadow-sm active:translate-y-px" href="mailto:contact@onerishi.in">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span>Send Direct Email</span>
+</a>
+</div>
+<div class="pt-space-xs">
+<span class="text-[11px] leading-[16px] font-semibold text-accent-2 uppercase tracking-widest">
+            Typical response latency: 24 to 48 business hours
+          </span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="w-full bg-[#F7F4EF] border-t border-ink/10 mt-space-4xl">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl mb-space-3xl">
+<div class="md:col-span-5 flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center">
+<span class="font-serif text-[28px] leading-[36px] text-ink tracking-tight">OneRishi</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span>
+</div>
+<p class="text-[14px] leading-[22px] text-ink/70 max-w-[360px]">
+            Rushal S. — Marketing × Technology × Creativity. Shaping literate, high-agency digital narratives and experimental tooling.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<a class="text-[11px] leading-[16px] font-medium text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://github.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>GitHub</span>
+</a>
+<span class="text-ink/30 text-[12px]">•</span>
+<a class="text-[11px] leading-[16px] font-medium text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://linkedin.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span>LinkedIn</span>
+</a>
+<span class="text-ink/30 text-[12px]">•</span>
+<a class="text-[11px] leading-[16px] font-medium text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://youtube.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span>YouTube</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-3 space-y-space-sm">
+<span class="text-[11px] leading-[16px] font-semibold text-ink/60 uppercase tracking-wider block">Navigation</span>
+<ul class="space-y-space-xs">
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="home" href="#">Home</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="work" href="#">Work</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="writing" href="#">Writing</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="about" href="#">About</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="labs" href="#">Labs</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-space-sm">
+<span class="text-[11px] leading-[16px] font-semibold text-ink/60 uppercase tracking-wider block">Explore &amp; Connect</span>
+<ul class="space-y-space-xs">
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="philosophy" href="#">Philosophy</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="impact" href="#">Impact</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="collaborate" href="#">Collaborate</a></li>
+<li role="none"><a class="text-[14px] leading-[22px] text-ink hover:text-accent transition-colors" data-path="contact" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-space-lg border-t border-ink/10 flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<p class="text-[14px] leading-[22px] text-ink/60">© 2024 Rushal S. All rights reserved.</p>
+<p class="text-[14px] leading-[22px] text-ink/60 text-center md:text-right">OneRishi • onerishi.in • Crafting the deliberate web</p>
+</div>
+</div>
+</footer>
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

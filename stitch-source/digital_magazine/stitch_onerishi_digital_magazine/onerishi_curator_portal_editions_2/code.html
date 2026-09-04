@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ONERISHI PORTAL - Editions Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#f0edec",
+                        "on-tertiary-fixed-variant": "#683c00",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-tertiary-container": "#fff8f4",
+                        "surface-tint": "#00658b",
+                        "on-surface": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#007ba7",
+                        "tertiary": "#834d00",
+                        "on-secondary-fixed-variant": "#474746",
+                        "on-primary-fixed-variant": "#004c69",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-container": "#f5faff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#c4e7ff",
+                        "secondary-fixed": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary": "#5f5e5e",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb86c",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary": "#006184",
+                        "on-surface-variant": "#3f484e",
+                        "background": "#fcf9f8",
+                        "tertiary-container": "#a36410",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "on-secondary-container": "#636262",
+                        "on-primary-fixed": "#001e2c",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ebe7e7",
+                        "outline-variant": "#bfc8cf",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdcbc",
+                        "secondary-container": "#e2dfde",
+                        "inverse-primary": "#7cd0ff",
+                        "surface-dim": "#dcd9d9",
+                        "outline": "#6f787f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bfc8cf; }
+        .technical-grid {
+            background-image: radial-gradient(#bfc8cf 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed h-screen w-72 left-0 top-0 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant/20 flex flex-col p-6 space-y-8 z-50">
+<div class="flex flex-col space-y-1">
+<h1 class="font-headline text-2xl font-bold tracking-tighter text-on-surface dark:text-on-background">ONERISHI</h1>
+<p class="font-label uppercase text-[10px] tracking-[0.2em] text-secondary">TECHNICAL CURATOR</p>
+</div>
+<nav class="flex-1 space-y-2">
+<div class="flex items-center gap-4 px-4 py-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150 cursor-pointer group">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-label uppercase text-xs tracking-widest">Dashboard</span>
+</div>
+<!-- Active State: Editions -->
+<div class="flex items-center gap-4 px-4 py-3 text-primary dark:text-primary-fixed-dim font-bold border-l-2 border-primary bg-surface-container-high/50 transition-colors duration-150 cursor-pointer active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-xl">auto_stories</span>
+<span class="font-label uppercase text-xs tracking-widest">Editions</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150 cursor-pointer group">
+<span class="material-symbols-outlined text-xl">architecture</span>
+<span class="font-label uppercase text-xs tracking-widest">Projects</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150 cursor-pointer group">
+<span class="material-symbols-outlined text-xl">science</span>
+<span class="font-label uppercase text-xs tracking-widest">Labs</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150 cursor-pointer group">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="font-label uppercase text-xs tracking-widest">Analytics</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-3 text-secondary dark:text-secondary-fixed opacity-80 hover:opacity-100 hover:bg-surface-container dark:hover:bg-surface-bright transition-colors duration-150 cursor-pointer group">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-label uppercase text-xs tracking-widest">Settings</span>
+</div>
+</nav>
+<button class="w-full bg-primary text-on-primary font-label text-xs tracking-widest py-4 font-bold hover:bg-primary-container transition-colors">
+            NEW EDITION
+        </button>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-0 h-20 ml-72 bg-surface dark:bg-background border-b border-outline-variant/20 flex items-center justify-between px-12 z-40">
+<div class="flex items-center gap-6">
+<h2 class="font-headline text-xl font-medium tracking-tighter text-on-surface dark:text-on-background">ONERISHI PORTAL</h2>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<div class="flex items-center bg-surface-container-low px-4 py-2 border-b border-outline-variant/20 focus-within:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-secondary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-label text-[10px] tracking-widest uppercase w-64 placeholder:text-outline" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">contrast</button>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right hidden xl:block">
+<p class="font-label text-[10px] uppercase leading-none text-on-surface font-bold">Admin Curator</p>
+<p class="font-label text-[8px] uppercase leading-none text-secondary mt-1">Level 07 Access</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary transition-colors">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-72 mt-20 h-[calc(100vh-5rem)] flex flex-col bg-surface">
+<!-- Editorial Data-Ticker -->
+<div class="w-full h-10 bg-surface-container-high border-b border-outline-variant/20 flex items-center px-12 justify-between">
+<div class="flex gap-8">
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary"><span class="text-primary font-bold">STATUS:</span> SYSTEM OPTIMIZED</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary"><span class="text-primary font-bold">LATENCY:</span> 14MS</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary"><span class="text-primary font-bold">EDITIONS:</span> 1,204 TOTAL</span>
+</div>
+<div class="font-label text-[10px] uppercase tracking-widest text-secondary">
+                COORD: 35.6895° N, 139.6917° E // TOKYO NODE
+            </div>
+</div>
+<div class="flex-1 flex overflow-hidden">
+<!-- Table Section -->
+<section class="flex-1 overflow-y-auto p-12 space-y-12">
+<div class="flex justify-between items-end">
+<div class="space-y-2">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-primary font-bold">Inventory Management</span>
+<h3 class="font-display text-5xl italic font-bold">Archived Editions</h3>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label text-[10px] uppercase text-secondary">Filter by:</span>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-highest font-label text-[10px] tracking-widest uppercase border border-outline-variant/20 hover:bg-primary hover:text-white transition-colors">All</button>
+<button class="px-4 py-2 bg-white font-label text-[10px] tracking-widest uppercase border border-outline-variant/20 hover:bg-primary hover:text-white transition-colors">Essay</button>
+<button class="px-4 py-2 bg-white font-label text-[10px] tracking-widest uppercase border border-outline-variant/20 hover:bg-primary hover:text-white transition-colors">Technical</button>
+<button class="px-4 py-2 bg-white font-label text-[10px] tracking-widest uppercase border border-outline-variant/20 hover:bg-primary hover:text-white transition-colors">Methodology</button>
+</div>
+</div>
+</div>
+<div class="w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/40">
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-secondary font-medium">Edition Title</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-secondary font-medium">Category</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-secondary font-medium">Status</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-secondary font-medium">Archived Date</th>
+<th class="pb-4 font-label text-[10px] uppercase tracking-widest text-secondary font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-6 pr-4">
+<div class="flex flex-col">
+<span class="font-headline text-lg font-bold group-hover:text-primary transition-colors">The Neural Cartographer: Mapping Artificial Intent</span>
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline mt-1">UUID: #NC-2024-001</span>
+</div>
+</td>
+<td class="py-6 pr-4">
+<span class="px-3 py-1 bg-primary/10 text-primary font-label text-[10px] uppercase tracking-widest font-bold">Essay</span>
+</td>
+<td class="py-6 pr-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-green-500"></span>
+<span class="font-label text-[10px] uppercase tracking-widest">Published</span>
+</div>
+</td>
+<td class="py-6 pr-4 font-label text-xs text-secondary">Oct 24, 2024</td>
+<td class="py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary">more_horiz</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer bg-surface-container-lowest/50">
+<td class="py-6 pr-4">
+<div class="flex flex-col">
+<span class="font-headline text-lg font-bold group-hover:text-primary transition-colors">Architecture of the Void: Minimalist Systems</span>
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline mt-1">UUID: #AV-2024-042</span>
+</div>
+</td>
+<td class="py-6 pr-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label text-[10px] uppercase tracking-widest font-bold">Methodology</span>
+</td>
+<td class="py-6 pr-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-yellow-500"></span>
+<span class="font-label text-[10px] uppercase tracking-widest">Draft</span>
+</div>
+</td>
+<td class="py-6 pr-4 font-label text-xs text-secondary">Nov 02, 2024</td>
+<td class="py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary">more_horiz</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-6 pr-4">
+<div class="flex flex-col">
+<span class="font-headline text-lg font-bold group-hover:text-primary transition-colors">Rust vs. Zig: A Comparative Telemetry</span>
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline mt-1">UUID: #RZ-2024-098</span>
+</div>
+</td>
+<td class="py-6 pr-4">
+<span class="px-3 py-1 bg-primary text-white font-label text-[10px] uppercase tracking-widest font-bold">Technical Guide</span>
+</td>
+<td class="py-6 pr-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-blue-500"></span>
+<span class="font-label text-[10px] uppercase tracking-widest">Scheduled</span>
+</div>
+</td>
+<td class="py-6 pr-4 font-label text-xs text-secondary">Nov 15, 2024</td>
+<td class="py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary">more_horiz</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-6 pr-4">
+<div class="flex flex-col">
+<span class="font-headline text-lg font-bold group-hover:text-primary transition-colors">Quantum Supremacy in Creative Computation</span>
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline mt-1">UUID: #QS-2024-112</span>
+</div>
+</td>
+<td class="py-6 pr-4">
+<span class="px-3 py-1 bg-primary/10 text-primary font-label text-[10px] uppercase tracking-widest font-bold">Essay</span>
+</td>
+<td class="py-6 pr-4">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-green-500"></span>
+<span class="font-label text-[10px] uppercase tracking-widest">Published</span>
+</div>
+</td>
+<td class="py-6 pr-4 font-label text-xs text-secondary">Oct 12, 2024</td>
+<td class="py-6 text-right">
+<button class="material-symbols-outlined text-outline hover:text-primary">more_horiz</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Preview Pane (Sidebar Right) -->
+<section class="w-[420px] bg-surface-container-low border-l border-outline-variant/20 p-10 flex flex-col overflow-y-auto">
+<div class="space-y-10">
+<div class="space-y-4">
+<span class="font-label text-[10px] uppercase tracking-widest text-primary font-bold">Selected Preview</span>
+<div class="aspect-[4/5] bg-surface relative overflow-hidden group">
+<img class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-105 transition-transform duration-700" data-alt="A high-contrast architectural photograph of a minimalist concrete structure with sharp, 90-degree angles and dramatic shadows. The scene is bathed in a clinical, bright white light, emphasizing the technical precision of the build. Deep charcoal blacks and surgical blues dominate the shadows, creating a sophisticated and editorial atmosphere suitable for a high-end design publication. The mood is silent, powerful, and architecturally focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0FRPN3T5xhqKPkBTcCCcNknm-6-HRCsG2BBV-c2oLiLVxVjad-RCbPZAv51PnMCXsR3zNDEPYhF6wp9q2hZz_auvz_GHq6asLHxsr1sLzLUJuvW8QYBPLzdVyJ_F1MjNnXsZArCTFUX6ppSr3xFkJkrPNmbdsGepCw7AEbgDrWGzCQLQVKFwqn0_9xD-zikzcLOcLwHJxF5ggGxTgLA7QERTvRhjBtPUFmgAIcTltnsJwRlUG6l9PW9JCuPiLkVPQ6HIBUNHDXC6c"/>
+<div class="absolute inset-0 border-[12px] border-white/10 pointer-events-none"></div>
+</div>
+</div>
+<div class="space-y-8">
+<div>
+<h4 class="font-display text-2xl font-bold mb-2">The Neural Cartographer</h4>
+<p class="text-secondary text-sm leading-relaxed">An exploration into the semiotics of generative models and the displacement of human intent in high-speed digital curation.</p>
+</div>
+<!-- Technical Metadata Grid -->
+<div class="grid grid-cols-2 gap-px bg-outline-variant/30 border border-outline-variant/30">
+<div class="bg-surface-container-low p-4">
+<p class="font-label text-[9px] uppercase text-outline mb-1">Word Count</p>
+<p class="font-label text-lg font-bold text-on-surface">3,240</p>
+</div>
+<div class="bg-surface-container-low p-4">
+<p class="font-label text-[9px] uppercase text-outline mb-1">Read Time</p>
+<p class="font-label text-lg font-bold text-on-surface">12 MIN</p>
+</div>
+<div class="bg-surface-container-low p-4">
+<p class="font-label text-[9px] uppercase text-outline mb-1">SEO Health</p>
+<div class="flex items-center gap-2">
+<span class="font-label text-lg font-bold text-green-600">98%</span>
+<span class="material-symbols-outlined text-green-600 text-sm">verified_user</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4">
+<p class="font-label text-[9px] uppercase text-outline mb-1">Sentiment</p>
+<p class="font-label text-lg font-bold text-on-surface">Neutral</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 space-y-4">
+<button class="w-full py-4 border border-primary text-primary font-label text-[10px] uppercase tracking-widest font-bold hover:bg-primary hover:text-white transition-all">
+                                Edit Full Archive
+                            </button>
+<button class="w-full py-4 text-on-surface-variant font-label text-[10px] uppercase tracking-widest font-bold flex items-center justify-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                Live Preview
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual Technical Overlay (Grid) -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] technical-grid z-0"></div>
+</body></html>

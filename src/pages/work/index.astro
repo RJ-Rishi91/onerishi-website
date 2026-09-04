@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import YouTubeFeature from '../../components/YouTubeFeature.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = await getCollection('work');
+const caseStudies = allWork.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Work — Case Studies & Technical Architecture"
+  description="Proven case studies in high-stakes event operations, independent community journalism, and zero-bloat web development."
+>
+  <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    
+    <!-- Page Header -->
+    <header class="mb-16 border-b border-[#1B1B18]/15 pb-8">
+      <div class="flex items-center gap-2 text-[#1F3A3D] mb-2">
+        <span class="font-sans text-[11px] font-semibold uppercase tracking-widest text-[#1F3A3D]">
+          Portfolio &amp; Selected Engagements
+        </span>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C1592B] inline-block"></span>
+        <span class="font-sans text-[11px] text-[#1B1B18]/60 font-medium">Documented Case Studies</span>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
+        <div class="lg:col-span-6">
+          <h1 class="font-serif text-[42px] sm:text-[52px] text-[#1B1B18] tracking-tight leading-none font-normal">
+            Work
+          </h1>
+        </div>
+        <div class="lg:col-span-6">
+          <p class="font-sans text-[17px] text-[#1B1B18]/80 leading-relaxed max-w-[580px]">
+            Tangible outcomes across large-scale technical event management, independent regional media, and bespoke software tooling.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Case Studies List (3 Cards) -->
+    <section aria-label="Featured Case Studies" class="mb-20">
+      {caseStudies.map((study, idx) => (
+        <CaseStudyCard
+          slug={study.slug}
+          title={study.data.title}
+          description={study.data.description}
+          role={study.data.role}
+          categoryTag={study.data.categoryTag}
+          caseNumber={study.data.caseNumber}
+          metrics={study.data.metrics}
+          heroImage={study.data.heroImage}
+          heroImageAlt={study.data.heroImageAlt}
+          order={idx + 1}
+        />
+      ))}
+    </section>
+
+    <!-- YouTube Growth Special Feature -->
+    <YouTubeFeature />
+
+    <!-- Closing CTA: Collaborate Callout -->
+    <section class="bg-white rounded-xl p-8 sm:p-12 lg:p-16 shadow-editorial border border-[#E6E1D8] text-center relative overflow-hidden">
+      <div class="max-w-[720px] mx-auto relative z-10 space-y-4">
+        <span class="font-sans text-[11px] uppercase tracking-widest text-[#C1592B] font-semibold block">
+          Initiate a Conversation
+        </span>
+        <h2 class="font-serif text-[30px] sm:text-[38px] text-[#1B1B18] font-normal tracking-tight leading-snug">
+          Have a project, event, or platform in mind? Let’s discuss how to bring it to life.
+        </h2>
+        <p class="font-sans text-[15px] text-[#1B1B18]/75 leading-relaxed max-w-[540px] mx-auto">
+          Currently taking on select advisory roles, speaking engagements, and collaborative engineering projects for 2024–2025.
+        </p>
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/collaborate"
+            class="w-full sm:w-auto inline-flex items-center justify-center bg-[#C1592B] text-white font-sans text-[13px] font-medium px-8 py-3 rounded-lg hover:opacity-90 transition-all active:translate-y-px shadow-sm"
+          >
+            <span>Collaborate with Me</span>
+            <span class="material-symbols-outlined text-[18px] ml-1.5">arrow_forward</span>
+          </a>
+          <a
+            href="/contact"
+            class="w-full sm:w-auto inline-flex items-center justify-center bg-transparent border border-[#1B1B18]/20 text-[#1B1B18] font-sans text-[13px] font-medium px-6 py-3 rounded-lg hover:border-[#1B1B18] hover:bg-white/50 transition-all"
+          >
+            <span>Say Hello</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

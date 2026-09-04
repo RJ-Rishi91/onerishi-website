@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en" style="width: 1280px; height: 1614px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    :root {
+      --bg: #F7F4EF;
+      --ink: #1B1B18;
+      --accent: #C1592B;
+      --accent-2: #1F3A3D;
+    }
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg);
+        color: var(--ink);
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .font-serif-fraunces {
+      font-family: 'Fraunces', serif;
+    }
+    .font-sans-inter {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            bg: "var(--bg)",
+            ink: "var(--ink)",
+            accent: "var(--accent)",
+            "accent-2": "var(--accent-2)",
+          },
+          fontFamily: {
+            serif: ["Fraunces", "serif"],
+            sans: ["Inter", "sans-serif"],
+            display: ["Fraunces", "serif"],
+            headline: ["Fraunces", "serif"],
+          },
+          spacing: {
+            "space-2xs": "0.25rem",
+            "space-xs": "0.5rem",
+            "space-sm": "0.75rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-2xl": "3rem",
+            "space-3xl": "4.5rem",
+            "space-4xl": "6rem",
+            "gutter-mobile": "1rem",
+            "gutter-desktop": "2rem",
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-bg font-sans text-ink antialiased">
+<header class="fixed top-0 w-full z-50 bg-[#F7F4EF]/90 backdrop-blur-md border-b border-ink/10">
+<div class="h-20 max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md">
+<div class="flex items-center shrink-0">
+<a class="font-serif text-2xl lg:text-[28px] text-ink tracking-tight flex items-baseline hover:opacity-90 transition-opacity font-normal" data-path="home" href="#">
+<span>OneRishi</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-space-lg font-sans text-sm">
+<a class="text-ink/70 hover:text-ink transition-colors" data-path="home" href="#">Home</a>
+<a class="text-ink/70 hover:text-ink transition-colors" data-path="work" href="#">Work</a>
+<a class="text-ink/70 hover:text-ink transition-colors" data-path="writing" href="#">Writing</a>
+<a class="text-ink/70 hover:text-ink transition-colors" data-path="about" href="#">About</a>
+<a class="text-ink/70 hover:text-ink transition-colors" data-path="labs" href="#">Labs</a>
+</nav>
+<div class="flex items-center gap-space-md font-sans">
+<a class="inline-flex items-center justify-center bg-accent text-[#ffffff] text-sm font-medium px-space-md py-space-xs rounded-lg hover:opacity-95 transition-opacity shadow-[0_2px_8px_rgba(193,89,43,0.15)] active:translate-y-px" data-path="contact" href="#">Say Hello</a>
+<div class="w-8 h-8 rounded-full bg-accent text-[#ffffff] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-20 bg-bg min-h-screen">
+<div class="flex flex-col w-full">
+<div class="relative w-full max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-xl lg:py-space-3xl">
+<header class="max-w-[820px] mb-space-2xl lg:mb-space-3xl">
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
+<span class="font-sans text-[11px] font-semibold text-accent-2 uppercase tracking-widest">Inquiries &amp; Dispatches</span>
+</div>
+<h1 class="font-serif text-[42px] lg:text-[56px] leading-[1.12] text-ink tracking-tight mb-space-md font-normal">
+            Say Hello<span class="text-accent font-serif">.</span>
+</h1>
+<p class="font-sans text-lg text-ink/75 leading-relaxed max-w-[680px]">
+            Whether you have an ambitious marketing challenge, an event in need of operational leadership, or an idea to build together — my inbox is genuinely open.
+          </p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-start">
+<!-- Left Column -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-space-xl">
+<div class="bg-white p-space-xl rounded-xl border border-ink/10 shadow-sm space-y-space-lg">
+<div>
+<span class="font-sans text-[11px] font-semibold text-ink/60 uppercase tracking-wider block mb-space-2xs">
+                  Direct Correspondence
+                </span>
+<div class="group relative flex items-center justify-between gap-space-xs py-space-xs cursor-pointer" id="copy-email-btn">
+<a class="font-serif text-xl sm:text-2xl text-ink group-hover:text-accent transition-colors tracking-tight break-all font-normal" href="mailto:contact@onerishi.in">
+                    contact@onerishi.in
+                  </a>
+<button aria-label="Copy email address" class="shrink-0 p-space-2xs rounded-lg text-accent-2 group-hover:text-accent hover:bg-bg transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" id="copy-icon">content_copy</span>
+</button>
+</div>
+<p class="font-sans text-xs text-accent opacity-0 transition-opacity duration-200 mt-space-2xs" id="copy-feedback">
+                  Copied to clipboard
+                </p>
+</div>
+<div class="pt-space-md border-t border-b border-ink/10 py-space-md">
+<span class="font-sans text-[11px] font-semibold text-ink/60 uppercase tracking-wider block mb-space-xs">
+                  Station &amp; Cadence
+                </span>
+<div class="flex items-start gap-space-xs text-ink mb-space-2xs">
+<span class="material-symbols-outlined text-[18px] text-accent shrink-0 mt-0.5">location_on</span>
+<p class="font-sans text-sm text-ink font-medium">
+                    Based in India <span class="text-ink/30 font-normal">•</span> Open to select advisory &amp; collaborative roles
+                  </p>
+</div>
+<div class="flex items-center gap-space-xs text-accent-2 mt-space-xs">
+<span class="material-symbols-outlined text-[18px] shrink-0">schedule</span>
+<p class="font-sans text-sm text-ink/70">
+                    I typically read and reply within 24–48 hours.
+                  </p>
+</div>
+</div>
+<div class="pt-space-xs">
+<span class="font-sans text-[11px] font-semibold text-ink/60 uppercase tracking-wider block mb-space-sm">
+                  Elsewhere on the Deliberate Web
+                </span>
+<div class="flex flex-wrap gap-space-xs font-sans">
+<a class="inline-flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-bg border border-ink/10 text-accent-2 hover:text-accent hover:border-accent/30 transition-all text-xs font-medium" href="https://github.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>GitHub</span>
+</a>
+<a class="inline-flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-bg border border-ink/10 text-accent-2 hover:text-accent hover:border-accent/30 transition-all text-xs font-medium" href="https://linkedin.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span>LinkedIn</span>
+</a>
+<a class="inline-flex items-center gap-space-2xs px-space-sm py-space-xs rounded-lg bg-bg border border-ink/10 text-accent-2 hover:text-accent hover:border-accent/30 transition-all text-xs font-medium" href="https://youtube.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span>YouTube</span>
+</a>
+</div>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-white border border-ink/10 flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-full bg-accent-2 text-white flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">auto_stories</span>
+</div>
+<div class="space-y-space-2xs font-sans">
+<h4 class="text-sm font-semibold text-accent-2">
+                  The Literary Compact
+                </h4>
+<p class="text-sm text-ink/75 leading-relaxed">
+                  No robotic CRM funnels, auto-responders, or sponsored pitches. Every missive goes straight to my personal terminal.
+                </p>
+</div>
+</div>
+</div>
+<!-- Right Column / Form -->
+<div class="lg:col-span-7">
+<div class="bg-white p-space-xl lg:p-space-2xl rounded-xl border border-ink/10 shadow-sm">
+<div class="mb-space-lg">
+<h2 class="font-serif text-2xl lg:text-[28px] text-ink tracking-tight mb-space-2xs font-normal">
+                  Start an exchange
+                </h2>
+<p class="font-sans text-sm text-ink/70">
+                  Drop a note below. Concrete details and thoughtful contexts are always deeply appreciated.
+                </p>
+</div>
+<form class="space-y-space-lg font-sans" id="contact-form" onsubmit="event.preventDefault(); handleSubmit();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="space-y-space-2xs">
+<label class="font-sans text-[11px] font-semibold text-ink uppercase tracking-wider block" for="sender-name">
+                      Your Name <span class="text-accent">*</span>
+</label>
+<input class="w-full bg-[#F7F4EF]/70 border border-ink/15 px-space-md py-space-sm rounded-lg text-sm text-ink placeholder:text-ink/40 focus:bg-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all" id="sender-name" name="name" placeholder="Evelyn Vance" required="" type="text">
+</div>
+<div class="space-y-space-2xs">
+<label class="font-sans text-[11px] font-semibold text-ink uppercase tracking-wider block" for="sender-email">
+                      Email Address <span class="text-accent">*</span>
+</label>
+<input class="w-full bg-[#F7F4EF]/70 border border-ink/15 px-space-md py-space-sm rounded-lg text-sm text-ink placeholder:text-ink/40 focus:bg-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all" id="sender-email" name="email" placeholder="evelyn@domain.org" required="" type="email">
+</div>
+</div>
+<div class="space-y-space-2xs">
+<label class="font-sans text-[11px] font-semibold text-ink uppercase tracking-wider block">
+                    Nature of Collaboration
+                  </label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs pt-space-2xs">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="inquiry_type" type="radio" value="consulting">
+<div class="p-space-sm text-center rounded-lg bg-[#F7F4EF] border border-ink/10 text-ink/75 font-sans text-xs font-medium peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all select-none">
+                        Consulting
+                      </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="inquiry_type" type="radio" value="speaking">
+<div class="p-space-sm text-center rounded-lg bg-[#F7F4EF] border border-ink/10 text-ink/75 font-sans text-xs font-medium peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all select-none">
+                        Speaking
+                      </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="inquiry_type" type="radio" value="media">
+<div class="p-space-sm text-center rounded-lg bg-[#F7F4EF] border border-ink/10 text-ink/75 font-sans text-xs font-medium peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all select-none">
+                        Media
+                      </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="inquiry_type" type="radio" value="general">
+<div class="p-space-sm text-center rounded-lg bg-[#F7F4EF] border border-ink/10 text-ink/75 font-sans text-xs font-medium peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all select-none">
+                        General
+                      </div>
+</label>
+</div>
+</div>
+<div class="space-y-space-2xs">
+<div class="flex items-center justify-between">
+<label class="font-sans text-[11px] font-semibold text-ink uppercase tracking-wider block" for="message">
+                      The Idea or Challenge <span class="text-accent">*</span>
+</label>
+<span class="font-sans text-[11px] text-ink/50" id="char-counter">0 / 1200</span>
+</div>
+<textarea class="w-full bg-[#F7F4EF]/70 border border-ink/15 p-space-md rounded-lg text-sm text-ink placeholder:text-ink/40 focus:bg-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all resize-none leading-relaxed" id="message" maxlength="1200" name="message" oninput="document.getElementById('char-counter').innerText = `${this.value.length} / 1200`" placeholder="Give me a sense of the problem space, the timeline, or simply what sparked your curiosity..." required="" rows="5"></textarea>
+</div>
+<div class="pt-space-xs flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs bg-accent text-white font-sans text-sm font-medium px-space-xl py-space-sm rounded-lg hover:opacity-95 transition-all active:translate-y-px shadow-sm" id="submit-btn" type="submit">
+<span id="btn-text">Send Message</span>
+<span class="material-symbols-outlined text-[18px]" id="btn-icon">arrow_forward</span>
+</button>
+<div class="flex items-center gap-space-xs text-ink/70 font-sans">
+<span class="material-symbols-outlined text-[16px] text-accent-2">verified_user</span>
+<span class="text-xs">Discreet &amp; Direct</span>
+</div>
+</div>
+<div class="hidden p-space-md rounded-lg bg-[#F7F4EF] border border-ink/15 text-ink font-sans text-sm transition-all" id="form-status"></div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script>
+        const copyBtn = document.getElementById('copy-email-btn');
+        const feedback = document.getElementById('copy-feedback');
+        const copyIcon = document.getElementById('copy-icon');
+
+        if (copyBtn) {
+          copyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText('contact@onerishi.in').then(() => {
+              feedback.classList.remove('opacity-0');
+              copyIcon.innerText = 'check';
+              setTimeout(() => {
+                feedback.classList.add('opacity-0');
+                copyIcon.innerText = 'content_copy';
+              }, 2400);
+            });
+          });
+        }
+
+        function handleSubmit() {
+          const submitBtn = document.getElementById('submit-btn');
+          const btnText = document.getElementById('btn-text');
+          const btnIcon = document.getElementById('btn-icon');
+          const statusBox = document.getElementById('form-status');
+          const form = document.getElementById('contact-form');
+
+          submitBtn.disabled = true;
+          btnText.innerText = 'Transmitting...';
+          btnIcon.innerText = 'hourglass_top';
+
+          setTimeout(() => {
+            btnText.innerText = 'Message Dispatched';
+            btnIcon.innerText = 'done_all';
+            submitBtn.classList.remove('bg-accent');
+            submitBtn.classList.add('bg-accent-2');
+
+            statusBox.innerText = 'Thank you for reaching out. Your note has landed safely in my terminal, and I will be in touch shortly.';
+            statusBox.classList.remove('hidden');
+
+            form.reset();
+            document.getElementById('char-counter').innerText = '0 / 1200';
+
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              btnText.innerText = 'Send Message';
+              btnIcon.innerText = 'arrow_forward';
+              submitBtn.classList.remove('bg-accent-2');
+              submitBtn.classList.add('bg-accent');
+            }, 6000);
+          }, 700);
+        }
+      </script>
+</div>
+</main>
+<footer class="w-full bg-[#F7F4EF] border-t border-ink/10 mt-space-4xl font-sans">
+<div class="max-w-[1200px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl mb-space-3xl">
+<div class="md:col-span-5 flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center font-serif text-2xl text-ink tracking-tight font-normal">
+<span>OneRishi</span><span class="inline-block w-1.5 h-1.5 rounded-full bg-accent ml-0.5"></span>
+</div>
+<p class="font-sans text-sm text-ink/75 max-w-[360px] leading-relaxed">
+              Rushal S. — Marketing × Technology × Creativity. Shaping literate, high-agency digital narratives and experimental tooling.
+            </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<a class="font-sans text-xs text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://github.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span><span>GitHub</span>
+</a>
+<span class="text-ink/30 text-[12px]">•</span>
+<a class="font-sans text-xs text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://linkedin.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">work</span><span>LinkedIn</span>
+</a>
+<span class="text-ink/30 text-[12px]">•</span>
+<a class="font-sans text-xs text-accent-2 hover:text-accent transition-colors flex items-center gap-space-2xs" href="https://youtube.com" rel="noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">play_circle</span><span>YouTube</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-3 space-y-space-sm">
+<span class="font-sans text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Navigation</span>
+<ul class="space-y-space-xs text-sm">
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="home" href="#">Home</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="work" href="#">Work</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="writing" href="#">Writing</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="about" href="#">About</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="labs" href="#">Labs</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 space-y-space-sm">
+<span class="font-sans text-[11px] font-semibold text-ink/60 uppercase tracking-wider block">Explore &amp; Connect</span>
+<ul class="space-y-space-xs text-sm">
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="philosophy" href="#">Philosophy</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="impact" href="#">Impact</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="collaborate" href="#">Collaborate</a></li>
+<li role="none"><a class="text-ink hover:text-accent transition-colors" data-path="contact" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-space-lg border-t border-ink/10 flex flex-col md:flex-row items-center justify-between gap-space-sm font-sans text-sm text-ink/70">
+<p>© 2024 Rushal S. All rights reserved.</p>
+<p class="text-center md:text-right">OneRishi • onerishi.in • Crafting the deliberate web</p>
+</div>
+</div>
+</footer>
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <rect width="800" height="1000" fill="#F0EDE8"/>
+  <pattern id="dotgrid" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1" fill="#1B1B18" fill-opacity="0.08"/>
+  </pattern>
+  <rect width="800" height="1000" fill="url(#dotgrid)"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#1B1B18" stroke-width="1" stroke-opacity="0.2"/>
+  <rect x="36" y="36" width="728" height="928" fill="none" stroke="#1B1B18" stroke-width="0.5" stroke-opacity="0.1"/>
+
+  <rect x="50" y="50" width="140" height="28" rx="2" fill="#C1592B" fill-opacity="0.1"/>
+  <text x="60" y="69" font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#C1592B">ARCHIVE PORT.</text>
+
+  <circle cx="400" cy="420" r="110" fill="#E6E1D8" stroke="#1B1B18" stroke-width="1" stroke-opacity="0.2"/>
+  <path d="M 280 620 C 280 520, 520 520, 520 620" fill="#E6E1D8" stroke="#1B1B18" stroke-width="1" stroke-opacity="0.2"/>
+  
+  <text x="400" y="700" font-family="Fraunces, Georgia, serif" font-size="32" font-weight="400" fill="#1B1B18" text-anchor="middle">Rushal S.</text>
+  <text x="400" y="740" font-family="Inter, sans-serif" font-size="14" font-weight="500" letter-spacing="1" fill="#C1592B" text-anchor="middle" text-transform="uppercase">Marketing × Technology × Creativity</text>
+  
+  <rect x="120" y="800" width="560" height="80" rx="4" fill="#FFFFFF" stroke="#1B1B18" stroke-width="1" stroke-opacity="0.15"/>
+  <text x="400" y="835" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#C1592B" text-anchor="middle">[Photo of Rushal S. — Real photo placeholder]</text>
+  <text x="400" y="860" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#1B1B18" fill-opacity="0.6" text-anchor="middle">Awaiting confirmed portrait photograph • Strictly not AI-generated</text>
+
+  <text x="400" y="940" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#1B1B18" fill-opacity="0.4" text-anchor="middle">FIG. 01 — 2024 • ONERISHI.IN</text>
+</svg>

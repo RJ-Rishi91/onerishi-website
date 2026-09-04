@@ -1,0 +1,98 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  articleDate?: string;
+}
+
+const {
+  title = 'OneRishi — Marketing × Technology × Creativity',
+  description = 'Personal brand and thought leadership platform for Rushal S. — bringing technology, creativity, and communication together to turn ideas into real-world projects.',
+  ogImage = '/assets/images/rushal-portrait.jpg',
+  articleDate,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://onerishi.in');
+const currentPath = Astro.url.pathname;
+
+const pageTitle = title.includes('OneRishi') ? title : `${title} — OneRishi`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Rushal S." />
+
+    <!-- Google Fonts Preconnect & Inter / Fraunces Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={articleDate ? 'article' : 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rushal S.",
+      "url": "https://onerishi.in",
+      "jobTitle": "Demand Generation Specialist & Creative Technologist",
+      "description": "Marketing × Technology × Creativity. Building high-agency systems and deliberate media collectives.",
+      "sameAs": [
+        "https://github.com",
+        "https://linkedin.com",
+        "https://youtube.com"
+      ]
+    })} />
+  </head>
+  <body class="bg-[#F7F4EF] font-sans text-[#1B1B18] antialiased min-h-screen flex flex-col">
+    <!-- Skip to Content Accessibility Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#C1592B] focus:text-white focus:rounded-md focus:shadow-lg"
+    >
+      Skip to main content
+    </a>
+
+    <Header activePath={currentPath} />
+
+    <main id="main-content" class="w-full pt-20 flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
