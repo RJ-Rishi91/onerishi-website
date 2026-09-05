@@ -3,27 +3,34 @@
 ## Page tree (text form)
 
 ```
-OneRishi (Home)
+OneRishi.in (Home) ────────────────────────────── [/]
 │
-├── Work                              [primary nav]
-│   └── Case study (template)         [dynamic — one page per project]
-│       ├── Google DevFest Udaipur 2024
-│       ├── Gazette Collective
-│       └── Web & Digital Projects
+├── Work                                        [/work]
+│   └── Case Studies (Dynamic Collections)
+│       ├── Google DevFest Udaipur 2024         [/work/google-devfest-udaipur-2024]
+│       ├── Gazette Collective                  [/work/gazette-collective]
+│       └── Web & Digital Systems               [/work/web-digital-projects]
 │
-├── Writing                           [primary nav]
-│   └── Blog post (template)          [dynamic — one page per post]
-│       categories: Marketing Experiments · Marketing × Tech ·
-│                   Building on the Internet · Projects & Behind-the-Scenes ·
-│                   Career & Learning
+├── Writing                                     [/writing]
+│   └── Field Dispatches (Dynamic Collections)
+│       ├── Distribution Before Destination     [/writing/distribution-before-destination]
+│       ├── What Building Gazette Collective... [/writing/community-journalism-gazette-collective]
+│       ├── Why Engineering Empathy...          [/writing/engineering-empathy-growth-marketer]
+│       ├── The Architecture of High-Converting [/writing/the-architecture-of-high-converting-b2b-web-experiences]
+│       ├── Operational Lessons from Directing  [/writing/operational-lessons-directing-tech-events]
+│       ├── Learning to Build in Public...      [/writing/learning-to-build-in-public-without-burning-out]
+│       └── Cultivating Taste: The Unspoken...  [/writing/cultivating-taste-unspoken-lever]
 │
-├── About                             [primary nav]
-├── Labs                              [primary nav]
+├── About                                       [/about]
+├── Labs                                        [/labs]
+├── Philosophy                                  [/philosophy]
+├── Impact                                      [/impact]
+├── Collaborate                                 [/collaborate]
+├── Contact                                     [/contact]
 │
-├── Philosophy                        [footer nav, linked from About]
-├── Impact                            [footer nav, linked from Home/Work]
-├── Collaborate                       [footer nav, linked from About/Work]
-└── Contact                           [footer nav, "Say Hello" CTA target]
+└── Feeds & Endpoints
+    ├── RSS 2.0 Feed                            [/rss.xml]
+    └── XML Search Engine Sitemap               [/sitemap.xml]
 ```
 
 ## Full linking map
