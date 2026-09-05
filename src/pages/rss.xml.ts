@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 export async function GET(context: any) {
   const posts = await getCollection('writing');
   return rss({
-    title: 'OneRishi — Dispatches & Field Notes',
+    title: 'OneRishi.in — Dispatches & Field Notes',
     description: 'Real experiments, field notes, and frameworks from marketing, technology, and building on the internet by Rushal S.',
     site: context.site || 'https://onerishi.in',
     items: posts.map((post) => ({

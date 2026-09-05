@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {
-  title = 'OneRishi — Marketing × Technology × Creativity',
+  title = 'OneRishi.in — Marketing × Technology × Creativity',
   description = 'Personal brand and thought leadership platform for Rushal S. — bringing technology, creativity, and communication together to turn ideas into real-world projects.',
   ogImage = '/assets/images/rushal-portrait.jpg',
   articleDate,
@@ -20,7 +20,7 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://onerishi.in');
 const currentPath = Astro.url.pathname;
 
-const pageTitle = title.includes('OneRishi') ? title : `${title} — OneRishi`;
+const pageTitle = title.includes('OneRishi.in') ? title : (title.includes('OneRishi') ? title.replace('OneRishi', 'OneRishi.in') : `${title} — OneRishi.in`);
 ---
 
 <!DOCTYPE html>
@@ -50,6 +50,7 @@ const pageTitle = title.includes('OneRishi') ? title : `${title} — OneRishi`;
     />
 
     <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="OneRishi.in" />
     <meta property="og:type" content={articleDate ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={pageTitle} />
