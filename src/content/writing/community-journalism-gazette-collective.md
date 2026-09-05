@@ -35,6 +35,20 @@ In an environment flooded with unverified messaging forwards and partisan rumors
 
 Rather than competing in the zero-sum frenzy of breaking news alerts, we deliberately embraced slow, deep-dive dispatches. Readers responded with quiet gratitude. People are exhausted by manufactured outrage; they crave thoughtful, literate context about the places they call home.
 
+<figure class="my-8 rounded-lg overflow-hidden border border-[#E6E1D8] bg-white shadow-sm">
+  <div class="aspect-[16/9] w-full bg-[#F0EDE8]">
+    <img
+      src="/assets/images/writing-newspaper.jpg"
+      alt="Freshly printed broadsheet newspaper open on weathered dark oak reading table"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <figcaption class="p-3 bg-white border-t border-[#E6E1D8] flex items-center justify-between text-xs text-[#1B1B18]/75 font-sans">
+    <span class="italic">Figure 2.0 — Freshly printed Gazette broadsheet in regional reading rooms.</span>
+    <span class="font-mono text-[11px] text-[#1F3A3D]">Print Archive</span>
+  </figcaption>
+</figure>
+
 ### 3. Distribution Through Physical and Digital Unity
 
 We discovered immense power in combining digital static archives with physical print broadsheets. A physical printed page shared in a neighborhood library or university canteen sparks face-to-face conversations that no digital thread can replicate.

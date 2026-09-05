@@ -47,6 +47,20 @@ Rather than relying on ad-hoc volunteer heroism on show day, we engineered a mod
 - **Deterministic Network:** Isolated fiber backhauls reserved strictly for speaker codelabs and streaming encoders, insulating production from attendee density.
 - **Fault Recovery Matrix:** Documented playbooks for AV failovers, power contingencies, speaker dropouts, and room-capacity overflow redistribution.
 
+<figure class="my-8 rounded-lg overflow-hidden border border-[#E6E1D8] bg-white shadow-sm">
+  <div class="aspect-[16/9] w-full bg-[#F0EDE8]">
+    <img
+      src="/assets/images/devfest-auditorium.jpg"
+      alt="Keynote auditorium hall at Google DevFest Udaipur"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <figcaption class="p-3 bg-white border-t border-[#E6E1D8] flex items-center justify-between text-xs text-[#1B1B18]/75 font-sans">
+    <span class="italic">Figure 1.0 — Wide perspective of the main keynote hall and tiered attendee seating.</span>
+    <span class="font-mono text-[11px] text-[#1F3A3D]">Auditorium Track</span>
+  </figcaption>
+</figure>
+
 ## Execution In Situ
 
 On show day, the system operated strictly according to the runbooks. Over nine consecutive hours across parallel tracks, the teams maintained total schedule integrity without a single dropped presentation or unplanned blackout.

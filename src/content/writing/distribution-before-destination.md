@@ -6,8 +6,8 @@ date: "December 04, 2024"
 readTime: "9 min read"
 volume: "Vol. 04"
 featured: true
-coverImage: "/assets/images/distribution-cover.jpg"
-coverImageAlt: "Audio microphone and open notebook with growth curves and fountain pen on aged desk"
+coverImage: "/assets/images/writing-featured-desk.jpg"
+coverImageAlt: "Overhead photograph of open archival notebooks, fountain pens, and handwritten wireframes on natural desk"
 coverCaption: "Figure 1.0 — Cadence logs and multivariate CTR experiments from organic YouTube scaling."
 writtenFromExperience:
   title: "Audience Mechanics in Practice"
@@ -36,6 +36,20 @@ Rather than treating YouTube as an ephemeral entertainment feed, we approached i
 ### 2. The 30-Second Retention Crucible
 
 The algorithm does not reward ambition; it rewards audience satisfaction. In our analytics teardowns, the first 30 seconds accounted for more than 70% of variance in long-term recommendation momentum. Eliminating generic intros, logos, and rambling greetings immediately raised average view duration.
+
+<figure class="my-8 rounded-lg overflow-hidden border border-[#E6E1D8] bg-white shadow-sm">
+  <div class="aspect-[16/9] w-full bg-[#F0EDE8]">
+    <img
+      src="/assets/images/distribution-cover.jpg"
+      alt="Cadence logs and multivariate CTR experiments from organic YouTube scaling"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <figcaption class="p-3 bg-white border-t border-[#E6E1D8] flex items-center justify-between text-xs text-[#1B1B18]/75 font-sans">
+    <span class="italic">Figure 2.0 — Retention curves, packaging multivariate experiments, and cadence logs.</span>
+    <span class="font-mono text-[11px] text-[#1F3A3D]">Field Reference</span>
+  </figcaption>
+</figure>
 
 ### 3. Comment Margins as Community Desks
 
