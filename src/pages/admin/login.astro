@@ -129,8 +129,27 @@ import '../../styles/global.css';
           </div>
         </form>
 
+        <!-- Backend Configuration (Collapsible) -->
+        <div class="mt-4 pt-3 border-t border-[#1B1B18]/10 text-left">
+          <button type="button" id="toggleApiSettings" class="text-[11px] text-[#1F3A3D]/80 hover:text-[#C1592B] transition-colors flex items-center gap-1">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span id="apiSettingsLabel">API Endpoint Settings</span>
+          </button>
+          <div id="apiSettingsPanel" class="hidden mt-2 p-2.5 bg-[#F7F4EF] rounded border border-[#1B1B18]/10 text-xs space-y-2">
+            <label for="apiUrlInput" class="block text-[11px] font-medium text-[#1B1B18]/70">FastAPI Server URL</label>
+            <input type="text" id="apiUrlInput" class="w-full px-2 py-1 text-xs border border-[#1B1B18]/20 rounded font-mono bg-white" placeholder="https://api.onerishi.in or https://...onrender.com" />
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-[10px] text-[#1B1B18]/50">Saved locally in browser</span>
+              <button type="button" id="saveApiUrlBtn" class="px-2 py-1 bg-[#1B1B18] text-white rounded text-[11px] hover:bg-[#C1592B] transition-colors">Save URL</button>
+            </div>
+          </div>
+        </div>
+
         <!-- Functional security note -->
-        <div class="mt-6 pt-5 border-t border-[#1B1B18]/10 flex items-center justify-between text-[11px] text-[#1B1B18]/50">
+        <div class="mt-4 pt-3 border-t border-[#1B1B18]/10 flex items-center justify-between text-[11px] text-[#1B1B18]/50">
           <span class="flex items-center gap-1.5">
             <svg class="w-3.5 h-3.5 text-[#1F3A3D]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -151,9 +170,12 @@ import '../../styles/global.css';
   </footer>
 
   <script is:inline>
-    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://127.0.0.1:8000'
-      : 'https://api.onerishi.in';
+    const savedApiUrl = localStorage.getItem('onerishi_api_url');
+    let API_BASE_URL = savedApiUrl || (
+      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://127.0.0.1:8000'
+        : 'https://api.onerishi.in'
+    );
 
     // Redirect if already authenticated
     if (sessionStorage.getItem('onerishi_admin_token')) {
@@ -166,6 +188,37 @@ import '../../styles/global.css';
     const submitBtn = document.getElementById('submitBtn');
     const errorMsg = document.getElementById('errorMessage');
     const errorText = document.getElementById('errorText');
+
+    // API settings controls
+    const toggleApiSettings = document.getElementById('toggleApiSettings');
+    const apiSettingsPanel = document.getElementById('apiSettingsPanel');
+    const apiUrlInput = document.getElementById('apiUrlInput');
+    const saveApiUrlBtn = document.getElementById('saveApiUrlBtn');
+
+    if (apiUrlInput) {
+      apiUrlInput.value = API_BASE_URL;
+    }
+
+    toggleApiSettings?.addEventListener('click', () => {
+      apiSettingsPanel.classList.toggle('hidden');
+    });
+
+    saveApiUrlBtn?.addEventListener('click', () => {
+      const val = apiUrlInput.value.trim().replace(/\/+$/, '');
+      if (val) {
+        localStorage.setItem('onerishi_api_url', val);
+        API_BASE_URL = val;
+        alert(`API URL updated to: ${val}`);
+        apiSettingsPanel.classList.add('hidden');
+      } else {
+        localStorage.removeItem('onerishi_api_url');
+        API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+          ? 'http://127.0.0.1:8000'
+          : 'https://api.onerishi.in';
+        apiUrlInput.value = API_BASE_URL;
+        alert('Reset to default API URL');
+      }
+    });
 
     toggleBtn.addEventListener('click', () => {
       if (passwordInput.type === 'password') {
@@ -207,7 +260,17 @@ import '../../styles/global.css';
         sessionStorage.setItem('onerishi_admin_token', data.access_token);
         window.location.href = '/admin';
       } catch (err) {
-        errorText.textContent = err.message || 'Connection error. Please try again.';
+        if (err.name === 'TypeError' || err.message.includes('fetch') || err.message.includes('NetworkError') || err.message.includes('Failed')) {
+          errorText.innerHTML = `
+            <strong>Cannot reach Backend Server:</strong><br/>
+            Unable to connect to <code>${API_BASE_URL}</code>.<br/><br/>
+            • <strong>Local editing:</strong> Open <a href="http://localhost:4321/admin/login" class="underline font-semibold text-[#1B1B18] hover:text-[#C1592B]">http://localhost:4321/admin/login</a> with the local FastAPI server running.<br/>
+            • <strong>Live site editing:</strong> The backend needs to be deployed to Render/Railway (click "API Endpoint Settings" below to connect your cloud URL).
+          `;
+          apiSettingsPanel?.classList.remove('hidden');
+        } else {
+          errorText.textContent = err.message || 'Incorrect password. Access denied.';
+        }
         errorMsg.classList.remove('hidden');
         passwordInput.classList.add('border-[#C1592B]', 'bg-[#C1592B]/5');
         passwordInput.focus();

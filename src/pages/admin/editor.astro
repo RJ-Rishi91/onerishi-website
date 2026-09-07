@@ -472,9 +472,12 @@ import '../../styles/global.css';
   </div>
 
   <script is:inline>
-    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://127.0.0.1:8000'
-      : 'https://api.onerishi.in';
+    const savedApiUrl = localStorage.getItem('onerishi_api_url');
+    const API_BASE_URL = savedApiUrl || (
+      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://127.0.0.1:8000'
+        : 'https://api.onerishi.in'
+    );
 
     // Auth Guard
     const token = sessionStorage.getItem('onerishi_admin_token');
