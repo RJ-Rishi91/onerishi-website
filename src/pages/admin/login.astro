@@ -1,0 +1,215 @@
+---
+// src/pages/admin/login.astro
+// Admin Authentication Screen for OneRishi CMS
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — OneRishi CMS</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #F7F4EF;
+      --ink: #1B1B18;
+      --accent: #C1592B;
+      --accent-2: #1F3A3D;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-fraunces {
+      font-family: 'Fraunces', serif;
+    }
+    .focus-ring:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#C1592B]/10 selection:text-[#C1592B]">
+  <!-- Top minimal bar / back to site link -->
+  <header class="w-full px-6 py-6 sm:px-12 flex justify-between items-center text-xs tracking-wider uppercase">
+    <a href="/" class="inline-flex items-center gap-1.5 text-[#1B1B18]/60 hover:text-[#C1592B] transition-colors duration-150 group">
+      <svg class="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      <span>Return to onerishi.in</span>
+    </a>
+    <div class="flex items-center gap-2 text-[#1B1B18]/40 font-mono text-[11px]">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#1F3A3D]"></span>
+      <span>CMS • v1.4</span>
+    </div>
+  </header>
+
+  <!-- Centered Login Card -->
+  <main class="w-full flex-1 flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-[390px]">
+      
+      <!-- Brand Wordmark & Subtitle -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-baseline justify-center mb-2 font-fraunces text-3xl sm:text-4xl tracking-tight text-[#1B1B18] font-medium leading-none" style="white-space: nowrap; font-feature-settings: 'cv01', 'opsz' 36;">
+          <span>OneRishi</span><span class="text-[#C1592B]">.</span><span>in</span>
+        </div>
+        <p class="text-xs tracking-widest uppercase font-medium text-[#1F3A3D]/70">Editorial CMS & Terminal</p>
+      </div>
+
+      <!-- Card container -->
+      <div class="bg-white border border-[#1B1B18]/10 rounded-xl p-7 sm:p-8 shadow-[0_4px_24px_-4px_rgba(27,27,24,0.04)]">
+        
+        <div class="mb-6">
+          <h1 class="font-fraunces text-xl font-normal text-[#1B1B18] tracking-tight mb-1">
+            Author Authentication
+          </h1>
+          <p class="text-xs text-[#1B1B18]/60 leading-relaxed">
+            Enter master key to manage essays, labs, and dispatches.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form id="loginForm" class="space-y-4">
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <label for="password" class="block text-xs font-medium uppercase tracking-wider text-[#1B1B18]/80 shrink-0">
+                Master Password
+              </label>
+              <button type="button" id="toggleBtn" class="text-[11px] text-[#1F3A3D]/70 hover:text-[#1B1B18] transition-colors focus:outline-none shrink-0 whitespace-nowrap">
+                Show
+              </button>
+            </div>
+            <div class="relative">
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="••••••••••••" 
+                required 
+                autocomplete="current-password" 
+                class="w-full px-3.5 py-2.5 bg-[#F7F4EF]/40 border border-[#1B1B18]/20 rounded-lg text-sm text-[#1B1B18] placeholder-[#1B1B18]/30 focus-ring transition-colors" 
+              />
+            </div>
+            <!-- Error State indicator -->
+            <div id="errorMessage" class="mt-2.5 flex items-start gap-1.5 text-xs text-[#C1592B] hidden" role="alert">
+              <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+              </svg>
+              <span id="errorText">Incorrect password. Access denied.</span>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button type="submit" id="submitBtn" class="w-full py-2.5 px-4 bg-[#C1592B] hover:bg-[#a84a22] text-white font-medium text-sm rounded-lg transition-colors duration-150 flex items-center justify-center gap-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#C1592B] focus:ring-offset-2 whitespace-nowrap">
+              <span>Log In</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Functional security note -->
+        <div class="mt-6 pt-5 border-t border-[#1B1B18]/10 flex items-center justify-between text-[11px] text-[#1B1B18]/50">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-[#1F3A3D]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+            Encrypted session
+          </span>
+          <span class="font-mono text-[10px]">Single-admin</span>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="w-full py-6 text-center text-xs text-[#1B1B18]/40">
+    <p>© 2024 OneRishi • Restricted Editorial System</p>
+  </footer>
+
+  <script is:inline>
+    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://127.0.0.1:8000'
+      : 'https://api.onerishi.in';
+
+    // Redirect if already authenticated
+    if (sessionStorage.getItem('onerishi_admin_token')) {
+      window.location.href = '/admin';
+    }
+
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const loginForm = document.getElementById('loginForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+
+    toggleBtn.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.textContent = 'Hide';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.textContent = 'Show';
+      }
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMsg.classList.add('hidden');
+      passwordInput.classList.remove('border-[#C1592B]', 'bg-[#C1592B]/5');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Verifying…</span>
+      `;
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: passwordInput.value }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.detail || 'Incorrect password. Access denied.');
+        }
+
+        sessionStorage.setItem('onerishi_admin_token', data.access_token);
+        window.location.href = '/admin';
+      } catch (err) {
+        errorText.textContent = err.message || 'Connection error. Please try again.';
+        errorMsg.classList.remove('hidden');
+        passwordInput.classList.add('border-[#C1592B]', 'bg-[#C1592B]/5');
+        passwordInput.focus();
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+          <span>Log In</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

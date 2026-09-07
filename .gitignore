@@ -19,3 +19,15 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# Python & Backend
+__pycache__/
+*.py[cod]
+*$py.class
+backend/venv/
+venv/
+*.db
+*.sqlite3
+backend/.env
+!backend/.env.example
+

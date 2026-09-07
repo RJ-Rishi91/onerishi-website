@@ -3,7 +3,72 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Tag from '../../components/Tag.astro';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('writing');
+interface NormalizedPost {
+  slug: string;
+  data: {
+    title: string;
+    description: string;
+    category: string;
+    date: string;
+    readTime: string;
+    volume: string;
+    featured: boolean;
+    coverImage?: string | null;
+    coverImageAlt?: string;
+  };
+}
+
+const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'http://127.0.0.1:8000';
+let allPosts: NormalizedPost[] = [];
+
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 2000);
+  const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
+  clearTimeout(timeoutId);
+  if (res.ok) {
+    const apiPosts = await res.json();
+    if (Array.isArray(apiPosts) && apiPosts.length > 0) {
+      allPosts = apiPosts.map((p, idx) => ({
+        slug: p.slug,
+        data: {
+          title: p.title,
+          description: p.excerpt,
+          category: p.category,
+          date: p.published_at
+            ? new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+            : 'Recently',
+          readTime: `${p.read_time_minutes} min read`,
+          volume: `Vol. 0${idx + 1}`,
+          featured: idx === 0,
+          coverImage: p.cover_image,
+          coverImageAlt: p.title,
+        }
+      }));
+    }
+  }
+} catch {
+  // Graceful fallback to local collection
+}
+
+if (allPosts.length === 0) {
+  const localEntries = await getCollection('writing');
+  allPosts = localEntries.map((p) => ({
+    slug: p.slug,
+    data: {
+      title: p.data.title,
+      description: p.data.description,
+      category: p.data.category,
+      date: p.data.date,
+      readTime: p.data.readTime,
+      volume: p.data.volume || 'Vol. 04',
+      featured: p.data.featured || false,
+      coverImage: p.data.coverImage,
+      coverImageAlt: p.data.coverImageAlt,
+    }
+  }));
+}
+
 const sortedPosts = allPosts.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );

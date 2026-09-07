@@ -1,0 +1,856 @@
+---
+// src/pages/admin/editor.astro
+// OneRishi CMS Post Editor Screen
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Post Editor — OneRishi CMS</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- Google Fonts: Fraunces & Inter -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F7F4EF',
+            surface: '#FFFFFF',
+            ink: '#1B1B18',
+            'ink-muted': '#6B6860',
+            'ink-faint': '#9E9B93',
+            border: '#E4E0D6',
+            'border-focus': '#C1592B',
+            terracotta: '#C1592B',
+            'terracotta-hover': '#AB4B22',
+            teal: '#1F3A3D',
+            'teal-hover': '#162C2E',
+            'teal-soft': '#EBF1F1',
+            grayBadge: '#68645C',
+            grayBadgeBg: '#EFECE6',
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F7F4EF;
+      color: #1B1B18;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-serif {
+      font-family: 'Fraunces', Georgia, serif;
+      font-feature-settings: 'opsz' 36, 'liga' 1;
+    }
+    textarea:focus, input:focus, select:focus {
+      outline: none;
+    }
+    .prose-editor {
+      line-height: 1.75;
+      font-size: 1.0625rem;
+    }
+    .prose-editor h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: #1B1B18;
+    }
+    .prose-editor h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #1B1B18;
+    }
+    .prose-editor p {
+      margin-bottom: 1.25rem;
+      color: #1B1B18;
+    }
+    .prose-editor blockquote {
+      border-left: 3px solid #C1592B;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #1F3A3D;
+    }
+    .prose-editor code {
+      background-color: #EFECE6;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+    .prose-editor pre {
+      background-color: #1B1B18;
+      color: #F7F4EF;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .prose-editor pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .prose-editor ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .prose-editor ol {
+      list-style-type: decimal;
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .prose-editor a {
+      color: #C1592B;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-bg selection:bg-[#C1592B]/15 selection:text-[#1B1B18]">
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="sticky top-0 z-30 bg-bg/90 backdrop-blur-md border-b border-border transition-all">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+      <!-- Left side: Back to Posts + Wordmark hint -->
+      <div class="flex items-center gap-4">
+        <a class="group flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-ink transition-colors py-1.5 px-2.5 -ml-2.5 rounded hover:bg-border/40" href="/admin">
+          <svg class="w-4 h-4 transition-transform group-hover:-translate-x-0.5 text-ink-muted group-hover:text-ink" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span>Back to Posts</span>
+        </a>
+        <div class="h-4 w-px bg-border hidden sm:block"></div>
+        <span class="text-xs font-serif tracking-tight text-ink-muted hidden sm:inline-flex items-center">
+          OneRishi<span class="text-terracotta font-semibold">.</span>in 
+          <span class="ml-1.5 font-sans text-[11px] uppercase tracking-wider text-ink-faint font-medium">Editor</span>
+        </span>
+      </div>
+
+      <!-- Right side: Status indicator + Action Buttons -->
+      <div class="flex items-center gap-3.5">
+        <!-- Status Indicator Pill -->
+        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-grayBadgeBg text-grayBadge text-xs font-medium border border-border/80 transition-colors" id="statusBadge">
+          <span class="w-1.5 h-1.5 rounded-full bg-grayBadge" id="statusDot"></span>
+          <span id="statusText">Draft</span>
+        </div>
+        <span class="text-xs text-ink-faint hidden md:inline font-mono text-right" id="lastSavedLabel">Unsaved</span>
+        <!-- Secondary Action: Save Draft -->
+        <button class="px-3.5 py-2 text-sm font-medium text-ink hover:text-terracotta bg-surface hover:bg-white border border-border hover:border-terracotta/40 rounded shadow-sm transition-all focus:ring-2 focus:ring-terracotta/20 active:translate-y-0.5" id="saveDraftBtn" type="button">
+          Save Draft
+        </button>
+        <!-- Primary Action: Publish -->
+        <button class="px-4 py-2 text-sm font-medium text-white bg-terracotta hover:bg-terracotta-hover rounded shadow-sm transition-all flex items-center gap-1.5 focus:ring-2 focus:ring-terracotta/30 active:translate-y-0.5" id="publishBtn" type="button">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span id="publishBtnText">Publish</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Form Area -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-6 sm:px-8 py-10 sm:py-14">
+    <form class="space-y-10" id="postEditorForm">
+      
+      <!-- Section 1: Title & Read-only Auto Generated Metadata -->
+      <div class="space-y-2">
+        <textarea 
+          class="w-full font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-ink placeholder:text-ink-faint/60 bg-transparent border-0 resize-none overflow-hidden focus:ring-0 px-0 leading-[1.18] transition-all" 
+          id="postTitle" 
+          placeholder="Monograph Title or Dispatch..." 
+          rows="1"
+        ></textarea>
+
+        <!-- Read-only backend metadata: Slug & Reading Time -->
+        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-muted font-mono pt-1">
+          <span class="inline-flex items-center gap-1 text-ink-muted min-w-0">
+            <span class="text-ink-faint shrink-0">URL:</span>
+            <span class="text-ink hover:text-terracotta transition-colors select-all truncate max-w-[220px] sm:max-w-md" id="slugPreview">/writing/new-post</span>
+          </span>
+          <span class="text-ink-faint select-none">·</span>
+          <span class="inline-flex items-center gap-1 text-ink-muted shrink-0">
+            <svg class="w-3 h-3 text-ink-faint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span id="readTimePreview">~1 min read</span>
+          </span>
+          <span class="text-ink-faint select-none">·</span>
+          <span class="text-[11px] text-ink-faint uppercase tracking-wider font-sans shrink-0">Computed by backend</span>
+        </div>
+      </div>
+
+      <!-- Section 2: Core Metadata (Category & Excerpt) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 pb-6 border-b border-border">
+        <!-- Category Dropdown (Strictly 5 Fixed Categories) -->
+        <div class="space-y-2 md:col-span-1">
+          <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted" for="postCategory">
+            Category
+          </label>
+          <div class="relative">
+            <select class="w-full appearance-none bg-surface border border-border text-ink text-sm rounded px-3.5 py-2.5 pr-8 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10 cursor-pointer" id="postCategory" name="category">
+              <option value="Marketing Experiments">Marketing Experiments</option>
+              <option value="Marketing × Tech">Marketing × Tech</option>
+              <option value="Building on the Internet" selected>Building on the Internet</option>
+              <option value="Projects & Behind-the-Scenes">Projects &amp; Behind-the-Scenes</option>
+              <option value="Career & Learning">Career &amp; Learning</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-ink-muted">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+          </div>
+          <p class="text-[11px] text-ink-faint">Fixed taxonomy · no freeform tags</p>
+        </div>
+
+        <!-- Excerpt Short Textarea -->
+        <div class="space-y-2 md:col-span-2">
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted shrink-0" for="postExcerpt">
+              Excerpt / Abstract
+            </label>
+            <span class="text-[11px] font-mono text-ink-faint shrink-0" id="excerptCount">0 / 200</span>
+          </div>
+          <textarea class="w-full bg-surface border border-border text-ink text-sm rounded p-3 leading-relaxed transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10 resize-none placeholder:text-ink-faint" id="postExcerpt" maxlength="260" placeholder="A crisp 1-2 sentence monograph summary for archive cards and search previews..." rows="2"></textarea>
+        </div>
+      </div>
+
+      <!-- Section 3: Cover Image -->
+      <div class="space-y-3 pb-6 border-b border-border">
+        <div class="flex items-center justify-between">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted">
+              Cover Image
+            </label>
+            <span class="text-[11px] text-ink-faint">Visual monograph header for card grids and article page</span>
+          </div>
+          <button class="text-xs text-ink-faint hover:text-terracotta transition-colors" id="removeCoverBtn" type="button">
+            Remove image
+          </button>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-ink-faint">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <input class="w-full bg-surface border border-border text-ink text-sm rounded pl-9 pr-3 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" id="coverImageUrl" placeholder="Paste image URL (e.g. /assets/images/... or https://...)" type="text" />
+          </div>
+        </div>
+
+        <!-- Cover Image Visual Preview Box -->
+        <div class="relative group rounded border border-border overflow-hidden bg-[#ECE8DF] max-h-56 aspect-[16/6] flex items-center justify-center transition-all" id="coverImagePreviewContainer">
+          <img alt="Cover Preview" class="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300 hidden" id="coverImagePreview" />
+          <div id="coverPlaceholder" class="text-xs text-[#706B62] flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#8C877D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <span>No cover image specified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Body Markdown Editor Area with Simple Preview Toggle -->
+      <div class="space-y-4">
+        <!-- Editor Toolbar & Mode Switcher -->
+        <div class="flex items-center justify-between border-b border-border pb-3">
+          <div class="flex items-center gap-1.5">
+            <label class="text-xs font-semibold uppercase tracking-wider text-ink-muted mr-3">
+              Body
+            </label>
+            <!-- Mode Selector (Edit vs Preview) -->
+            <div class="inline-flex p-0.5 rounded bg-surface border border-border text-xs">
+              <button class="px-3 py-1 rounded font-medium transition-colors bg-ink text-white shadow-xs" id="modeWriteBtn" type="button">
+                Write (Markdown)
+              </button>
+              <button class="px-3 py-1 rounded font-medium text-ink-muted hover:text-ink transition-colors" id="modePreviewBtn" type="button">
+                Live Preview
+              </button>
+            </div>
+          </div>
+          <!-- Quick Formatting Helpers / Stats -->
+          <div class="flex items-center gap-3 text-xs text-ink-faint">
+            <span class="hidden sm:inline font-mono" id="wordCountLabel">0 words</span>
+            <span class="hidden sm:inline">·</span>
+            <span class="text-[11px] font-mono hidden md:inline">Markdown supported</span>
+          </div>
+        </div>
+
+        <!-- Formatting Shortcut Bar (Write Mode Only) -->
+        <div class="flex flex-wrap items-center gap-1 py-1 text-xs text-ink-muted" id="formattingBar">
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-semibold" id="btnBold" title="Bold" type="button">B</button>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink italic" id="btnItalic" title="Italic" type="button">I</button>
+          <span class="text-border px-1">|</span>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-serif" id="btnH2" title="H2 Heading" type="button">H2</button>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-serif" id="btnH3" title="H3 Heading" type="button">H3</button>
+          <span class="text-border px-1">|</span>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink" id="btnQuote" title="Pull Quote" type="button">Quote</button>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-mono" id="btnCode" title="Inline Code" type="button">Code</button>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink" id="btnLink" title="Link" type="button">Link</button>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink" id="btnList" title="Bullet List" type="button">• List</button>
+        </div>
+
+        <!-- Write View: Clean, Spacious Markdown Textarea -->
+        <div class="relative" id="writeViewWrapper">
+          <textarea class="w-full font-mono text-sm leading-relaxed bg-surface border border-border text-ink rounded-lg p-5 sm:p-6 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10 placeholder:text-ink-faint shadow-xs" id="postBodyMarkdown" placeholder="Write your monograph in Markdown... Tell the honest story, share raw numbers, and frame lessons with clarity." rows="16"></textarea>
+        </div>
+
+        <!-- Preview View: Formatted HTML Rendering (Initially Hidden) -->
+        <div class="hidden bg-surface border border-border rounded-lg p-6 sm:p-10 shadow-xs prose-editor" id="previewViewWrapper">
+          <div class="text-ink" id="renderedMarkdownContent">
+            <!-- Dynamically populated via marked -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: SEO & Social Sharing Collapsible Section -->
+      <div class="border border-border rounded-lg bg-surface/60 overflow-hidden transition-all duration-200" id="seoAccordion">
+        <!-- Accordion Header Button -->
+        <button aria-expanded="false" class="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-surface transition-colors cursor-pointer select-none" id="seoToggleBtn" type="button">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xs font-semibold uppercase tracking-wider text-ink-muted">SEO &amp; Social Sharing</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-medium tracking-wide uppercase bg-grayBadgeBg text-grayBadge border border-border/70">Optional</span>
+            <span class="text-xs text-ink-faint hidden sm:inline">— Secondary metadata for search indexing and social cards</span>
+          </div>
+          <div class="flex items-center gap-2 text-ink-muted">
+            <span class="text-xs text-ink-faint hidden md:inline" id="seoStatusSummary">Configure preview</span>
+            <svg class="w-4 h-4 transform transition-transform duration-200 text-ink-muted" id="seoChevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+        </button>
+
+        <!-- Accordion Body -->
+        <div class="hidden border-t border-border p-5 sm:p-6 space-y-6 bg-surface" id="seoContent">
+          <!-- Grid for Meta Title & Focus Keywords -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Field 1: Meta Title -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted shrink-0" for="metaTitleInput">
+                  Meta Title
+                </label>
+                <span class="text-[11px] font-mono text-ink-faint shrink-0 transition-colors" id="metaTitleCount">0 / 60</span>
+              </div>
+              <input class="w-full bg-surface border border-border text-ink text-sm rounded px-3.5 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10 placeholder:text-ink-faint" id="metaTitleInput" placeholder="Falls back to post title if blank" type="text" />
+              <p class="text-[11px] text-ink-faint">Recommended 50–60 characters. Falls back to post title if blank.</p>
+            </div>
+
+            <!-- Field 3: Focus Keyword(s) -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted shrink-0" for="focusKeywordsInput">
+                  Focus Keywords
+                </label>
+                <span class="text-[11px] font-mono text-ink-faint shrink-0">Comma separated</span>
+              </div>
+              <input class="w-full bg-surface border border-border text-ink text-sm rounded px-3.5 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10 placeholder:text-ink-faint" id="focusKeywordsInput" placeholder="e.g. growth marketing, audience building" type="text" />
+              <p class="text-[11px] text-ink-faint">Internal indexing tags and editorial discovery markers.</p>
+            </div>
+          </div>
+
+          <!-- Field 2: Meta Description -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted shrink-0" for="metaDescriptionInput">
+                Meta Description
+              </label>
+              <span class="text-[11px] font-mono text-ink-faint shrink-0 transition-colors" id="metaDescCount">0 / 160</span>
+            </div>
+            <textarea class="w-full bg-surface border border-border text-ink text-sm rounded p-3 leading-relaxed transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10 resize-none placeholder:text-ink-faint" id="metaDescriptionInput" placeholder="Recommended 120–160 characters for optimal SERP snippets. Defaults to excerpt." rows="3"></textarea>
+            <p class="text-[11px] text-ink-faint">Recommended 120–160 characters. Defaults to excerpt.</p>
+          </div>
+
+          <!-- Field 4: Social Preview Image (OG Image) -->
+          <div class="space-y-3 pt-2">
+            <div class="flex items-center justify-between">
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-ink-muted">
+                  Social Preview Image (OG Image)
+                </label>
+                <span class="text-[11px] text-ink-faint">Defaults to your cover image if left blank. Used on Twitter, LinkedIn, and messaging previews.</span>
+              </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative flex-1">
+                <input class="w-full bg-surface border border-border text-ink text-sm rounded px-3.5 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" id="ogImageUrl" placeholder="Paste custom OG image URL or leave blank..." type="text" />
+              </div>
+            </div>
+
+            <!-- Compact OG Preview Card -->
+            <div class="rounded border border-border/80 bg-[#FAF8F3] p-3.5 flex items-center gap-3.5">
+              <div class="w-24 h-16 rounded border border-border overflow-hidden bg-[#ECE8DF] shrink-0 relative flex items-center justify-center">
+                <img alt="OG Preview" class="w-full h-full object-cover hidden" id="ogImagePreview" />
+                <span class="text-[10px] text-[#8C877D] font-mono" id="ogImagePlaceholder">No Image</span>
+              </div>
+              <div class="flex-1 min-w-0 text-xs">
+                <div class="font-medium text-ink truncate" id="ogPreviewTitle">Post Title</div>
+                <div class="text-ink-faint font-mono text-[11px] truncate mt-0.5" id="ogPreviewUrl">onerishi.in · 1200 × 630</div>
+                <div class="text-[11px] text-ink-muted truncate mt-0.5" id="ogPreviewDesc">Excerpt or meta description preview...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Canonical URL Read-Only Block -->
+          <div class="pt-4 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs bg-[#FAF8F3] -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 p-4">
+            <div class="flex items-center gap-2 text-ink-muted min-w-0">
+              <span class="font-semibold text-ink-faint uppercase text-[10px] tracking-wider shrink-0">Canonical URL:</span>
+              <code class="font-mono text-ink text-[11px] truncate select-all" id="canonicalUrlPreview">https://onerishi.in/writing/...</code>
+            </div>
+            <span class="text-[11px] text-ink-faint font-sans whitespace-nowrap shrink-0">Automatically synced with post permalink</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Form Actions & Meta -->
+      <div class="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-muted">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-teal"></span>
+          <span>OneRishi CMS v1.4 • SQLite · Markdown body</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="text-ink-faint hover:text-terracotta transition-colors" id="discardBtn" type="button">
+            Discard changes
+          </button>
+          <span class="text-border">|</span>
+          <a class="text-ink hover:underline" href="/admin">Return to post list</a>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- Notification Toast -->
+  <div class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2.5 px-4 py-3 rounded bg-ink text-white text-xs font-medium shadow-lg" id="toast">
+    <svg class="w-4 h-4 text-terracotta" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span id="toastMessage">Draft saved successfully.</span>
+  </div>
+
+  <script is:inline>
+    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://127.0.0.1:8000'
+      : 'https://api.onerishi.in';
+
+    // Auth Guard
+    const token = sessionStorage.getItem('onerishi_admin_token');
+    if (!token) {
+      window.location.href = '/admin/login';
+    }
+
+    // Elements
+    const titleInput = document.getElementById('postTitle');
+    const slugPreview = document.getElementById('slugPreview');
+    const readTimePreview = document.getElementById('readTimePreview');
+    const categorySelect = document.getElementById('postCategory');
+    const excerptInput = document.getElementById('postExcerpt');
+    const excerptCount = document.getElementById('excerptCount');
+    const coverUrlInput = document.getElementById('coverImageUrl');
+    const coverPreviewImg = document.getElementById('coverImagePreview');
+    const coverPlaceholder = document.getElementById('coverPlaceholder');
+    const removeCoverBtn = document.getElementById('removeCoverBtn');
+
+    const markdownArea = document.getElementById('postBodyMarkdown');
+    const wordCountLabel = document.getElementById('wordCountLabel');
+    const modeWriteBtn = document.getElementById('modeWriteBtn');
+    const modePreviewBtn = document.getElementById('modePreviewBtn');
+    const writeWrapper = document.getElementById('writeViewWrapper');
+    const previewWrapper = document.getElementById('previewViewWrapper');
+    const renderedContent = document.getElementById('renderedMarkdownContent');
+    const formattingBar = document.getElementById('formattingBar');
+
+    const statusBadge = document.getElementById('statusBadge');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const lastSavedLabel = document.getElementById('lastSavedLabel');
+    const saveDraftBtn = document.getElementById('saveDraftBtn');
+    const publishBtn = document.getElementById('publishBtn');
+    const publishBtnText = document.getElementById('publishBtnText');
+
+    // SEO elements
+    const seoToggleBtn = document.getElementById('seoToggleBtn');
+    const seoContent = document.getElementById('seoContent');
+    const seoChevron = document.getElementById('seoChevron');
+    const metaTitleInput = document.getElementById('metaTitleInput');
+    const metaTitleCount = document.getElementById('metaTitleCount');
+    const focusKeywordsInput = document.getElementById('focusKeywordsInput');
+    const metaDescriptionInput = document.getElementById('metaDescriptionInput');
+    const metaDescCount = document.getElementById('metaDescCount');
+    const ogImageUrl = document.getElementById('ogImageUrl');
+    const ogImagePreview = document.getElementById('ogImagePreview');
+    const ogImagePlaceholder = document.getElementById('ogImagePlaceholder');
+    const ogPreviewTitle = document.getElementById('ogPreviewTitle');
+    const ogPreviewDesc = document.getElementById('ogPreviewDesc');
+    const canonicalUrlPreview = document.getElementById('canonicalUrlPreview');
+
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    // State
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentPostId = urlParams.get('id');
+    let currentPostSlug = '';
+    let currentStatus = 'draft';
+
+    // Auto resize title textarea
+    function autoResizeTitle() {
+      titleInput.style.height = 'auto';
+      titleInput.style.height = (titleInput.scrollHeight) + 'px';
+    }
+    titleInput.addEventListener('input', autoResizeTitle);
+
+    // Slugification helper
+    function slugify(text) {
+      return text.toString().toLowerCase().trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+    }
+
+    // Live update calculations
+    function updateLiveStats() {
+      const text = markdownArea.value || '';
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      wordCountLabel.textContent = `${words} words`;
+
+      const minutes = Math.max(1, Math.round(words / 200));
+      readTimePreview.textContent = `~${minutes} min read`;
+
+      if (!currentPostSlug) {
+        const computedSlug = slugify(titleInput.value) || 'new-post';
+        slugPreview.textContent = `/writing/${computedSlug}`;
+        canonicalUrlPreview.textContent = `https://onerishi.in/writing/${computedSlug}`;
+      }
+    }
+
+    markdownArea.addEventListener('input', updateLiveStats);
+    titleInput.addEventListener('input', () => {
+      updateLiveStats();
+      updateSeoPreview();
+    });
+
+    // Excerpt count
+    excerptInput.addEventListener('input', () => {
+      excerptCount.textContent = `${excerptInput.value.length} / 200`;
+      updateSeoPreview();
+    });
+
+    // Cover image preview
+    function updateCoverPreview() {
+      const url = coverUrlInput.value.trim();
+      if (url) {
+        coverPreviewImg.src = url;
+        coverPreviewImg.classList.remove('hidden');
+        coverPlaceholder.classList.add('hidden');
+      } else {
+        coverPreviewImg.src = '';
+        coverPreviewImg.classList.add('hidden');
+        coverPlaceholder.classList.remove('hidden');
+      }
+      updateSeoPreview();
+    }
+    coverUrlInput.addEventListener('input', updateCoverPreview);
+    removeCoverBtn.addEventListener('click', () => {
+      coverUrlInput.value = '';
+      updateCoverPreview();
+    });
+
+    // Write / Preview toggle
+    modeWriteBtn.addEventListener('click', () => {
+      modeWriteBtn.className = 'px-3 py-1 rounded font-medium transition-colors bg-ink text-white shadow-xs';
+      modePreviewBtn.className = 'px-3 py-1 rounded font-medium text-ink-muted hover:text-ink transition-colors';
+      writeWrapper.classList.remove('hidden');
+      previewWrapper.classList.add('hidden');
+      formattingBar.classList.remove('hidden');
+    });
+
+    modePreviewBtn.addEventListener('click', () => {
+      modePreviewBtn.className = 'px-3 py-1 rounded font-medium transition-colors bg-ink text-white shadow-xs';
+      modeWriteBtn.className = 'px-3 py-1 rounded font-medium text-ink-muted hover:text-ink transition-colors';
+      writeWrapper.classList.add('hidden');
+      previewWrapper.classList.remove('hidden');
+      formattingBar.classList.add('hidden');
+
+      if (window.marked) {
+        renderedContent.innerHTML = marked.parse(markdownArea.value || '*No content yet.*');
+      } else {
+        renderedContent.textContent = markdownArea.value;
+      }
+    });
+
+    // Syntax injection helper
+    function insertSyntax(prefix, suffix) {
+      const start = markdownArea.selectionStart;
+      const end = markdownArea.selectionEnd;
+      const val = markdownArea.value;
+      const selected = val.substring(start, end);
+      const replacement = prefix + selected + suffix;
+
+      markdownArea.value = val.substring(0, start) + replacement + val.substring(end);
+      markdownArea.focus();
+      markdownArea.setSelectionRange(start + prefix.length, end + prefix.length);
+      updateLiveStats();
+    }
+
+    document.getElementById('btnBold')?.addEventListener('click', () => insertSyntax('**', '**'));
+    document.getElementById('btnItalic')?.addEventListener('click', () => insertSyntax('*', '*'));
+    document.getElementById('btnH2')?.addEventListener('click', () => insertSyntax('## ', ''));
+    document.getElementById('btnH3')?.addEventListener('click', () => insertSyntax('### ', ''));
+    document.getElementById('btnQuote')?.addEventListener('click', () => insertSyntax('> ', ''));
+    document.getElementById('btnCode')?.addEventListener('click', () => insertSyntax('`', '`'));
+    document.getElementById('btnLink')?.addEventListener('click', () => insertSyntax('[', '](https://)'));
+    document.getElementById('btnList')?.addEventListener('click', () => insertSyntax('- ', ''));
+
+    // SEO accordion
+    seoToggleBtn.addEventListener('click', () => {
+      const isOpen = !seoContent.classList.contains('hidden');
+      if (isOpen) {
+        seoContent.classList.add('hidden');
+        seoChevron.classList.remove('rotate-180');
+        seoToggleBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        seoContent.classList.remove('hidden');
+        seoChevron.classList.add('rotate-180');
+        seoToggleBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    metaTitleInput.addEventListener('input', () => {
+      metaTitleCount.textContent = `${metaTitleInput.value.length} / 60`;
+      updateSeoPreview();
+    });
+
+    metaDescriptionInput.addEventListener('input', () => {
+      metaDescCount.textContent = `${metaDescriptionInput.value.length} / 160`;
+      updateSeoPreview();
+    });
+
+    ogImageUrl.addEventListener('input', updateSeoPreview);
+
+    function updateSeoPreview() {
+      const title = metaTitleInput.value.trim() || titleInput.value.trim() || 'Post Title';
+      const desc = metaDescriptionInput.value.trim() || excerptInput.value.trim() || 'Excerpt or meta description preview...';
+      const img = ogImageUrl.value.trim() || coverUrlInput.value.trim();
+
+      ogPreviewTitle.textContent = title;
+      ogPreviewDesc.textContent = desc;
+
+      if (img) {
+        ogImagePreview.src = img;
+        ogImagePreview.classList.remove('hidden');
+        ogImagePlaceholder.classList.add('hidden');
+      } else {
+        ogImagePreview.src = '';
+        ogImagePreview.classList.add('hidden');
+        ogImagePlaceholder.classList.remove('hidden');
+      }
+    }
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toast.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function updateStatusUI(status) {
+      currentStatus = status;
+      if (status === 'published') {
+        statusBadge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-soft text-teal text-xs font-medium border border-teal/20 transition-colors';
+        statusDot.className = 'w-1.5 h-1.5 rounded-full bg-teal';
+        statusText.textContent = 'Published';
+        publishBtnText.textContent = 'Update';
+      } else {
+        statusBadge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-grayBadgeBg text-grayBadge text-xs font-medium border border-border/80 transition-colors';
+        statusDot.className = 'w-1.5 h-1.5 rounded-full bg-grayBadge';
+        statusText.textContent = 'Draft';
+        publishBtnText.textContent = 'Publish';
+      }
+    }
+
+    // Save Logic
+    async function savePost(targetStatus) {
+      const title = titleInput.value.trim();
+      if (!title) {
+        alert('Please provide a title for the post.');
+        titleInput.focus();
+        return;
+      }
+
+      const isPublish = targetStatus === 'published';
+      const activeBtn = isPublish ? publishBtn : saveDraftBtn;
+      const origText = activeBtn.innerHTML;
+
+      activeBtn.disabled = true;
+      activeBtn.innerHTML = '<span>Saving…</span>';
+
+      const payload = {
+        title: title,
+        category: categorySelect.value,
+        excerpt: excerptInput.value.trim() || title,
+        body: markdownArea.value.trim(),
+        cover_image: coverUrlInput.value.trim() || null,
+        status: targetStatus,
+        meta_title: metaTitleInput.value.trim() || null,
+        meta_description: metaDescriptionInput.value.trim() || null,
+        meta_keywords: focusKeywordsInput.value.trim() || null,
+        og_image: ogImageUrl.value.trim() || null,
+      };
+
+      try {
+        const url = currentPostId 
+          ? `${API_BASE_URL}/api/admin/posts/${currentPostId}`
+          : `${API_BASE_URL}/api/admin/posts`;
+        
+        const method = currentPostId ? 'PUT' : 'POST';
+
+        const res = await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.status === 401) {
+          sessionStorage.removeItem('onerishi_admin_token');
+          window.location.href = '/admin/login';
+          return;
+        }
+
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.detail || 'Failed to save post');
+        }
+
+        const saved = await res.json();
+        currentPostId = saved.id;
+        currentPostSlug = saved.slug;
+        slugPreview.textContent = `/writing/${saved.slug}`;
+        canonicalUrlPreview.textContent = `https://onerishi.in/writing/${saved.slug}`;
+        readTimePreview.textContent = `~${saved.read_time_minutes} min read`;
+
+        updateStatusUI(saved.status);
+
+        // Update URL state without reload if this was a new post
+        if (!urlParams.get('id')) {
+          history.replaceState(null, '', `/admin/editor?id=${saved.id}`);
+        }
+
+        const now = new Date();
+        lastSavedLabel.textContent = `Saved ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        showToast(saved.status === 'published' ? 'Post published successfully!' : 'Draft saved successfully.');
+      } catch (err) {
+        alert(err.message || 'Error saving post');
+      } finally {
+        activeBtn.disabled = false;
+        activeBtn.innerHTML = origText;
+      }
+    }
+
+    saveDraftBtn.addEventListener('click', () => savePost('draft'));
+    publishBtn.addEventListener('click', () => savePost('published'));
+
+    document.getElementById('discardBtn')?.addEventListener('click', () => {
+      if (confirm('Discard changes and return to post list?')) {
+        window.location.href = '/admin';
+      }
+    });
+
+    // Load existing post if editing
+    async function loadPostIfEditing() {
+      if (!currentPostId) {
+        autoResizeTitle();
+        updateLiveStats();
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/admin/posts/${currentPostId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (res.status === 401) {
+          sessionStorage.removeItem('onerishi_admin_token');
+          window.location.href = '/admin/login';
+          return;
+        }
+
+        if (!res.ok) {
+          throw new Error('Post not found');
+        }
+
+        const post = await res.json();
+        document.title = `Edit: ${post.title} — OneRishi CMS`;
+
+        titleInput.value = post.title || '';
+        currentPostSlug = post.slug;
+        slugPreview.textContent = `/writing/${post.slug}`;
+        canonicalUrlPreview.textContent = `https://onerishi.in/writing/${post.slug}`;
+        readTimePreview.textContent = `~${post.read_time_minutes} min read`;
+
+        categorySelect.value = post.category || 'Building on the Internet';
+        excerptInput.value = post.excerpt || '';
+        excerptCount.textContent = `${excerptInput.value.length} / 200`;
+
+        coverUrlInput.value = post.cover_image || '';
+        updateCoverPreview();
+
+        markdownArea.value = post.body || '';
+        autoResizeTitle();
+        updateLiveStats();
+
+        // SEO fields
+        metaTitleInput.value = post.meta_title || '';
+        metaTitleCount.textContent = `${metaTitleInput.value.length} / 60`;
+
+        focusKeywordsInput.value = post.meta_keywords || '';
+
+        metaDescriptionInput.value = post.meta_description || '';
+        metaDescCount.textContent = `${metaDescriptionInput.value.length} / 160`;
+
+        ogImageUrl.value = post.og_image || '';
+        updateSeoPreview();
+
+        updateStatusUI(post.status);
+        lastSavedLabel.textContent = 'Loaded from server';
+      } catch (err) {
+        alert('Could not load post: ' + err.message);
+        window.location.href = '/admin';
+      }
+    }
+
+    loadPostIfEditing();
+  </script>
+</body>
+</html>

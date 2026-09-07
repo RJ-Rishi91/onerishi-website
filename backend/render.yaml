@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: onerishi-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    disk:
+      name: onerishi-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:////data/onerishi.db
+      - key: CORS_ORIGINS
+        value: https://onerishi.in,https://www.onerishi.in,http://localhost:4321
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: GITHUB_REPO
+        value: RJ-Rishi91/onerishi-website
+      - key: GITHUB_TOKEN
+        sync: false

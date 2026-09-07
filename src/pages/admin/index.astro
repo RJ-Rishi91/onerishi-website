@@ -1,0 +1,481 @@
+---
+// src/pages/admin/index.astro
+// OneRishi CMS Posts Dashboard
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posts &mdash; OneRishi CMS</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #F7F4EF;
+      --ink: #1B1B18;
+      --accent: #C1592B;
+      --accent-2: #1F3A3D;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+    }
+    .font-fraunces {
+      font-family: 'Fraunces', serif;
+      font-feature-settings: 'cv01' on, 'opsz' 36;
+    }
+    .logo-dot {
+      color: var(--accent);
+    }
+    .btn-terracotta {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .btn-terracotta:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+    .btn-terracotta:active {
+      transform: translateY(0);
+    }
+    .badge-published {
+      background-color: rgba(31, 58, 61, 0.1);
+      color: var(--accent-2);
+      border: 1px solid rgba(31, 58, 61, 0.25);
+    }
+    .badge-draft {
+      background-color: #E7E3DC;
+      color: #68645C;
+      border: 1px solid #D5D0C7;
+    }
+    .category-pill {
+      background-color: #ECE7DE;
+      color: #4A463F;
+      border: 1px solid #DFD9CE;
+    }
+    .tab-active {
+      background-color: var(--ink);
+      color: var(--bg);
+    }
+    .tab-inactive {
+      color: #68645C;
+    }
+    .tab-inactive:hover {
+      color: var(--ink);
+      background-color: #ECE7DE;
+    }
+    .row-hover:hover {
+      background-color: #F2EFE7;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-[#C1592B] selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="w-full border-b border-[#E3DED4] bg-[#F7F4EF] sticky top-0 z-20">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+      <!-- Left: Logo & Context -->
+      <div class="flex items-center gap-3">
+        <a href="/admin" class="font-fraunces text-xl font-bold tracking-tight inline-flex items-baseline" style="color: var(--ink);">
+          OneRishi<span class="logo-dot">.</span><span style="color: var(--ink);">in</span>
+        </a>
+        <span class="text-xs uppercase tracking-wider px-2 py-0.5 rounded font-mono font-medium" style="background-color: rgba(31, 58, 61, 0.1); color: var(--accent-2);">
+          CMS
+        </span>
+      </div>
+
+      <!-- Right: User Context & Log Out -->
+      <div class="flex items-center gap-5 text-sm">
+        <span class="text-xs text-[#7A756B] hidden sm:inline-flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block"></span>
+          Rushal S. (Author)
+        </span>
+        <span class="text-[#D8D2C7] hidden sm:inline">|</span>
+        <a href="/" target="_blank" class="text-xs text-[#6B665E] hover:text-[#1B1B18] transition-colors hidden sm:inline-flex items-center gap-1">
+          <span>View Site</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+        <button type="button" id="logoutBtn" class="text-sm font-medium text-[#1B1B18] hover:text-[#C1592B] transition-colors flex items-center gap-1.5">
+          <span>Log Out</span>
+          <svg class="w-4 h-4 text-[#7A756B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-6 sm:px-8 py-10">
+
+    <!-- Page Header & Action -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-[#E3DED4]">
+      <div>
+        <h1 class="font-fraunces text-3xl sm:text-4xl font-semibold tracking-tight" style="color: var(--ink);">
+          Posts
+        </h1>
+        <p class="text-sm text-[#706B62] mt-1">
+          Manage, write, and review dispatches, field notes, and frameworks.
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/admin/editor" class="btn-terracotta inline-flex items-center gap-2 px-4 py-2.5 rounded text-sm font-medium shadow-sm whitespace-nowrap shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span>+ New Post</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Filter Bar & Search/View Controls -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-6">
+      <!-- Tabs: All / Published / Drafts -->
+      <div class="inline-flex p-1 bg-[#ECE8DF] rounded-md text-xs font-medium border border-[#DFD9CE]" role="tablist">
+        <button id="tab-all" onclick="filterPosts('all')" class="tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+          <span>All</span>
+          <span id="badge-all" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/10">0</span>
+        </button>
+        <button id="tab-published" onclick="filterPosts('published')" class="tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+          <span>Published</span>
+          <span id="badge-published" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/5">0</span>
+        </button>
+        <button id="tab-drafts" onclick="filterPosts('drafts')" class="tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+          <span>Drafts</span>
+          <span id="badge-drafts" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/5">0</span>
+        </button>
+      </div>
+
+      <!-- Helper / Stats Info -->
+      <div class="flex items-center gap-4 text-xs text-[#706B62]">
+        <span>Showing <strong class="text-[#1B1B18]" id="visible-count">0</strong> entries</span>
+      </div>
+    </div>
+
+    <!-- Loading State Indicator -->
+    <div id="loading-state" class="py-16 text-center text-sm text-[#706B62]">
+      <div class="inline-block animate-spin w-6 h-6 border-2 border-[#C1592B] border-t-transparent rounded-full mb-2"></div>
+      <p>Loading posts from database…</p>
+    </div>
+
+    <!-- Posts Table Container -->
+    <div id="posts-table-card" class="hidden bg-[#FAF8F3] rounded-lg border border-[#E3DED4] shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-[#E3DED4] bg-[#F2EFE7]/80 text-[11px] uppercase font-mono tracking-wider text-[#6B665E]">
+              <th scope="col" class="py-3 px-6 font-medium">Title</th>
+              <th scope="col" class="py-3 px-5 font-medium hidden md:table-cell">Category</th>
+              <th scope="col" class="py-3 px-4 font-medium">Status</th>
+              <th scope="col" class="py-3 px-5 font-medium hidden sm:table-cell">Date</th>
+              <th scope="col" class="py-3 px-6 font-medium text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="posts-tbody" class="divide-y divide-[#EAE5DB] text-sm">
+            <!-- Dynamically populated via JS -->
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Footer utility bar of table -->
+      <div class="px-6 py-3.5 bg-[#F2EFE7]/60 border-t border-[#E3DED4] flex items-center justify-between text-xs text-[#706B62]">
+        <span id="table-summary-count">Showing 0 articles</span>
+        <div class="flex items-center gap-4">
+          <span class="hidden sm:inline">Storage: SQLite · Markdown body</span>
+          <span class="font-mono text-[11px] text-[#8C877D]">CMS v1.4</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State Component -->
+    <div id="empty-state-card" class="hidden bg-[#FAF8F3] rounded-lg border border-dashed border-[#D3CDC2] p-12 text-center max-w-xl mx-auto my-8">
+      <div class="w-12 h-12 mx-auto rounded-full bg-[#EBE7DE] flex items-center justify-center text-[#706B62] mb-4">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+      </div>
+      <h3 class="font-fraunces text-xl font-semibold text-[#1B1B18] tracking-tight">
+        No posts found
+      </h3>
+      <p class="text-sm text-[#706B62] mt-2 max-w-sm mx-auto leading-relaxed" id="empty-state-text">
+        You haven't written any posts yet. Create your first monograph to publish or save as a draft.
+      </p>
+      <div class="mt-6">
+        <a href="/admin/editor" class="btn-terracotta inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium shadow-sm whitespace-nowrap">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span>+ New Post</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Delete Confirmation Modal Dialog -->
+  <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs hidden">
+    <div class="bg-white border border-[#1B1B18]/10 rounded-xl p-6 max-w-md w-full mx-4 shadow-xl space-y-4">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0 text-red-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+        </div>
+        <div>
+          <h3 class="font-fraunces text-lg font-semibold text-[#1B1B18]">Delete Post</h3>
+          <p class="text-xs text-[#706B62] mt-1" id="deleteModalMsg">
+            Are you sure you want to delete this post? This action is permanent and cannot be undone.
+          </p>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3 pt-2">
+        <button type="button" id="cancelDeleteBtn" class="px-3.5 py-2 text-xs font-medium text-[#1B1B18] bg-[#F7F4EF] hover:bg-[#ECE8DF] border border-[#E3DED4] rounded transition-colors">
+          Cancel
+        </button>
+        <button type="button" id="confirmDeleteBtn" class="px-4 py-2 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded transition-colors">
+          Delete Permanently
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clean Bottom Status Bar for CMS Context -->
+  <footer class="w-full border-t border-[#E3DED4] bg-[#F7F4EF] py-4 text-center text-xs text-[#8A847A]">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="font-fraunces text-xs font-semibold text-[#1B1B18]">OneRishi<span class="logo-dot">.</span>in</span>
+        <span>&mdash; Editorial Terminal &amp; Publishing System</span>
+      </div>
+      <div>
+        <span>Encrypted session &bull; Single-admin access</span>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://127.0.0.1:8000'
+      : 'https://api.onerishi.in';
+
+    // Auth Guard
+    const token = sessionStorage.getItem('onerishi_admin_token');
+    if (!token) {
+      window.location.href = '/admin/login';
+    }
+
+    document.getElementById('logoutBtn')?.addEventListener('click', () => {
+      sessionStorage.removeItem('onerishi_admin_token');
+      window.location.href = '/admin/login';
+    });
+
+    let allPosts = [];
+    let currentFilter = 'all';
+    let postToDeleteId = null;
+
+    const loadingState = document.getElementById('loading-state');
+    const tableCard = document.getElementById('posts-table-card');
+    const emptyCard = document.getElementById('empty-state-card');
+    const tbody = document.getElementById('posts-tbody');
+    const visibleCountEl = document.getElementById('visible-count');
+    const tableSummaryCountEl = document.getElementById('table-summary-count');
+
+    const badgeAll = document.getElementById('badge-all');
+    const badgePub = document.getElementById('badge-published');
+    const badgeDraft = document.getElementById('badge-drafts');
+
+    const deleteModal = document.getElementById('deleteModal');
+    const deleteModalMsg = document.getElementById('deleteModalMsg');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+    function formatDate(isoStr) {
+      if (!isoStr) return '—';
+      try {
+        const d = new Date(isoStr);
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      } catch {
+        return isoStr;
+      }
+    }
+
+    function updateBadgeCounts() {
+      const pubCount = allPosts.filter(p => p.status === 'published').length;
+      const draftCount = allPosts.filter(p => p.status === 'draft').length;
+      badgeAll.textContent = allPosts.length;
+      badgePub.textContent = pubCount;
+      badgeDraft.textContent = draftCount;
+    }
+
+    function renderPosts() {
+      tbody.innerHTML = '';
+
+      let filtered = allPosts;
+      if (currentFilter === 'published') {
+        filtered = allPosts.filter(p => p.status === 'published');
+      } else if (currentFilter === 'drafts') {
+        filtered = allPosts.filter(p => p.status === 'draft');
+      }
+
+      visibleCountEl.textContent = filtered.length;
+      tableSummaryCountEl.textContent = `Showing ${filtered.length} of ${allPosts.length} articles`;
+
+      if (filtered.length === 0) {
+        tableCard.classList.add('hidden');
+        emptyCard.classList.remove('hidden');
+        return;
+      }
+
+      tableCard.classList.remove('hidden');
+      emptyCard.classList.add('hidden');
+
+      filtered.forEach(post => {
+        const tr = document.createElement('tr');
+        tr.className = 'row-hover transition-colors';
+        tr.setAttribute('data-status', post.status);
+
+        const isPub = post.status === 'published';
+        const dateStr = formatDate(post.published_at || post.updated_at || post.created_at);
+
+        tr.innerHTML = `
+          <td class="py-4 px-6">
+            <a href="/admin/editor?id=${post.id}" class="font-medium text-[#1B1B18] hover:text-[#C1592B] transition-colors block leading-snug">
+              ${escapeHtml(post.title)}
+            </a>
+            <span class="text-xs text-[#7A756B] mt-0.5 md:hidden block">${escapeHtml(post.category)}</span>
+          </td>
+          <td class="py-4 px-5 hidden md:table-cell whitespace-nowrap">
+            <span class="category-pill text-xs px-2.5 py-1 rounded">
+              ${escapeHtml(post.category)}
+            </span>
+          </td>
+          <td class="py-4 px-4 whitespace-nowrap">
+            ${isPub ? `
+              <span class="badge-published text-xs px-2.5 py-0.5 rounded font-medium inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--accent-2);"></span>
+                Published
+              </span>
+            ` : `
+              <span class="badge-draft text-xs px-2.5 py-0.5 rounded font-medium inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                Draft
+              </span>
+            `}
+          </td>
+          <td class="py-4 px-5 hidden sm:table-cell text-xs text-[#706B62] whitespace-nowrap font-mono">
+            ${dateStr}
+          </td>
+          <td class="py-4 px-6 text-right whitespace-nowrap text-xs font-medium">
+            <div class="inline-flex items-center gap-3">
+              <a href="/admin/editor?id=${post.id}" class="text-[#1F3A3D] hover:text-[#C1592B] transition-colors">Edit</a>
+              <span class="text-[#D8D2C7]">/</span>
+              <button type="button" onclick="promptDelete(${post.id}, '${escapeQuote(post.title)}')" class="text-[#7A756B] hover:text-red-700 transition-colors">Delete</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function escapeQuote(str) {
+      if (!str) return '';
+      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    window.filterPosts = function(filter) {
+      currentFilter = filter;
+      const tabAll = document.getElementById('tab-all');
+      const tabPub = document.getElementById('tab-published');
+      const tabDraft = document.getElementById('tab-drafts');
+
+      [tabAll, tabPub, tabDraft].forEach(tab => {
+        tab.className = 'tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
+      });
+
+      if (filter === 'all') {
+        tabAll.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
+      } else if (filter === 'published') {
+        tabPub.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
+      } else if (filter === 'drafts') {
+        tabDraft.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
+      }
+
+      renderPosts();
+    };
+
+    window.promptDelete = function(id, title) {
+      postToDeleteId = id;
+      deleteModalMsg.textContent = `Are you sure you want to permanently delete "${title}"? This action cannot be undone.`;
+      deleteModal.classList.remove('hidden');
+    };
+
+    cancelDeleteBtn.addEventListener('click', () => {
+      deleteModal.classList.add('hidden');
+      postToDeleteId = null;
+    });
+
+    confirmDeleteBtn.addEventListener('click', async () => {
+      if (!postToDeleteId) return;
+      confirmDeleteBtn.disabled = true;
+      confirmDeleteBtn.textContent = 'Deleting…';
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/admin/posts/${postToDeleteId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to delete post');
+        }
+
+        allPosts = allPosts.filter(p => p.id !== postToDeleteId);
+        updateBadgeCounts();
+        renderPosts();
+        deleteModal.classList.add('hidden');
+      } catch (err) {
+        alert(err.message || 'Error deleting post');
+      } finally {
+        confirmDeleteBtn.disabled = false;
+        confirmDeleteBtn.textContent = 'Delete Permanently';
+        postToDeleteId = null;
+      }
+    });
+
+    async function loadPosts() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/admin/posts`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (res.status === 401) {
+          sessionStorage.removeItem('onerishi_admin_token');
+          window.location.href = '/admin/login';
+          return;
+        }
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch posts');
+        }
+
+        allPosts = await res.json();
+        loadingState.classList.add('hidden');
+        updateBadgeCounts();
+        renderPosts();
+      } catch (err) {
+        loadingState.innerHTML = `
+          <div class="text-red-600 mb-2">Failed to connect to API backend.</div>
+          <p class="text-xs text-[#706B62]">Please ensure the FastAPI backend is running at ${API_BASE_URL}</p>
+        `;
+      }
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>

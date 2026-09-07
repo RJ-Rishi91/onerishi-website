@@ -1,32 +1,93 @@
 ---
 import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReadingProgress from '../../components/ReadingProgress.astro';
 import Tag from '../../components/Tag.astro';
 import WrittenFromExperience from '../../components/WrittenFromExperience.astro';
 
 export async function getStaticPaths() {
-  const writingEntries = await getCollection('writing');
-  return writingEntries.map((post) => ({
+  const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  let posts: any[] = [];
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    if (res.ok) {
+      const apiPosts = await res.json();
+      if (Array.isArray(apiPosts) && apiPosts.length > 0) {
+        posts = apiPosts.map((p, idx) => ({
+          slug: p.slug,
+          data: {
+            title: p.title,
+            description: p.excerpt,
+            category: p.category,
+            date: p.published_at
+              ? new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+              : 'Recently',
+            readTime: `${p.read_time_minutes} min read`,
+            volume: `Vol. 0${idx + 1}`,
+            coverImage: p.cover_image,
+            coverImageAlt: p.title,
+            coverCaption: null,
+            writtenFromExperience: null,
+            effective_meta_title: p.effective_meta_title,
+            effective_meta_description: p.effective_meta_description,
+            effective_og_image: p.effective_og_image,
+          },
+          body: p.body,
+        }));
+      }
+    }
+  } catch {
+    // Graceful fallback to local collection
+  }
+
+  if (posts.length === 0) {
+    const entries = await getCollection('writing');
+    posts = entries.map((entry) => ({
+      slug: entry.slug,
+      data: {
+        ...entry.data,
+        effective_meta_title: entry.data.title,
+        effective_meta_description: entry.data.description,
+        effective_og_image: entry.data.coverImage,
+      },
+      body: entry.body,
+      entry,
+    }));
+  }
+
+  return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post, allPosts: posts },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { post, allPosts } = Astro.props;
+
+let htmlContent = '';
+let ContentComponent = null;
+
+if (post.body) {
+  htmlContent = marked.parse(post.body);
+} else if (post.entry) {
+  const rendered = await post.entry.render();
+  ContentComponent = rendered.Content;
+}
 
 // Get related posts
-const allPosts = await getCollection('writing');
-const relatedPosts = allPosts
-  .filter((p) => p.slug !== post.slug)
+const relatedPosts = (allPosts || [])
+  .filter((p: any) => p.slug !== post.slug)
   .slice(0, 2);
 ---
 
 <BaseLayout
-  title={`${post.data.title} — Writing`}
-  description={post.data.description}
-  ogImage={post.data.coverImage}
+  title={post.data.effective_meta_title || `${post.data.title} — Writing`}
+  description={post.data.effective_meta_description || post.data.description}
+  ogImage={post.data.effective_og_image || post.data.coverImage}
   articleDate={post.data.date}
 >
   <ReadingProgress />
@@ -143,8 +204,12 @@ const relatedPosts = allPosts
           />
         )}
 
-        <div class="font-sans text-[16px] text-[#1B1B18]/85 space-y-6 leading-relaxed">
-          <Content />
+        <div class="font-sans text-[16px] text-[#1B1B18]/85 space-y-6 leading-relaxed article-prose">
+          {htmlContent ? (
+            <div set:html={htmlContent} />
+          ) : ContentComponent ? (
+            <ContentComponent />
+          ) : null}
         </div>
 
         <!-- Author Bio Card -->
@@ -234,3 +299,73 @@ const relatedPosts = allPosts
     });
   }
 </script>
+
+<style is:global>
+  .article-prose h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.65rem;
+    line-height: 1.3;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #1B1B18;
+  }
+  .article-prose h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.3rem;
+    line-height: 1.35;
+    font-weight: 500;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: #1B1B18;
+  }
+  .article-prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+  .article-prose blockquote {
+    border-left: 3px solid #C1592B;
+    padding-left: 1.25rem;
+    margin: 1.75rem 0;
+    font-style: italic;
+    color: #1F3A3D;
+  }
+  .article-prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .article-prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .article-prose li {
+    margin-bottom: 0.5rem;
+  }
+  .article-prose a {
+    color: #C1592B;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .article-prose code {
+    background-color: #EFECE6;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    font-size: 0.875em;
+  }
+  .article-prose pre {
+    background-color: #1B1B18;
+    color: #F7F4EF;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .article-prose pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+  }
+</style>
