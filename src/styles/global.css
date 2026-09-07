@@ -39,6 +39,17 @@
     outline: 2px solid #C1592B;
     outline-offset: 2px;
   }
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.focus-ring:focus {
+  outline: none;
+  border-color: #C1592B;
+  box-shadow: 0 0 0 1px #C1592B;
 }
 
 /* Material Symbols sizing */

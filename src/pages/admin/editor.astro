@@ -1,6 +1,7 @@
 ---
 // src/pages/admin/editor.astro
 // OneRishi CMS Post Editor Screen
+import '../../styles/global.css';
 ---
 
 <!DOCTYPE html>
@@ -14,37 +15,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: '#F7F4EF',
-            surface: '#FFFFFF',
-            ink: '#1B1B18',
-            'ink-muted': '#6B6860',
-            'ink-faint': '#9E9B93',
-            border: '#E4E0D6',
-            'border-focus': '#C1592B',
-            terracotta: '#C1592B',
-            'terracotta-hover': '#AB4B22',
-            teal: '#1F3A3D',
-            'teal-hover': '#162C2E',
-            'teal-soft': '#EBF1F1',
-            grayBadge: '#68645C',
-            grayBadgeBg: '#EFECE6',
-          },
-          fontFamily: {
-            serif: ['Fraunces', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
+  <script is:inline src="/assets/js/marked.min.js"></script>
   <style>
     body {
       background-color: #F7F4EF;
