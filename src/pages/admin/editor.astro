@@ -230,8 +230,15 @@ import '../../styles/global.css';
                 <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </div>
-            <input class="w-full bg-surface border border-border text-ink text-sm rounded pl-9 pr-3 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" id="coverImageUrl" placeholder="Paste image URL (e.g. /assets/images/... or https://...)" type="text" />
+            <input class="w-full bg-surface border border-border text-ink text-sm rounded pl-9 pr-3 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" id="coverImageUrl" placeholder="Paste image URL (or upload from system)" type="text" />
           </div>
+          <label class="cursor-pointer inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded border border-border bg-surface text-ink text-xs font-medium hover:bg-[#FAF8F3] hover:border-ink/20 transition-all shrink-0 select-none shadow-xs" id="coverUploadBtnLabel">
+            <svg class="w-4 h-4 text-ink-muted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+            </svg>
+            <span id="coverUploadBtnText">Upload from System</span>
+            <input type="file" id="coverImageFileInput" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml" class="hidden" />
+          </label>
         </div>
 
         <!-- Cover Image Visual Preview Box -->
@@ -370,6 +377,13 @@ import '../../styles/global.css';
               <div class="relative flex-1">
                 <input class="w-full bg-surface border border-border text-ink text-sm rounded px-3.5 py-2.5 transition-colors focus:border-terracotta focus:ring-2 focus:ring-terracotta/10" id="ogImageUrl" placeholder="Paste custom OG image URL or leave blank..." type="text" />
               </div>
+              <label class="cursor-pointer inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded border border-border bg-surface text-ink text-xs font-medium hover:bg-[#FAF8F3] hover:border-ink/20 transition-all shrink-0 select-none shadow-xs" id="ogUploadBtnLabel">
+                <svg class="w-4 h-4 text-ink-muted" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                </svg>
+                <span id="ogUploadBtnText">Upload Image</span>
+                <input type="file" id="ogImageFileInput" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml" class="hidden" />
+              </label>
             </div>
 
             <!-- Compact OG Preview Card -->
@@ -441,6 +455,8 @@ import '../../styles/global.css';
     const excerptInput = document.getElementById('postExcerpt');
     const excerptCount = document.getElementById('excerptCount');
     const coverUrlInput = document.getElementById('coverImageUrl');
+    const coverImageFileInput = document.getElementById('coverImageFileInput');
+    const coverUploadBtnText = document.getElementById('coverUploadBtnText');
     const coverPreviewImg = document.getElementById('coverImagePreview');
     const coverPlaceholder = document.getElementById('coverPlaceholder');
     const removeCoverBtn = document.getElementById('removeCoverBtn');
@@ -472,6 +488,8 @@ import '../../styles/global.css';
     const metaDescriptionInput = document.getElementById('metaDescriptionInput');
     const metaDescCount = document.getElementById('metaDescCount');
     const ogImageUrl = document.getElementById('ogImageUrl');
+    const ogImageFileInput = document.getElementById('ogImageFileInput');
+    const ogUploadBtnText = document.getElementById('ogUploadBtnText');
     const ogImagePreview = document.getElementById('ogImagePreview');
     const ogImagePlaceholder = document.getElementById('ogImagePlaceholder');
     const ogPreviewTitle = document.getElementById('ogPreviewTitle');
@@ -549,7 +567,112 @@ import '../../styles/global.css';
     coverUrlInput.addEventListener('input', updateCoverPreview);
     removeCoverBtn.addEventListener('click', () => {
       coverUrlInput.value = '';
+      if (coverImageFileInput) coverImageFileInput.value = '';
       updateCoverPreview();
+    });
+
+    // Handle image file upload to FastAPI backend
+    async function uploadImageFile(file, targetInput, btnTextEl, defaultLabel, onLocalPreview) {
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        alert('Please select a valid image file (.png, .jpg, .webp, .gif, .svg)');
+        return;
+      }
+
+      if (file.size > 10 * 1024 * 1024) {
+        alert('Image size exceeds 10MB limit. Please choose a smaller image.');
+        return;
+      }
+
+      // Show immediate local preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (onLocalPreview) onLocalPreview(e.target.result);
+      };
+      reader.readAsDataURL(file);
+
+      // Indicate upload status
+      btnTextEl.textContent = 'Uploading…';
+
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const res = await fetch(`${API_BASE_URL}/api/admin/upload`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData
+        });
+
+        if (res.status === 401) {
+          sessionStorage.removeItem('onerishi_admin_token');
+          window.location.href = '/admin/login';
+          return;
+        }
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.detail || 'Failed to upload image');
+        }
+
+        const data = await res.json();
+        targetInput.value = data.url;
+        if (targetInput === coverUrlInput) {
+          updateCoverPreview();
+        } else {
+          updateSeoPreview();
+        }
+        showToast('Image uploaded successfully!');
+      } catch (err) {
+        alert('Upload failed: ' + (err.message || 'Network error'));
+        if (targetInput === coverUrlInput) {
+          updateCoverPreview();
+        } else {
+          updateSeoPreview();
+        }
+      } finally {
+        btnTextEl.textContent = defaultLabel;
+      }
+    }
+
+    coverImageFileInput?.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        uploadImageFile(
+          file,
+          coverUrlInput,
+          coverUploadBtnText,
+          'Upload from System',
+          (localUrl) => {
+            coverPreviewImg.src = localUrl;
+            coverPreviewImg.classList.remove('hidden');
+            coverPlaceholder.classList.add('hidden');
+            updateSeoPreview();
+          }
+        );
+      }
+      e.target.value = '';
+    });
+
+    ogImageFileInput?.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        uploadImageFile(
+          file,
+          ogImageUrl,
+          ogUploadBtnText,
+          'Upload Image',
+          (localUrl) => {
+            ogImagePreview.src = localUrl;
+            ogImagePreview.classList.remove('hidden');
+            ogImagePlaceholder.classList.add('hidden');
+          }
+        );
+      }
+      e.target.value = '';
     });
 
     // Write / Preview toggle
