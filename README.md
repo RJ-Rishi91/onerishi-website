@@ -25,50 +25,72 @@ See also: `SITEMAP.md` (page tree + full linking map), `DESIGN-TOKENS.md`
 - **Secondary (footer, all pages):** Philosophy · Impact · Collaborate · Contact
 - Secondary pages are also reached via contextual inline links from relevant primary pages (see `SITEMAP.md` for exact link sources) — this is intentional, not a missing dropdown. No folding/hamburger "more" menu — rejected on purpose, see prior design discussion if it resurfaces.
 
-## Pages (11 builds)
+## Pages & Architecture
 
-| # | Page | Type | Nav |
+| # | Route | Type | Purpose / Description |
 |---|---|---|---|
-| 1 | Home | static | primary |
-| 2 | Work | index | primary |
-| 3 | Writing | index | primary |
-| 4 | About | static | primary |
-| 5 | Labs | static | primary |
-| 6 | Philosophy | static | secondary/footer |
-| 7 | Impact | static | secondary/footer |
-| 8 | Collaborate | static | secondary/footer |
-| 9 | Contact | static | secondary/footer + CTA target |
-| 10 | Case study (template) | dynamic, under Work | — |
-| 11 | Blog post (template) | dynamic, under Writing | — |
+| 1 | `/` | Home | Visual anchor, positioning, featured works & latest writing |
+| 2 | `/work` | Index | Curated case studies and design engineering catalog |
+| 3 | `/work/[slug]` | Dynamic | In-depth case study template with deliverables & artifacts |
+| 4 | `/writing` | Index | Filterable monograph directory with category pills & read times |
+| 5 | `/writing/[slug]` | Dynamic | Editorial monograph template with Fraunces drop-caps & meta tags |
+| 6 | `/about` | Static | Personal biography, operating philosophy, and official portrait |
+| 7 | `/labs` | Static | R&D experiments, prototypes, and open tools |
+| 8 | `/philosophy` | Static | Guiding principles on craft, speed, agency, and distribution |
+| 9 | `/impact` | Static | Track record, metrics, community stewardship, and numbers |
+| 10 | `/collaborate` | Static | Partnership pathways, advisory, and engagement terms |
+| 11 | `/contact` | Static | Central inquiry endpoint with intent tagging |
+| 12 | `/admin/login` | Private CMS | Single-admin master password authentication terminal |
+| 13 | `/admin` | Private CMS | Posts dashboard, status filtering (All/Published/Drafts), deletion |
+| 14 | `/admin/editor` | Private CMS | Monograph writer, SEO overrides, custom slugs, image upload |
+| 15 | `/rss.xml` | Dynamic Feed | RSS 2.0 feed populated from live posts |
+| 16 | `/sitemap.xml` | Dynamic Feed | XML Sitemap with priority weighting & dynamic post timestamps |
+| 17 | `/robots.txt` | Directives | Search engine crawl directives (disallowing `/admin`) |
 
-## Build order (recommended)
+---
 
-1. Home — sets the visual language everything else follows
-2. Work + Case study template together (interdependent)
-3. Writing + Blog post template together (interdependent)
-4. About
-5. Contact
-6. Philosophy, Impact, Collaborate, Labs (secondary tier)
+## Technical Stack
+
+* **Frontend**: Astro v4 (Static Site Generation), Tailwind CSS, Fraunces serif + Inter typography
+* **Analytics**: Google Tag Manager (`GTM-KGP8QDFC`) installed in `<head>` and `<noscript>` in `<body>`
+* **Hosting (Frontend)**: GitHub Pages with custom domain `onerishi.in` via automated GitHub Actions (`deploy.yml`)
+* **Backend API**: FastAPI (Python 3.11.9) hosted on Render at `https://onerishi-website.onrender.com`
+* **Database**: SQLite with SQLAlchemy ORM (auto-seeded with 7 writing monographs)
+* **Auth**: Single-admin master key with bcrypt password verification and JWT bearer tokens
+* **Continuous Delivery**: Publishing from the CMS triggers automated GitHub Actions rebuilds via `repository_dispatch`
+
+---
+
+## Local Development & Operations
+
+### 1. Frontend
+```bash
+npm install
+npm run dev        # Runs on http://localhost:4321
+npm run build      # Static production build into dist/
+```
+
+### 2. Backend (FastAPI)
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+Interactive Swagger API docs: `http://localhost:8000/docs` (Local) or `https://onerishi-website.onrender.com/docs` (Live Cloud).
+
+### 3. CMS Administration
+* **Live Admin CMS**: [`https://onerishi.in/admin/login`](https://onerishi.in/admin/login)
+* **Local Admin CMS**: [`http://localhost:4321/admin/login`](http://localhost:4321/admin/login)
+* Enter master password (`onerishi2024`) to create, preview, edit SEO fields, and publish articles.
+
+---
 
 ## Design system quick reference
 
 Full detail in `DESIGN-TOKENS.md`. Summary:
-- Colors: `#F7F4EF` bg · `#1B1B18` ink · `#C1592B` terracotta accent · `#1F3A3D` teal accent — **exactly these 4 hex values, no generated tonal/Material palette**
+- Colors: `#F7F4EF` bg · `#1B1B18` ink · `#C1592B` terracotta accent · `#1F3A3D` teal accent
 - Fonts: **Fraunces** (headlines/serif), **Inter** (body/UI/sans)
-- Motion: subtle only — fade-up on scroll, hover lift + border color shift on cards, no bounce/parallax/auto-play
+- Motion: subtle only — fade-up on scroll, hover lift + border color shift on cards
 
-## Content rules (non-negotiable)
-
-Full detail in `CONTENT-GUIDELINES.md`. The short version: no fabricated statistics, no invented projects/achievements, no AI-generated faces, no unrelated stock photography. Real content only, placeholders left visibly as placeholders until real material is supplied.
-
-## Open decisions — resolve before final launch
-
-- [ ] **Home tagline:** current draft says "Creative Technologist & Strategist" under the photo — not yet confirmed against the agreed positioning ("Marketing × Technology × Creativity"). Keep or revert.
-- [ ] **Writing page:** two conflicting design exports exist from the Stitch phase — confirm final layout before implementing.
-- [ ] **Veer Gatha / Ministry of Defence recognition:** unconfirmed. Impact page currently shows a "details pending confirmation" placeholder — do not fill in specifics until verified.
-- [ ] **Labs entries:** currently 2 real entries (Gazette Collective publishing tooling, DevFest ops runbooks). Add more only if genuinely real and in progress.
-- [ ] **Collaborate discoverability:** currently reached via footer + About/Work links only. Consider adding a small secondary link near the "Say Hello" CTA on Home if conversion tracking shows it's under-found.
-
-## Known implementation bugs from the Stitch phase (verify fixed)
-
-- Labs page: STACK/pkg metadata row was overlapping/wrapping incorrectly in the last export — check responsive behavior on long stack lists.

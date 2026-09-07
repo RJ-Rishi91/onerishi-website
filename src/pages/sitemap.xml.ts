@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 
 export async function GET(context: any) {
   const siteUrl = context.site?.toString().replace(/\/$/, '') || 'https://onerishi.in';
+  const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'https://onerishi-website.onrender.com';
 
   const staticPages = [
     '',
@@ -16,7 +17,33 @@ export async function GET(context: any) {
   ];
 
   const workEntries = await getCollection('work');
-  const writingEntries = await getCollection('writing');
+  let writingPosts: Array<{ slug: string; lastmod?: string }> = [];
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
+    const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    if (res.ok) {
+      const apiPosts = await res.json();
+      if (Array.isArray(apiPosts) && apiPosts.length > 0) {
+        writingPosts = apiPosts.map((p) => ({
+          slug: p.slug,
+          lastmod: p.published_at ? new Date(p.published_at).toISOString().split('T')[0] : undefined,
+        }));
+      }
+    }
+  } catch {
+    // Fallback to local collection
+  }
+
+  if (writingPosts.length === 0) {
+    const localPosts = await getCollection('writing');
+    writingPosts = localPosts.map((post) => ({
+      slug: post.slug,
+      lastmod: post.data.date ? new Date(post.data.date).toISOString().split('T')[0] : undefined,
+    }));
+  }
 
   const urls: Array<{ loc: string; lastmod?: string; changefreq: string; priority: string }> = [];
 
@@ -39,10 +66,10 @@ export async function GET(context: any) {
   });
 
   // Dynamic Writing Essays
-  writingEntries.forEach((post) => {
+  writingPosts.forEach((post) => {
     urls.push({
       loc: `${siteUrl}/writing/${post.slug}`,
-      lastmod: new Date(post.data.date).toISOString().split('T')[0],
+      lastmod: post.lastmod,
       changefreq: 'monthly',
       priority: '0.7',
     });
