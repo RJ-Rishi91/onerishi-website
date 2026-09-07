@@ -30,4 +30,6 @@ venv/
 *.sqlite3
 backend/.env
 !backend/.env.example
+backend/uploads/*
+!backend/uploads/.gitkeep
 
