@@ -54,6 +54,18 @@ import '../../styles/global.css';
       margin-bottom: 1.25rem;
       color: #1B1B18;
     }
+    /* Editorial Drop Cap Preview */
+    .prose-editor p:first-of-type::first-letter,
+    .prose-editor .drop-cap::first-letter {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 3.8rem;
+      line-height: 0.85;
+      float: left;
+      margin-top: 0.15rem;
+      margin-right: 0.75rem;
+      color: #C1592B;
+      font-weight: 500;
+    }
     .prose-editor blockquote {
       border-left: 3px solid #C1592B;
       padding-left: 1rem;
@@ -154,22 +166,33 @@ import '../../styles/global.css';
           rows="1"
         ></textarea>
 
-        <!-- Read-only backend metadata: Slug & Reading Time -->
-        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-muted font-mono pt-1">
-          <span class="inline-flex items-center gap-1 text-ink-muted min-w-0">
-            <span class="text-ink-faint shrink-0">URL:</span>
-            <span class="text-ink hover:text-terracotta transition-colors select-all truncate max-w-[220px] sm:max-w-md" id="slugPreview">/writing/new-post</span>
-          </span>
-          <span class="text-ink-faint select-none">·</span>
-          <span class="inline-flex items-center gap-1 text-ink-muted shrink-0">
-            <svg class="w-3 h-3 text-ink-faint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="9"></circle>
-              <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <span id="readTimePreview">~1 min read</span>
-          </span>
-          <span class="text-ink-faint select-none">·</span>
-          <span class="text-[11px] text-ink-faint uppercase tracking-wider font-sans shrink-0">Computed by backend</span>
+        <!-- Custom Slug & Permalink Control -->
+        <div class="pt-2">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-xs">
+            <label class="font-semibold text-ink-muted uppercase tracking-wider shrink-0 text-[11px]" for="postSlug">
+              Custom Slug (URL):
+            </label>
+            <div class="flex items-center flex-1 min-w-0 bg-surface border border-border rounded px-2.5 py-1.5 focus-within:border-terracotta focus-within:ring-2 focus-within:ring-terracotta/10">
+              <span class="text-ink-faint font-mono text-[12px] shrink-0 select-none">/writing/</span>
+              <input
+                type="text"
+                id="postSlug"
+                class="bg-transparent border-0 text-ink font-mono text-[12px] p-0 focus:ring-0 w-full placeholder:text-ink-faint"
+                placeholder="auto-generated-from-title (or type custom slug)"
+              />
+            </div>
+            <span class="inline-flex items-center gap-1 text-ink-muted shrink-0 text-[11px] font-mono">
+              <svg class="w-3.5 h-3.5 text-ink-faint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span id="readTimePreview">~1 min read</span>
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] text-ink-faint mt-1.5 font-mono">
+            <span>Live URL: <span id="slugPreview" class="text-ink font-medium select-all">/writing/new-post</span></span>
+            <span class="font-sans text-[10px] uppercase tracking-wider text-ink-faint">Leave blank to auto-generate from title</span>
+          </div>
         </div>
       </div>
 
@@ -285,6 +308,7 @@ import '../../styles/global.css';
           <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-serif" id="btnH2" title="H2 Heading" type="button">H2</button>
           <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-serif" id="btnH3" title="H3 Heading" type="button">H3</button>
           <span class="text-border px-1">|</span>
+          <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-[#C1592B] font-serif font-medium" id="btnDropCap" title="Insert Editorial Drop Cap paragraph" type="button">Drop Cap</button>
           <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink" id="btnQuote" title="Pull Quote" type="button">Quote</button>
           <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink font-mono" id="btnCode" title="Inline Code" type="button">Code</button>
           <button class="px-2 py-1 rounded hover:bg-surface border border-transparent hover:border-border text-ink" id="btnLink" title="Link" type="button">Link</button>
@@ -297,32 +321,32 @@ import '../../styles/global.css';
         </div>
 
         <!-- Preview View: Formatted HTML Rendering (Initially Hidden) -->
-        <div class="hidden bg-surface border border-border rounded-lg p-6 sm:p-10 shadow-xs prose-editor" id="previewViewWrapper">
+        <div class="hidden bg-surface border border-border rounded-lg p-6 sm:p-10 shadow-xs prose-editor article-prose" id="previewViewWrapper">
           <div class="text-ink" id="renderedMarkdownContent">
             <!-- Dynamically populated via marked -->
           </div>
         </div>
       </div>
 
-      <!-- Section 5: SEO & Social Sharing Collapsible Section -->
-      <div class="border border-border rounded-lg bg-surface/60 overflow-hidden transition-all duration-200" id="seoAccordion">
+      <!-- Section 5: SEO & Social Sharing (Expanded by default) -->
+      <div class="border border-border rounded-lg bg-surface overflow-hidden transition-all duration-200" id="seoAccordion">
         <!-- Accordion Header Button -->
-        <button aria-expanded="false" class="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-surface transition-colors cursor-pointer select-none" id="seoToggleBtn" type="button">
+        <button aria-expanded="true" class="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-[#FAF8F3] transition-colors cursor-pointer select-none" id="seoToggleBtn" type="button">
           <div class="flex items-center gap-2.5">
-            <span class="text-xs font-semibold uppercase tracking-wider text-ink-muted">SEO &amp; Social Sharing</span>
-            <span class="px-2 py-0.5 rounded text-[10px] font-medium tracking-wide uppercase bg-grayBadgeBg text-grayBadge border border-border/70">Optional</span>
-            <span class="text-xs text-ink-faint hidden sm:inline">— Secondary metadata for search indexing and social cards</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-ink">SEO Technicals &amp; Social Sharing</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-medium tracking-wide uppercase bg-teal-soft text-teal border border-teal/20">Configured</span>
+            <span class="text-xs text-ink-faint hidden sm:inline">— Meta title, description, focus keywords &amp; Open Graph</span>
           </div>
           <div class="flex items-center gap-2 text-ink-muted">
-            <span class="text-xs text-ink-faint hidden md:inline" id="seoStatusSummary">Configure preview</span>
-            <svg class="w-4 h-4 transform transition-transform duration-200 text-ink-muted" id="seoChevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <span class="text-xs text-ink-faint hidden md:inline" id="seoStatusSummary">Toggle view</span>
+            <svg class="w-4 h-4 transform transition-transform duration-200 text-ink-muted rotate-180" id="seoChevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </div>
         </button>
 
-        <!-- Accordion Body -->
-        <div class="hidden border-t border-border p-5 sm:p-6 space-y-6 bg-surface" id="seoContent">
+        <!-- Accordion Body: Open by default -->
+        <div class="border-t border-border p-5 sm:p-6 space-y-6 bg-surface" id="seoContent">
           <!-- Grid for Meta Title & Focus Keywords -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Field 1: Meta Title -->
@@ -449,6 +473,7 @@ import '../../styles/global.css';
 
     // Elements
     const titleInput = document.getElementById('postTitle');
+    const postSlugInput = document.getElementById('postSlug');
     const slugPreview = document.getElementById('slugPreview');
     const readTimePreview = document.getElementById('readTimePreview');
     const categorySelect = document.getElementById('postCategory');
@@ -531,15 +556,18 @@ import '../../styles/global.css';
       const minutes = Math.max(1, Math.round(words / 200));
       readTimePreview.textContent = `~${minutes} min read`;
 
-      if (!currentPostSlug) {
-        const computedSlug = slugify(titleInput.value) || 'new-post';
-        slugPreview.textContent = `/writing/${computedSlug}`;
-        canonicalUrlPreview.textContent = `https://onerishi.in/writing/${computedSlug}`;
-      }
+      const customSlug = postSlugInput.value.trim();
+      const effectiveSlug = customSlug ? slugify(customSlug) : (slugify(titleInput.value) || 'new-post');
+      slugPreview.textContent = `/writing/${effectiveSlug}`;
+      canonicalUrlPreview.textContent = `https://onerishi.in/writing/${effectiveSlug}`;
     }
 
     markdownArea.addEventListener('input', updateLiveStats);
     titleInput.addEventListener('input', () => {
+      updateLiveStats();
+      updateSeoPreview();
+    });
+    postSlugInput.addEventListener('input', () => {
       updateLiveStats();
       updateSeoPreview();
     });
@@ -692,7 +720,11 @@ import '../../styles/global.css';
       formattingBar.classList.add('hidden');
 
       if (window.marked) {
-        renderedContent.innerHTML = marked.parse(markdownArea.value || '*No content yet.*');
+        let html = marked.parse(markdownArea.value || '*No content yet.*');
+        if (!html.includes('class="drop-cap"')) {
+          html = html.replace(/<p(\s|>)/, '<p class="drop-cap"$1');
+        }
+        renderedContent.innerHTML = html;
       } else {
         renderedContent.textContent = markdownArea.value;
       }
@@ -716,6 +748,7 @@ import '../../styles/global.css';
     document.getElementById('btnItalic')?.addEventListener('click', () => insertSyntax('*', '*'));
     document.getElementById('btnH2')?.addEventListener('click', () => insertSyntax('## ', ''));
     document.getElementById('btnH3')?.addEventListener('click', () => insertSyntax('### ', ''));
+    document.getElementById('btnDropCap')?.addEventListener('click', () => insertSyntax('<p class="drop-cap">\n', '\n</p>'));
     document.getElementById('btnQuote')?.addEventListener('click', () => insertSyntax('> ', ''));
     document.getElementById('btnCode')?.addEventListener('click', () => insertSyntax('`', '`'));
     document.getElementById('btnLink')?.addEventListener('click', () => insertSyntax('[', '](https://)'));
@@ -805,8 +838,10 @@ import '../../styles/global.css';
       activeBtn.disabled = true;
       activeBtn.innerHTML = '<span>Saving…</span>';
 
+      const customSlug = postSlugInput.value.trim();
       const payload = {
         title: title,
+        slug: customSlug ? slugify(customSlug) : null,
         category: categorySelect.value,
         excerpt: excerptInput.value.trim() || title,
         body: markdownArea.value.trim(),
@@ -848,6 +883,7 @@ import '../../styles/global.css';
         const saved = await res.json();
         currentPostId = saved.id;
         currentPostSlug = saved.slug;
+        postSlugInput.value = saved.slug;
         slugPreview.textContent = `/writing/${saved.slug}`;
         canonicalUrlPreview.textContent = `https://onerishi.in/writing/${saved.slug}`;
         readTimePreview.textContent = `~${saved.read_time_minutes} min read`;
@@ -909,6 +945,7 @@ import '../../styles/global.css';
 
         titleInput.value = post.title || '';
         currentPostSlug = post.slug;
+        postSlugInput.value = post.slug || '';
         slugPreview.textContent = `/writing/${post.slug}`;
         canonicalUrlPreview.textContent = `https://onerishi.in/writing/${post.slug}`;
         readTimePreview.textContent = `~${post.read_time_minutes} min read`;

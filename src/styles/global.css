@@ -69,7 +69,9 @@
 }
 
 /* Editorial Drop Cap */
-.drop-cap::first-letter {
+.drop-cap::first-letter,
+.article-prose p:first-of-type::first-letter,
+.article-prose > div > p:first-of-type::first-letter {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 3.8rem;
   line-height: 0.85;

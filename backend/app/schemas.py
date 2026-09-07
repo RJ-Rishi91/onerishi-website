@@ -25,6 +25,7 @@ class PostCreate(PostBase):
 
 class PostUpdate(BaseModel):
     title: Optional[str] = None
+    slug: Optional[str] = None
     category: Optional[str] = None
     excerpt: Optional[str] = None
     body: Optional[str] = None

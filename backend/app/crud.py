@@ -22,7 +22,14 @@ def calc_read_time(body: str) -> int:
 
 
 def create_post(db: Session, post: schemas.PostCreate) -> models.Post:
-    slug = post.slug or make_unique_slug(db, post.title)
+    if post.slug and post.slug.strip():
+        slug = slugify(post.slug.strip())
+        existing = db.query(models.Post).filter(models.Post.slug == slug).first()
+        if existing:
+            slug = f"{slug}-2"
+    else:
+        slug = make_unique_slug(db, post.title)
+
     db_post = models.Post(
         slug=slug,
         title=post.title,
@@ -31,6 +38,10 @@ def create_post(db: Session, post: schemas.PostCreate) -> models.Post:
         body=post.body,
         cover_image=post.cover_image,
         status=post.status,
+        meta_title=post.meta_title,
+        meta_description=post.meta_description,
+        meta_keywords=post.meta_keywords,
+        og_image=post.og_image,
         read_time_minutes=calc_read_time(post.body),
         published_at=datetime.utcnow() if post.status == "published" else None,
     )
@@ -43,6 +54,15 @@ def create_post(db: Session, post: schemas.PostCreate) -> models.Post:
 def update_post(db: Session, db_post: models.Post, updates: schemas.PostUpdate) -> models.Post:
     data = updates.model_dump(exclude_unset=True)
     was_draft = db_post.status != "published"
+
+    if "slug" in data:
+        raw_slug = data.pop("slug")
+        if raw_slug and raw_slug.strip():
+            candidate = slugify(raw_slug.strip())
+            existing = db.query(models.Post).filter(models.Post.slug == candidate, models.Post.id != db_post.id).first()
+            if existing:
+                candidate = f"{candidate}-{db_post.id}"
+            db_post.slug = candidate
 
     for field, value in data.items():
         setattr(db_post, field, value)

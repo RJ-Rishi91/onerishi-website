@@ -73,6 +73,9 @@ let ContentComponent = null;
 
 if (post.body) {
   htmlContent = marked.parse(post.body);
+  if (!htmlContent.includes('class="drop-cap"')) {
+    htmlContent = htmlContent.replace(/<p(\s|>)/, '<p class="drop-cap"$1');
+  }
 } else if (post.entry) {
   const rendered = await post.entry.render();
   ContentComponent = rendered.Content;
@@ -301,6 +304,20 @@ const relatedPosts = (allPosts || [])
 </script>
 
 <style is:global>
+  /* Editorial Drop Cap on first paragraph of article prose */
+  .drop-cap::first-letter,
+  .article-prose p:first-of-type::first-letter,
+  .article-prose > div > p:first-of-type::first-letter {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 3.8rem;
+    line-height: 0.85;
+    float: left;
+    margin-top: 0.15rem;
+    margin-right: 0.75rem;
+    color: #C1592B;
+    font-weight: 500;
+  }
+
   .article-prose h2 {
     font-family: 'Fraunces', Georgia, serif;
     font-size: 1.65rem;
