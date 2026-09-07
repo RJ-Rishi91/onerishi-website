@@ -39,6 +39,19 @@ app.add_middleware(
 )
 
 
+@app.on_event("startup")
+def auto_seed_if_empty():
+    try:
+        import sys
+        backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if backend_dir not in sys.path:
+            sys.path.insert(0, backend_dir)
+        from seed_posts import seed_posts
+        seed_posts()
+    except Exception as err:
+        print(f"Auto-seed note: {err}")
+
+
 # ---------- Public routes (Writing page + blog post template call these) ----------
 
 @app.get("/api/posts", response_model=list[schemas.PostOut])

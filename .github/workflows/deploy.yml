@@ -36,7 +36,7 @@ jobs:
       - name: Build with Astro
         env:
           ASTRO_TELEMETRY_DISABLED: 1
-          PUBLIC_API_URL: https://api.onerishi.in
+          PUBLIC_API_URL: https://onerishi-website.onrender.com
         run: npm run build
 
       - name: Upload artifact

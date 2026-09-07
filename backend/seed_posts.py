@@ -50,9 +50,13 @@ def parse_date(date_str: str | None) -> datetime:
 
 def seed_posts():
     db = SessionLocal()
-    writing_dir = current_dir.parent / "src" / "content" / "writing"
-    if not writing_dir.exists():
-        print(f"Writing directory not found: {writing_dir}")
+    writing_dir = None
+    for d in [current_dir.parent / "src" / "content" / "writing", current_dir / "writing_backup"]:
+        if d.exists() and list(d.glob("*.md")):
+            writing_dir = d
+            break
+    if not writing_dir:
+        print(f"No writing directory found")
         return
 
     md_files = list(writing_dir.glob("*.md"))

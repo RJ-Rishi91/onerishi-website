@@ -174,7 +174,7 @@ import '../../styles/global.css';
     let API_BASE_URL = savedApiUrl || (
       window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://127.0.0.1:8000'
-        : 'https://api.onerishi.in'
+        : 'https://onerishi-website.onrender.com'
     );
 
     // Redirect if already authenticated
@@ -214,7 +214,7 @@ import '../../styles/global.css';
         localStorage.removeItem('onerishi_api_url');
         API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
           ? 'http://127.0.0.1:8000'
-          : 'https://api.onerishi.in';
+          : 'https://onerishi-website.onrender.com';
         apiUrlInput.value = API_BASE_URL;
         alert('Reset to default API URL');
       }
