@@ -28,6 +28,8 @@ app = FastAPI(title="OneRishi Blog API")
 # Mount uploads directory for serving uploaded images
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
+from fastapi.responses import PlainTextResponse
+
 # Restrict this to your real frontend origin(s) in production via CORS_ORIGINS env var,
 # comma-separated, e.g. "https://onerishi.in,https://www.onerishi.in"
 origins = os.getenv("CORS_ORIGINS", "*").split(",")
@@ -37,6 +39,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def add_anti_crawler_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Robots-Tag"] = "noindex, nofollow, noarchive"
+    return response
+
+
+@app.get("/robots.txt", response_class=PlainTextResponse)
+def backend_robots():
+    return "User-agent: *\nDisallow: /\n"
 
 
 @app.on_event("startup")
