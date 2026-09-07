@@ -1,11 +1,73 @@
+# ==============================================================================
+# Robots.txt for OneRishi (https://onerishi.in)
+# ==============================================================================
+
+# Googlebot — Primary Web Search Crawler
+User-agent: Googlebot
+Allow: /
+Allow: /work
+Allow: /work/*
+Allow: /writing
+Allow: /writing/*
+Allow: /about
+Allow: /labs
+Allow: /philosophy
+Allow: /impact
+Allow: /collaborate
+Allow: /contact
+Allow: /assets/
+Allow: /images/
+# Admin pages are allowed to be crawled so Googlebot can read the 'noindex' meta tag
+Allow: /admin
+Allow: /admin/
+Allow: /admin/*
+
+# Googlebot Image Crawler
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /images/
+Allow: /writing/
+
+# Bingbot — Microsoft Bing Search Crawler
+User-agent: Bingbot
+Allow: /
+Allow: /work
+Allow: /work/*
+Allow: /writing
+Allow: /writing/*
+Allow: /about
+Allow: /labs
+Allow: /philosophy
+Allow: /impact
+Allow: /collaborate
+Allow: /contact
+Allow: /assets/
+Allow: /images/
+Allow: /admin
+Allow: /admin/
+Allow: /admin/*
+
+# All Other Web Crawlers & User-Agents
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /admin
-Disallow: /admin/*
-Disallow: /api/admin/
-Disallow: /api/admin/*
+Allow: /work
+Allow: /work/*
+Allow: /writing
+Allow: /writing/*
+Allow: /about
+Allow: /labs
+Allow: /philosophy
+Allow: /impact
+Allow: /collaborate
+Allow: /contact
+Allow: /assets/
+Allow: /images/
+Allow: /admin
+Allow: /admin/
+Allow: /admin/*
 
+# Search Engine Sitemap Index
 Sitemap: https://onerishi.in/sitemap.xml
+
 
 
