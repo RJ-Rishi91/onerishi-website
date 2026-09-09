@@ -50,6 +50,12 @@ def parse_date(date_str: str | None) -> datetime:
 
 def seed_posts():
     db = SessionLocal()
+    # If the database already contains posts, skip seeding so deleted articles stay deleted
+    if db.query(models.Post).count() > 0:
+        print("Database already contains posts. Skipping auto-seed.")
+        db.close()
+        return
+
     writing_dir = None
     for d in [current_dir.parent / "src" / "content" / "writing", current_dir / "writing_backup"]:
         if d.exists() and list(d.glob("*.md")):
