@@ -50,7 +50,7 @@ export async function GET(context: any) {
   // Static routes
   staticPages.forEach((page) => {
     urls.push({
-      loc: page ? `${siteUrl}/${page}` : siteUrl,
+      loc: page ? `${siteUrl}/${page}/` : `${siteUrl}/`,
       changefreq: page === '' ? 'weekly' : 'monthly',
       priority: page === '' ? '1.0' : '0.8',
     });
@@ -59,7 +59,7 @@ export async function GET(context: any) {
   // Dynamic Case Studies
   workEntries.forEach((entry) => {
     urls.push({
-      loc: `${siteUrl}/work/${entry.slug}`,
+      loc: `${siteUrl}/work/${entry.slug}/`,
       changefreq: 'monthly',
       priority: '0.8',
     });
@@ -68,7 +68,7 @@ export async function GET(context: any) {
   // Dynamic Writing Essays
   writingPosts.forEach((post) => {
     urls.push({
-      loc: `${siteUrl}/writing/${post.slug}`,
+      loc: `${siteUrl}/writing/${post.slug}/`,
       lastmod: post.lastmod,
       changefreq: 'monthly',
       priority: '0.7',
@@ -78,14 +78,17 @@ export async function GET(context: any) {
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls
-  .map(
-    (u) => `  <url>
-    <loc>${u.loc}</loc>
-    ${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority}</priority>
-  </url>`
-  )
+  .map((u) => {
+    const lines = [
+      '  <url>',
+      `    <loc>${u.loc}</loc>`,
+      u.lastmod ? `    <lastmod>${u.lastmod}</lastmod>` : null,
+      `    <changefreq>${u.changefreq}</changefreq>`,
+      `    <priority>${u.priority}</priority>`,
+      '  </url>',
+    ].filter(Boolean);
+    return lines.join('\n');
+  })
   .join('\n')}
 </urlset>`;
 

@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://onerishi.in',
+  trailingSlash: 'always',
   integrations: [
     tailwind({
       applyBaseStyles: false,

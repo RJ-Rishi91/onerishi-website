@@ -5,28 +5,28 @@
 ```
 OneRishi.in (Home) ────────────────────────────── [/]
 │
-├── Work                                        [/work]
+├── Work                                        [/work/]
 │   └── Case Studies (Dynamic Collections)
-│       ├── Google DevFest Udaipur 2024         [/work/google-devfest-udaipur-2024]
-│       ├── Gazette Collective                  [/work/gazette-collective]
-│       └── Web & Digital Systems               [/work/web-digital-projects]
+│       ├── Google DevFest Udaipur 2024         [/work/google-devfest-udaipur-2024/]
+│       ├── Gazette Collective                  [/work/gazette-collective/]
+│       └── Web & Digital Systems               [/work/web-digital-projects/]
 │
-├── Writing                                     [/writing]
+├── Writing                                     [/writing/]
 │   └── Field Dispatches (Dynamic Collections)
-│       ├── Distribution Before Destination     [/writing/distribution-before-destination]
-│       ├── What Building Gazette Collective... [/writing/community-journalism-gazette-collective]
-│       ├── Why Engineering Empathy...          [/writing/engineering-empathy-growth-marketer]
-│       ├── The Architecture of High-Converting [/writing/the-architecture-of-high-converting-b2b-web-experiences]
-│       ├── Operational Lessons from Directing  [/writing/operational-lessons-directing-tech-events]
-│       ├── Learning to Build in Public...      [/writing/learning-to-build-in-public-without-burning-out]
-│       └── Cultivating Taste: The Unspoken...  [/writing/cultivating-taste-unspoken-lever]
+│       ├── Distribution Before Destination     [/writing/distribution-before-destination/]
+│       ├── What Building Gazette Collective... [/writing/community-journalism-gazette-collective/]
+│       ├── Why Engineering Empathy...          [/writing/engineering-empathy-growth-marketer/]
+│       ├── The Architecture of High-Converting [/writing/the-architecture-of-high-converting-b2b-web-experiences/]
+│       ├── Operational Lessons from Directing  [/writing/operational-lessons-directing-tech-events/]
+│       ├── Learning to Build in Public...      [/writing/learning-to-build-in-public-without-burning-out/]
+│       └── Cultivating Taste: The Unspoken...  [/writing/cultivating-taste-unspoken-lever/]
 │
-├── About                                       [/about]
-├── Labs                                        [/labs]
-├── Philosophy                                  [/philosophy]
-├── Impact                                      [/impact]
-├── Collaborate                                 [/collaborate]
-├── Contact                                     [/contact]
+├── About                                       [/about/]
+├── Labs                                        [/labs/]
+├── Philosophy                                  [/philosophy/]
+├── Impact                                      [/impact/]
+├── Collaborate                                 [/collaborate/]
+├── Contact                                     [/contact/]
 │
 ├── Admin CMS (Restricted / Private)
 │   ├── Author Authentication Screen            [/admin/login]
