@@ -154,13 +154,74 @@ import '../../styles/global.css';
         <button class="px-3.5 py-2 text-sm font-medium text-ink hover:text-terracotta bg-surface hover:bg-white border border-border hover:border-terracotta/40 rounded shadow-sm transition-all focus:ring-2 focus:ring-terracotta/20 active:translate-y-0.5" id="saveDraftBtn" type="button">
           Save Draft
         </button>
-        <!-- Primary Action: Publish -->
-        <button class="px-4 py-2 text-sm font-medium text-white bg-terracotta hover:bg-terracotta-hover rounded shadow-sm transition-all flex items-center gap-1.5 focus:ring-2 focus:ring-terracotta/30 active:translate-y-0.5" id="publishBtn" type="button">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-            <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-          <span id="publishBtnText">Publish</span>
-        </button>
+        
+        <!-- Primary Action: Split Publish Button + Schedule Dropdown -->
+        <div class="relative inline-flex items-center" id="publishSplitButtonGroup">
+          <div class="inline-flex items-stretch rounded shadow-sm bg-terracotta hover:bg-terracotta-hover transition-colors">
+            <button class="px-4 py-2 text-sm font-medium text-white transition-all flex items-center gap-1.5 active:translate-y-0.5 focus:outline-none" id="publishBtn" type="button">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span id="publishBtnText">Publish</span>
+            </button>
+            <div class="w-px bg-white/25 self-stretch"></div>
+            <button aria-expanded="false" aria-haspopup="true" class="px-2 py-2 text-white hover:bg-black/10 transition-colors flex items-center justify-center focus:outline-none" id="scheduleDropdownTrigger" type="button" title="Schedule publication">
+              <svg class="w-3.5 h-3.5 transition-transform duration-200" id="scheduleTriggerChevron" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Schedule Popover -->
+          <div class="hidden absolute right-0 top-full mt-2 w-80 bg-[#F7F4EF] rounded-lg border border-[#1B1B18]/15 shadow-xl z-50 p-4 transition-all duration-150" id="schedulePopover">
+            <div class="flex items-center justify-between pb-3 border-b border-[#1B1B18]/10">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-[#FEF3C7] text-[#B45309] flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect height="18" rx="2" width="18" x="3" y="4"></rect>
+                    <line x1="16" x2="16" y1="2" y2="6"></line>
+                    <line x1="8" x2="8" y1="2" y2="6"></line>
+                    <line x1="3" x2="21" y1="10" y2="10"></line>
+                  </svg>
+                </div>
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-[#1B1B18]">Schedule Publication</h4>
+              </div>
+              <button class="text-[#1B1B18]/40 hover:text-[#1B1B18] text-xs p-1" id="closeSchedulePopoverBtn" type="button">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+            <p class="text-[11px] text-[#1B1B18]/60 leading-relaxed mt-2.5">
+              Automatically dispatch and compile this monograph at a preset date & time.
+            </p>
+            <div class="space-y-3 mt-3.5">
+              <div class="space-y-1">
+                <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#1B1B18]/70" for="scheduleDateInput">Publish Date</label>
+                <input class="w-full bg-white border border-[#1B1B18]/15 text-[#1B1B18] text-xs font-mono rounded px-3 py-2 transition-colors focus:border-[#C1592B] focus:outline-none shadow-2xs" id="scheduleDateInput" type="date" />
+              </div>
+              <div class="space-y-1">
+                <label class="block text-[11px] font-semibold uppercase tracking-wider text-[#1B1B18]/70" for="scheduleTimeInput">Time & Timezone</label>
+                <div class="flex items-center gap-2">
+                  <input class="w-full bg-white border border-[#1B1B18]/15 text-[#1B1B18] text-xs font-mono rounded px-3 py-2 transition-colors focus:border-[#C1592B] focus:outline-none shadow-2xs" id="scheduleTimeInput" type="time" value="09:00" />
+                  <span class="text-[11px] font-mono px-2 py-2 bg-[#F7F4EF] border border-[#1B1B18]/15 rounded text-[#1B1B18]/70 flex-shrink-0">IST (UTC+5:30)</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-[#1B1B18]/10 flex flex-col gap-2">
+              <button class="w-full py-2 px-3 text-xs font-medium uppercase tracking-wider text-white bg-[#C1592B] hover:bg-[#A84C23] rounded shadow-xs transition-all flex items-center justify-center gap-1.5 active:translate-y-0.5" id="confirmScheduleBtn" type="button">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <span>Schedule Post</span>
+              </button>
+              <button class="w-full py-1.5 text-center text-xs font-medium text-[#1B1B18]/60 hover:text-[#C1592B] transition-colors" id="publishInsteadBtn" type="button">
+                Publish Now Instead
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -822,23 +883,92 @@ import '../../styles/global.css';
       }, 3500);
     }
 
-    function updateStatusUI(status) {
+    const scheduleDropdownTrigger = document.getElementById('scheduleDropdownTrigger');
+    const scheduleTriggerChevron = document.getElementById('scheduleTriggerChevron');
+    const schedulePopover = document.getElementById('schedulePopover');
+    const closeSchedulePopoverBtn = document.getElementById('closeSchedulePopoverBtn');
+    const scheduleDateInput = document.getElementById('scheduleDateInput');
+    const scheduleTimeInput = document.getElementById('scheduleTimeInput');
+    const confirmScheduleBtn = document.getElementById('confirmScheduleBtn');
+    const publishInsteadBtn = document.getElementById('publishInsteadBtn');
+
+    function toggleScheduleMenu(forceState) {
+      if (!schedulePopover) return;
+      const isOpen = !schedulePopover.classList.contains('hidden');
+      const willOpen = typeof forceState === 'boolean' ? forceState : !isOpen;
+
+      if (willOpen) {
+        schedulePopover.classList.remove('hidden');
+        if (scheduleTriggerChevron) scheduleTriggerChevron.classList.add('rotate-180');
+        if (scheduleDropdownTrigger) scheduleDropdownTrigger.setAttribute('aria-expanded', 'true');
+      } else {
+        schedulePopover.classList.add('hidden');
+        if (scheduleTriggerChevron) scheduleTriggerChevron.classList.remove('rotate-180');
+        if (scheduleDropdownTrigger) scheduleDropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    if (scheduleDropdownTrigger) {
+      scheduleDropdownTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleScheduleMenu();
+      });
+    }
+
+    if (closeSchedulePopoverBtn) {
+      closeSchedulePopoverBtn.addEventListener('click', () => toggleScheduleMenu(false));
+    }
+
+    if (publishInsteadBtn) {
+      publishInsteadBtn.addEventListener('click', () => {
+        toggleScheduleMenu(false);
+        savePost('published');
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (schedulePopover && !schedulePopover.classList.contains('hidden')) {
+        const wrapper = document.getElementById('publishSplitButtonGroup');
+        if (wrapper && !wrapper.contains(e.target)) {
+          toggleScheduleMenu(false);
+        }
+      }
+    });
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toast.classList.remove('translate-y-16', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function updateStatusUI(status, scheduled_at) {
       currentStatus = status;
       if (status === 'published') {
         statusBadge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal-soft text-teal text-xs font-medium border border-teal/20 transition-colors';
-        statusDot.className = 'w-1.5 h-1.5 rounded-full bg-teal';
-        statusText.textContent = 'Published';
+        statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-teal" id="statusDot"></span><span id="statusText">Published</span>';
         publishBtnText.textContent = 'Update';
+      } else if (status === 'scheduled') {
+        statusBadge.className = 'flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] text-xs font-medium border border-[#FDE68A] transition-colors shadow-2xs';
+        let formattedDate = 'Scheduled';
+        if (scheduled_at) {
+          try {
+            const d = new Date(scheduled_at);
+            formattedDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' · ' + d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          } catch {}
+        }
+        statusBadge.innerHTML = `<svg class="w-3.5 h-3.5 text-[#B45309] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="statusText">Scheduled — ${formattedDate}</span>`;
+        publishBtnText.textContent = 'Publish Now';
       } else {
         statusBadge.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-grayBadgeBg text-grayBadge text-xs font-medium border border-border/80 transition-colors';
-        statusDot.className = 'w-1.5 h-1.5 rounded-full bg-grayBadge';
-        statusText.textContent = 'Draft';
+        statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-grayBadge" id="statusDot"></span><span id="statusText">Draft</span>';
         publishBtnText.textContent = 'Publish';
       }
     }
 
     // Save Logic
-    async function savePost(targetStatus) {
+    async function savePost(targetStatus, scheduledAtOverride) {
       const title = titleInput.value.trim();
       if (!title) {
         alert('Please provide a title for the post.');
@@ -846,7 +976,22 @@ import '../../styles/global.css';
         return;
       }
 
-      const isPublish = targetStatus === 'published';
+      let scheduled_at = null;
+      if (targetStatus === 'scheduled') {
+        scheduled_at = scheduledAtOverride;
+        if (!scheduled_at) {
+          const dateVal = scheduleDateInput?.value;
+          const timeVal = scheduleTimeInput?.value || '09:00';
+          if (!dateVal) {
+            alert('Please select a date to schedule this post.');
+            toggleScheduleMenu(true);
+            return;
+          }
+          scheduled_at = new Date(`${dateVal}T${timeVal}:00`).toISOString();
+        }
+      }
+
+      const isPublish = targetStatus === 'published' || targetStatus === 'scheduled';
       const activeBtn = isPublish ? publishBtn : saveDraftBtn;
       const origText = activeBtn.innerHTML;
 
@@ -862,6 +1007,7 @@ import '../../styles/global.css';
         body: markdownArea.value.trim(),
         cover_image: coverUrlInput.value.trim() || null,
         status: targetStatus,
+        scheduled_at: scheduled_at,
         meta_title: metaTitleInput.value.trim() || null,
         meta_description: metaDescriptionInput.value.trim() || null,
         meta_keywords: focusKeywordsInput.value.trim() || null,
@@ -903,7 +1049,7 @@ import '../../styles/global.css';
         canonicalUrlPreview.textContent = `https://onerishi.in/writing/${saved.slug}`;
         readTimePreview.textContent = `~${saved.read_time_minutes} min read`;
 
-        updateStatusUI(saved.status);
+        updateStatusUI(saved.status, saved.scheduled_at);
 
         // Update URL state without reload if this was a new post
         if (!urlParams.get('id')) {
@@ -912,7 +1058,11 @@ import '../../styles/global.css';
 
         const now = new Date();
         lastSavedLabel.textContent = `Saved ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-        showToast(saved.status === 'published' ? 'Post published successfully!' : 'Draft saved successfully.');
+        
+        const successMsg = saved.status === 'published' 
+          ? 'Post published successfully!' 
+          : (saved.status === 'scheduled' ? 'Post scheduled successfully!' : 'Draft saved successfully.');
+        showToast(successMsg);
       } catch (err) {
         alert(err.message || 'Error saving post');
       } finally {
@@ -923,6 +1073,10 @@ import '../../styles/global.css';
 
     saveDraftBtn.addEventListener('click', () => savePost('draft'));
     publishBtn.addEventListener('click', () => savePost('published'));
+    confirmScheduleBtn?.addEventListener('click', () => {
+      toggleScheduleMenu(false);
+      savePost('scheduled');
+    });
 
     document.getElementById('discardBtn')?.addEventListener('click', () => {
       if (confirm('Discard changes and return to post list?')) {
@@ -988,12 +1142,30 @@ import '../../styles/global.css';
         ogImageUrl.value = post.og_image || '';
         updateSeoPreview();
 
-        updateStatusUI(post.status);
+        if (post.scheduled_at) {
+          try {
+            scheduleDateInput.value = post.scheduled_at.split('T')[0];
+            scheduleTimeInput.value = post.scheduled_at.split('T')[1].slice(0, 5);
+          } catch {}
+        }
+
+        updateStatusUI(post.status, post.scheduled_at);
         lastSavedLabel.textContent = 'Loaded from server';
       } catch (err) {
         alert('Could not load post: ' + err.message);
         window.location.href = '/admin';
       }
+    }
+
+    // Prefill schedule date from URL if passed from calendar
+    const prefilledDate = urlParams.get('scheduled_date');
+    if (prefilledDate && scheduleDateInput) {
+      scheduleDateInput.value = prefilledDate;
+      setTimeout(() => toggleScheduleMenu(true), 250);
+    } else if (scheduleDateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      scheduleDateInput.value = tomorrow.toISOString().split('T')[0];
     }
 
     loadPostIfEditing();

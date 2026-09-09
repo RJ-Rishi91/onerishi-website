@@ -24,9 +24,10 @@ class Post(Base):
     body = Column(Text, nullable=False)  # Markdown
     cover_image = Column(String, nullable=True)
     read_time_minutes = Column(Integer, nullable=False, default=1)
-    status = Column(String, nullable=False, default="draft")  # draft | published
+    status = Column(String, nullable=False, default="draft")  # draft | scheduled | published
+    scheduled_at = Column(DateTime, nullable=True)  # required when status == "scheduled"
 
-    # SEO — all optional; fall back to title/excerpt/cover_image if left blank
+
     meta_title = Column(String, nullable=True)
     meta_description = Column(String, nullable=True)
     meta_keywords = Column(String, nullable=True)  # comma-separated

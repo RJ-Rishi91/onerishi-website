@@ -9,10 +9,12 @@ load_dotenv()
 from fastapi import BackgroundTasks, Depends, FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from . import auth, crud, models, schemas
+from . import auth, bulk_import, crud, models, schemas
 from .database import Base, engine, get_db
+from .scheduler import start_scheduler
 from .webhook import trigger_github_rebuild
 
 Base.metadata.create_all(bind=engine)
@@ -53,8 +55,19 @@ def backend_robots():
     return "User-agent: *\nDisallow: /\n"
 
 
+_scheduler = None
+
+
 @app.on_event("startup")
-def auto_seed_if_empty():
+def startup_init():
+    global _scheduler
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("ALTER TABLE posts ADD COLUMN scheduled_at TIMESTAMP;"))
+            conn.commit()
+    except Exception:
+        pass  # Column already exists or table freshly created with scheduled_at
+
     try:
         import sys
         backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,6 +77,11 @@ def auto_seed_if_empty():
         seed_posts()
     except Exception as err:
         print(f"Auto-seed note: {err}")
+
+    try:
+        _scheduler = start_scheduler()
+    except Exception as err:
+        print(f"Scheduler startup note: {err}")
 
 
 # ---------- Public routes (Writing page + blog post template call these) ----------
@@ -116,6 +134,8 @@ def create_post(
     db: Session = Depends(get_db),
     _: bool = Depends(auth.get_current_admin),
 ):
+    if post.status == "scheduled" and not post.scheduled_at:
+        raise HTTPException(status_code=400, detail="scheduled_at is required when status is 'scheduled'")
     created = crud.create_post(db, post)
     if created.status == "published":
         background_tasks.add_task(trigger_github_rebuild, "cms_post_published", {"post_id": created.id, "action": "created"})
@@ -133,11 +153,31 @@ def update_post(
     db_post = crud.get_post_by_id(db, post_id)
     if not db_post:
         raise HTTPException(status_code=404, detail="Post not found")
+    effective_status = updates.status or db_post.status
+    effective_scheduled_at = updates.scheduled_at or db_post.scheduled_at
+    if effective_status == "scheduled" and not effective_scheduled_at:
+        raise HTTPException(status_code=400, detail="scheduled_at is required when status is 'scheduled'")
     was_published = db_post.status == "published"
     updated = crud.update_post(db, db_post, updates)
     if was_published or updated.status == "published":
         background_tasks.add_task(trigger_github_rebuild, "cms_post_published", {"post_id": updated.id, "action": "updated"})
     return updated
+
+
+@app.post("/api/admin/posts/bulk-import")
+async def bulk_import_posts(
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db),
+    _: bool = Depends(auth.get_current_admin),
+):
+    if not file.filename.lower().endswith(".csv"):
+        raise HTTPException(status_code=400, detail="File must be a .csv")
+    contents = await file.read()
+    result = bulk_import.import_posts_from_csv(db, contents)
+    if result["published_count"] > 0:
+        background_tasks.add_task(trigger_github_rebuild, "bulk_import_published", {"count": result["published_count"]})
+    return result
 
 
 @app.delete("/api/admin/posts/{post_id}")

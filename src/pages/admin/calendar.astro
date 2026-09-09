@@ -1,0 +1,753 @@
+---
+// src/pages/admin/calendar.astro
+// OneRishi CMS Editorial Calendar Screen
+import '../../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KGP8QDFC');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Calendar — OneRishi CMS</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #F7F4EF;
+      color: #1B1B18;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-serif {
+      font-family: 'Fraunces', serif;
+      font-feature-settings: 'opsz' 36, 'liga' 1;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .post-chip {
+      transition: all 0.15s ease;
+    }
+    .post-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(27, 27, 24, 0.08);
+    }
+    .calendar-cell:hover .quick-add-btn {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#F7F4EF] text-[#1B1B18] antialiased selection:bg-[#C1592B] selection:text-white">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGP8QDFC"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Top System / Utility Header -->
+  <header class="border-b border-[#1B1B18]/10 bg-[#F7F4EF] sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Left: Brand / CMS Masthead -->
+      <div class="flex items-center gap-4">
+        <a href="/admin" class="flex items-center gap-1.5 group">
+          <span class="font-serif text-xl font-bold tracking-tight text-[#1B1B18]">OneRishi<span class="text-[#C1592B]">.</span>in</span>
+          <span class="ml-1 text-[11px] font-mono uppercase px-2 py-0.5 rounded bg-[#1B1B18]/5 text-[#1B1B18]/70 border border-[#1B1B18]/10">CMS</span>
+        </a>
+        <div class="h-4 w-px bg-[#1B1B18]/15"></div>
+        <div class="flex items-center gap-2 text-xs text-[#1B1B18]/60">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-600"></span>
+          <span>Rushal S. (Author)</span>
+        </div>
+      </div>
+
+      <!-- Center: View Switcher (List vs Calendar) -->
+      <div class="flex items-center bg-[#1B1B18]/5 p-1 rounded-md border border-[#1B1B18]/10">
+        <a href="/admin" class="flex items-center gap-1.5 px-3 py-1 rounded text-xs font-medium text-[#1B1B18]/70 hover:text-[#1B1B18] transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          List
+        </a>
+        <a href="/admin/calendar" class="flex items-center gap-1.5 px-3 py-1 rounded text-xs font-semibold bg-white text-[#1B1B18] shadow-xs border border-[#1B1B18]/10">
+          <svg class="w-3.5 h-3.5 text-[#C1592B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Calendar
+        </a>
+      </div>
+
+      <!-- Right: Global Actions & User session -->
+      <div class="flex items-center gap-3">
+        <a href="https://onerishi.in" target="_blank" class="text-xs text-[#1B1B18]/60 hover:text-[#1B1B18] flex items-center gap-1 transition-colors">
+          <span>View Site</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        <div class="h-4 w-px bg-[#1B1B18]/15"></div>
+        <button id="logoutBtn" type="button" class="text-xs text-[#1B1B18]/60 hover:text-[#1B1B18] flex items-center gap-1 transition-colors">
+          <span>Log Out</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col">
+
+    <!-- Subheader Strip: Title, Month Controls, Key Legend, + New Post -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#1B1B18]/10">
+      
+      <!-- Page Title & Scope Note -->
+      <div>
+        <div class="flex items-center gap-3">
+          <h1 class="font-serif text-3xl font-normal tracking-tight text-[#1B1B18]">Editorial Calendar</h1>
+          <span id="currentMonthBadge" class="text-xs font-mono px-2 py-0.5 rounded bg-[#1B1B18]/5 text-[#1B1B18]/70 border border-[#1B1B18]/10">Loading...</span>
+        </div>
+        <p class="text-xs text-[#1B1B18]/60 mt-1">
+          Chronological schedule of published dispatches and upcoming releases. <span class="text-[#1B1B18]/40">(Drafts without dates are excluded)</span>
+        </p>
+      </div>
+
+      <!-- Month Navigation Controls & Actions -->
+      <div class="flex items-center flex-wrap gap-3">
+        
+        <!-- Legend Indicator -->
+        <div class="hidden lg:flex items-center gap-3 text-xs bg-white/70 px-3 py-1.5 rounded border border-[#1B1B18]/10 text-[#1B1B18]/70 mr-1">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#1F3A3D]"></span>
+            <span id="publishedCountLabel">Published (0)</span>
+          </span>
+          <span class="w-px h-3 bg-[#1B1B18]/15"></span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#C1592B]"></span>
+            <span id="scheduledCountLabel">Scheduled (0)</span>
+          </span>
+        </div>
+
+        <!-- Month Navigator: "← Month YYYY →" -->
+        <div class="flex items-center bg-white rounded border border-[#1B1B18]/15 shadow-xs">
+          <button id="prevMonthBtn" type="button" title="Previous Month" class="px-2.5 py-1.5 text-xs text-[#1B1B18]/70 hover:text-[#1B1B18] hover:bg-[#1B1B18]/5 border-r border-[#1B1B18]/10 transition-colors flex items-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <div class="px-3.5 py-1.5 text-xs font-semibold text-[#1B1B18] tracking-wide font-mono flex items-center gap-2">
+            <span id="navMonthLabel">Month Year</span>
+            <button id="todayBtn" type="button" class="text-[10px] text-[#C1592B] hover:underline font-sans font-medium">Today</button>
+          </div>
+          <button id="nextMonthBtn" type="button" title="Next Month" class="px-2.5 py-1.5 text-xs text-[#1B1B18]/70 hover:text-[#1B1B18] hover:bg-[#1B1B18]/5 border-l border-[#1B1B18]/10 transition-colors flex items-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Secondary: Import CSV -->
+        <button id="openCsvBtn" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-[#1B1B18]/5 text-xs font-medium text-[#1B1B18] border border-[#1B1B18]/20 rounded shadow-xs transition-colors">
+          <svg class="w-3.5 h-3.5 text-[#1B1B18]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          Import CSV
+        </button>
+
+        <!-- Primary: + New Post -->
+        <a href="/admin/editor" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#C1592B] hover:bg-[#A84C23] text-white text-xs font-semibold rounded shadow-xs transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+          + New Post
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Calendar Grid Container -->
+    <div class="mt-6 flex-1 flex flex-col bg-white rounded-lg border border-[#1B1B18]/15 shadow-sm overflow-hidden">
+      
+      <!-- Day-of-Week Header (7 cols Sun-Sat) -->
+      <div class="grid grid-cols-7 border-b border-[#1B1B18]/10 bg-[#F7F4EF]/60 text-center text-[11px] font-mono uppercase tracking-wider text-[#1B1B18]/70 py-2.5">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+
+      <!-- Dynamic Days Grid (Rows x 7 Columns auto-filled via JS) -->
+      <div id="calendarGrid" class="grid grid-cols-7 flex-1 divide-x divide-y divide-[#1B1B18]/10 auto-rows-fr min-h-[580px]">
+        <!-- Skeleton / Loading Cells -->
+        <div class="p-8 text-center col-span-7 flex flex-col items-center justify-center space-y-3 py-24">
+          <div class="w-8 h-8 rounded-full border-2 border-[#C1592B] border-t-transparent animate-spin"></div>
+          <p class="text-xs font-mono text-[#1B1B18]/60">Plotting editorial timetable...</p>
+        </div>
+      </div>
+
+      <!-- Calendar Footer Strip -->
+      <div class="bg-[#F7F4EF]/50 border-t border-[#1B1B18]/10 px-4 py-2.5 flex flex-col sm:flex-row items-center justify-between text-xs text-[#1B1B18]/60 gap-2 font-mono">
+        <div class="flex items-center gap-4">
+          <span id="footerTotalEvents">0 total calendar events plotted</span>
+          <span class="text-[#1B1B18]/20">•</span>
+          <span>Timezone: IST (UTC+05:30)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-[#1B1B18]/50">Click chip to open post editor</span>
+          <span class="text-[#1B1B18]/20">•</span>
+          <span>OneRishi CMS v1.5</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Expand Day Modal (for days with > 2 posts) -->
+  <div id="expandDayModal" class="hidden fixed inset-0 z-50 bg-[#1B1B18]/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-[#1B1B18]/20 max-w-md w-full shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      
+      <div class="px-5 py-4 border-b border-[#1B1B18]/10 bg-[#F7F4EF] flex items-center justify-between">
+        <div>
+          <span id="expandModalDayName" class="text-[10px] font-mono uppercase tracking-wider text-[#C1592B] font-semibold">Day</span>
+          <h3 id="expandModalDateTitle" class="font-serif text-xl font-bold text-[#1B1B18]">Date Title</h3>
+        </div>
+        <button id="closeExpandModalBtn" type="button" class="w-7 h-7 rounded hover:bg-[#1B1B18]/10 flex items-center justify-center text-[#1B1B18]/60 hover:text-[#1B1B18] transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-2.5 max-h-[60vh] overflow-y-auto">
+        <p id="expandModalCountText" class="text-xs text-[#1B1B18]/60 mb-2 font-mono">Dispatches recorded for this date:</p>
+        <div id="expandModalPostsContainer" class="space-y-2.5">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="px-5 py-3 bg-[#F7F4EF]/70 border-t border-[#1B1B18]/10 flex items-center justify-between">
+        <button id="closeExpandModalBtn2" type="button" class="px-3 py-1 text-xs text-[#1B1B18]/70 hover:text-[#1B1B18]">Close</button>
+        <a id="expandModalAddPostBtn" href="/admin/editor" class="px-3 py-1 bg-[#C1592B] hover:bg-[#A84C23] text-white text-xs font-medium rounded shadow-xs">+ Add Post for this day</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CSV Bulk Import Modal Dialog -->
+  <div id="csvModal" class="hidden fixed inset-0 z-50 bg-[#1B1B18]/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-[#1B1B18]/20 max-w-lg w-full shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-[#1B1B18]/10 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded bg-[#1F3A3D]/10 text-[#1F3A3D] flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-bold text-[#1B1B18]">Import Posts via CSV</h3>
+        </div>
+        <button id="closeCsvModalBtn" type="button" class="text-[#1B1B18]/50 hover:text-[#1B1B18] text-sm">✕</button>
+      </div>
+
+      <p class="text-xs text-[#1B1B18]/70 leading-relaxed">
+        Upload a structured CSV file containing title, category, excerpt, body, status (draft, scheduled, published), and scheduled_at dates.
+      </p>
+
+      <div class="p-3 bg-[#F7F4EF] rounded border border-[#1B1B18]/10 text-xs flex items-center justify-between">
+        <span class="font-mono text-[#1B1B18]/70">Template: bulk-import-template.csv</span>
+        <a href="/bulk-import-template.csv" download class="text-[#C1592B] hover:underline font-medium">Download CSV Template ↗</a>
+      </div>
+
+      <div id="dropZone" class="border-2 border-dashed border-[#1B1B18]/20 rounded-lg p-6 text-center hover:border-[#C1592B] transition-colors cursor-pointer bg-[#F7F4EF]/30">
+        <input type="file" id="csvFileInput" accept=".csv" class="hidden" />
+        <svg class="w-8 h-8 mx-auto text-[#1B1B18]/40 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        </svg>
+        <p class="text-xs font-medium text-[#1B1B18]" id="selectedFileName">Click or drag CSV here to import</p>
+        <span class="text-[10px] text-[#1B1B18]/40 mt-1 block">Maximum file size: 5MB</span>
+      </div>
+
+      <div id="importFeedback" class="hidden text-xs p-3 rounded"></div>
+
+      <div class="flex justify-end gap-2 pt-2 border-t border-[#1B1B18]/10">
+        <button id="cancelCsvBtn" type="button" class="px-3 py-1.5 text-xs text-[#1B1B18]/70 hover:text-[#1B1B18]">Cancel</button>
+        <button id="submitCsvBtn" type="button" class="px-4 py-1.5 bg-[#C1592B] hover:bg-[#A84C23] text-white text-xs font-semibold rounded shadow-xs transition-colors">Start Import</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="border-t border-[#1B1B18]/10 bg-[#F7F4EF] py-4 text-xs text-[#1B1B18]/50 mt-auto">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="font-serif font-bold text-[#1B1B18]">OneRishi.in</span>
+        <span>— Editorial Terminal & Publishing System</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Encrypted session</span>
+        <span>•</span>
+        <span>Single-admin access</span>
+        <span>•</span>
+        <a href="https://onerishi.in" class="hover:text-[#1B1B18] transition-colors">Back to onerishi.in ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script is:inline>
+    const savedApiUrl = localStorage.getItem('onerishi_api_url');
+    const API_BASE_URL = savedApiUrl || (
+      window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://127.0.0.1:8000'
+        : 'https://onerishi-website.onrender.com'
+    );
+
+    // Auth Guard
+    const token = sessionStorage.getItem('onerishi_admin_token');
+    if (!token) {
+      window.location.href = '/admin/login';
+    }
+
+    document.getElementById('logoutBtn')?.addEventListener('click', () => {
+      sessionStorage.removeItem('onerishi_admin_token');
+      window.location.href = '/admin/login';
+    });
+
+    // State
+    let allPosts = [];
+    let currentDate = new Date(); // Active Month / Year view
+
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    // DOM References
+    const calendarGrid = document.getElementById('calendarGrid');
+    const currentMonthBadge = document.getElementById('currentMonthBadge');
+    const navMonthLabel = document.getElementById('navMonthLabel');
+    const publishedCountLabel = document.getElementById('publishedCountLabel');
+    const scheduledCountLabel = document.getElementById('scheduledCountLabel');
+    const footerTotalEvents = document.getElementById('footerTotalEvents');
+
+    // Month Navigation
+    document.getElementById('prevMonthBtn').addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar();
+    });
+
+    document.getElementById('nextMonthBtn').addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar();
+    });
+
+    document.getElementById('todayBtn').addEventListener('click', () => {
+      currentDate = new Date();
+      renderCalendar();
+    });
+
+    // Helper: format time into "hh:mm AM/PM"
+    function formatTime(isoStr) {
+      if (!isoStr) return '';
+      const d = new Date(isoStr);
+      let hours = d.getHours();
+      const minutes = String(d.getMinutes()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      return `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+    }
+
+    // Helper: extract local YYYY-MM-DD
+    function toLocalDateKey(isoStr) {
+      if (!isoStr) return null;
+      const d = new Date(isoStr);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Fetch Posts from Backend
+    async function loadPosts() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/admin/posts`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (res.status === 401) {
+          sessionStorage.removeItem('onerishi_admin_token');
+          window.location.href = '/admin/login';
+          return;
+        }
+        if (!res.ok) throw new Error('Failed to load posts');
+        allPosts = await res.json();
+        renderCalendar();
+      } catch (err) {
+        console.error(err);
+        calendarGrid.innerHTML = `
+          <div class="col-span-7 p-12 text-center text-xs text-red-600 font-mono">
+            Error loading dispatches from ${API_BASE_URL}. Ensure backend is awake.
+          </div>
+        `;
+      }
+    }
+
+    // Render Calendar Grid
+    function renderCalendar() {
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
+
+      const monthTitle = `${monthNames[month]} ${year}`;
+      currentMonthBadge.textContent = monthTitle;
+      navMonthLabel.textContent = monthTitle;
+
+      // Group posts by local date string YYYY-MM-DD
+      const dateMap = {};
+      let totalPublishedInMonth = 0;
+      let totalScheduledInMonth = 0;
+      let totalPlotted = 0;
+
+      allPosts.forEach(post => {
+        // Exclude drafts without scheduled_at dates
+        if (post.status === 'draft' && !post.scheduled_at) return;
+
+        const dateTarget = post.status === 'scheduled'
+          ? (post.scheduled_at || post.created_at)
+          : (post.published_at || post.created_at);
+
+        const key = toLocalDateKey(dateTarget);
+        if (!key) return;
+
+        if (!dateMap[key]) dateMap[key] = [];
+        dateMap[key].push({
+          ...post,
+          plotDate: dateTarget
+        });
+
+        // Count stats for current month
+        const pDate = new Date(dateTarget);
+        if (pDate.getFullYear() === year && pDate.getMonth() === month) {
+          if (post.status === 'published') totalPublishedInMonth++;
+          if (post.status === 'scheduled') totalScheduledInMonth++;
+          totalPlotted++;
+        }
+      });
+
+      publishedCountLabel.textContent = `Published (${totalPublishedInMonth})`;
+      scheduledCountLabel.textContent = `Scheduled (${totalScheduledInMonth})`;
+      footerTotalEvents.textContent = `${totalPlotted} dispatches plotted in ${monthNames[month]}`;
+
+      // Calculate calendar grid days
+      const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0 (Sun) to 6 (Sat)
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+      const today = new Date();
+      const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+      let gridHtml = '';
+
+      // 1. Previous Month Padding
+      for (let i = firstDayOfMonth - 1; i >= 0; i--) {
+        const dayNum = daysInPrevMonth - i;
+        const prevMonthDate = new Date(year, month - 1, dayNum);
+        const key = `${prevMonthDate.getFullYear()}-${String(prevMonthDate.getMonth() + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+        const dayPosts = dateMap[key] || [];
+
+        gridHtml += `
+          <div class="calendar-cell min-h-[118px] p-2 bg-[#F7F4EF]/40 relative flex flex-col group border-b border-r border-[#1B1B18]/10">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-[#1B1B18]/30 font-medium">${dayNum}</span>
+              ${dayNum === daysInPrevMonth ? `<span class="text-[9px] font-mono text-[#1B1B18]/30">${monthNames[(month + 11) % 12].slice(0, 3)}</span>` : ''}
+            </div>
+            ${renderDayPostsPreview(dayPosts, key, prevMonthDate)}
+          </div>
+        `;
+      }
+
+      // 2. Current Month Days
+      for (let d = 1; d <= daysInMonth; d++) {
+        const thisDate = new Date(year, month, d);
+        const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const dayPosts = dateMap[key] || [];
+        const isToday = key === todayKey;
+
+        gridHtml += `
+          <div class="calendar-cell min-h-[118px] p-2 relative flex flex-col transition-colors border-b border-r border-[#1B1B18]/10 group ${
+            isToday
+              ? 'bg-[#FFF9F3] ring-2 ring-inset ring-[#C1592B]'
+              : 'hover:bg-[#F7F4EF]/25'
+          }">
+            <div class="flex items-center justify-between">
+              ${isToday ? `
+                <div class="flex items-center gap-1.5">
+                  <span class="w-5 h-5 rounded-full bg-[#C1592B] text-white text-[11px] font-mono font-bold flex items-center justify-center shadow-xs">${d}</span>
+                  <span class="text-[10px] font-mono uppercase font-semibold text-[#C1592B] tracking-wider">Today</span>
+                </div>
+              ` : `
+                <span class="text-xs font-mono text-[#1B1B18]/80 font-medium">${d}</span>
+              `}
+              <a href="/admin/editor?scheduled_date=${key}" class="quick-add-btn opacity-0 group-hover:opacity-100 text-[10px] text-[#C1592B] hover:text-[#A84C23] font-medium transition-opacity" title="Schedule post on this date">+ Add</a>
+            </div>
+            ${renderDayPostsPreview(dayPosts, key, thisDate)}
+          </div>
+        `;
+      }
+
+      // 3. Next Month Padding (fill out remaining cells to reach multiple of 7)
+      const totalCellsFilled = firstDayOfMonth + daysInMonth;
+      const remainingCells = (7 - (totalCellsFilled % 7)) % 7;
+
+      for (let n = 1; n <= remainingCells; n++) {
+        const nextMonthDate = new Date(year, month + 1, n);
+        const key = `${nextMonthDate.getFullYear()}-${String(nextMonthDate.getMonth() + 1).padStart(2, '0')}-${String(n).padStart(2, '0')}`;
+        const dayPosts = dateMap[key] || [];
+
+        gridHtml += `
+          <div class="calendar-cell min-h-[118px] p-2 bg-[#F7F4EF]/40 relative flex flex-col group border-b border-r border-[#1B1B18]/10">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-[#1B1B18]/30 font-medium">${n}</span>
+              ${n === 1 ? `<span class="text-[9px] font-mono text-[#1B1B18]/40">${monthNames[(month + 1) % 12].slice(0, 3)}</span>` : ''}
+            </div>
+            ${renderDayPostsPreview(dayPosts, key, nextMonthDate)}
+          </div>
+        `;
+      }
+
+      calendarGrid.innerHTML = gridHtml;
+    }
+
+    // Helper: render chips in a day cell
+    function renderDayPostsPreview(posts, dateKey, dateObj) {
+      if (!posts || posts.length === 0) return '';
+
+      // Sort by time ascending
+      posts.sort((a, b) => new Date(a.plotDate) - new Date(b.plotDate));
+
+      const visible = posts.slice(0, 2);
+      const overflowCount = posts.length - 2;
+
+      let chipsHtml = '<div class="mt-1 space-y-1">';
+
+      visible.forEach(post => {
+        const isScheduled = post.status === 'scheduled';
+        const timeStr = formatTime(post.plotDate);
+
+        if (isScheduled) {
+          chipsHtml += `
+            <a href="/admin/editor?id=${post.id}" class="post-chip block p-1.5 rounded text-[11px] leading-tight bg-[#FEF3C7] hover:bg-[#FDE68A] text-[#92400E] border border-[#FDE68A]" title="${post.title}">
+              <div class="flex items-center justify-between text-[10px] font-mono text-[#B45309] mb-0.5">
+                <span class="flex items-center gap-1 font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#C1592B]"></span>
+                  <span>${timeStr || 'Scheduled'}</span>
+                </span>
+                <span class="text-[9px] uppercase px-1 rounded bg-[#FDE68A]/70 font-semibold">Sched</span>
+              </div>
+              <p class="font-medium line-clamp-1 truncate">${post.title}</p>
+            </a>
+          `;
+        } else {
+          chipsHtml += `
+            <a href="/admin/editor?id=${post.id}" class="post-chip block p-1.5 rounded text-[11px] leading-tight bg-[#E6F0F0] hover:bg-[#D4E8E8] text-[#1F3A3D] border border-[#BDD8D9]" title="${post.title}">
+              <div class="flex items-center justify-between text-[10px] font-mono text-[#1F3A3D]/80 mb-0.5">
+                <span class="flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#1F3A3D]"></span>
+                  <span>${timeStr || 'Published'}</span>
+                </span>
+                <span class="text-[9px] uppercase px-1 rounded bg-white/70">Pub</span>
+              </div>
+              <p class="font-medium line-clamp-1 truncate">${post.title}</p>
+            </a>
+          `;
+        }
+      });
+
+      if (overflowCount > 0) {
+        chipsHtml += `
+          <button type="button" onclick="openDayExpandModal('${dateKey}')" class="w-full text-left px-1.5 py-0.5 rounded text-[10px] font-mono font-medium text-[#C1592B] hover:bg-[#C1592B]/10 transition-colors flex items-center justify-between">
+            <span>+${overflowCount} more dispatches</span>
+            <span>↓</span>
+          </button>
+        `;
+      }
+
+      chipsHtml += '</div>';
+      return chipsHtml;
+    }
+
+    // Day Expansion Modal
+    window.openDayExpandModal = function(dateKey) {
+      const modal = document.getElementById('expandDayModal');
+      const postsForDay = allPosts.filter(p => {
+        const target = p.status === 'scheduled' ? (p.scheduled_at || p.created_at) : (p.published_at || p.created_at);
+        return toLocalDateKey(target) === dateKey;
+      });
+
+      postsForDay.sort((a, b) => new Date(a.scheduled_at || a.published_at || a.created_at) - new Date(b.scheduled_at || b.published_at || b.created_at));
+
+      const parts = dateKey.split('-');
+      const dObj = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      
+      document.getElementById('expandModalDayName').textContent = dayNames[dObj.getDay()];
+      document.getElementById('expandModalDateTitle').textContent = `${monthNames[dObj.getMonth()]} ${dObj.getDate()}, ${dObj.getFullYear()}`;
+      document.getElementById('expandModalCountText').textContent = `${postsForDay.length} dispatches recorded for this date:`;
+      document.getElementById('expandModalAddPostBtn').href = `/admin/editor?scheduled_date=${dateKey}`;
+
+      const container = document.getElementById('expandModalPostsContainer');
+      container.innerHTML = postsForDay.map(post => {
+        const isScheduled = post.status === 'scheduled';
+        const targetDate = isScheduled ? (post.scheduled_at || post.created_at) : (post.published_at || post.created_at);
+        const timeStr = formatTime(targetDate);
+
+        if (isScheduled) {
+          return `
+            <a href="/admin/editor?id=${post.id}" class="block p-3 rounded-md bg-[#FEF3C7] border border-[#FDE68A] hover:border-[#B45309]/40 transition-colors">
+              <div class="flex items-center justify-between text-xs font-mono text-[#92400E] mb-1">
+                <span class="flex items-center gap-1.5 font-semibold">
+                  <span class="w-2 h-2 rounded-full bg-[#C1592B]"></span>
+                  <span>${timeStr || 'Scheduled'}</span>
+                </span>
+                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white text-[#92400E] font-medium uppercase">Scheduled</span>
+              </div>
+              <h4 class="font-medium text-sm text-[#1B1B18] mb-0.5">${post.title}</h4>
+              <span class="text-[11px] text-[#1B1B18]/60 font-mono">/writing/${post.slug}</span>
+            </a>
+          `;
+        } else {
+          return `
+            <a href="/admin/editor?id=${post.id}" class="block p-3 rounded-md bg-[#E6F0F0] border border-[#BDD8D9] hover:border-[#1F3A3D]/40 transition-colors">
+              <div class="flex items-center justify-between text-xs font-mono text-[#1F3A3D] mb-1">
+                <span class="flex items-center gap-1.5 font-medium">
+                  <span class="w-2 h-2 rounded-full bg-[#1F3A3D]"></span>
+                  <span>${timeStr || 'Published'}</span>
+                </span>
+                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white text-[#1F3A3D] font-medium uppercase">Published</span>
+              </div>
+              <h4 class="font-medium text-sm text-[#1B1B18] mb-0.5">${post.title}</h4>
+              <span class="text-[11px] text-[#1B1B18]/60 font-mono">/writing/${post.slug}</span>
+            </a>
+          `;
+        }
+      }).join('');
+
+      modal.classList.remove('hidden');
+    };
+
+    document.getElementById('closeExpandModalBtn').addEventListener('click', () => {
+      document.getElementById('expandDayModal').classList.add('hidden');
+    });
+    document.getElementById('closeExpandModalBtn2').addEventListener('click', () => {
+      document.getElementById('expandDayModal').classList.add('hidden');
+    });
+
+    // CSV Modal Handling
+    const csvModal = document.getElementById('csvModal');
+    const openCsvBtn = document.getElementById('openCsvBtn');
+    const closeCsvModalBtn = document.getElementById('closeCsvModalBtn');
+    const cancelCsvBtn = document.getElementById('cancelCsvBtn');
+    const dropZone = document.getElementById('dropZone');
+    const csvFileInput = document.getElementById('csvFileInput');
+    const selectedFileName = document.getElementById('selectedFileName');
+    const submitCsvBtn = document.getElementById('submitCsvBtn');
+    const importFeedback = document.getElementById('importFeedback');
+
+    openCsvBtn.addEventListener('click', () => {
+      csvModal.classList.remove('hidden');
+      importFeedback.classList.add('hidden');
+      selectedFileName.textContent = 'Click or drag CSV here to import';
+      csvFileInput.value = '';
+    });
+
+    closeCsvModalBtn.addEventListener('click', () => csvModal.classList.add('hidden'));
+    cancelCsvBtn.addEventListener('click', () => csvModal.classList.add('hidden'));
+
+    dropZone.addEventListener('click', () => csvFileInput.click());
+    csvFileInput.addEventListener('change', () => {
+      if (csvFileInput.files.length > 0) {
+        selectedFileName.textContent = csvFileInput.files[0].name;
+      }
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('border-[#C1592B]');
+    });
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('border-[#C1592B]');
+    });
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('border-[#C1592B]');
+      if (e.dataTransfer.files.length > 0) {
+        csvFileInput.files = e.dataTransfer.files;
+        selectedFileName.textContent = e.dataTransfer.files[0].name;
+      }
+    });
+
+    submitCsvBtn.addEventListener('click', async () => {
+      if (!csvFileInput.files || csvFileInput.files.length === 0) {
+        alert('Please choose a .csv file first.');
+        return;
+      }
+      const formData = new FormData();
+      formData.append('file', csvFileInput.files[0]);
+
+      submitCsvBtn.disabled = true;
+      submitCsvBtn.textContent = 'Importing...';
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/admin/posts/bulk-import`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          throw new Error(result.detail || 'Import failed');
+        }
+
+        importFeedback.className = 'text-xs p-3 rounded bg-emerald-50 text-emerald-800 border border-emerald-200';
+        importFeedback.innerHTML = `
+          <strong>Success!</strong> Imported ${result.created_count} posts (${result.published_count} published).
+          ${result.error_count > 0 ? `<br><span class="text-amber-700">${result.error_count} row errors noted.</span>` : ''}
+        `;
+        importFeedback.classList.remove('hidden');
+
+        await loadPosts();
+        setTimeout(() => {
+          csvModal.classList.add('hidden');
+          submitCsvBtn.disabled = false;
+          submitCsvBtn.textContent = 'Start Import';
+        }, 1200);
+      } catch (err) {
+        importFeedback.className = 'text-xs p-3 rounded bg-red-50 text-red-700 border border-red-200';
+        importFeedback.textContent = err.message;
+        importFeedback.classList.remove('hidden');
+        submitCsvBtn.disabled = false;
+        submitCsvBtn.textContent = 'Start Import';
+      }
+    });
+
+    // Initialize
+    loadPosts();
+  </script>
+</body>
+</html>

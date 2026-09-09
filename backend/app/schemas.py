@@ -10,7 +10,8 @@ class PostBase(BaseModel):
     excerpt: str
     body: str
     cover_image: Optional[str] = None
-    status: str = Field(default="draft", pattern="^(draft|published)$")
+    status: str = Field(default="draft", pattern="^(draft|scheduled|published)$")
+    scheduled_at: Optional[datetime] = None  # required when status == "scheduled"
 
     # SEO — optional overrides. Leave blank to fall back to title/excerpt/cover_image.
     meta_title: Optional[str] = None
@@ -30,7 +31,8 @@ class PostUpdate(BaseModel):
     excerpt: Optional[str] = None
     body: Optional[str] = None
     cover_image: Optional[str] = None
-    status: Optional[str] = Field(default=None, pattern="^(draft|published)$")
+    status: Optional[str] = Field(default=None, pattern="^(draft|scheduled|published)$")
+    scheduled_at: Optional[datetime] = None
     meta_title: Optional[str] = None
     meta_description: Optional[str] = None
     meta_keywords: Optional[str] = None

@@ -30,7 +30,8 @@ OneRishi.in (Home) ────────────────────�
 │
 ├── Admin CMS (Restricted / Private)
 │   ├── Author Authentication Screen            [/admin/login]
-│   ├── Posts Dashboard (All / Published / Drafts) [/admin]
+│   ├── Posts Dashboard (All / Published / Scheduled / Drafts) [/admin]
+│   ├── Editorial Calendar (Timed Schedule Grid) [/admin/calendar]
 │   └── Monograph Editor & Publishing Terminal  [/admin/editor]
 │
 ├── Cloud API Endpoints (FastAPI Backend @ Render)
@@ -39,7 +40,8 @@ OneRishi.in (Home) ────────────────────�
 │   ├── Single Post Query by Slug               [GET  /api/posts/{slug}]
 │   ├── Admin Master Key Authentication         [POST /api/admin/login]
 │   ├── Admin Posts Directory (incl. Drafts)    [GET  /api/admin/posts]
-│   ├── Create Monograph                        [POST /api/admin/posts]
+│   ├── Create Monograph (incl. Scheduling)     [POST /api/admin/posts]
+│   ├── Bulk CSV Post Import                    [POST /api/admin/posts/bulk-import]
 │   ├── Get Post by ID                          [GET  /api/admin/posts/{id}]
 │   ├── Update Monograph & SEO Overrides        [PUT  /api/admin/posts/{id}]
 │   ├── Delete Monograph                        [DELETE /api/admin/posts/{id}]

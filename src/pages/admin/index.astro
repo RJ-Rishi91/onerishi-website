@@ -58,6 +58,11 @@ import '../../styles/global.css';
       color: var(--accent-2);
       border: 1px solid rgba(31, 58, 61, 0.25);
     }
+    .badge-scheduled {
+      background-color: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
     .badge-draft {
       background-color: #E7E3DC;
       color: #68645C;
@@ -103,6 +108,22 @@ import '../../styles/global.css';
         </span>
       </div>
 
+      <!-- Center: View Switcher (List vs Calendar) -->
+      <div class="flex items-center bg-[#1B1B18]/5 p-1 rounded-md border border-[#1B1B18]/10">
+        <a href="/admin" class="flex items-center gap-1.5 px-3 py-1 rounded text-xs font-semibold bg-white text-[#1B1B18] shadow-xs border border-[#1B1B18]/10">
+          <svg class="w-3.5 h-3.5 text-[#C1592B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          List
+        </a>
+        <a href="/admin/calendar" class="flex items-center gap-1.5 px-3 py-1 rounded text-xs font-medium text-[#1B1B18]/70 hover:text-[#1B1B18] transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Calendar
+        </a>
+      </div>
+
       <!-- Right: User Context & Log Out -->
       <div class="flex items-center gap-5 text-sm">
         <span class="text-xs text-[#7A756B] hidden sm:inline-flex items-center gap-1.5">
@@ -136,6 +157,12 @@ import '../../styles/global.css';
         </p>
       </div>
       <div class="flex items-center gap-3">
+        <button id="openCsvBtn" type="button" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-white hover:bg-[#1B1B18]/5 text-xs font-medium text-[#1B1B18] border border-[#1B1B18]/20 rounded shadow-xs transition-colors">
+          <svg class="w-4 h-4 text-[#1B1B18]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          Import CSV
+        </button>
         <a href="/admin/editor" class="btn-terracotta inline-flex items-center gap-2 px-4 py-2.5 rounded text-sm font-medium shadow-sm whitespace-nowrap shrink-0">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
           <span>+ New Post</span>
@@ -145,7 +172,7 @@ import '../../styles/global.css';
 
     <!-- Filter Bar & Search/View Controls -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-6">
-      <!-- Tabs: All / Published / Drafts -->
+      <!-- Tabs: All / Published / Scheduled / Drafts -->
       <div class="inline-flex p-1 bg-[#ECE8DF] rounded-md text-xs font-medium border border-[#DFD9CE]" role="tablist">
         <button id="tab-all" onclick="filterPosts('all')" class="tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
           <span>All</span>
@@ -154,6 +181,10 @@ import '../../styles/global.css';
         <button id="tab-published" onclick="filterPosts('published')" class="tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
           <span>Published</span>
           <span id="badge-published" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/5">0</span>
+        </button>
+        <button id="tab-scheduled" onclick="filterPosts('scheduled')" class="tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
+          <span>Scheduled</span>
+          <span id="badge-scheduled" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/5">0</span>
         </button>
         <button id="tab-drafts" onclick="filterPosts('drafts')" class="tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5">
           <span>Drafts</span>
@@ -221,7 +252,47 @@ import '../../styles/global.css';
       </div>
     </div>
 
-  </main>
+  <!-- CSV Bulk Import Modal Dialog -->
+  <div id="csvModal" class="hidden fixed inset-0 z-50 bg-[#1B1B18]/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg border border-[#1B1B18]/20 max-w-lg w-full shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-[#1B1B18]/10 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded bg-[#1F3A3D]/10 text-[#1F3A3D] flex items-center justify-center">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+            </svg>
+          </div>
+          <h3 class="font-fraunces text-lg font-bold text-[#1B1B18]">Import Posts via CSV</h3>
+        </div>
+        <button id="closeCsvModalBtn" type="button" class="text-[#1B1B18]/50 hover:text-[#1B1B18] text-sm">✕</button>
+      </div>
+
+      <p class="text-xs text-[#1B1B18]/70 leading-relaxed">
+        Upload a structured CSV file containing title, category, excerpt, body, status (draft, scheduled, published), and scheduled_at dates.
+      </p>
+
+      <div class="p-3 bg-[#F7F4EF] rounded border border-[#1B1B18]/10 text-xs flex items-center justify-between">
+        <span class="font-mono text-[#1B1B18]/70">Template: bulk-import-template.csv</span>
+        <a href="/bulk-import-template.csv" download class="text-[#C1592B] hover:underline font-medium">Download CSV Template ↗</a>
+      </div>
+
+      <div id="dropZone" class="border-2 border-dashed border-[#1B1B18]/20 rounded-lg p-6 text-center hover:border-[#C1592B] transition-colors cursor-pointer bg-[#F7F4EF]/30">
+        <input type="file" id="csvFileInput" accept=".csv" class="hidden" />
+        <svg class="w-8 h-8 mx-auto text-[#1B1B18]/40 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        </svg>
+        <p class="text-xs font-medium text-[#1B1B18]" id="selectedFileName">Click or drag CSV here to import</p>
+        <span class="text-[10px] text-[#1B1B18]/40 mt-1 block">Maximum file size: 5MB</span>
+      </div>
+
+      <div id="importFeedback" class="hidden text-xs p-3 rounded"></div>
+
+      <div class="flex justify-end gap-2 pt-2 border-t border-[#1B1B18]/10">
+        <button id="cancelCsvBtn" type="button" class="px-3 py-1.5 text-xs text-[#1B1B18]/70 hover:text-[#1B1B18]">Cancel</button>
+        <button id="submitCsvBtn" type="button" class="px-4 py-1.5 bg-[#C1592B] hover:bg-[#A84C23] text-white text-xs font-semibold rounded shadow-xs transition-colors">Start Import</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Delete Confirmation Modal Dialog -->
   <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs hidden">
@@ -293,6 +364,7 @@ import '../../styles/global.css';
 
     const badgeAll = document.getElementById('badge-all');
     const badgePub = document.getElementById('badge-published');
+    const badgeScheduled = document.getElementById('badge-scheduled');
     const badgeDraft = document.getElementById('badge-drafts');
 
     const deleteModal = document.getElementById('deleteModal');
@@ -310,11 +382,28 @@ import '../../styles/global.css';
       }
     }
 
+    function formatDateTime(isoStr) {
+      if (!isoStr) return '—';
+      try {
+        const d = new Date(isoStr);
+        const datePart = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        let hours = d.getHours();
+        const minutes = String(d.getMinutes()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        return `${datePart} · ${hours}:${minutes} ${ampm}`;
+      } catch {
+        return isoStr;
+      }
+    }
+
     function updateBadgeCounts() {
       const pubCount = allPosts.filter(p => p.status === 'published').length;
+      const schedCount = allPosts.filter(p => p.status === 'scheduled').length;
       const draftCount = allPosts.filter(p => p.status === 'draft').length;
       badgeAll.textContent = allPosts.length;
       badgePub.textContent = pubCount;
+      if (badgeScheduled) badgeScheduled.textContent = schedCount;
       badgeDraft.textContent = draftCount;
     }
 
@@ -324,6 +413,8 @@ import '../../styles/global.css';
       let filtered = allPosts;
       if (currentFilter === 'published') {
         filtered = allPosts.filter(p => p.status === 'published');
+      } else if (currentFilter === 'scheduled') {
+        filtered = allPosts.filter(p => p.status === 'scheduled');
       } else if (currentFilter === 'drafts') {
         filtered = allPosts.filter(p => p.status === 'draft');
       }
@@ -346,7 +437,10 @@ import '../../styles/global.css';
         tr.setAttribute('data-status', post.status);
 
         const isPub = post.status === 'published';
-        const dateStr = formatDate(post.published_at || post.updated_at || post.created_at);
+        const isSched = post.status === 'scheduled';
+        const dateStr = isSched && post.scheduled_at 
+          ? formatDateTime(post.scheduled_at)
+          : formatDate(post.published_at || post.updated_at || post.created_at);
 
         tr.innerHTML = `
           <td class="py-4 px-6">
@@ -365,6 +459,11 @@ import '../../styles/global.css';
               <span class="badge-published text-xs px-2.5 py-0.5 rounded font-medium inline-flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--accent-2);"></span>
                 Published
+              </span>
+            ` : isSched ? `
+              <span class="badge-scheduled text-xs px-2.5 py-0.5 rounded font-medium inline-flex items-center gap-1.5">
+                <svg class="w-3 h-3 text-[#B45309]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                Scheduled
               </span>
             ` : `
               <span class="badge-draft text-xs px-2.5 py-0.5 rounded font-medium inline-flex items-center gap-1.5">
@@ -402,17 +501,20 @@ import '../../styles/global.css';
       currentFilter = filter;
       const tabAll = document.getElementById('tab-all');
       const tabPub = document.getElementById('tab-published');
+      const tabSched = document.getElementById('tab-scheduled');
       const tabDraft = document.getElementById('tab-drafts');
 
-      [tabAll, tabPub, tabDraft].forEach(tab => {
+      [tabAll, tabPub, tabSched, tabDraft].filter(Boolean).forEach(tab => {
         tab.className = 'tab-inactive px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
       });
 
-      if (filter === 'all') {
+      if (filter === 'all' && tabAll) {
         tabAll.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
-      } else if (filter === 'published') {
+      } else if (filter === 'published' && tabPub) {
         tabPub.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
-      } else if (filter === 'drafts') {
+      } else if (filter === 'scheduled' && tabSched) {
+        tabSched.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
+      } else if (filter === 'drafts' && tabDraft) {
         tabDraft.className = 'tab-active px-3 py-1.5 rounded transition-all flex items-center gap-1.5';
       }
 
@@ -488,6 +590,104 @@ import '../../styles/global.css';
           <p class="text-xs text-[#706B62]">Please ensure the FastAPI backend is running at ${API_BASE_URL}</p>
         `;
       }
+    }
+
+    // CSV Modal Handling
+    const csvModal = document.getElementById('csvModal');
+    const openCsvBtn = document.getElementById('openCsvBtn');
+    const closeCsvModalBtn = document.getElementById('closeCsvModalBtn');
+    const cancelCsvBtn = document.getElementById('cancelCsvBtn');
+    const dropZone = document.getElementById('dropZone');
+    const csvFileInput = document.getElementById('csvFileInput');
+    const selectedFileName = document.getElementById('selectedFileName');
+    const submitCsvBtn = document.getElementById('submitCsvBtn');
+    const importFeedback = document.getElementById('importFeedback');
+
+    if (openCsvBtn) {
+      openCsvBtn.addEventListener('click', () => {
+        csvModal.classList.remove('hidden');
+        importFeedback.classList.add('hidden');
+        selectedFileName.textContent = 'Click or drag CSV here to import';
+        csvFileInput.value = '';
+      });
+    }
+
+    if (closeCsvModalBtn) closeCsvModalBtn.addEventListener('click', () => csvModal.classList.add('hidden'));
+    if (cancelCsvBtn) cancelCsvBtn.addEventListener('click', () => csvModal.classList.add('hidden'));
+
+    if (dropZone) {
+      dropZone.addEventListener('click', () => csvFileInput.click());
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('border-[#C1592B]');
+      });
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('border-[#C1592B]');
+      });
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('border-[#C1592B]');
+        if (e.dataTransfer.files.length > 0) {
+          csvFileInput.files = e.dataTransfer.files;
+          selectedFileName.textContent = e.dataTransfer.files[0].name;
+        }
+      });
+    }
+
+    if (csvFileInput) {
+      csvFileInput.addEventListener('change', () => {
+        if (csvFileInput.files.length > 0) {
+          selectedFileName.textContent = csvFileInput.files[0].name;
+        }
+      });
+    }
+
+    if (submitCsvBtn) {
+      submitCsvBtn.addEventListener('click', async () => {
+        if (!csvFileInput.files || csvFileInput.files.length === 0) {
+          alert('Please choose a .csv file first.');
+          return;
+        }
+        const formData = new FormData();
+        formData.append('file', csvFileInput.files[0]);
+
+        submitCsvBtn.disabled = true;
+        submitCsvBtn.textContent = 'Importing...';
+
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/admin/posts/bulk-import`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            },
+            body: formData
+          });
+          const result = await res.json();
+          if (!res.ok) {
+            throw new Error(result.detail || 'Import failed');
+          }
+
+          importFeedback.className = 'text-xs p-3 rounded bg-emerald-50 text-emerald-800 border border-emerald-200';
+          importFeedback.innerHTML = `
+            <strong>Success!</strong> Imported ${result.created_count} posts (${result.published_count} published).
+            ${result.error_count > 0 ? `<br><span class="text-amber-700">${result.error_count} row errors noted.</span>` : ''}
+          `;
+          importFeedback.classList.remove('hidden');
+
+          await loadPosts();
+          setTimeout(() => {
+            csvModal.classList.add('hidden');
+            submitCsvBtn.disabled = false;
+            submitCsvBtn.textContent = 'Start Import';
+          }, 1200);
+        } catch (err) {
+          importFeedback.className = 'text-xs p-3 rounded bg-red-50 text-red-700 border border-red-200';
+          importFeedback.textContent = err.message;
+          importFeedback.classList.remove('hidden');
+          submitCsvBtn.disabled = false;
+          submitCsvBtn.textContent = 'Start Import';
+        }
+      });
     }
 
     loadPosts();

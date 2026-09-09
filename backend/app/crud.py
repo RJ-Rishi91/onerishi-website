@@ -38,6 +38,7 @@ def create_post(db: Session, post: schemas.PostCreate) -> models.Post:
         body=post.body,
         cover_image=post.cover_image,
         status=post.status,
+        scheduled_at=post.scheduled_at,
         meta_title=post.meta_title,
         meta_description=post.meta_description,
         meta_keywords=post.meta_keywords,
@@ -95,6 +96,25 @@ def get_post_by_slug(db: Session, slug: str):
 
 def get_post_by_id(db: Session, post_id: int):
     return db.query(models.Post).filter(models.Post.id == post_id).first()
+
+
+def publish_due_scheduled_posts(db: Session):
+    """Called every few minutes by the scheduler. Anything set to
+    'scheduled' with scheduled_at in the past gets flipped to 'published'
+    right here, ensuring static frontend receives a rebuild trigger."""
+    now = datetime.utcnow()
+    due_posts = (
+        db.query(models.Post)
+        .filter(models.Post.status == "scheduled")
+        .filter(models.Post.scheduled_at <= now)
+        .all()
+    )
+    for post in due_posts:
+        post.status = "published"
+        post.published_at = post.scheduled_at or now
+    if due_posts:
+        db.commit()
+    return due_posts
 
 
 def delete_post(db: Session, db_post: models.Post):

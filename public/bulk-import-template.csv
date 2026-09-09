@@ -1,0 +1,5 @@
+title,category,excerpt,body,cover_image,status,scheduled_at,slug,meta_title,meta_description,meta_keywords,og_image
+"Example: Why I Switched to a Real Backend","Building on the Internet","A short one to two sentence teaser shown on the Writing index card.","## This is the body
+
+Write the full post here in Markdown. In Excel or Google Sheets, just press Enter inside the cell for a new paragraph — it exports correctly as long as you save as CSV (not edit the raw text by hand).","https://example.com/cover1.jpg","draft","","","","","",""
+"Example: A Scheduled Post for Next Week","Career & Learning","Another short teaser sentence for this post.","Full markdown body goes here.","https://example.com/cover2.jpg","scheduled","2024-12-20 09:00","","","","",""
