@@ -1,0 +1,177 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Tag from "../components/Tag.astro";
+---
+
+<BaseLayout
+  title="Page Not Found — OneRishi.in"
+  description="The requested page could not be located on OneRishi.in."
+>
+  <!-- Loading state when resolving dynamic dispatches -->
+  <div id="dynamicLoadingState" class="hidden max-w-[720px] mx-auto px-4 py-24 text-center">
+    <div class="inline-block w-8 h-8 border-2 border-[#C1592B] border-t-transparent rounded-full animate-spin mb-4"></div>
+    <h2 class="font-serif text-2xl text-[#1B1B18] font-normal">Connecting to Field Dispatch…</h2>
+    <p class="font-sans text-xs text-[#1B1B18]/60 mt-2 font-mono">Fetching latest publication data from backend</p>
+  </div>
+
+  <!-- Dynamic Post Container (shown if URL is a valid live post) -->
+  <article id="dynamicPostContainer" class="hidden w-full pb-16">
+    <header class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 lg:pt-14 pb-8">
+      <div class="max-w-[720px] mx-auto">
+        <div class="flex items-center justify-between gap-4 mb-6 font-sans">
+          <a
+            href="/writing"
+            class="group inline-flex items-center gap-1.5 text-xs text-[#1F3A3D] hover:text-[#C1592B] transition-colors font-medium tracking-wide"
+          >
+            <span class="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+            <span>All Writing</span>
+          </a>
+          <span id="dynCategoryBadge" class="inline-block px-2.5 py-0.5 rounded text-[11px] font-sans font-semibold uppercase tracking-wider bg-[#1F3A3D]/10 text-[#1F3A3D] border border-[#1F3A3D]/20"></span>
+        </div>
+
+        <h1 id="dynTitle" class="font-serif text-[32px] sm:text-[42px] lg:text-[48px] font-normal tracking-tight text-[#1B1B18] mb-4 leading-[1.18] text-balance"></h1>
+        <p id="dynDescription" class="font-sans text-[17px] text-[#1B1B18]/80 leading-relaxed mb-8"></p>
+
+        <div class="p-4 bg-white border border-[#E6E1D8] rounded-lg flex flex-wrap items-center justify-between gap-4 font-sans text-xs">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#C1592B]/10 text-[#C1592B] flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]">edit_note</span>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-[#1B1B18]">Rushal S.</div>
+              <div class="flex items-center gap-2 text-[#1B1B18]/65 mt-0.5">
+                <span id="dynDate"></span>
+                <span class="text-[#1B1B18]/30">•</span>
+                <span id="dynReadTime"></span>
+                <span class="text-[#1B1B18]/30">•</span>
+                <span class="text-[#C1592B] font-medium font-mono">Live Dispatch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div class="max-w-[900px] mx-auto">
+        <div id="dynCoverContainer" class="hidden aspect-[16/9] w-full rounded-lg overflow-hidden bg-[#F0EDE8] border border-[#1B1B18]/10 shadow-sm">
+          <img id="dynCoverImage" src="" alt="" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-[720px] mx-auto">
+        <div id="dynBody" class="prose prose-lg max-w-none text-[#1B1B18]/90 font-sans leading-relaxed"></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Default 404 Layout -->
+  <main id="standard404State" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 flex flex-col items-center justify-center text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-[#C1592B]/30 text-[#C1592B] font-mono text-[11px] uppercase tracking-widest mb-6">
+      <span>Error 404</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-[#C1592B]"></span>
+      <span>Dispatch Not Located</span>
+    </div>
+
+    <h1 class="font-serif text-[40px] sm:text-[54px] lg:text-[64px] font-normal tracking-tight text-[#1B1B18] leading-[1.1] mb-6">
+      Page Not Found
+    </h1>
+
+    <p class="font-sans text-[17px] text-[#1B1B18]/70 max-w-[540px] leading-relaxed mb-10">
+      The entry you requested could not be located. It may have been renamed, archived, or is currently in the editorial draft room.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/writing"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-[#C1592B] text-white font-sans text-sm font-medium hover:bg-[#A84C23] transition-colors shadow-xs"
+      >
+        <span>Explore Writing Archive</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+      </a>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded border border-[#1B1B18]/20 bg-white text-[#1B1B18] font-sans text-sm font-medium hover:border-[#C1592B] hover:text-[#C1592B] transition-colors"
+      >
+        <span>Return to Folio</span>
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  (async function checkDynamicPost() {
+    const path = window.location.pathname;
+    const match = path.match(/^\/writing\/([^\/]+)\/?$/);
+    if (!match) return;
+
+    const slug = match[1];
+    if (slug === "index" || !slug) return;
+
+    const standard404 = document.getElementById("standard404State");
+    const loading = document.getElementById("dynamicLoadingState");
+    const postContainer = document.getElementById("dynamicPostContainer");
+
+    if (standard404) standard404.classList.add("hidden");
+    if (loading) loading.classList.remove("hidden");
+
+    try {
+      const res = await fetch(`https://onerishi-website.onrender.com/api/posts/${slug}`);
+      if (!res.ok) throw new Error("Not found on API");
+
+      const post = await res.json();
+      if (!post || post.status !== "published") throw new Error("Not published");
+
+      document.title = `${post.title} — OneRishi.in`;
+
+      const titleEl = document.getElementById("dynTitle");
+      const descEl = document.getElementById("dynDescription");
+      const catEl = document.getElementById("dynCategoryBadge");
+      const dateEl = document.getElementById("dynDate");
+      const readTimeEl = document.getElementById("dynReadTime");
+      const bodyEl = document.getElementById("dynBody");
+      const coverContainer = document.getElementById("dynCoverContainer");
+      const coverImage = document.getElementById("dynCoverImage") as HTMLImageElement;
+
+      if (titleEl) titleEl.textContent = post.title;
+      if (descEl) descEl.textContent = post.excerpt || "";
+      if (catEl) catEl.textContent = post.category || "Dispatch";
+      if (dateEl) {
+        dateEl.textContent = post.published_at 
+          ? new Date(post.published_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+          : "Recently";
+      }
+      if (readTimeEl) readTimeEl.textContent = `${post.read_time_minutes || 4} min read`;
+
+      if (post.cover_image && coverContainer && coverImage) {
+        coverImage.src = post.cover_image;
+        coverImage.alt = post.title;
+        coverContainer.classList.remove("hidden");
+      }
+
+      if (bodyEl && post.body) {
+        const paragraphs = post.body.split(/\n\n+/);
+        const parsed = paragraphs.map((p: string) => {
+          let trimmed = p.trim();
+          if (trimmed.startsWith('### ')) return `<h3 class="font-serif text-2xl font-bold mt-8 mb-4 text-[#1B1B18]">${trimmed.slice(4)}</h3>`;
+          if (trimmed.startsWith('## ')) return `<h2 class="font-serif text-3xl font-bold mt-10 mb-5 text-[#1B1B18]">${trimmed.slice(3)}</h2>`;
+          if (trimmed.startsWith('# ')) return `<h1 class="font-serif text-4xl font-bold mt-12 mb-6 text-[#1B1B18]">${trimmed.slice(2)}</h1>`;
+          let formatted = trimmed
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/\n/g, '<br/>');
+          return `<p class="mb-6 text-[17px] leading-relaxed text-[#1B1B18]/85">${formatted}</p>`;
+        }).join('');
+        bodyEl.innerHTML = `<div class="drop-cap-container">${parsed}</div>`;
+      }
+
+      if (loading) loading.classList.add("hidden");
+      if (postContainer) postContainer.classList.remove("hidden");
+    } catch {
+      if (loading) loading.classList.add("hidden");
+      if (standard404) standard404.classList.remove("hidden");
+    }
+  })();
+</script>

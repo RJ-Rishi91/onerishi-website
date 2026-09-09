@@ -21,7 +21,7 @@ export async function GET(context: any) {
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2500);
+    const timeoutId = setTimeout(() => controller.abort(), 20000);
     const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
     clearTimeout(timeoutId);
     if (res.ok) {
@@ -45,12 +45,21 @@ export async function GET(context: any) {
     }));
   }
 
+  // Find the latest publication date across all dispatches
+  const latestPostDate = writingPosts
+    .map((p) => p.lastmod)
+    .filter(Boolean)
+    .sort()
+    .reverse()[0] || new Date().toISOString().split('T')[0];
+
   const urls: Array<{ loc: string; lastmod?: string; changefreq: string; priority: string }> = [];
 
   // Static routes
   staticPages.forEach((page) => {
+    const isRootOrWriting = page === '' || page === 'writing';
     urls.push({
       loc: page ? `${siteUrl}/${page}/` : `${siteUrl}/`,
+      lastmod: isRootOrWriting ? latestPostDate : undefined,
       changefreq: page === '' ? 'weekly' : 'monthly',
       priority: page === '' ? '1.0' : '0.8',
     });

@@ -7,12 +7,12 @@ import Tag from '../../components/Tag.astro';
 import WrittenFromExperience from '../../components/WrittenFromExperience.astro';
 
 export async function getStaticPaths() {
-  const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'https://onerishi-website.onrender.com';
   let posts: any[] = [];
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const timeoutId = setTimeout(() => controller.abort(), 20000);
     const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
     clearTimeout(timeoutId);
     if (res.ok) {

@@ -4,7 +4,64 @@ import CredibilityStrip from '../components/CredibilityStrip.astro';
 import PostCard from '../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('writing');
+const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'https://onerishi-website.onrender.com';
+let allPosts: Array<{
+  slug: string;
+  data: {
+    title: string;
+    description: string;
+    category: string;
+    date: string;
+    readTime: string;
+    coverImage?: string | null;
+    coverImageAlt?: string;
+  };
+}> = [];
+
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 20000);
+  const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
+  clearTimeout(timeoutId);
+  if (res.ok) {
+    const apiPosts = await res.json();
+    if (Array.isArray(apiPosts) && apiPosts.length > 0) {
+      allPosts = apiPosts.map((p) => ({
+        slug: p.slug,
+        data: {
+          title: p.title,
+          description: p.excerpt,
+          category: p.category,
+          date: p.published_at
+            ? new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+            : 'Recently',
+          readTime: `${p.read_time_minutes} min read`,
+          coverImage: p.cover_image,
+          coverImageAlt: p.title,
+        }
+      }));
+    }
+  }
+} catch {
+  // Graceful fallback to local collection
+}
+
+if (allPosts.length === 0) {
+  const localEntries = await getCollection('writing');
+  allPosts = localEntries.map((p) => ({
+    slug: p.slug,
+    data: {
+      title: p.data.title,
+      description: p.data.description,
+      category: p.data.category,
+      date: p.data.date,
+      readTime: p.data.readTime,
+      coverImage: p.data.coverImage,
+      coverImageAlt: p.data.coverImageAlt,
+    }
+  }));
+}
+
 const latestPosts = allPosts
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);

@@ -18,12 +18,12 @@ interface NormalizedPost {
   };
 }
 
-const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'http://127.0.0.1:8000';
+const API_URL = import.meta.env.PUBLIC_API_URL || process.env.PUBLIC_API_URL || 'https://onerishi-website.onrender.com';
 let allPosts: NormalizedPost[] = [];
 
 try {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 2000);
+  const timeoutId = setTimeout(() => controller.abort(), 20000);
   const res = await fetch(`${API_URL}/api/posts`, { signal: controller.signal });
   clearTimeout(timeoutId);
   if (res.ok) {
@@ -148,7 +148,7 @@ const categories = [
 
     <!-- Featured Post (Split Monograph Card) -->
     {featuredPost && (
-      <section class="mb-16 post-item" data-post-category={featuredPost.data.category} id="featured-post-section">
+      <section class="mb-16 post-item" data-post-category={featuredPost.data.category} data-post-slug={featuredPost.slug} id="featured-post-section">
         <article class="group relative bg-white rounded-lg p-6 lg:p-10 shadow-editorial hover:shadow-editorial-hover border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-300 ease-out hover:-translate-y-1">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -214,7 +214,7 @@ const categories = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="essays-grid">
         {standardPosts.map((post) => (
-          <div class="post-item flex flex-col" data-post-category={post.data.category}>
+          <div class="post-item flex flex-col" data-post-category={post.data.category} data-post-slug={post.slug}>
             <article class="flex flex-col h-full bg-white rounded-lg p-6 shadow-sm hover:shadow-editorial-hover border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-200 ease-out hover:-translate-y-1 group">
               
               {post.data.coverImage && (
@@ -237,7 +237,7 @@ const categories = [
                   </div>
 
                   <h4 class="font-serif text-[20px] text-[#1B1B18] group-hover:text-[#C1592B] transition-colors leading-snug font-normal mb-2">
-                    <a href={`/writing/${post.slug}`}>
+                    <a href={`/writing/${post.slug}/`}>
                       {post.data.title}
                     </a>
                   </h4>
@@ -249,7 +249,7 @@ const categories = [
 
                 <div class="pt-4 mt-4 border-t border-[#1B1B18]/10 flex items-center justify-between text-[#1B1B18]/60 font-sans text-xs">
                   <span>{post.data.date}</span>
-                  <a href={`/writing/${post.slug}`} class="text-[#C1592B] font-medium flex items-center gap-0.5 group-hover:underline">
+                  <a href={`/writing/${post.slug}/`} class="text-[#C1592B] font-medium flex items-center gap-0.5 group-hover:underline">
                     <span>Read</span>
                     <span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
                   </a>
@@ -282,7 +282,8 @@ const categories = [
       btn.classList.remove('bg-white', 'text-[#1B1B18]', 'border-[#E6E1D8]');
 
       // Filter post items with subtle fade
-      postItems.forEach((item) => {
+      const currentItems = document.querySelectorAll<HTMLElement>('.post-item');
+      currentItems.forEach((item) => {
         const itemCat = item.getAttribute('data-post-category');
         if (selectedCat === 'All Essays' || itemCat === selectedCat) {
           item.style.display = 'flex';
@@ -294,4 +295,73 @@ const categories = [
       });
     });
   });
+
+  // Client-Side Post Hydration:
+  // If an author just published a post from the CMS, dynamically fetch /api/posts
+  // so newly published dispatches appear immediately without waiting for static deployment!
+  (async function hydrateRecentPosts() {
+    try {
+      const res = await fetch('https://onerishi-website.onrender.com/api/posts');
+      if (!res.ok) return;
+      const livePosts = await res.json();
+      if (!Array.isArray(livePosts) || livePosts.length === 0) return;
+
+      const existingSlugs = new Set(
+        Array.from(document.querySelectorAll('[data-post-slug]')).map((el) => el.getAttribute('data-post-slug'))
+      );
+
+      const newPosts = livePosts.filter((p) => !existingSlugs.has(p.slug));
+      if (newPosts.length === 0) return;
+
+      const grid = document.getElementById('essays-grid');
+      if (!grid) return;
+
+      newPosts.forEach((post) => {
+        const pubDate = post.published_at
+          ? new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+          : 'Recently';
+        
+        const item = document.createElement('div');
+        item.className = 'post-item flex flex-col animate-in fade-in duration-300';
+        item.setAttribute('data-post-category', post.category || 'All Essays');
+        item.setAttribute('data-post-slug', post.slug);
+
+        const coverHtml = post.cover_image ? `
+          <div class="aspect-[16/10] w-full rounded overflow-hidden bg-[#F0EDE8] mb-4 border border-[#1B1B18]/10">
+            <img src="${post.cover_image}" alt="${post.title}" class="w-full h-full object-cover" />
+          </div>` : '';
+
+        item.innerHTML = `
+          <article class="flex flex-col h-full bg-white rounded-lg p-6 shadow-sm hover:shadow-editorial-hover border border-[#E6E1D8] hover:border-[#C1592B] transition-all duration-200 ease-out hover:-translate-y-1 group">
+            ${coverHtml}
+            <div class="space-y-2 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-sans font-semibold uppercase tracking-wider bg-[#1F3A3D]/10 text-[#1F3A3D] border border-[#1F3A3D]/20">${post.category || 'Dispatch'}</span>
+                  <span class="text-[#1B1B18]/30 text-[10px]">•</span>
+                  <span class="font-sans text-[11px] text-[#1F3A3D] font-medium">${post.read_time_minutes || 4} min read</span>
+                </div>
+                <h4 class="font-serif text-[20px] text-[#1B1B18] group-hover:text-[#C1592B] transition-colors leading-snug font-normal mb-2">
+                  <a href="/writing/${post.slug}/">${post.title}</a>
+                </h4>
+                <p class="font-sans text-[13px] text-[#1B1B18]/75 line-clamp-3 leading-relaxed">
+                  ${post.excerpt || ''}
+                </p>
+              </div>
+              <div class="pt-4 mt-4 border-t border-[#1B1B18]/10 flex items-center justify-between text-[#1B1B18]/60 font-sans text-xs">
+                <span>${pubDate}</span>
+                <a href="/writing/${post.slug}/" class="text-[#C1592B] font-medium flex items-center gap-0.5 group-hover:underline">
+                  <span>Read</span>
+                  <span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+        grid.prepend(item);
+      });
+    } catch {
+      // Non-blocking
+    }
+  })();
 </script>
