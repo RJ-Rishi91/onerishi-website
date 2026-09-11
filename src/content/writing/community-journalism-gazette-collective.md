@@ -1,5 +1,5 @@
 ---
-title: "What Building Gazette Collective Taught Me About Community Journalism"
+title: "What Community Journalism Taught Me About Ground-Level Trust"
 description: "In an era of hyper-centralized programmatic platforms, grassroots local reporting gives young writers true agency. Notes on cultivating trust, distributed newsrooms, and sustaining independent collectives."
 category: "Building on the Internet"
 date: "November 12, 2024"
@@ -11,7 +11,7 @@ coverImageAlt: "Printing press lead typesets and folded independent broadsheets 
 coverCaption: "Figure 1.0 — Broadsheet pagination proofs and field interview notebooks from regional Rajasthan reporting."
 writtenFromExperience:
   title: "Decentralized Newsroom Stewardship"
-  note: "Synthesized from co-founding Gazette Collective and mentoring young reporters across southern Rajasthan, developing ethical field guidelines, and publishing independent local broadsheets."
+  note: "Synthesized from managing newsroom operations at Gazette Collective, mentoring young reporters across southern Rajasthan, developing ethical field guidelines, and publishing independent local broadsheets."
 relatedSlugs:
   - "distribution-before-destination"
   - "engineering-empathy-growth-marketer"
@@ -23,7 +23,7 @@ When mainstream regional media consolidates into corporate conglomerates, covera
 
 ## Lessons from the Field
 
-Building the Gazette Collective from a blank page into an active regional collective taught us several fundamental principles about grassroots media:
+Managing regional newsroom operations and supporting the Gazette Collective taught us several fundamental principles about grassroots media:
 
 ### 1. Verification as a Civic Duty
 

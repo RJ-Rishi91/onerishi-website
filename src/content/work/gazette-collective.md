@@ -1,7 +1,7 @@
 ---
 title: "Gazette Collective: Grassroots Media & Digital Imprint"
 description: "An independent regional media imprint and storytelling collective empowering youth and civic reporting across southern Rajasthan."
-role: "Founder & Digital Publisher"
+role: "Manager & Digital Publisher"
 timeframe: "2023 – Present"
 location: "Udaipur & Regional Rajasthan, IN"
 scale: "45+ Writers • 2 Sub-Editions"
