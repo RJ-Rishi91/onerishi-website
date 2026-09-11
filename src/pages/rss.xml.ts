@@ -37,7 +37,7 @@ export async function GET(context: any) {
 
   return rss({
     title: 'OneRishi.in — Dispatches & Field Notes',
-    description: 'Real experiments, field notes, and frameworks from marketing, technology, and building on the internet by Rushal S.',
+    description: 'Real experiments, field notes, and frameworks from marketing, technology, and building on the internet by Rushal Sharma.',
     site: context.site || 'https://onerishi.in',
     items,
     customData: `<language>en-us</language>`,

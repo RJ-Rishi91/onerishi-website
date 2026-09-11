@@ -20,7 +20,7 @@ implements or extends the site, human or agent.
 | Gazette Collective / Udaipur Gazette + sub-projects | confirmed |
 | YouTube channel grown to 94K+ subscribers | confirmed |
 | Web/dev projects (Python, React, Git/GitHub, GitHub Pages, APIs, databases) | confirmed |
-| Veer Gatha / Ministry of Defence recognition | **unconfirmed — do not publish specifics until verified** |
+| Project Veer Gatha National Winner (Ministry of Defence & Ministry of Education) | confirmed — officially registered as Rushal Suthar; general carried name: Rushal Sharma |
 
 ## Tone
 

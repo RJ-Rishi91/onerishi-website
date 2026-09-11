@@ -1,6 +1,6 @@
 # OneRishi — onerishi.in
 
-Personal brand site for Rushal S. — Marketing × Technology × Creativity.
+Personal brand site for Rushal Sharma — Marketing × Technology × Creativity.
 Editorial-magazine aesthetic, warm and approachable, not corporate.
 
 This repo/handoff covers 9 pages + 2 dynamic templates (11 builds total).
@@ -15,7 +15,7 @@ See also: `SITEMAP.md` (page tree + full linking map), `DESIGN-TOKENS.md`
 
 - **Domain:** onerishi.in
 - **Brand:** OneRishi
-- **Displayed name:** Rushal S. (not "Rushal Suthar" — confirmed choice)
+- **Displayed name:** Rushal Sharma (general carried name; national award officially recorded under legal name Rushal Suthar)
 - **Hero positioning line:** "I build, market and execute — bringing technology, creativity and communication together to turn ideas into real-world projects."
 - **Site purpose:** personal brand / thought leadership, for recruiters, potential clients/collaborators, and the marketing × tech community
 

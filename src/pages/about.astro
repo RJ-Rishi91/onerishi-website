@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About — Rushal S. | Marketing × Technology × Creativity"
+  title="About — Rushal Sharma | Marketing × Technology × Creativity"
   description="Bridging the gap between engineering rigor and creative communication. Demand Generation Specialist, building StudioRavya, and event director."
 >
   <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
@@ -16,7 +16,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Dossier / Vol. 04
           </span>
           <span class="text-[#1B1B18]/40">•</span>
-          <span class="text-[#1B1B18]/80 font-medium">Rushal S.</span>
+          <span class="text-[#1B1B18]/80 font-medium">Rushal Sharma</span>
         </div>
         <div class="flex items-center gap-4 text-[#1B1B18]/70">
           <span>Udaipur × Hybrid</span>
@@ -58,21 +58,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- Key Vital Stats -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
             <div class="bg-white p-4 rounded border border-[#E6E1D8]">
               <span class="font-sans text-[11px] uppercase tracking-wider text-[#1B1B18]/60 block font-semibold">Primary Role</span>
-              <span class="font-serif text-[20px] text-[#1B1B18] block mt-0.5 font-normal">Demand Gen</span>
-              <span class="font-sans text-[12px] text-[#1F3A3D] font-medium">Scale &amp; Precision</span>
+              <span class="font-serif text-[18px] text-[#1B1B18] block mt-0.5 font-normal">Demand Gen</span>
+              <span class="font-sans text-[11px] text-[#1F3A3D] font-medium">Scale &amp; Precision</span>
             </div>
             <div class="bg-white p-4 rounded border border-[#E6E1D8]">
               <span class="font-sans text-[11px] uppercase tracking-wider text-[#1B1B18]/60 block font-semibold">Venture</span>
-              <span class="font-serif text-[20px] text-[#1B1B18] block mt-0.5 font-normal">StudioRavya</span>
-              <span class="font-sans text-[12px] text-[#C1592B] font-medium">Building &amp; Lead</span>
+              <span class="font-serif text-[18px] text-[#1B1B18] block mt-0.5 font-normal">StudioRavya</span>
+              <span class="font-sans text-[11px] text-[#C1592B] font-medium">Building &amp; Lead</span>
+            </div>
+            <div class="bg-white p-4 rounded border border-[#E6E1D8]">
+              <span class="font-sans text-[11px] uppercase tracking-wider text-[#1B1B18]/60 block font-semibold">National Honor</span>
+              <span class="font-serif text-[18px] text-[#1B1B18] block mt-0.5 font-normal">Veer Gatha</span>
+              <span class="font-sans text-[11px] text-[#1F3A3D] font-medium">Winner (as Rushal Suthar)</span>
             </div>
             <div class="bg-white p-4 rounded border border-[#E6E1D8]">
               <span class="font-sans text-[11px] uppercase tracking-wider text-[#1B1B18]/60 block font-semibold">Ecosystem</span>
-              <span class="font-serif text-[20px] text-[#1B1B18] block mt-0.5 font-normal">DevFest ’24</span>
-              <span class="font-sans text-[12px] text-[#1F3A3D] font-medium">Operations Lead</span>
+              <span class="font-serif text-[18px] text-[#1B1B18] block mt-0.5 font-normal">DevFest ’24</span>
+              <span class="font-sans text-[11px] text-[#1F3A3D] font-medium">Operations Lead</span>
             </div>
           </div>
         </div>
@@ -92,18 +97,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="relative aspect-square w-full overflow-hidden rounded bg-[#1B1B18] border border-[#1B1B18]/15">
               <img
                 src="/images/rushal-portrait.jpg?v=2024"
-                alt="Portrait of Rushal S. — Marketing × Technology × Creativity"
+                alt="Portrait of Rushal Sharma — Marketing × Technology × Creativity"
                 class="w-full h-full object-cover"
               />
             </div>
 
-            <div class="pt-3 space-y-1">
-              <p class="font-sans text-[11px] text-[#C1592B] uppercase tracking-widest font-semibold">
-                Rushal S. — Demand Generation &amp; Creative Technologist
-              </p>
+            <div class="pt-3 space-y-2">
+              <div>
+                <p class="font-sans text-[12px] text-[#C1592B] uppercase tracking-widest font-semibold">
+                  Rushal Sharma
+                </p>
+                <span class="font-sans text-[11px] text-[#1F3A3D] block font-medium">Demand Generation &amp; Creative Technologist</span>
+              </div>
               <p class="font-sans text-[13px] text-[#1B1B18]/80 leading-relaxed">
                 Working at the juncture of code repos, editorial printing layouts, and high-velocity digital marketing frameworks.
               </p>
+              <div class="pt-2 border-t border-[#1B1B18]/10 text-[11px] font-sans text-[#1B1B18]/70 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-[#1B1B18]/50 uppercase tracking-wider text-[10px] font-semibold">General Name:</span>
+                  <span class="font-medium text-[#1B1B18]">Rushal Sharma</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-[#1B1B18]/50 uppercase tracking-wider text-[10px] font-semibold">Veer Gatha Record:</span>
+                  <span class="font-medium text-[#1F3A3D]">Rushal Suthar</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -137,6 +155,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </p>
             <p>
               When you learn how databases query, how APIs throttle, and how git branches manage complexity, your understanding of communication fundamentally shifts. You stop relying on superficial slogans. You start framing product capabilities with precision, clarity, and genuine empathy for what is physically possible beneath the glass.
+            </p>
+            <p>
+              That instinct for narrative rigor was recognized early at the national level. As a national winner of <strong>Project Veer Gatha</strong>—conducted by the Ministry of Defence and Ministry of Education, Government of India—I was awarded national honors under my official legal record, <strong>Rushal Suthar</strong>, for chronicling the stories of India’s gallantry awardees. While <strong>Rushal Sharma</strong> is the name I carry day-to-day across all professional, creative, and community work, that formative discipline of primary-source research and ethical storytelling directly underpins how I build systems today.
             </p>
           </div>
         </div>

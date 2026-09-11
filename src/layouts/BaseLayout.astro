@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title = 'OneRishi.in — Marketing × Technology × Creativity',
-  description = 'Personal brand and thought leadership platform for Rushal S. — bringing technology, creativity, and communication together to turn ideas into real-world projects.',
+  description = 'Personal brand and thought leadership platform for Rushal Sharma — bringing technology, creativity, and communication together to turn ideas into real-world projects.',
   ogImage = '/images/rushal-portrait.jpg?v=2024',
   articleDate,
   noindex = false,
@@ -51,7 +51,7 @@ const pageTitle = title.includes('OneRishi.in') ? title : (title.includes('OneRi
     <title>{pageTitle}</title>
     <meta name="title" content={pageTitle} />
     <meta name="description" content={description} />
-    <meta name="author" content="Rushal S." />
+    <meta name="author" content="Rushal Sharma" />
 
     <!-- Google Fonts Preconnect & Inter / Fraunces Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -84,10 +84,12 @@ const pageTitle = title.includes('OneRishi.in') ? title : (title.includes('OneRi
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Rushal S.",
+      "name": "Rushal Sharma",
+      "alternateName": "Rushal Suthar",
       "url": "https://onerishi.in",
       "jobTitle": "Demand Generation Specialist & Creative Technologist",
-      "description": "Marketing × Technology × Creativity. Building high-agency systems and deliberate media collectives.",
+      "award": "National Winner, Project Veer Gatha (Ministry of Defence, Govt of India)",
+      "description": "Marketing × Technology × Creativity. Building high-agency systems, StudioRavya, and literate digital collectives.",
       "sameAs": [
         "https://github.com",
         "https://linkedin.com",
